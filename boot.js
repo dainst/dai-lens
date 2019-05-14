@@ -28,7 +28,7 @@ var qs = function () {
 // This document gets loaded by default
 // --------
 
-var documentURL = "data/example.xml";
+var documentURL = "https://bkry.gitlab.io/dai/dai-examples/0001/aa-example-article-2019-05-13.xml";
 
 $(function() {
 
