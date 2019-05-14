@@ -19,9 +19,18 @@ var ElifeConverter = require("lens/converter/elife_converter");
 // to build your own Lens panel
 
 var notesPanel = require('./panels/notes');
+// var metaDataPanel = require('./panels/metaData');
+
+console.log(panels)
+
+panels.map(panel => {
+  console.log('panel', panel);
+  if (panel.config.name === 'info') panel.config.title = 'Meta Data'
+})
 
 // Insert altmetrics panel at next to last position
 panels.splice(-1, 0, notesPanel);
+// panels.splice(-1, 0, metaDataPanel);
 
 var LensApp = function(config) {
   Lens.call(this, config);
