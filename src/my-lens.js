@@ -18,10 +18,10 @@ var ElifeConverter = require("lens/converter/elife_converter");
 // Find the code in panels/altmetrics and use it as an inspiration
 // to build your own Lens panel
 
-var altmetricsPanel = require('./panels/altmetrics');
+var notesPanel = require('./panels/notes');
 
 // Insert altmetrics panel at next to last position
-panels.splice(-1, 0, altmetricsPanel);
+panels.splice(-1, 0, notesPanel);
 
 var LensApp = function(config) {
   Lens.call(this, config);

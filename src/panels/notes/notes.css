@@ -1,0 +1,20 @@
+.notes-panel {
+	padding: 70px;
+	padding-top: 20px;
+}
+
+.notes-panel .notes .label {
+	padding-top: 20px;
+	font-size: 15px;
+	color: #999;
+}
+
+.notes-panel .notes .value {
+	font-size: 26px;
+}
+
+.notes-panel .notes .copyright {
+	padding-top: 50px;
+	color: #666;
+	font-style: italic;
+}
