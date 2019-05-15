@@ -13,7 +13,7 @@ CustomConverter.Prototype = function() {
 
   this.test = function(xmlDoc) {
     var publisherName = xmlDoc.querySelector("publisher-name").textContent;
-    return true;
+    return publisherName === "My Journal";
   };
 
   // Override document factory so we can create a customized Lens article,
@@ -49,20 +49,23 @@ CustomConverter.Prototype = function() {
     } else {
       // Use special URL resolving for production articles
       return [
-        "https://bkry.gitlab.io/dai/dai-examples/0001/",
+        "http://cdn.elifesciences.org/elife-articles/",
+        state.doc.id,
+        "/jpg/",
         url,
+        ".jpg"
       ].join('');
     }
   };
 
-  // this.enhanceVideo = function(state, node, element) {
-  //   var href = element.getAttribute("xlink:href").split(".");
-  //   var name = href[0];
-  //   node.url = "http://api.elifesciences.org/v2/articles/"+state.doc.id+"/media/file/"+name+".mp4";
-  //   node.url_ogv = "http://api.elifesciences.org/v2/articles/"+state.doc.id+"/media/file//"+name+".ogv";
-  //   node.url_webm = "http://api.elifesciences.org/v2/articles/"+state.doc.id+"/media/file//"+name+".webm";
-  //   node.poster = "http://api.elifesciences.org/v2/articles/"+state.doc.id+"/media/file/"+name+".jpg";
-  // };
+  this.enhanceVideo = function(state, node, element) {
+    var href = element.getAttribute("xlink:href").split(".");
+    var name = href[0];
+    node.url = "http://api.elifesciences.org/v2/articles/"+state.doc.id+"/media/file/"+name+".mp4";
+    node.url_ogv = "http://api.elifesciences.org/v2/articles/"+state.doc.id+"/media/file//"+name+".ogv";
+    node.url_webm = "http://api.elifesciences.org/v2/articles/"+state.doc.id+"/media/file//"+name+".webm";
+    node.poster = "http://api.elifesciences.org/v2/articles/"+state.doc.id+"/media/file/"+name+".jpg";
+  };
 };
 
 CustomConverter.Prototype.prototype = LensConverter.prototype;
