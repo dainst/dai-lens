@@ -5,10 +5,18 @@
   .resource-header {
     background-color: #918a82;
     margin-left: -3px;
+    padding-top: 0;
     .name, .toggle {
       font-family: 'Noto Sans SemBd', sans-serif;
       font-weight: 600;
       color: #FFFFFF;
+      line-height: 21px;
+      min-height: 21px;
+      
+    }
+    .toggle:hover {
+      background: none;
+      text-decoration: underline;
     }
   }
   .image-wrapper {
@@ -30,7 +38,8 @@
   color: #FFFFFF;
 }
 
-.lens-article .content-node.caption > .content > .content-node.paragraph {
+.lens-article .content-node.figure .content-node.caption,
+.lens-article .content-node.figure .figure-attribution {
   font-family: 'Noto Sans Lt', sans-serif;
   font-weight: 300;
   padding-left: 20px;

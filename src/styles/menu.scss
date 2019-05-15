@@ -1,0 +1,23 @@
+.menu-bar {
+  background-color: #D25C05;
+  border-bottom: none;
+  .context-toggles a{
+    font-family: 'Noto Sans SemBd', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: #dedace;
+    border-right: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    i {
+      display: none;
+    }
+    &.active {
+      background: #918A82;
+      color: #dedace;
+      border-bottom: none;
+      box-shadow: 4px 4px 8px 0px rgba(0,0,0,.4);
+    }
+  }
+}
