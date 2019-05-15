@@ -1,0 +1,23 @@
+.resource-view.toc .heading-ref {
+  font-family: 'Noto Sans Med', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #FFFFFF;
+}
+.resource-view.toc .heading-ref.level-2,
+.resource-view.toc .heading-ref.level-3,
+.resource-view.toc .heading-ref.level-4 {
+  font-family: 'Noto Sans Lgt', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.resource-view.toc .heading-ref a {
+  color: #A24A0A;
+}
+.resource-view.toc .heading-ref:before {
+  content: "\003E";
+  margin-right: 30px;
+}
