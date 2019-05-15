@@ -32,3 +32,21 @@
 @import 'src/styles/node-figures';
 @import 'src/styles/node-content';
 @import 'src/styles/node-info-meta';
+
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #d25c05;
+}
+#main {
+  padding-top: 50px,
+}
+.resources {
+  margin-top: -50px;
+}
+.menu-bar {
+  padding-top: 10px;
+}

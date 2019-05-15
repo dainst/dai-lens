@@ -13,17 +13,16 @@ CustomCoverView.Prototype = function() {
     var refUrl = encodeURIComponent(window.location.href);
 
     // Add feeback info
-    var introEl = $$('.intro.container', {
+    var topBar = $$('.topbar', {
       children: [
         $$('.intro-text', {
-          html: '<i class="icon-info"></i>&nbsp;&nbsp;<b>Lens</b> provides a novel way of viewing research'
-        }),
-        $$('a.send-feedback', {href: "mailto:feeback@example.com", text: "Send feedback", target: "_blank" })
+          html: '<div></div>'
+        })
       ]
     });
 
     // Prepend
-    this.content.insertBefore(introEl, this.content.firstChild);
+    this.content.insertBefore(topBar, this.content.firstChild);
     
     return this;
   }
