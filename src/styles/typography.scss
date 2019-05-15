@@ -70,7 +70,11 @@ body, textarea, p, input {
 }
 
 a {
-  color: #929292;
+  color: #568A50;
+  &:hover{
+    background-color: #568A50;
+    color: #FFFFFF;
+  }
 }
 
 .lens-article .content-node.cover .title {
@@ -100,13 +104,26 @@ a {
   font-family: 'Noto Serif Lt', serif;
   font-weight: 300;
   background: none;
-  border-bottom: 1px solid #A24A0A;
   color: #A24A0A;
+  &:hover {
+    background-color: #A24A0A;
+    color: #FFFFFF;
+  }
+  border-bottom: 1px solid #A24A0A;
+  padding-right: 3px;
+  padding-left: 3px;
 }
 
 .content-node .cross_reference {
   background: none;
+  color: #929292;
+  &:hover {
+    background-color: #929292;
+    color: #FFFFFF;
+  }
   border-bottom: 1px solid #929292;
+  padding-right: 3px;
+  padding-left: 3px;
 }
 
 .content-node .citation_reference {
@@ -114,8 +131,11 @@ a {
   font-weight: 300;
   background: none;
   color: #568A50;
+  &:hover {
+    background-color: #568A50;
+    color: #FFFFFF;
+  }
   border-bottom: 1px solid #568A50;
-  cursor: pointer;
   padding-right: 3px;
   padding-left: 3px;
 }
