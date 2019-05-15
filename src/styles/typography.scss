@@ -1,0 +1,61 @@
+
+body, textarea, p, input {
+  font-family: 'Noto Serif', 'Source Sans Pro', Helvetica, Arial, Verdana, serif;
+  font-weight: 300;
+  color: #000000;
+}
+
+a {
+  color: #929292;
+}
+
+.lens-article .content-node.cover .title {
+  font-family: 'Noto Sans', sans-serif;
+  color: #D25C05;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 52px;
+  padding-top: 20px;
+}
+
+.content-node.heading .content {
+  font-family: 'Noto Sans', sans-serif;
+  color: #D25C05;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  line-height: 40px;
+}
+
+.article .document {
+  line-height: 28px;
+  font-size: 16px;
+}
+
+.content-node .figure_reference {
+  font-weight: 400;
+  background: none;
+  border-bottom: 1px solid #A24A0A;
+  color: #A24A0A;
+}
+
+.content-node .cross_reference {
+  background: none;
+  border-bottom: 1px solid #929292;
+}
+
+.content-node .citation_reference {
+  background: none;
+  color: #568A50;
+  border-bottom: 1px solid #568A50;
+  cursor: pointer;
+  padding-right: 3px;
+  padding-left: 3px;
+}
+
+.content-node .contributor_reference {
+  font-family: 'Noto Sans', sans-serif;
+  color: #929292;
+  font-weight: 700;
+  text-transform: uppercase
+}
