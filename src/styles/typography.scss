@@ -1,6 +1,70 @@
+@font-face {
+  font-family: 'Noto Serif Lt';
+  src: url('fonts/NotoSerif-Light.eot');
+  src: local('fonts/Noto Serif Light'), local('fonts/NotoSerif-Light'),
+      url('fonts/NotoSerif-Light.eot?#iefix') format('embedded-opentype'),
+      url('fonts/NotoSerif-Light.woff2') format('woff2'),
+      url('fonts/NotoSerif-Light.woff') format('woff'),
+      url('fonts/NotoSerif-Light.ttf') format('truetype'),
+      url('fonts/NotoSerif-Light.svg#NotoSerif-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans Lt';
+  src: url('fonts/NotoSans-Light.eot');
+  src: local('fonts/Noto Sans Light'), local('fonts/NotoSans-Light'),
+      url('fonts/NotoSans-Light.eot?#iefix') format('embedded-opentype'),
+      url('fonts/NotoSans-Light.woff2') format('woff2'),
+      url('fonts/NotoSans-Light.woff') format('woff'),
+      url('fonts/NotoSans-Light.ttf') format('truetype'),
+      url('fonts/NotoSans-Light.svg#NotoSans-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans Med';
+  src: url('fonts/NotoSans-Medium.eot');
+  src: local('fonts/Noto Sans Medium'), local('fonts/NotoSans-Medium'),
+      url('fonts/NotoSans-Medium.eot?#iefix') format('embedded-opentype'),
+      url('fonts/NotoSans-Medium.woff2') format('woff2'),
+      url('fonts/NotoSans-Medium.woff') format('woff'),
+      url('fonts/NotoSans-Medium.ttf') format('truetype'),
+      url('fonts/NotoSans-Medium.svg#NotoSans-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans SemBd';
+  src: url('fonts/NotoSans-SemiBold.eot');
+  src: local('fonts/Noto Sans SemiBold'), local('fonts/NotoSans-SemiBold'),
+      url('fonts/NotoSans-SemiBold.eot?#iefix') format('embedded-opentype'),
+      url('fonts/NotoSans-SemiBold.woff2') format('woff2'),
+      url('fonts/NotoSans-SemiBold.woff') format('woff'),
+      url('fonts/NotoSans-SemiBold.ttf') format('truetype'),
+      url('fonts/NotoSans-SemiBold.svg#NotoSans-SemiBold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans ExtLt';
+  src: url('fonts/NotoSans-ExtraLight.eot');
+  src: local('fonts/Noto Sans ExtraLight'), local('fonts/NotoSans-ExtraLight'),
+      url('fonts/NotoSans-ExtraLight.eot?#iefix') format('embedded-opentype'),
+      url('fonts/NotoSans-ExtraLight.woff2') format('woff2'),
+      url('fonts/NotoSans-ExtraLight.woff') format('woff'),
+      url('fonts/NotoSans-ExtraLight.ttf') format('truetype'),
+      url('fonts/NotoSans-ExtraLight.svg#NotoSans-ExtraLight') format('svg');
+  font-weight: 200;
+  font-style: normal;
+}
 
 body, textarea, p, input {
-  font-family: 'Noto Serif', 'Source Sans Pro', Helvetica, Arial, Verdana, serif;
+  font-family: 'Noto Serif Lt', serif;
   font-weight: 300;
   color: #000000;
 }
@@ -10,21 +74,21 @@ a {
 }
 
 .lens-article .content-node.cover .title {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto Sans Lt', sans-serif;
+  font-weight: 300;
   color: #D25C05;
-  font-weight: 400;
   font-size: 48px;
   line-height: 52px;
   padding-top: 20px;
+  font-weight: 300;
 }
 
 .content-node.heading .content {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto Sans Med', sans-serif;
+  font-weight: 500;
   color: #D25C05;
-  font-weight: 700;
   font-size: 24px;
   line-height: 28px;
-  line-height: 40px;
 }
 
 .article .document {
@@ -33,7 +97,8 @@ a {
 }
 
 .content-node .figure_reference {
-  font-weight: 400;
+  font-family: 'Noto Serif Lt', serif;
+  font-weight: 300;
   background: none;
   border-bottom: 1px solid #A24A0A;
   color: #A24A0A;
@@ -45,6 +110,8 @@ a {
 }
 
 .content-node .citation_reference {
+  font-family: 'Noto Serif Lt', serif;
+  font-weight: 300;
   background: none;
   color: #568A50;
   border-bottom: 1px solid #568A50;
@@ -54,8 +121,9 @@ a {
 }
 
 .content-node .contributor_reference {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: 'Noto Sans SemBd', sans-serif;
+  font-weight: 600;
   color: #929292;
-  font-weight: 700;
-  text-transform: uppercase
+  text-transform: uppercase;
+  font-size: 16px;
 }
