@@ -1,0 +1,38 @@
+.article .resources .nodes > .content-node.figure {
+  background: #CDC7C0;
+  color: #000000;
+  margin-top: 50px;
+  .resource-header {
+    background-color: #918a82;
+    margin-left: -3px;
+    .name, .toggle {
+      font-family: 'Noto Sans SemBd', sans-serif;
+      font-weight: 600;
+      color: #FFFFFF;
+    }
+  }
+  .image-wrapper {
+    padding: 0
+  }
+  .content {
+    padding: 0;
+  }
+}
+.article .resources .figures .content-node.figure.highlighted {
+  border-left: 3px solid #D25C05;
+  .resource-header {
+    background-color: #D25C05;
+  }
+}
+
+.article .resources .figures .content-node.fullscreen .resource-header .toggle.toggle-fullscreen, .article .resources .math .content-node.fullscreen .resource-header .toggle.toggle-fullscreen,
+.article .resources .figures .content-node.highlighted .resource-header .toggle.toggle-res, .article .resources .math .content-node.highlighted .resource-header .toggle.toggle-res {
+  color: #FFFFFF;
+}
+
+.lens-article .content-node.caption > .content > .content-node.paragraph {
+  font-family: 'Noto Sans Lt', sans-serif;
+  font-weight: 300;
+  padding-left: 20px;
+  padding-right: 20px;
+}
