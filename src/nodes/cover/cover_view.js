@@ -9,10 +9,9 @@ var CustomCoverView = function(node, viewFactory) {
 CustomCoverView.Prototype = function() {
   this.render = function() {
     CoverView.prototype.render.call(this);
-
-    var refUrl = encodeURIComponent(window.location.href);
-
-    var titleView = this.createTextPropertyView(['document', 'title'], { classes: 'title', elementType: 'div' });
+    var pubInfo = this.node.document.get('publication_info');
+    var year = pubInfo.published_on || '';
+    var edition = pubInfo.volume ? pubInfo.volume.textContent : ''
 
     // Add feeback info
     var topBar = $$('.topbar', {
@@ -21,8 +20,12 @@ CustomCoverView.Prototype = function() {
           html: '<img class="topbar-logo-img" src="AA_Logo.png" />'
         }),
         $$('.topbar-title', {
-          html: `<span> ${titleView.property.value} </span>`
+          html: `<span> ${window.doc.title} </span>`
+        }),
+        $$('.topbar-date', {
+          html: `<span> ${edition}/${year} </span>`
         })
+
       ]
     });
 
