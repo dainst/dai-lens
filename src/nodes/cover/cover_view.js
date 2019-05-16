@@ -12,11 +12,16 @@ CustomCoverView.Prototype = function() {
 
     var refUrl = encodeURIComponent(window.location.href);
 
+    var titleView = this.createTextPropertyView(['document', 'title'], { classes: 'title', elementType: 'div' });
+
     // Add feeback info
     var topBar = $$('.topbar', {
       children: [
         $$('.topbar-logo', {
           html: '<img class="topbar-logo-img" src="AA_Logo.png" />'
+        }),
+        $$('.topbar-title', {
+          html: `<span> ${titleView.property.value} </span>`
         })
       ]
     });
