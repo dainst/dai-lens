@@ -15,8 +15,8 @@ CustomCoverView.Prototype = function() {
     // Add feeback info
     var topBar = $$('.topbar', {
       children: [
-        $$('.topbar-content', {
-          html: '<div></div>'
+        $$('.topbar-logo', {
+          html: '<img class="topbar-logo-img" src="AA_Logo.png" />'
         })
       ]
     });

@@ -33,18 +33,13 @@
 @import 'src/styles/node-content';
 @import 'src/styles/node-info-meta';
 
+@import 'src/nodes/cover/cover';
+
 .surface-scrollbar .visible-area {
   background-color: rgba(63, 63, 63, 0.3);
 }
 
-.topbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-  background-color: #d25c05;
-}
+
 body.reader #main {
   margin-top: 50px;
   height: calc( 100% - 50px );
