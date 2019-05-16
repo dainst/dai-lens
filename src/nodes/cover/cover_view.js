@@ -15,7 +15,7 @@ CustomCoverView.Prototype = function() {
     // Add feeback info
     var topBar = $$('.topbar', {
       children: [
-        $$('.intro-text', {
+        $$('.topbar-content', {
           html: '<div></div>'
         })
       ]
