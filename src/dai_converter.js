@@ -38,7 +38,6 @@ DaiConverter.Prototype = function() {
   };
 
   this.enhancePublicationInfo = function(state) {
-    var article = state.xmlDoc.querySelector("article");
     var volume = state.xmlDoc.querySelector("volume");
 
     var publicationInfo = state.doc.get('publication_info');
