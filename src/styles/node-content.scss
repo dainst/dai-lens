@@ -1,11 +1,32 @@
 .resource-view.toc .heading-ref {
+  font-family: 'Noto Sans Lgt', sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 24px;
+  color: #FFFFFF;
+  &:before {
+    content: "\003E";
+    margin-right: 30px;
+  }
+}
+
+.resource-view.toc .heading-ref.level-1 {
+  &:before {
+    content: none;
+    margin-right: 0;
+  }
+}
+
+.resource-view.toc .heading-ref.level-2 {
   font-family: 'Noto Sans Med', sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
-  color: #FFFFFF;
+  &:before {
+    content: none;
+  }
 }
-.resource-view.toc .heading-ref.level-2,
+
 .resource-view.toc .heading-ref.level-3,
 .resource-view.toc .heading-ref.level-4 {
   font-family: 'Noto Sans Lgt', sans-serif;
@@ -16,8 +37,9 @@
 
 .resource-view.toc .heading-ref a {
   color: #A24A0A;
+  &:hover {
+    color: #FFFFFF;
+    background-color: #A24A0A;
+  }
 }
-.resource-view.toc .heading-ref:before {
-  content: "\003E";
-  margin-right: 30px;
-}
+

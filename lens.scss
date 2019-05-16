@@ -33,6 +33,10 @@
 @import 'src/styles/node-content';
 @import 'src/styles/node-info-meta';
 
+.surface-scrollbar .visible-area {
+  background-color: rgba(63, 63, 63, 0.3);
+}
+
 .topbar {
   position: fixed;
   top: 0;

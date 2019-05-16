@@ -20,7 +20,16 @@
     }
   }
   .image-wrapper {
-    padding: 0
+    padding: 0;
+    background-color: #FFFFFF;
+    a:hover {
+      background: none;
+    }
+    img {
+      width: auto;
+      max-width: 100%;
+      min-height: 40vH;
+    }
   }
   .content {
     padding: 0;
