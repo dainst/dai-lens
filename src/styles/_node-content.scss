@@ -3,7 +3,7 @@
   font-weight: 300;
   font-size: 14px;
   line-height: 24px;
-  color: #FFFFFF;
+  color: $white;
   &:before {
     content: "\003E";
     margin-right: 30px;
@@ -36,10 +36,10 @@
 }
 
 .resource-view.toc .heading-ref a {
-  color: #A24A0A;
+  color: $primary-dark;
   &:hover {
-    color: #FFFFFF;
-    background-color: #A24A0A;
+    color: $white;
+    background-color: $primary-dark;
   }
 }
 

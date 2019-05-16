@@ -1,5 +1,5 @@
 .menu-bar {
-  background-color: #D25C05;
+  background-color: $primary;
   border-bottom: none;
   height: 24px;
   .context-toggles a{
@@ -7,14 +7,14 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 24px;
-    color: #dedace;
+    color: $gray-light;
     border-right: none;
     i {
       display: none;
     }
     &.active {
-      background: #918A82;
-      color: #dedace;
+      background: $gray-dark;
+      color: $gray-light;
       border-bottom: none;
       box-shadow: 4px 4px 8px 0px rgba(0,0,0,.4);
     }
