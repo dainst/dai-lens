@@ -41,9 +41,11 @@
   height: 50px;
   background-color: #d25c05;
 }
-#main {
-  padding-top: 50px;
+body.reader #main {
+  margin-top: 50px;
+  height: calc( 100% - 50px );
 }
-.resources {
-  margin-top: -24px;
+.article .resources {
+  margin-top: -40px;
+  height: calc( 100% + 40px );
 }
