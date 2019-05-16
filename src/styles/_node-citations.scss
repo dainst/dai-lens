@@ -1,0 +1,71 @@
+.article .resources .nodes > .content-node.citation > .content {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 200px;
+  padding-top: 15px;
+}
+
+.article .resources .content-node.citation .resource-header .name {
+  color: $white;
+  font-size: 16px;
+  font-weight: 600;
+  padding-right: 0;
+  width: 200px;
+  padding-top: 15px;
+}
+
+.article .resources .citations .content-node.highlighted {
+  background-color: $gray-light;
+  border-left: 3px solid transparent;
+  color: $black;
+  .resource-header a.toggle.toggle-res {
+    color: transparent;
+  }
+}
+.article .resources .content-node.citation.highlighted .resource-header .name {
+  color: $primary;
+}
+
+.lens-article .content-node.citation .content .authors {
+  order: 1;
+  font-size: 14px;
+  margin-right: 4px;
+}
+
+.lens-article .content-node.citation .content .title {
+  order: 2;
+  font-size: 14px;
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 0;
+  margin-right: 4px;
+}
+
+.lens-article .content-node.citation .content .source {
+  order: 3;
+}
+
+.article .resources .content-node.citation .resource-header .toggles {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0;
+  bottom: 0;
+}
+
+.article .resources .content-node.citation .resource-header {
+  padding-top: 0;
+  font-weight: 600;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.article .resources .content-node.citation .resource-header a.toggle {
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  &:hover {
+    color: transparent;
+  }
+}
