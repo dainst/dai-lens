@@ -28,11 +28,13 @@
 
 @import 'src/styles/variables';
 @import 'src/styles/typography';
+
 @import 'src/styles/menu';
-@import 'src/styles/nodes';
-@import 'src/styles/node-figures';
+@import 'src/styles/node-citations';
 @import 'src/styles/node-content';
+@import 'src/styles/node-figures';
 @import 'src/styles/node-info-meta';
+@import 'src/styles/nodes';
 
 @import 'src/nodes/cover/cover';
 

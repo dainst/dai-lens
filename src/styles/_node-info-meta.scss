@@ -2,4 +2,13 @@
   color: $white;
   background: $gray-dark;
   border-bottom: none;
+
+  .resource-header a {
+    color: $white;
+    &:hover{
+      color: $white;
+      background: none;
+      text-decoration: underline;
+    }
+  }
 }
