@@ -11,6 +11,8 @@ CustomCoverView.Prototype = function() {
     CoverView.prototype.render.call(this);
     var pubInfo = this.node.document.get('publication_info');
     var year = pubInfo.published_on || '';
+    
+    if (year.length > 3) year = year.slice(2,4)
     var edition = pubInfo.volume ? pubInfo.volume.textContent : ''
 
     // Add feeback info
