@@ -11,7 +11,22 @@ NotesController.Prototype = function() {
   };
 
   this.getNotes = function(cb) {
-    cb(null, {data: 'aaaaaaaaa'})
+    let allNodes = this.document.nodes;
+    let notes = [];
+    let references = [];
+
+    Object.keys(allNodes).map(nodeName => {
+      console.log(nodeName)
+      console.log(allNodes[nodeName])
+      if (allNodes[nodeName].type === 'footnote'){
+        notes.push(allNodes[nodeName])
+      }
+      if (allNodes[nodeName].type === 'footnote_reference'){
+        references.push(allNodes[nodeName])
+      }
+    })
+
+    cb(null, {notes: notes, references: references})
   };
 };
 

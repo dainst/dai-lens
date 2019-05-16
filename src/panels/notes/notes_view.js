@@ -26,17 +26,29 @@ NotesView.Prototype = function() {
     return this;
   };
 
-  this.renderNotes = function(notes) {
+  this.renderNotes = function(data) {
     // Finally data is available so we tell the panel to show up as a tab
     this.showToggle();
 
     var $notes = $('<div class="notes"></div>');
     $notes.append($('<div class="label">NOTES</div>'));
-    $notes.append($('<div class="value"></div>').text(notes.data));
+    data.notes.map(note => {
+      // $notes.append(note);
+      $notes.append($('<div class="value"></div>').text(note.properties.id));
+      // this.footnoteView = this._createView(note).render();
+      // console.log(this.footnoteView)
+    })
+    // $notes.append($('<div class="value"></div>').text(notes.data));
 
     this.$el.append($notes);
   };
+
+  this._createView = function(node) {
+    var view = this.viewFactory.createView(node);
+    return view;
+  };
 };
+
 
 NotesView.Prototype.prototype = PanelView.prototype;
 NotesView.prototype = new NotesView.Prototype();
