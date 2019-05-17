@@ -8,6 +8,9 @@ var panel = new Panel({
   type: 'resource',
   title: 'Notes',
   icon: 'fa-comment',
+  zoom: true,
+  references: ["footnote_reference"],
+  label: 'Notes'
 });
 
 panel.createController = function(doc) {

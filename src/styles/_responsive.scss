@@ -1,0 +1,19 @@
+@media only screen and (max-width: 800px) {
+  body.reader #container {
+    min-width: auto;
+  }
+  .article .document, .topbar {
+    width: 100%;
+  }
+  .article .resources {
+    position: absolute;
+    left: 100%;
+    width: 100%;
+    margin-top: 0;
+    transition: 0.5s;
+    &.active {
+      left: unset;
+      right: 0;
+    }
+  }
+}

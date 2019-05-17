@@ -70,4 +70,14 @@ LensApp.Prototype.prototype = Lens.prototype;
 LensApp.prototype = new LensApp.Prototype();
 LensApp.prototype.constructor = LensApp;
 
-module.exports = LensApp;
+module.exports = LensApp;module.exports = LensApp;
+
+//TODO: move this somewhere else
+$("img.topbar-logo-img").ready(function () {
+  var navBar = function () {
+    $("img.topbar-logo-img").click(function () {
+      $(".resources").toggleClass("active");
+    });
+  }
+  setTimeout(navBar, 2500);
+});

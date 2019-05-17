@@ -35,32 +35,13 @@
 @import 'src/styles/node-figures';
 @import 'src/styles/node-info-meta';
 @import 'src/styles/nodes';
+@import 'src/styles/layout';
 
 @import 'src/nodes/cover/cover';
+
+@import 'src/styles/responsive';
 
 .surface-scrollbar .visible-area {
   background-color: rgba(63, 63, 63, 0.3);
 }
 
-
-body.reader #main {
-  margin-top: 50px;
-  height: calc( 100% - 50px );
-}
-
-.article .document {
-  width: 53%;
-  .surface.content {
-    width: 90%;
-  }
-  .scrollbar-cover {
-    width: 10%;
-    background-color: $gray-lighter;
-  }
-}
-
-.article .resources {
-  width: 47%;
-  margin-top: -50px;
-  height: calc( 100% + 50px );
-}
