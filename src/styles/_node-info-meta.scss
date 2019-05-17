@@ -12,3 +12,11 @@
     }
   }
 }
+
+.article .resources .nodes > .content-node.publication-info .content-node[data-id=articleinfo] .heading.level-3 .content {
+  font-family: 'Noto Sans SemBd', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  color: $gray-light;
+}
