@@ -84,7 +84,15 @@ a {
   font-size: 48px;
   line-height: 52px;
   padding-top: 20px;
+}
+
+.lens-article .content-node.cover .cover-subtitle {
+  font-family: 'Noto Sans Lt', sans-serif;
   font-weight: 300;
+  color: $primary;
+  font-size: 32px;
+  line-height: 48px;
+  padding-top: 20px;
 }
 
 .content-node.heading .content {
