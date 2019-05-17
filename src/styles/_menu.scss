@@ -2,6 +2,9 @@
   background-color: $primary;
   border-bottom: none;
   height: 50px;
+  background-image: url(2nd_logo.png);
+  background-repeat: no-repeat;
+  background-position: bottom right; 
   .context-toggles a{
     font-family: 'Noto Sans SemBd', sans-serif;
     font-weight: 600;
