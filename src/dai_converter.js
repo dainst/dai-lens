@@ -39,9 +39,11 @@ DaiConverter.Prototype = function() {
 
   this.enhancePublicationInfo = function(state) {
     var volume = state.xmlDoc.querySelector("volume");
+    var subtitle = state.xmlDoc.querySelector("subtitle");
 
     var publicationInfo = state.doc.get('publication_info');
     publicationInfo.volume = volume;
+    publicationInfo.subtitle = subtitle;
   }
 
   // Example url to JPG: http://cdn.elifesciences.org/elife-articles/00768/svg/elife00768f001.jpg
