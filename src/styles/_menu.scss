@@ -1,7 +1,7 @@
 .menu-bar {
   background-color: $primary;
   border-bottom: none;
-  height: 24px;
+  height: 50px;
   .context-toggles a{
     font-family: 'Noto Sans SemBd', sans-serif;
     font-weight: 600;
@@ -9,6 +9,7 @@
     line-height: 24px;
     color: $gray-light;
     border-right: none;
+    margin-top: 26px;
     i {
       display: none;
     }
