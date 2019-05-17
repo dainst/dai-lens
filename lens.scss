@@ -47,7 +47,20 @@ body.reader #main {
   margin-top: 50px;
   height: calc( 100% - 50px );
 }
+
+.article .document {
+  width: 53%;
+  .surface.content {
+    width: 90%;
+  }
+  .scrollbar-cover {
+    width: 10%;
+    background-color: $gray-lighter;
+  }
+}
+
 .article .resources {
+  width: 47%;
   margin-top: -50px;
   height: calc( 100% + 50px );
 }

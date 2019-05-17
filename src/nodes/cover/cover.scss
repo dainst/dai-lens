@@ -2,7 +2,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 50%;
+  width: 53%;
   height: 50px;
   background-color: $primary;
   font-size: 14px;
@@ -19,7 +19,36 @@
   height: 100%;
 }
 
+.topbar-title {
+  position: absolute;
+  right: 12%;
+  bottom: 0;
+  bottom: 0;
+  width: 55%;
+  text-align: end;
+  font-family: 'Noto Sans Med', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
+
 .topbar-date {
+  background-color: $primary-light;
   height: 100%;
-  float: right;
+  width: 10%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: center;
+  span {
+    font-family: 'Noto Sans ExtLt', sans-serif;
+    font-weight: 200;
+    color: $gray-light;
+    font-size: 26px;
+    line-height: 28px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
 }
