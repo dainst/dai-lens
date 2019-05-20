@@ -2,6 +2,8 @@
 
 var Lens = require("lens/reader");
 var panels = Lens.getDefaultPanels();
+var Helpers = require('./helpers')
+
 
 // All available converters
 var LensConverter = require("lens/converter");
@@ -91,3 +93,16 @@ $("img.topbar-logo-img").ready(function () {
   }
   setTimeout(navBar, 2500);
 });
+
+$( window ).on( "load", function() { 
+  var documentId = Helpers.extractDocumentIdFromUrl(window.document.URL);
+  var info = window.doc.get('publication_info');
+  var url = info.poster.children[0].getAttribute('xlink:href')
+  let coverImageUrl = [
+    Helpers.baseDocsURL,
+    documentId + '/',
+    url,
+  ].join('');
+  $("div[class='toc']").prepend( `<div><img class="cover-image" src="${coverImageUrl}"/></div>` );
+
+})

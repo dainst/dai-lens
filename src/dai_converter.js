@@ -1,7 +1,7 @@
 "use strict";
 
 var LensConverter = require('lens/converter');
-
+var Helpers = require('./helpers')
 var LensArticle = require("./article");
 var CustomNodeTypes = require("./nodes");
 
@@ -12,7 +12,7 @@ var DaiConverter = function(options) {
 DaiConverter.Prototype = function() {
   this.test = function(xmlDoc) {
     var publisherName = xmlDoc.querySelector("publisher-name").textContent;
-    var isDaiDocument = xmlDoc.URL.search('https://bkry.gitlab.io/dai/dai-examples/') >= 0;
+    var isDaiDocument = xmlDoc.URL.search(Helpers.baseDocsURL) >= 0;
     console.log('isDaiDocument', isDaiDocument)
     return isDaiDocument;
   };
@@ -63,15 +63,11 @@ DaiConverter.Prototype = function() {
       let documentId = '0000'
       if (state && state.xmlDoc) {
         let fullUrl = state.xmlDoc.URL;
-        let daiMatchIndex = fullUrl.search("dai-examples")
-        if (daiMatchIndex >= 0) {
-          let daiSubstring = fullUrl.substring(daiMatchIndex);
-          documentId=daiSubstring.split('/')[1]
-        }
+        documentId = Helpers.extractDocumentIdFromUrl(fullUrl)
       }
 
       let pictureUrl = [
-        "https://bkry.gitlab.io/dai/dai-examples/",
+        Helpers.baseDocsURL,
         documentId + '/',
         url,
       ].join('');
