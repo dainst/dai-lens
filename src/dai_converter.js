@@ -2,7 +2,7 @@
 
 var LensConverter = require('lens/converter');
 
-var LensArticle = require("lens/article");
+var LensArticle = require("./article");
 var CustomNodeTypes = require("./nodes");
 
 var DaiConverter = function(options) {
@@ -10,7 +10,6 @@ var DaiConverter = function(options) {
 };
 
 DaiConverter.Prototype = function() {
-
   this.test = function(xmlDoc) {
     var publisherName = xmlDoc.querySelector("publisher-name").textContent;
     var isDaiDocument = xmlDoc.URL.search('https://bkry.gitlab.io/dai/dai-examples/') >= 0;
