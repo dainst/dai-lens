@@ -81,6 +81,18 @@ DaiConverter.Prototype = function() {
     }
   };
 
+  this.extractFootNotes = function(state, article) {
+    console.log('called dai extract footnotes')
+    var fnEls = article.querySelectorAll('fn');
+    for (var i = 0; i < fnEls.length; i++) {
+      var fnEl = fnEls[i];
+      if (fnEl.__converted__) continue;
+      var footnote = this.footnote(state, fnEl);
+      
+      state.doc.show("footnotes", footnote.id);
+    }
+  };
+
   // this.enhanceVideo = function(state, node, element) {
   //   var href = element.getAttribute("xlink:href").split(".");
   //   var name = href[0];
