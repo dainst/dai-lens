@@ -2,13 +2,14 @@
 
 var Lens = require("lens/reader");
 var panels = Lens.getDefaultPanels();
-  
+
 // All available converters
 var LensConverter = require("lens/converter");
 var CustomConverter = require("./custom_converter");
 var DaiConverter = require("./dai_converter");
 var ElifeConverter = require("lens/converter/elife_converter");
 
+var ContainerPanel = require('lens/reader/panels/container_panel');
 // Custom Panels
 // -------------------
 // 
@@ -19,8 +20,17 @@ var ElifeConverter = require("lens/converter/elife_converter");
 // Find the code in panels/altmetrics and use it as an inspiration
 // to build your own Lens panel
 
-var notesPanel = require('./panels/notes');
+// var notesPanel = require('./panels/notes');
 // var metaDataPanel = require('./panels/metaData');
+
+var notesPanel = new ContainerPanel({
+  type: 'resource',
+  name: 'footnotes',
+  container: 'footnotes',
+  title: 'Notes',
+  icon: 'fa-book',
+  references: ['footnote_reference'],
+});
 
 console.log(panels)
 
