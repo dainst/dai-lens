@@ -88,6 +88,114 @@ DaiConverter.Prototype = function() {
     }
   };
 
+  this.citation = function(state, ref, citation) {
+    console.log('called dai citation')
+    var doc = state.doc;
+    var citationNode;
+    var i;
+
+    var id = state.nextId("article_citation");
+
+    // TODO: we should consider to have a more structured citation type
+    // and let the view decide how to render it instead of blobbing everything here.
+    var personGroup = citation.querySelector("person-group");
+
+    // HACK: we try to create a 'articleCitation' when there is structured
+    // content (ATM, when personGroup is present)
+    // Otherwise we create a mixed-citation taking the plain text content of the element
+    if (true) {
+
+      citationNode = {
+        "id": id,
+        "source_id": ref.getAttribute("id"),
+        "type": "citation",
+        "title": "N/A",
+        "label": "",
+        "authors": [],
+        "doi": "",
+        "source": "",
+        "volume": "",
+        "fpage": "",
+        "lpage": "",
+        "citation_urls": []
+      };
+
+      if (personGroup) {
+        var nameElements = personGroup.querySelectorAll("name");
+        for (i = 0; i < nameElements.length; i++) {
+          citationNode.authors.push(this.getName(nameElements[i]));
+        }
+  
+        // Consider collab elements (treat them as authors)
+        var collabElements = personGroup.querySelectorAll("collab");
+        for (i = 0; i < collabElements.length; i++) {
+          citationNode.authors.push(collabElements[i].textContent);
+        }
+      }
+
+
+
+      var source = citation.querySelector("source");
+      if (source) citationNode.source = source.textContent;
+
+      var articleTitle = citation.querySelector("article-title");
+      if (articleTitle) {
+        citationNode.title = this.annotatedText(state, articleTitle, [id, 'title']);
+      } else {
+        var comment = citation.querySelector("comment");
+        if (comment) {
+          citationNode.title = this.annotatedText(state, comment, [id, 'title']);
+        } else {
+          // 3rd fallback -> use source
+          if (source) {
+            citationNode.title = this.annotatedText(state, source, [id, 'title']);
+          } else {
+            console.error("FIXME: this citation has no title", citation);
+          }
+        }
+      }
+
+      var volume = citation.querySelector("volume");
+      if (volume) citationNode.volume = volume.textContent;
+
+      var publisherLoc = citation.querySelector("publisher-loc");
+      if (publisherLoc) citationNode.publisher_location = publisherLoc.textContent;
+
+      var publisherName = citation.querySelector("publisher-name");
+      if (publisherName) citationNode.publisher_name = publisherName.textContent;
+
+      var fpage = citation.querySelector("fpage");
+      if (fpage) citationNode.fpage = fpage.textContent;
+
+      var lpage = citation.querySelector("lpage");
+      if (lpage) citationNode.lpage = lpage.textContent;
+
+      var year = citation.querySelector("year");
+      if (year) citationNode.year = year.textContent;
+
+      // Note: the label is child of 'ref'
+      var label = ref.querySelector("label");
+      if(label) citationNode.label = label.textContent;
+
+      var doi = citation.querySelector("pub-id[pub-id-type='doi'], ext-link[ext-link-type='doi']");
+      if(doi) citationNode.doi = "http://dx.doi.org/" + doi.textContent;
+    } else {
+      console.error("FIXME: there is one of those 'mixed-citation' without any structure. Skipping ...", citation);
+      return;
+      // citationNode = {
+      //   id: id,
+      //   type: "mixed_citation",
+      //   citation: citation.textContent,
+      //   doi: ""
+      // };
+    }
+
+    doc.create(citationNode);
+    doc.show("citations", id);
+
+    return citationNode;
+  };
+
   // this.enhanceVideo = function(state, node, element) {
   //   var href = element.getAttribute("xlink:href").split(".");
   //   var name = href[0];
