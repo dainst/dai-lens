@@ -28,26 +28,21 @@ FootnoteView.Prototype = function() {
   this.renderBody = function() {
     var frag = document.createDocumentFragment();
     var node = this.node;
-
-    var children = node.properties.children.map(child => node.document.get(child));
-    // this.footnoteView = this._createView(node);
     var subElements = [];
-    children.forEach(child => {
-      if (child.properties && child.properties.children.length){
-        child.properties.children.forEach(subEl => {
-          subElements.push(node.document.get(subEl))
+
+    node.properties.children.map(child => {
+      let elem = node.document.get(child);
+      if (elem.properties && elem.properties.children.length){
+        elem.properties.children.forEach(subEl => {
+          let subElement = node.document.get(subEl)
+          subElements.push(subElement);
+          var text = this.createTextPropertyView([subElement.id, 'content'], { classes: 'content' });
+          frag.appendChild(text.render().el);
         })
       }
-      return child;
-    })
-    // properties.children.map(child => node.document.get(child));
-    // DefaultFootNoteView.prototype.render.call(this);
-    // Prepend
-    // this.content.insertBefore(topBar, this.content.firstChild);
-    // var titleView = this.createTextPropertyView([node.id, 'title'], { classes: 'title' });
-    // this.content.append(this.footnoteView.el);
-    
-    return this;
+    });
+
+    this.content.appendChild(frag);
   }
 
   this._createView = function(node) {
