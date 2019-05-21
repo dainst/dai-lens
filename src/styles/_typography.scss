@@ -108,13 +108,13 @@ a {
   font-size: 16px;
 }
 
-.article span.annotation {
-  // font-family: 'Noto Sans Med', sans-serif;
-  // font-weight: 500;
-  // color: $gray-medium;
-  // font-size: 12px;
-  // line-height: 28px;
-  // margin-right: 30px;
+.article span.annotation:not(.styled-content) {
+  font-family: 'Noto Sans Med', sans-serif;
+  font-weight: 500;
+  color: $gray-medium;
+  font-size: 12px;
+  line-height: 28px;
+  margin-right: 30px;
 }
 
 .content-node .figure_reference {
