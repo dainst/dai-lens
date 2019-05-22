@@ -11,6 +11,9 @@ body.reader #main {
   .scrollbar-cover {
     width: 10%;
     background-color: $gray-lighter;
+    .central-bar-preview {
+      background-color: $white;
+    }
   }
 }
 

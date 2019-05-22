@@ -11,7 +11,6 @@ const extractDocumentIdFromUrl = function(url) {
 
 const baseDocsURL = "https://bkry.gitlab.io/dai/dai-examples/";
 
-var figurePreviews = {}
 
 function isScrolledIntoView(elem){
   var $elem = $(elem);
@@ -20,7 +19,7 @@ function isScrolledIntoView(elem){
   var docViewTop = $window.scrollTop();
   var docViewBottom = docViewTop + $window.height();
 
-  var elemTop = $elem.offset().top;
+  var elemTop = $elem.offset().top - 80;
   var elemBottom = elemTop + $elem.height();
 
   return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
@@ -57,52 +56,60 @@ function registerContentScroll(){
 
 function updateCentralBar() {
 
-  let scrollBarReferences = [];
+  var figurePreviews = {}
     let lastHeight = 0;
-    $(".scrollbar-cover").empty();
     $('.content .figure_reference').each(function(){
       let data_id = this.attributes['data-id'];
+      var $elem = $(this);
 
-      if(isScrolledIntoView($(this))){
-        var $elem = $(this);
-        let referencePosition = $(this).offset().top;
+      if(isScrolledIntoView($elem)){
+        let referencePosition = $elem.offset().top;
         if ( window && window.doc && data_id && data_id.nodeValue) {
           var referenceNode = window.doc.get(data_id.nodeValue);
           var target = referenceNode.target
           if (target) {
             var targetNode = window.doc.get(target);
-            // console.log('url', targetNode.url)
-            if( !scrollBarReferences.includes(data_id.nodeValue)){
-              var height = referencePosition - 60;
-              if ((lastHeight + 10) >= height) height = lastHeight + 50;
-              // $(".scrollbar-cover").append($(`<div class="central-bar-preview" data-id="${target}_preview">${target}</div>`).css({top: height, position: 'absolute'}))
-              scrollBarReferences.push(data_id.nodeValue);
-              var isDuplicate = false;
-              $(".scrollbar-cover").append($(`<div class="central-bar-preview" data-id="${target}_preview"><a href="#content/${data_id.nodeValue}"><img width="100%" src="${targetNode.url}" /></a></div>`).css({top: height, position: 'absolute'}))
-
-              Object.keys(figurePreviews).forEach(preview => {
-                if(figurePreviews[preview].figure === target) isDuplicate = true;
-              })
-              
-              if (!isDuplicate){
-                figurePreviews[data_id.nodeValue] = {
-                  figure: target,
-                  figureUrl: targetNode.url,
-                  id: data_id.nodeValue,
-                  topOffset: referencePosition,
-                  content: `<div class="central-bar-preview" data-id="${target}_preview"><img width="100%" src="${targetNode.url}" /></div>`,
-                  css: {top: height, position: 'absolute'}
-                }
+            var height = referencePosition - 80;
+            if ((lastHeight + 40) >= height) height = lastHeight + 80;
+            var isDuplicate = false;
+            Object.keys(figurePreviews).forEach(preview => {
+              if(figurePreviews[preview].figure === target) isDuplicate = true;
+            })
+            if (!isDuplicate) {
+              figurePreviews[data_id.nodeValue] = {
+                figure: target,
+                figureUrl: targetNode.url,
+                id: data_id.nodeValue,
+                topOffset: referencePosition,
+                content: `<div class="central-bar-preview" reference="${data_id.nodeValue}" id="${data_id.nodeValue}_preview" data-id="${target}_preview"><a href="#content/${data_id.nodeValue}"><img width="100%" src="${targetNode.url}" /></a></div>`,
+                css: {top: height, position: 'absolute'}
               }
-              lastHeight = height;
             }
+            lastHeight = height;
           }
         }
       }
-      else{
-        delete figurePreviews[data_id.nodeValue]
-      }
     });
+
+    // remove old
+    $('.central-bar-preview').each(function() {
+      console.log(this)
+      let reference = this.attributes['reference'].nodeValue;
+      if (! figurePreviews[reference]) {
+        $(this).remove()
+      }
+    })
+
+    // add or update visible
+    Object.keys(figurePreviews).forEach(previewKey => {
+      var figure = figurePreviews[previewKey].id
+      if ($( `#${figure}_preview` ).length > 0){
+        $( `#${figure}_preview` ).css(figurePreviews[previewKey].css)
+      } else {
+        $(".scrollbar-cover").append($(figurePreviews[previewKey].content).css(figurePreviews[previewKey].css))
+      }
+      console.log(figurePreviews[previewKey].id, figurePreviews[previewKey].css.top)
+    })  
   window.figurePreviews = figurePreviews;
 }
 
