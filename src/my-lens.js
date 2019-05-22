@@ -84,25 +84,24 @@ LensApp.prototype.constructor = LensApp;
 
 module.exports = LensApp;module.exports = LensApp;
 
+
+
+function initialSetup() {
+  Helpers.setCoverImage();
+  Helpers.registerNavbarToggle();
+  Helpers.updateCentralBar();
+  Helpers.registerContentScroll();
+}
+
 //TODO: move this somewhere else
-$("img.topbar-logo-img").ready(function () {
-  var navBar = function () {
-    $("img.topbar-logo-img").click(function () {
-      $(".resources").toggleClass("active");
-    });
+
+
+$( window ).on( "load", function() {
+  if (window && window.doc) {
+    initialSetup()
+  } else {
+    setTimeout(initialSetup, 2000);
   }
-  setTimeout(navBar, 2500);
-});
-
-$( window ).on( "load", function() { 
-  var documentId = Helpers.extractDocumentIdFromUrl(window.document.URL);
-  var info = window.doc.get('publication_info');
-  var url = info.poster.children[0].getAttribute('xlink:href')
-  let coverImageUrl = [
-    Helpers.baseDocsURL,
-    documentId + '/',
-    url,
-  ].join('');
-  $("div[class='toc']").prepend( `<div><img class="cover-image" src="${coverImageUrl}"/></div>` );
-
 })
+
+
