@@ -78,11 +78,12 @@ function updateCentralBar() {
               // $(".scrollbar-cover").append($(`<div class="central-bar-preview" data-id="${target}_preview">${target}</div>`).css({top: height, position: 'absolute'}))
               scrollBarReferences.push(data_id.nodeValue);
               var isDuplicate = false;
-              $(".scrollbar-cover").append($(`<div class="central-bar-preview" data-id="${target}_preview"><img width="100%" src="${targetNode.url}" /></div>`).css({top: height, position: 'absolute'}))
+              $(".scrollbar-cover").append($(`<div class="central-bar-preview" data-id="${target}_preview"><a href="#content/${data_id.nodeValue}"><img width="100%" src="${targetNode.url}" /></a></div>`).css({top: height, position: 'absolute'}))
 
               Object.keys(figurePreviews).forEach(preview => {
                 if(figurePreviews[preview].figure === target) isDuplicate = true;
               })
+              
               if (!isDuplicate){
                 figurePreviews[data_id.nodeValue] = {
                   figure: target,
