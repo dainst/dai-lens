@@ -138,22 +138,7 @@ DaiConverter.Prototype = function() {
       var source = citation.querySelector("source");
       if (source) citationNode.source = source.textContent;
 
-      var articleTitle = citation.querySelector("article-title");
-      if (articleTitle) {
-        citationNode.title = this.annotatedText(state, articleTitle, [id, 'title']);
-      } else {
-        var comment = citation.querySelector("comment");
-        if (comment) {
-          citationNode.title = this.annotatedText(state, comment, [id, 'title']);
-        } else {
-          // 3rd fallback -> use source
-          if (source) {
-            citationNode.title = this.annotatedText(state, source, [id, 'title']);
-          } else {
-            console.error("FIXME: this citation has no title", citation);
-          }
-        }
-      }
+      citationNode.title = citation.textContent;
 
       var volume = citation.querySelector("volume");
       if (volume) citationNode.volume = volume.textContent;
