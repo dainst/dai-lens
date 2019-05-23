@@ -43,6 +43,17 @@
   padding-left: 30px;
 }
 
+.resource-view.toc .heading-ref {
+  &:hover {
+    color: $white;
+    background: none;
+    border: 1px solid transparent;
+    > :before {
+      color: $primary;
+    }
+  }
+}
+
 .resource-view.toc .heading-ref a {
   color: $primary-dark;
   &:hover {
