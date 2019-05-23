@@ -4,7 +4,7 @@ var LensConverter = require('lens/converter');
 var Helpers = require('./helpers')
 var LensArticle = require("./article");
 var CustomNodeTypes = require("./nodes");
-
+var util = require("lens/substance/util");
 var DaiConverter = function(options) {
   LensConverter.call(this, options);
 };
@@ -34,6 +34,39 @@ DaiConverter.Prototype = function() {
     var graphic = element.querySelector("graphic");
     var url = graphic.getAttribute("xlink:href");
     node.url = this.resolveURL(state, url);
+  };
+
+  this.extractFigures = function(state, xmlDoc) {
+    console.log('override extract figures')
+    // Globally query all figure-ish content, <fig>, <supplementary-material>, <table-wrap>, <media video>
+    // mimetype="video"
+
+    // NOTE: We previously only considered figures within <body> but since
+    // appendices can also have figures we now use a gobal selector.
+    var figureElements = xmlDoc.querySelectorAll("fig, table-wrap, supplementary-material, media[mimetype=video]");
+    var nodes = [];
+    for (var i = 0; i < figureElements.length; i++) {
+      var figEl = figureElements[i];
+      // skip converted elements
+      if (figEl._converted) continue;
+      var type = util.dom.getNodeType(figEl);
+      var node = null;
+      if (type === "fig") {
+        node = this.figure(state, figEl);
+      } else if (type === "table-wrap") {
+        node = this.tableWrap(state, figEl);
+      } else if (type === "media") {
+        node = this.video(state, figEl);
+      } else if (type === "supplementary-material") {
+        node = this.supplement(state, figEl);
+      }
+      if (node) {
+        // adding custom behaviour here to skip cover images
+        if (node.source_id !== 'poster-image')
+        nodes.push(node);
+      }
+    }
+    this.show(state, nodes);
   };
 
   this.enhancePublicationInfo = function(state) {
