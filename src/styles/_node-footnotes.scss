@@ -1,5 +1,6 @@
 .article .resources .content-node.footnote {
   border: none;
+  border-radius: 0px;
 }
 
 .article .resources .nodes > .content-node.footnote > .content {
@@ -19,7 +20,7 @@
 }
 
 .article .resources .footnotes .content-node.highlighted {
-  background-color: $gray-light;
+  background-color: $gray-lighter;
   border-left: 3px solid transparent;
   color: $black;
   .resource-header a.toggle.toggle-res {
@@ -72,4 +73,22 @@
   &:hover {
     color: transparent;
   }
+}
+
+.article .resources .content-node.footnote .content .text a {
+  color: $gray-lighter;
+  &:hover {
+    background-color: $gray-lighter;
+    color: $white;
+  }
+  border-bottom: 1px solid $gray-lighter;
+}
+
+.article .resources .content-node.footnote.highlighted .content .text a {
+  color: $primary;
+  &:hover {
+    background-color: $primary;
+    color: $white;
+  }
+  border-bottom: 1px solid $primary;
 }
