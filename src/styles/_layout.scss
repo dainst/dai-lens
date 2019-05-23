@@ -21,6 +21,9 @@ body.reader #main {
         background: none;
       }
     }
+    .central-bar-preview.selected {
+      border-top: 2px solid $primary
+    }
   }
 }
 

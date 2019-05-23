@@ -52,7 +52,30 @@ function registerContentScroll(){
   $(".surface.content").scroll(function() {
     updateCentralBar()
   })
+
+  $(".annotation.figure_reference.resource-reference").click(function(event){
+    let reference = event.target.attributes['data-id'];
+    let wasSelected = event.target.className.indexOf('highlighted') > 0;
+    console.log('clicked', event.target.attributes['data-id'])
+    $(`.central-bar-preview`).removeClass('selected')
+    if (!wasSelected)
+      $(`#${reference.nodeValue}_preview`).addClass('selected')
+  })
+
+  $(".central-bar-preview").click(function(event){
+    let reference = event.target.attributes['data-id'];
+    console.log('clicked', event.target.attributes['data-id'])
+    $(`.central-bar-preview`).removeClass('selected')
+    $(`#${reference.nodeValue}_preview`).addClass('selected')
+  })
+
+  $(window).on('hashchange', function(e){
+    console.log('changed url', e)
+
+   });
 }
+
+
 
 function updateCentralBar() {
 
@@ -63,6 +86,7 @@ function updateCentralBar() {
       var $elem = $(this);
 
       if(isScrolledIntoView($elem)){
+        let selected = $elem.context && $elem.context.className.indexOf('highlighted') > 0;
         let referencePosition = $elem.offset().top;
         if ( window && window.doc && data_id && data_id.nodeValue) {
           var referenceNode = window.doc.get(data_id.nodeValue);
@@ -81,8 +105,9 @@ function updateCentralBar() {
                 figureUrl: targetNode.url,
                 id: data_id.nodeValue,
                 topOffset: referencePosition,
-                content: `<div class="central-bar-preview" reference="${data_id.nodeValue}" id="${data_id.nodeValue}_preview" data-id="${target}_preview"><a href="#content/${data_id.nodeValue}"><img class="figure_preview_img" src="${targetNode.url}" /></a></div>`,
-                css: {top: height, position: 'absolute'}
+                content: `<div class="central-bar-preview ${selected ? 'selected' : ''}" reference="${data_id.nodeValue}" id="${data_id.nodeValue}_preview" data-id="${target}_preview"><a href="#content/${data_id.nodeValue}"><img class="figure_preview_img" src="${targetNode.url}" /></a></div>`,
+                css: {top: height, position: 'absolute'},
+                selected: selected
               }
             }
             lastHeight = height;
@@ -104,7 +129,10 @@ function updateCentralBar() {
     Object.keys(figurePreviews).forEach(previewKey => {
       var figure = figurePreviews[previewKey].id
       if ($( `#${figure}_preview` ).length > 0){
-        $( `#${figure}_preview` ).css(figurePreviews[previewKey].css)
+        if (figurePreviews[previewKey].selected)
+          $( `#${figure}_preview` ).css(figurePreviews[previewKey].css).addClass('selected')
+        else
+          $( `#${figure}_preview` ).css(figurePreviews[previewKey].css).removeClass('selected')
       } else {
         $(".scrollbar-cover").append($(figurePreviews[previewKey].content).css(figurePreviews[previewKey].css))
       }
