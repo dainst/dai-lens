@@ -70,7 +70,7 @@ function updateCentralBar() {
           if (target) {
             var targetNode = window.doc.get(target);
             var height = referencePosition - 80;
-            if ((lastHeight + 40) >= height) height = lastHeight + 80;
+            if ((lastHeight + 50) >= height) height = lastHeight + 60;
             var isDuplicate = false;
             Object.keys(figurePreviews).forEach(preview => {
               if(figurePreviews[preview].figure === target) isDuplicate = true;
@@ -81,7 +81,7 @@ function updateCentralBar() {
                 figureUrl: targetNode.url,
                 id: data_id.nodeValue,
                 topOffset: referencePosition,
-                content: `<div class="central-bar-preview" reference="${data_id.nodeValue}" id="${data_id.nodeValue}_preview" data-id="${target}_preview"><a href="#content/${data_id.nodeValue}"><img width="100%" src="${targetNode.url}" /></a></div>`,
+                content: `<div class="central-bar-preview" reference="${data_id.nodeValue}" id="${data_id.nodeValue}_preview" data-id="${target}_preview"><a href="#content/${data_id.nodeValue}"><img class="figure_preview_img" src="${targetNode.url}" /></a></div>`,
                 css: {top: height, position: 'absolute'}
               }
             }
