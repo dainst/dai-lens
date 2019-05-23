@@ -92,7 +92,9 @@
   }
   border-bottom: 1px solid $primary;
 }
-
+.footnote_reference {
+  text-decoration: underline;
+}
 .footnote_reference.highlighted {
   background-color: $secondary;
   color: $white;
