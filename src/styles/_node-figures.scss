@@ -54,3 +54,8 @@
   padding-left: 20px;
   padding-right: 20px;
 }
+
+.content-node .figure_reference.highlighted { 
+  background-color: $primary-dark;
+  color: $white; 
+}
