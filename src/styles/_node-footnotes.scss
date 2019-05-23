@@ -92,3 +92,8 @@
   }
   border-bottom: 1px solid $primary;
 }
+
+.footnote_reference.highlighted {
+  color: $primary;
+  background: rgba(145, 187, 4, 0.7);
+}
