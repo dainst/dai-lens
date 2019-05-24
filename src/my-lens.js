@@ -88,7 +88,7 @@ module.exports = LensApp;module.exports = LensApp;
 
 function initialSetup() {
   Helpers.setCoverImage();
-  Helpers.registerNavbarToggle();
+  //Helpers.registerNavbarToggle();
   Helpers.updateCentralBar();
   Helpers.registerContentScroll();
   Helpers.registerCentralBarHighlight();
