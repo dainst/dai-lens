@@ -91,6 +91,8 @@ function initialSetup() {
   Helpers.registerNavbarToggle();
   Helpers.updateCentralBar();
   Helpers.registerContentScroll();
+  Helpers.registerCentralBarHighlight();
+
 }
 
 //TODO: move this somewhere else

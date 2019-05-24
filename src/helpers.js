@@ -53,24 +53,51 @@ function registerContentScroll(){
     updateCentralBar()
   })
 
-  $(".annotation.figure_reference.resource-reference").click(function(event){
-    let reference = event.target.attributes['data-id'];
-    let wasSelected = event.target.className.indexOf('highlighted') > 0;
-    console.log('clicked', event.target.attributes['data-id'])
-    $(`.central-bar-preview`).removeClass('selected')
-    if (!wasSelected)
-      $(`#${reference.nodeValue}_preview`).addClass('selected')
-  })
-
-  $(".central-bar-preview").click(function(event){
-    let reference = event.target.attributes['data-id'];
-    console.log('clicked', event.target.attributes['data-id'])
-    $(`.central-bar-preview`).removeClass('selected')
-    $(`#${reference.nodeValue}_preview`).addClass('selected')
-  })
-
   $(window).on('hashchange', function(e){
-    console.log('changed url', e)
+    let newUrl = e.originalEvent.newURL
+    let urlSplit = newUrl.split('#')
+    if (urlSplit.length > 0){
+      let hash = urlSplit[1];
+      let reference = false
+      if (hash.indexOf('content/figure_reference') >= 0) {
+        reference = hash.split('/')[1]
+      }
+      if (hash.indexOf('figures/figure') >= 0) {
+        let figure = hash.split('/')[1];
+        Object.keys(e.currentTarget.figurePreviews).forEach(figureKey => {
+          if (e.currentTarget.figurePreviews[figureKey].figure === figure) reference = e.currentTarget.figurePreviews[figureKey].id
+        })
+      }
+      $(`.central-bar-preview`).removeClass('selected')
+      if (reference) {
+        $(`#${reference}_preview`).addClass('selected')
+      }
+    }
+
+   });
+}
+
+function registerCentralBarHighlight(){
+  $(window).on('hashchange', function(e){
+    let newUrl = e.originalEvent.newURL
+    let urlSplit = newUrl.split('#')
+    if (urlSplit.length > 0){
+      let hash = urlSplit[1];
+      let reference = false
+      if (hash.indexOf('content/figure_reference') >= 0) {
+        reference = hash.split('/')[1]
+      }
+      if (hash.indexOf('figures/figure') >= 0) {
+        let figure = hash.split('/')[1];
+        Object.keys(e.currentTarget.figurePreviews).forEach(figureKey => {
+          if (e.currentTarget.figurePreviews[figureKey].figure === figure) reference = e.currentTarget.figurePreviews[figureKey].id
+        })
+      }
+      $(`.central-bar-preview`).removeClass('selected')
+      if (reference) {
+        $(`#${reference}_preview`).addClass('selected')
+      }
+    }
 
    });
 }
@@ -105,7 +132,7 @@ function updateCentralBar() {
                 figureUrl: targetNode.url,
                 id: data_id.nodeValue,
                 topOffset: referencePosition,
-                content: `<div class="central-bar-preview ${selected ? 'selected' : ''}" reference="${data_id.nodeValue}" id="${data_id.nodeValue}_preview" data-id="${target}_preview"><a href="#content/${data_id.nodeValue}"><img class="figure_preview_img" src="${targetNode.url}" /></a></div>`,
+                content: `<div class="central-bar-preview ${selected ? 'selected' : ''}" reference="${data_id.nodeValue}" id="${data_id.nodeValue}_preview" data-id="${target}_preview"><a href="#content/${data_id.nodeValue}" class="figure_preview_link"><img class="figure_preview_img" src="${targetNode.url}" /></a></div>`,
                 css: {top: height, position: 'absolute'},
                 selected: selected
               }
@@ -147,5 +174,6 @@ module.exports = {
   setCoverImage: setCoverImage,
   registerNavbarToggle: registerNavbarToggle,
   registerContentScroll: registerContentScroll,
-  updateCentralBar: updateCentralBar
+  updateCentralBar: updateCentralBar,
+  registerCentralBarHighlight: registerCentralBarHighlight
 };
