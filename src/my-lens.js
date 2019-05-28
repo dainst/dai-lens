@@ -42,7 +42,7 @@ panels.map(panel => {
 })
 
 // Insert altmetrics panel at next to last position
-panels.splice(-1, 0, notesPanel);
+panels.splice(1, 0, notesPanel);
 // panels.splice(-1, 0, metaDataPanel);
 
 var LensApp = function(config) {
