@@ -7,7 +7,7 @@
 
 .article .resources .content-node.citation .resource-header .name {
   color: $white;
-  font-size: 16px;
+  font-size: $panel-text-size;
   font-weight: 600;
   padding-right: 0;
   width: 170px;
@@ -28,13 +28,13 @@
 
 .lens-article .content-node.citation .content .authors {
   order: 1;
-  font-size: 14px;
+  font-size: $panel-text-size;
   margin-right: 4px;
 }
 
 .lens-article .content-node.citation .content .title {
   order: 2;
-  font-size: 14px;
+  font-size: $panel-text-size;
   font-weight: 300;
   font-style: italic;
   margin-bottom: 0;

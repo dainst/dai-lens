@@ -1,6 +1,7 @@
 .article .resources .content-node.footnote {
   border: none;
   border-radius: 0px;
+  font-size: $panel-text-size;
 }
 
 .article .resources .nodes > .content-node.footnote > .content {
@@ -12,7 +13,7 @@
 
 .article .resources .content-node.footnote .resource-header .name {
   color: $white;
-  font-size: 13px;
+  font-size: $panel-text-size;
   font-weight: 600;
   padding-right: 0;
   width: 75px;
@@ -33,13 +34,13 @@
 
 .lens-article .content-node.footnote .content .authors {
   order: 1;
-  font-size: 14px;
+  font-size: $panel-text-size;
   margin-right: 4px;
 }
 
 .lens-article .content-node.footnote .content .title {
   order: 2;
-  font-size: 14px;
+  font-size: $panel-text-size;
   font-weight: 300;
   font-style: italic;
   margin-bottom: 0;
