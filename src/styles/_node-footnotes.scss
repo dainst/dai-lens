@@ -94,9 +94,11 @@
 }
 .footnote_reference {
   text-decoration: underline;
+  margin-left: 2px;
+  margin-right: 2px;
 }
 .footnote_reference.highlighted {
-  background-color: $secondary;
+  background-color: $gray-darker;
   color: $white;
 }
 

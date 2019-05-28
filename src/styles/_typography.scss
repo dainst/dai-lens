@@ -70,9 +70,9 @@ body, textarea, p, input {
 }
 
 a {
-  color: $secondary;
+  color: $gray-darker;
   &:hover{
-    background-color: $secondary;
+    background-color: $gray-darker;
     color: $white;
   }
 }
