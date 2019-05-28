@@ -16,7 +16,11 @@
 }
 
 .topbar-logo-img {
-  height: 100%;
+  height: 67%;
+  position: absolute;
+  top: 50%;
+  left: 24%;
+  transform: translate(-50%,-50%);
 }
 
 .topbar-title {
