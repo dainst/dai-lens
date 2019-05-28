@@ -1,7 +1,7 @@
 .menu-bar {
   background-color: $primary;
   border-bottom: none;
-  height: 50px;
+  height: $top-bar-height;
   background-image: url(2nd_logo.png);
   background-repeat: no-repeat;
   background-position: bottom right;
@@ -13,7 +13,7 @@
     line-height: 24px;
     color: $gray-light;
     border-right: none;
-    margin-top: 26px;
+    margin-top: 58px;
     i {
       display: none;
     }
