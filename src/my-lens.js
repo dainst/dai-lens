@@ -38,7 +38,7 @@ console.log(panels)
 
 panels.map(panel => {
   console.log('panel', panel);
-  if (panel.config.name === 'info') panel.config.title = 'Meta Data'
+  if (panel.config.name === 'info') panel.config.title = 'Metadata'
 })
 
 // Insert altmetrics panel at next to last position
