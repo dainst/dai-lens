@@ -25,3 +25,10 @@
 .lens-article .content-node.publication-info {
   font-size: $panel-text-size;
 }
+
+.lens-article .content-node.publication-info .label {
+  float: left;
+  font-weight: 600;
+  width: 150px;
+  color: $white;
+}
