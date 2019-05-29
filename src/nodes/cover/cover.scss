@@ -57,3 +57,11 @@
     transform: scale(1,1.2);
   }
 }
+
+.lens-article .content-node.cover .content {
+  border-bottom: 1px solid $gray-light;
+}
+
+.lens-article .content-node.cover .authors .content {
+  border-bottom: none;
+}
