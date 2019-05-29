@@ -106,7 +106,6 @@ a {
   font-weight: 500;
   color: $primary;
   font-size: 24px;
-  line-height: 28px;
 }
 
 .article .document {
@@ -168,4 +167,12 @@ a {
   color: $gray-darker;
   text-transform: uppercase;
   font-size: 16px;
+}
+
+.surface.content .nodes > .content-node.heading {
+  padding-bottom: 0px;
+}
+
+.surface.content .nodes > .content-node.paragraph {
+  padding-top: 2px;
 }
