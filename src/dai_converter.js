@@ -124,15 +124,22 @@ DaiConverter.Prototype = function() {
     this.show(state, nodes);
   };
 
-  this.enhancePublicationInfo = function(state) {
+  this.enhancePublicationInfo = function(state, pubInfo) {
     var volume = state.xmlDoc.querySelector("volume");
     var subtitle = state.xmlDoc.querySelector("subtitle");
     var poster = state.xmlDoc.querySelector("fig#poster-image");
-
+    var journalId = state.xmlDoc.querySelector("journal-id");
+    var publisherName = state.xmlDoc.querySelector("publisher-name");
+    
     var publicationInfo = state.doc.get('publication_info');
     publicationInfo.volume = volume;
     publicationInfo.subtitle = subtitle;
     publicationInfo.poster = poster;
+    publicationInfo.journalId = journalId.textContent;
+    publicationInfo.publisherName = publisherName.textContent;
+
+    pubInfo.enhancedInfo = publicationInfo;
+
   }
 
   // Example url to JPG: http://cdn.elifesciences.org/elife-articles/00768/svg/elife00768f001.jpg
