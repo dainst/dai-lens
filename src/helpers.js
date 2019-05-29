@@ -145,7 +145,6 @@ function updateCentralBar() {
 
     // remove old
     $('.central-bar-preview').each(function() {
-      console.log(this)
       let reference = this.attributes['reference'].nodeValue;
       if (! figurePreviews[reference]) {
         $(this).remove()
@@ -163,7 +162,6 @@ function updateCentralBar() {
       } else {
         $(".scrollbar-cover").append($(figurePreviews[previewKey].content).css(figurePreviews[previewKey].css))
       }
-      console.log(figurePreviews[previewKey].id, figurePreviews[previewKey].css.top)
     })  
   window.figurePreviews = figurePreviews;
 }
