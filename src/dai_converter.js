@@ -26,6 +26,61 @@ DaiConverter.Prototype = function() {
     return doc;
   };
 
+
+  // Override article creation to move abstract to bottom
+  this.article = function(state, article) {
+    var doc = state.doc;
+
+    // Assign id
+    var articleId = article.querySelector("article-id");
+    // Note: Substance.Article does only support one id
+    if (articleId) {
+      doc.id = articleId.textContent;
+    } else {
+      // if no id was set we create a random one
+      doc.id = util.uuid();
+    }
+
+    // Extract glossary
+    this.extractDefinitions(state, article);
+
+    // Extract authors etc.
+    this.extractAffilitations(state, article);
+    this.extractContributors(state, article);
+
+    // Same for the citations, also globally
+    this.extractCitations(state, article);
+
+    // Make up a cover node
+    this.extractCover(state, article);
+
+
+
+    // Populate Publication Info node
+    this.extractPublicationInfo(state, article);
+
+    var body = article.querySelector("body");
+    if (body) {
+      this.body(state, body);
+    }
+
+        // Extract ArticleMeta
+    this.extractArticleMeta(state, article);
+
+    this.extractFigures(state, article);
+
+    // catch all unhandled foot-notes
+    this.extractFootNotes(state, article);
+
+    // Extract back element, if it exists
+    var back = article.querySelector("back");
+    if (back){
+        this.back(state,back);
+    }
+
+    this.enhanceArticle(state, article);
+  };
+
   // Resolve figure urls
   // --------
   // 
