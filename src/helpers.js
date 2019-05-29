@@ -48,7 +48,21 @@ function registerNavbarToggle(){
   });
 }
 
+function registerTOCHighlightFix(latency){
+  $(".heading-ref").click(function(event) {
+    console.log('cliiiicked', event)
+    setTimeout(() => {
+      console.log('change')
+      $(".heading-ref").removeClass('active');
+      $(event.currentTarget).addClass('active')
+    }, latency || 100);
+    
+  })
+}
+
 function registerContentScroll(){
+  
+
   $(".surface.content").scroll(function() {
     updateCentralBar()
   })
@@ -173,5 +187,6 @@ module.exports = {
   registerNavbarToggle: registerNavbarToggle,
   registerContentScroll: registerContentScroll,
   updateCentralBar: updateCentralBar,
-  registerCentralBarHighlight: registerCentralBarHighlight
+  registerCentralBarHighlight: registerCentralBarHighlight,
+  registerTOCHighlightFix: registerTOCHighlightFix
 };

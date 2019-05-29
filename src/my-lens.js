@@ -92,6 +92,7 @@ function initialSetup() {
   Helpers.updateCentralBar();
   Helpers.registerContentScroll();
   Helpers.registerCentralBarHighlight();
+  Helpers.registerTOCHighlightFix(50);
 
 }
 
