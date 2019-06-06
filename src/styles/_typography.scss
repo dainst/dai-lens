@@ -108,6 +108,15 @@ a {
   font-size: 24px;
 }
 
+.content-node.heading.level-2 .content {
+  font-size: 17px;
+}
+
+.content-node.heading.level-3 .content {
+  font-size: 16px;
+  color: $black;
+}
+
 .article .document {
   line-height: 28px;
   font-size: 16px;
@@ -179,3 +188,4 @@ a {
 .surface.content .nodes > .content-node.paragraph {
   padding-top: 2px;
 }
+
