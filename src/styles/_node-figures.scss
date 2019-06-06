@@ -21,12 +21,11 @@
   }
   .image-wrapper {
     padding: 0;
-    background-color: $white;
     a:hover {
       background: none;
     }
     img {
-      width: auto;
+      width: 100%;
       max-width: 100%;
       height: auto;
     }
