@@ -1,5 +1,6 @@
 "use strict";
 
+var _ = require("underscore");
 var LensConverter = require('lens/converter');
 var Helpers = require('./helpers')
 var LensArticle = require("./article");
@@ -274,6 +275,18 @@ DaiConverter.Prototype = function() {
     doc.show("citations", id);
 
     return citationNode;
+  };
+
+  this.abstracts = function(state, articleMeta) {
+    // <abstract> Abstract, zero or more
+    var abstracts = articleMeta.querySelectorAll("abstract");
+    var trans_abstracts = articleMeta.querySelectorAll("trans-abstract");
+    _.each(abstracts, function(abs) {
+      this.abstract(state, abs);
+    }, this);
+    _.each(trans_abstracts, function(abs) {
+      this.abstract(state, abs);
+    }, this);
   };
 
   // this.enhanceVideo = function(state, node, element) {
