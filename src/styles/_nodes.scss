@@ -4,3 +4,27 @@
   top: $top-bar-height;
   border-top: 40px solid #918A82;
 }
+
+.article .resources .panel .surface .nodes > :first-child{
+  margin-top: 0px;
+}
+
+.article .resources .panel .surface.footnotes .nodes > :first-child .name{
+  padding-top: 0px;
+}
+.article .resources .panel .surface.footnotes .nodes > :first-child .content{
+  padding-top: 0px;
+}
+
+.article .resources .panel .surface.citations .nodes > :first-child .name{
+  padding-top: 0px;
+}
+.article .resources .panel .surface.citations .nodes > :first-child .content{
+  padding-top: 0px;
+}
+.article .resources .panel .surface.info .nodes > :first-child .content{
+  padding-top: 0px;
+}
+.article .resources .panel .toc{
+  padding-top: 0px;
+}
