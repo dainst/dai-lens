@@ -23,7 +23,7 @@ CustomCoverView.Prototype = function() {
           html: '<img class="topbar-logo-img" src="AA_Logo.png" />'
         }),
         $$('.topbar-title', {
-          html: `<span> ${window.doc.title} </span>`
+          html: `<span></span>`
         }),
         $$('.topbar-date', {
           html: `<span> ${edition}/${year} </span>`
