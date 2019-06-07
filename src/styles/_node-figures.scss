@@ -54,6 +54,12 @@
   padding-right: 20px;
 }
 
+.lens-article .content-node.figure.highlighted .content-node.caption,
+.lens-article .content-node.figure.highlighted .figure-attribution {
+  font-family: 'Noto Sans Med', sans-serif;
+  color: $white;
+}
+
 .content-node .figure_reference.highlighted { 
   background-color: #eee2d9;
 }
@@ -61,4 +67,8 @@
 .figure_preview_img {
   max-height: 50px;
   width: 100%;
+}
+
+.lens-article .content-node.caption > .content > .content-node.paragraph {
+  padding-bottom: 0px;
 }
