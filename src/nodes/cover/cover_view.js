@@ -20,7 +20,7 @@ CustomCoverView.Prototype = function() {
     var topBar = $$('.topbar', {
       children: [
         $$('.topbar-logo', {
-          html: '<img class="topbar-logo-img" src="AA_Logo.png" />'
+          html: '<a href="https://publications.dainst.org/journals/index.php/aa" ><img class="topbar-logo-img" src="AA_Logo.png" /></a>'
         }),
         $$('.topbar-title', {
           html: `<span></span>`

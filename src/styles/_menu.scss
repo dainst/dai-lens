@@ -2,10 +2,10 @@
   background-color: $primary;
   border-bottom: none;
   height: $top-bar-height;
-  background-image: url(2nd_logo.png);
-  background-repeat: no-repeat;
-  background-position: bottom right;
-  background-size: contain;
+  // background-image: url(2nd_logo.png);
+  // background-repeat: no-repeat;
+  // background-position: bottom right;
+  // background-size: contain;
   .context-toggles a{
     font-family: 'Noto Sans SemBd', sans-serif;
     font-weight: 600;
@@ -24,4 +24,14 @@
       box-shadow: 4px 4px 8px 0px rgba(0,0,0,.4);
     }
   }
+}
+
+.menu-bar-logo-container {
+  display: inline;
+}
+
+.menu-bar-logo {
+  height: 100%;
+  position: absolute;
+  right: 5px;
 }

@@ -36,6 +36,9 @@ function setCoverImage() {
   ].join('');
   $("div[class='toc']").prepend( `<div><img class="cover-image" src="${coverImageUrl}"/></div>` );
 }
+function setTopBarImage() {
+  $("div[class='menu-bar']").append( `<div class="menu-bar-logo-container"><a href="https://www.dainst.org/dai/meldungen"><img class="menu-bar-logo" src="2nd_logo.png" /></a></div>` );
+}
 
 function registerNavbarToggle(){
   $("img.topbar-logo-img").ready(function () {
@@ -183,6 +186,7 @@ function updateCentralBar() {
 module.exports = {
   extractDocumentIdFromUrl: extractDocumentIdFromUrl,
   baseDocsURL: baseDocsURL,
+  setTopBarImage: setTopBarImage,
   setCoverImage: setCoverImage,
   registerNavbarToggle: registerNavbarToggle,
   registerContentScroll: registerContentScroll,
