@@ -446,6 +446,37 @@ DaiConverter.Prototype = function() {
     doc.show("info", contribNode.id);
   };
 
+  this.extractCustomMetaGroup = function(state, article) {
+    var nodeIds = [];
+    var doc = state.doc;
+
+    var customMetaEls = article.querySelectorAll('custom-meta');
+    if (customMetaEls.length === 0) return nodeIds;
+
+    for (var i = 0; i < customMetaEls.length; i++) {
+      var customMetaEl = customMetaEls[i];
+
+      var metaNameEl = customMetaEl.querySelector('meta-name');
+      var metaValueEl = customMetaEl.querySelector('meta-value');
+
+      if (!_.include(this.__ignoreCustomMetaNames, metaNameEl.textContent)) {
+        var header = {
+          "type" : "heading",
+          "id" : state.nextId("heading"),
+          "level" : 3,
+          "content" : ""
+        };
+        header.content = this.annotatedText(state, metaNameEl, [header.id, 'content']);
+        doc.create(header);
+        var bodyNodes = this.paragraphGroup(state, metaValueEl);
+
+        nodeIds.push(header.id);
+        nodeIds = nodeIds.concat(_.pluck(bodyNodes, 'id'));
+      }
+    }
+    return nodeIds;
+  };
+
   // this.enhanceVideo = function(state, node, element) {
   //   var href = element.getAttribute("xlink:href").split(".");
   //   var name = href[0];
