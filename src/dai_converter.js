@@ -289,6 +289,20 @@ DaiConverter.Prototype = function() {
     }, this);
   };
 
+  this.extractContributors = function(state, article) {
+    // TODO: the spec says, that there may be any combination of
+    // 'contrib-group', 'aff', 'aff-alternatives', and 'x'
+    // However, in the articles seen so far, these were sub-elements of 'contrib-group', which itself was single
+    var contribGroups = article.querySelectorAll("contrib-group");
+    if (contribGroups) {
+      _.each(contribGroups, (contribGroup) => {
+        this.contribGroup(state, contribGroup);
+      }, this)
+      
+    }
+
+  };
+
   // this.enhanceVideo = function(state, node, element) {
   //   var href = element.getAttribute("xlink:href").split(".");
   //   var name = href[0];
