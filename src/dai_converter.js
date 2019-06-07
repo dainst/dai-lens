@@ -412,6 +412,7 @@ DaiConverter.Prototype = function() {
       doc.nodes.document.authors.push(id);
     }
 
+    // Here starts DAI custom code
     var addressEl = contrib.querySelector("address");
     if (addressEl) {
       var address = {
@@ -435,6 +436,7 @@ DaiConverter.Prototype = function() {
       var addressLineEl = addressEl.querySelector("addr-line");
       if (addressLineEl) address.addressLine = addressLineEl.textContent;
       contribNode.addressInfo = address;
+      contribNode.present_address = `${address.addressLine},${address.city},${address.country}`;
     }
     
 
