@@ -293,7 +293,7 @@ DaiConverter.Prototype = function() {
     // TODO: the spec says, that there may be any combination of
     // 'contrib-group', 'aff', 'aff-alternatives', and 'x'
     // However, in the articles seen so far, these were sub-elements of 'contrib-group', which itself was single
-    var contribGroups = article.querySelectorAll("contrib-group");
+    var contribGroups = article.querySelectorAll("article-meta contrib-group");
     if (contribGroups) {
       _.each(contribGroups, (contribGroup) => {
         this.contribGroup(state, contribGroup);
@@ -301,6 +301,147 @@ DaiConverter.Prototype = function() {
       
     }
 
+    var journalContribGroups = article.querySelectorAll("journal-meta contrib-group");
+    if (journalContribGroups) {
+      _.each(journalContribGroups, (contribGroup) => {
+        this.contribGroup(state, contribGroup);
+      }, this)
+    }
+  };
+
+  this.contributor = function(state, contrib) {
+    var doc = state.doc;
+
+    var id = state.nextId("contributor");
+    var contribNode = {
+      id: id,
+      source_id: contrib.getAttribute("id"),
+      type: "contributor",
+      name: "",
+      affiliations: [],
+      fundings: [],
+      bio: [],
+
+      // Not yet supported... need examples
+      image: "",
+      deceased: false,
+      emails: [],
+      contribution: "",
+      members: []
+    };
+
+    // Extract contrib type
+    var contribType = contrib.getAttribute("contrib-type");
+
+    // Assign human readable version
+    contribNode["contributor_type"] = this._contribTypeMapping[contribType];
+
+    // Extract role
+    var role = contrib.querySelector("role");
+    if (role) {
+      contribNode["role"] = role.textContent;
+    }
+
+    // Search for author bio and author image
+    var bio = contrib.querySelector("bio");
+    if (bio) {
+      _.each(util.dom.getChildren(bio), function(par) {
+        var graphic = par.querySelector("graphic");
+        if (graphic) {
+          var imageUrl = graphic.getAttribute("xlink:href");
+          contribNode.image = imageUrl;
+        } else {
+          var pars = this.paragraphGroup(state, par);
+          if (pars.length > 0) {
+            contribNode.bio = [ pars[0].id ];
+          }
+        }
+      }, this);
+    }
+
+    // Deceased?
+
+    if (contrib.getAttribute("deceased") === "yes") {
+      contribNode.deceased = true;
+    }
+
+    // Extract ORCID
+    // -----------------
+    //
+    // <uri content-type="orcid" xlink:href="http://orcid.org/0000-0002-7361-560X"/>
+
+    var orcidURI = contrib.querySelector("uri[content-type=orcid]");
+    if (orcidURI) {
+      contribNode.orcid = orcidURI.getAttribute("xlink:href");
+    }
+
+    // Extracting equal contributions
+    var nameEl = contrib.querySelector("name");
+    if (nameEl) {
+      contribNode.name = this.getName(nameEl);
+    } else {
+      var collab = contrib.querySelector("collab");
+      // Assuming this is an author group
+      if (collab) {
+        contribNode.name = collab.textContent;
+      } else {
+        contribNode.name = "N/A";
+      }
+    }
+
+    this.extractContributorProperties(state, contrib, contribNode);
+
+
+    // HACK: for cases where no explicit xrefs are given per
+    // contributor we assin all available affiliations
+    if (contribNode.affiliations.length === 0) {
+      contribNode.affiliations = state.affiliations;
+    }
+
+    // HACK: if author is assigned a conflict, remove the redundant
+    // conflict entry "The authors have no competing interests to declare"
+    // This is a data-modelling problem on the end of our input XML
+    // so we need to be smart about it in the converter
+    if (contribNode.competing_interests.length > 1) {
+      contribNode.competing_interests = _.filter(contribNode.competing_interests, function(confl) {
+        return confl.indexOf("no competing") < 0;
+      });
+    }
+
+    if (contrib.getAttribute("contrib-type") === "author") {
+      doc.nodes.document.authors.push(id);
+    }
+
+    var addressEl = contrib.querySelector("address");
+    if (addressEl) {
+      var address = {
+        city: '',
+        country: '',
+        email: '',
+        addressLine: '',
+        label: ''
+      };
+      var labelEl = addressEl.querySelector("label");
+      if (labelEl) address.label = labelEl.textContent;
+      var cityEl = addressEl.querySelector("city");
+      if (cityEl) address.city = cityEl.textContent;
+      var countryEl = addressEl.querySelector("country");
+      if (countryEl) address.country = countryEl.textContent;
+      var emailEl = addressEl.querySelector("email");
+      if (emailEl) {
+        address.email = emailEl.textContent;
+        contribNode.emails.push(address.email)
+      }
+      var addressLineEl = addressEl.querySelector("addr-line");
+      if (addressLineEl) address.addressLine = addressLineEl.textContent;
+      contribNode.addressInfo = address;
+    }
+    
+
+
+
+    doc.create(contribNode);
+    doc.show("info", contribNode.id);
   };
 
   // this.enhanceVideo = function(state, node, element) {
