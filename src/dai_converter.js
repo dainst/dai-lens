@@ -438,6 +438,8 @@ DaiConverter.Prototype = function() {
       contribNode.addressInfo = address;
       contribNode.present_address = `${address.addressLine},${address.city},${address.country}`;
     }
+
+    if (!contribNode.role) contribNode.role = contribType
     
 
 
