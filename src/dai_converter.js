@@ -80,6 +80,7 @@ DaiConverter.Prototype = function() {
     }
 
     this.enhanceArticle(state, article);
+  };
 
   // Override app group to remove appendix
   this.appGroup = function(state, appGroup) {
