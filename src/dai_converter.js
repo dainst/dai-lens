@@ -80,6 +80,33 @@ DaiConverter.Prototype = function() {
     }
 
     this.enhanceArticle(state, article);
+
+  // Override app group to remove appendix
+  this.appGroup = function(state, appGroup) {
+    var apps = appGroup.querySelectorAll('app');
+    var doc = state.doc;
+    var title = appGroup.querySelector('title');
+    if (!title) {
+      console.error("FIXME: every app should have a title", this.toHtml(title));
+    }
+
+    var headingId =state.nextId("heading");
+    // Insert top level element for Appendix
+    var heading = doc.create({
+      "type" : "heading",
+      "id" : headingId,
+      "level" : 1,
+      "content" : "Appendices"
+    });
+
+    if (apps.length){
+      this.show(state, [heading]);
+      _.each(apps, function(app) {
+        state.sectionLevel = 2;
+        this.app(state, app);
+      }.bind(this));
+    }
+    
   };
 
   // Resolve figure urls
