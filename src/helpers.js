@@ -63,34 +63,9 @@ function registerTOCHighlightFix(latency){
 }
 
 function registerContentScroll(){
-  
-
   $(".surface.content").scroll(function() {
     updateCentralBar()
   })
-
-  $(window).on('hashchange', function(e){
-    let newUrl = e.originalEvent.newURL
-    let urlSplit = newUrl.split('#')
-    if (urlSplit.length > 0){
-      let hash = urlSplit[1];
-      let reference = false
-      if (hash.indexOf('content/figure_reference') >= 0) {
-        reference = hash.split('/')[1]
-      }
-      if (hash.indexOf('figures/figure') >= 0) {
-        let figure = hash.split('/')[1];
-        Object.keys(e.currentTarget.figurePreviews).forEach(figureKey => {
-          if (e.currentTarget.figurePreviews[figureKey].figure === figure) reference = e.currentTarget.figurePreviews[figureKey].id
-        })
-      }
-      $(`.central-bar-preview`).removeClass('selected')
-      if (reference) {
-        $(`#${reference}_preview`).addClass('selected')
-      }
-    }
-
-   });
 }
 
 function registerCentralBarHighlight(){
