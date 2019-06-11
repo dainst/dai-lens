@@ -288,6 +288,19 @@ DaiConverter.Prototype = function() {
 
       var doi = citation.querySelector("pub-id[pub-id-type='doi'], ext-link[ext-link-type='doi']");
       if(doi) citationNode.doi = "http://dx.doi.org/" + doi.textContent;
+
+      // customized url extraction
+      var ext_links = citation.querySelectorAll("ext-link[ext-link-type='uri']")
+      _.each(ext_links, link => {
+        var specificUse = link.getAttribute('specific-use')
+        var linkRef = link.getAttribute('xlink:href')
+        if (linkRef && linkRef !== "") {
+          citationNode.custom_urls = {
+            href: linkRef,
+            specificUse
+          }
+        }
+      })
     } else {
       console.error("FIXME: there is one of those 'mixed-citation' without any structure. Skipping ...", citation);
       return;
