@@ -4,5 +4,5 @@ var CitationView = LensNodes["citation"].View;
 
 module.exports = {
   Model: require('./citation'),
-  View: CitationView
+  View: require('./citation_view'),
 };
