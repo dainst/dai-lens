@@ -241,7 +241,8 @@ DaiConverter.Prototype = function() {
         "volume": "",
         "fpage": "",
         "lpage": "",
-        "citation_urls": []
+        "citation_urls": [],
+        "custom_urls": []
       };
 
       if (personGroup) {
@@ -295,10 +296,10 @@ DaiConverter.Prototype = function() {
         var specificUse = link.getAttribute('specific-use')
         var linkRef = link.getAttribute('xlink:href')
         if (linkRef && linkRef !== "") {
-          citationNode.custom_urls = {
-            href: linkRef,
-            specificUse
-          }
+          citationNode.custom_urls.push({
+            url: linkRef,
+            specificUse: specificUse
+          })
         }
       })
     } else {
