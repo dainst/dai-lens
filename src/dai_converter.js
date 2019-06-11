@@ -100,14 +100,14 @@ DaiConverter.Prototype = function() {
     });
 
     if (apps.length){
+
       this.show(state, [heading]);
       _.each(apps, function(app) {
         state.sectionLevel = 2;
         this.app(state, app);
       }.bind(this));
     }
-    
-  };
+};
 
   // Resolve figure urls
   // --------
