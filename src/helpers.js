@@ -128,7 +128,7 @@ function updateCentralBar() {
                 selected: selected
               }
             }
-            lastHeight = height;
+            lastHeight = height + 15;
           }
         }
       }
