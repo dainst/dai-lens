@@ -32,7 +32,18 @@ CitationView.Prototype = function() {
     // -------
 
     var titleView = this.createTextPropertyView([node.id, 'title'], { classes: 'title' });
-    frag.appendChild(titleView.render().el);
+    var titleViewEl = titleView.render().el
+
+    if (node.properties.custom_urls && node.properties.custom_urls.length > 0) {
+      _.each(node.properties.custom_urls, function(url) {
+        titleViewEl.appendChild($$('a.citation-custom-url', {
+          href: url.url,
+          text: '>>',
+          'data-title': " iDAI.bibliography"
+        }));
+      });
+    }
+    frag.appendChild(titleViewEl);
 
     // Add Authors
     // -------
@@ -132,6 +143,9 @@ CitationView.Prototype = function() {
 
       frag.appendChild(citationUrlsEl);      
     }
+
+    // custom DAI urls
+    
 
     this.content.appendChild(frag);
   };

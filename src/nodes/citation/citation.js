@@ -102,8 +102,12 @@ Citation.Prototype = function() {
   // Falls back to the DOI url
   // Always returns an array;
   this.urls = function() {
-    return this.properties.citation_urls.length > 0 ? this.properties.citation_urls
+    var urls = this.properties.citation_urls.length > 0 ? this.properties.citation_urls
                                                     : [this.properties.doi];
+    if (this.properties.custom_urls && this.properties.custom_urls.length > 0){
+      urls = urls.concat(this.properties.custom_urls)
+    }
+    return urls;
   };
 
   this.getHeader = function() {
