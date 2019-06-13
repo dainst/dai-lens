@@ -28,13 +28,15 @@ function isScrolledIntoView(elem){
 function setCoverImage() {
   var documentId = extractDocumentIdFromUrl(window.document.URL);
   var info = window.doc.get('publication_info');
-  var url = info.poster.children[0].getAttribute('xlink:href')
-  let coverImageUrl = [
-    baseDocsURL,
-    documentId + '/',
-    url,
-  ].join('');
-  $("div[class='toc']").prepend( `<div><img class="cover-image" src="${coverImageUrl}"/></div>` );
+  if (info.poster) {
+    var url = info.poster.children[0].getAttribute('xlink:href')
+    let coverImageUrl = [
+      baseDocsURL,
+      documentId + '/',
+      url,
+    ].join('');
+    $("div[class='toc']").prepend( `<div><img class="cover-image" src="${coverImageUrl}"/></div>` );
+  }
 }
 function setTopBarImage() {
   $("div[class='menu-bar']").append( `<div class="menu-bar-logo-container"><a href="https://www.dainst.org/dai/meldungen"><img class="menu-bar-logo" src="2nd_logo.png" /></a></div>` );
