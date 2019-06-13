@@ -89,12 +89,12 @@ module.exports = LensApp;module.exports = LensApp;
 function initialSetup() {
   Helpers.setCoverImage();
   Helpers.setTopBarImage();
-  //Helpers.registerNavbarToggle();
   Helpers.updateCentralBar();
   Helpers.registerContentScroll();
   Helpers.registerCentralBarHighlight();
   Helpers.registerTOCHighlightFix(50);
-
+  Helpers.registerNavbarToggle();
+  Helpers.registerContextToggle();
 }
 
 //TODO: move this somewhere else
