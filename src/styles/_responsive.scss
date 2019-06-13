@@ -1,3 +1,6 @@
+.topbar-mobile-menu {
+  display: none
+}
 @media only screen and (max-width: 800px) {
   body.reader #container {
     min-width: auto;
@@ -12,8 +15,119 @@
     margin-top: 0;
     transition: 0.5s;
     &.active {
-      left: unset;
+      left: 0;
       right: 0;
     }
   }
+  .mobile-menu {
+    display: block;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 999;
+    height: 56px;
+    width: 56px;
+    .hamburg { 
+      display: block;
+      background: $primary; width: 56px; height: 56px; 
+      position: relative; 
+      margin-left: auto; margin-right: auto;
+      border-radius: 50%;
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+      transition: border-radius .5s;
+    }
+    .line { 
+        position: absolute; 
+        left:16px;
+        height: 4px; width: 24px; 
+        background: $white; border-radius: 2px;
+        display: block; 
+        transition: 0.5s; 
+        transform-origin: center; 
+    }
+    
+    .line:nth-child(1) { top: 18px; }
+    .line:nth-child(2) { top: 27px; }
+    .line:nth-child(3) { top: 36px; }
+    
+    .hamburg.active .line:nth-child(1){
+        transform: translateY(9px) rotate(-45deg);
+    }
+    
+    .hamburg.active .line:nth-child(2){
+        opacity:0;
+    }
+    
+    .hamburg.active .line:nth-child(3){
+        transform: translateY(-9px) rotate(45deg);
+    }
+  }
+  .context-menu {
+    display: block;
+    height: 30px;
+    width: 30px;
+    .hamburg { 
+      display: block;
+      position: relative; 
+      margin-left: auto; margin-right: auto;
+      transition: border-radius .5s;
+    }
+    .line { 
+        position: absolute; 
+        left:16px;
+        height: 4px; width: 24px; 
+        background: $white; border-radius: 2px;
+        display: block; 
+        transition: 0.5s; 
+        transform-origin: center; 
+    }
+    
+    .line:nth-child(1) { top: 18px; }
+    .line:nth-child(2) { top: 27px; }
+    .line:nth-child(3) { top: 36px; }
+    
+    .hamburg.active .line:nth-child(1){
+        transform: translateY(9px) rotate(-45deg);
+    }
+    
+    .hamburg.active .line:nth-child(2){
+        opacity:0;
+    }
+    
+    .hamburg.active .line:nth-child(3){
+        transform: translateY(-9px) rotate(45deg);
+    }
+  }
+  .menu-bar {
+    height: 50px;
+    .context-toggles {
+      position: fixed;
+      height: 100%;
+      background-color: $primary;
+      width: 60%; 
+      margin-top:50px;
+      transition: 0.5s;
+      left: -100%;
+      &.active {
+        left:0;
+      }
+      a {
+        width: 100%;
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 24px;
+        margin-top: 0;
+        &.active {
+
+        }
+      }
+    }
+  }
+  .article .resources {
+    height:100%;
+    .panel {
+      top:30px;
+    }
+  }
+  
 }

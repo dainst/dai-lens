@@ -43,13 +43,28 @@ function setTopBarImage() {
 }
 
 function registerNavbarToggle(){
-  $("img.topbar-logo-img").ready(function () {
-    var navBar = function () {
-      $("img.topbar-logo-img").click(function () {
-        $(".resources").toggleClass("active");
-      });
-    }
-    setTimeout(navBar, 2500);
+  $("#main").append( `<div class="mobile-menu"><div class="hamburg">
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+  </div></div>` );
+  $("div.mobile-menu").click(function () {
+    $(".resources").toggleClass("active");
+    $(".mobile-menu .hamburg").toggleClass("active");
+    $(".context-toggles").removeClass("active");
+    $(".context-menu .hamburg").removeClass("active");
+  });
+}
+
+function registerContextToggle(){
+  $(".menu-bar").append( `<div class="context-menu"><div class="hamburg">
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+  </div></div>` );
+  $("div.context-menu").click(function () {
+    $(".context-toggles").toggleClass("active");
+    $(".context-menu .hamburg").toggleClass("active");
   });
 }
 
@@ -165,6 +180,7 @@ module.exports = {
   setTopBarImage: setTopBarImage,
   setCoverImage: setCoverImage,
   registerNavbarToggle: registerNavbarToggle,
+  registerContextToggle: registerContextToggle,
   registerContentScroll: registerContentScroll,
   updateCentralBar: updateCentralBar,
   registerCentralBarHighlight: registerCentralBarHighlight,
