@@ -43,25 +43,14 @@ function setTopBarImage() {
 }
 
 function registerNavbarToggle(){
-  $("body.reader").append( `<div class="mobile-menu">
-    <div class="mobile-menu-content">
-      <button class="active">Content</button>
-    </div>
-    <div class="mobile-menu-resources">
-      <button>Resources</button>
-    </div>
-  </div>` );
-  $("div.mobile-menu-content button").click(function () {
-    $(".resources").removeClass("active");
-    $("div.mobile-menu-content button").addClass("active");
-    $("div.mobile-menu-resources button").removeClass("active");
-    $(".context-toggles").removeClass("active");
-    $(".context-menu .hamburg").removeClass("active");
-  });
-  $("div.mobile-menu-resources button").click(function () {
-    $(".resources").addClass("active");
-    $("div.mobile-menu-content button").removeClass("active");
-    $("div.mobile-menu-resources button").addClass("active");
+  $("#main").append( `<div class="mobile-menu"><div class="hamburg">
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+  </div></div>` );
+  $("div.mobile-menu").click(function () {
+    $(".resources").toggleClass("active");
+    $(".mobile-menu .hamburg").toggleClass("active");
     $(".context-toggles").removeClass("active");
     $(".context-menu .hamburg").removeClass("active");
   });

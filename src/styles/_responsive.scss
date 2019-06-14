@@ -4,7 +4,6 @@
 @media only screen and (max-width: 800px) {
   body.reader #container {
     min-width: auto;
-    padding-bottom: 3rem;
   }
   .article .document, .topbar {
     width: 100%;
@@ -23,31 +22,11 @@
   .mobile-menu {
     display: block;
     position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    z-index: 4001;
-    height: 3rem;
-    background-color: $white;
-    &-content, &-resources {
-      width: 50%;
-      float: left;
-      padding: 0.5rem 1rem;
-      button {
-        font-size: 1rem;
-        line-height: 1rem;
-        border: 1px solid $gray-medium;
-        background-color: $white;
-        width: 100%;
-        padding: 0.5rem 2rem;
-        border-radius: 1rem;
-        &.active {
-          background-color: $primary;
-          border-color: $primary;
-          color: $white;
-        }
-      }
-    }
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 999;
+    height: 56px;
+    width: 56px;
     .hamburg { 
       display: block;
       background: $primary; width: 56px; height: 56px; 
@@ -123,7 +102,7 @@
     height: 50px;
     .context-toggles {
       position: fixed;
-      height: calc(100% - #{$top-bar-height} - 3rem - 50px);
+      height: 100%;
       background-color: $primary;
       width: 60%; 
       margin-top:50px;
