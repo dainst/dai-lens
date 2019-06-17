@@ -345,7 +345,21 @@ DaiConverter.Prototype = function() {
 
     var journalContribGroups = article.querySelectorAll("journal-meta contrib-group");
     if (journalContribGroups) {
+      
       _.each(journalContribGroups, (contribGroup) => {
+        var groupNameEl = contribGroup.querySelector('role');
+        if (groupNameEl && groupNameEl.textContent){
+          var header = {
+            "type" : "heading",
+            "id" : state.nextId("heading"),
+            "level" : 5,
+            "content" : "",
+          };
+          header.content = groupNameEl.textContent
+          doc.create(header);
+          doc.show("info", header.id);
+        }
+          
         this.contribGroup(state, contribGroup);
       }, this)
     }
