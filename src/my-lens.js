@@ -94,7 +94,6 @@ function initialSetup() {
   Helpers.registerCentralBarHighlight();
   Helpers.registerTOCHighlightFix(50);
   Helpers.registerNavbarToggle();
-  Helpers.registerContextToggle();
 }
 
 //TODO: move this somewhere else
