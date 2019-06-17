@@ -179,7 +179,16 @@ DaiConverter.Prototype = function() {
         text: isbnelem.textContent
       })
     })
-    
+
+    var selfUriElements = state.xmlDoc.querySelectorAll("self-uri");
+    var selfUris = [];
+
+    selfUriElements.forEach(selfUriElem => {
+      selfUris.push({
+        type: selfUriElem.getAttribute('content-type'),
+        link: selfUriElem.textContent
+      })
+    })
     var publicationInfo = state.doc.get('publication_info');
     publicationInfo.volume = volume;
     publicationInfo.subtitle = subtitle;
@@ -188,6 +197,7 @@ DaiConverter.Prototype = function() {
     publicationInfo.publisherName = publisherName.textContent;
     publicationInfo.issns = issns;
     publicationInfo.isbns = isbns;
+    publicationInfo.selfUris = selfUris;
 
     pubInfo.enhancedInfo = publicationInfo;
 

@@ -182,6 +182,22 @@ PublicationInfoView.Prototype = function() {
       })
     }
 
+    if (this.node.selfUris && this.node.selfUris.length) {
+      this.node.selfUris.forEach(selfUri => {
+        var selfUrisEl = $$('.self-uri.container', {
+          children: [
+            $$('b', {text: selfUri.type}),
+            $$('a.self-uri-link', {
+              href: selfUri.link,
+              target: "_new",
+              text: selfUri.link
+            })
+          ]
+        });
+        metaData.appendChild(selfUrisEl);
+      })
+    }
+
     var historyEl = this.describePublicationHistory();
 
     metaData.appendChild(historyEl);
