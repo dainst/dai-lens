@@ -40,10 +40,13 @@
     right: 0;
     z-index: 999;
     height: $top-bar-mobile-height;
-    width: $top-bar-mobile-height;
+    width: 10%;
+    min-width: $top-bar-mobile-height;
+    background: $primary;
     .hamburg { 
       display: block;
-      background: $primary; width: $top-bar-mobile-height; height: $top-bar-mobile-height; 
+      width: $top-bar-mobile-height;
+      height: $top-bar-mobile-height;
       position: relative; 
       margin-left: auto; margin-right: auto;
       transition: border-radius .5s;
