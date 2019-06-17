@@ -207,6 +207,8 @@ DaiConverter.Prototype = function() {
         link: selfUriElem.textContent
       })
     })
+    var issue = state.xmlDoc.querySelector("issue");
+
     var publicationInfo = state.doc.get('publication_info');
     publicationInfo.volume = volume;
     publicationInfo.subtitle = subtitle;
@@ -218,6 +220,7 @@ DaiConverter.Prototype = function() {
     publicationInfo.issns = issns;
     publicationInfo.isbns = isbns;
     publicationInfo.selfUris = selfUris;
+    publicationInfo.issue = issue.textContent;
 
     pubInfo.enhancedInfo = publicationInfo;
 

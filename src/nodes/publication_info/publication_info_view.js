@@ -233,6 +233,15 @@ PublicationInfoView.Prototype = function() {
         metaData.appendChild(selfUrisEl);
       })
     }
+    if (this.node.issue) {
+      var issueEl = $$('.issue.container', {
+        children: [
+          $$('div.label', {text: "Issue"}),
+          $$('div.value', {text: this.node.issue})
+        ]
+      });
+      metaData.appendChild(issueEl);
+    }
 
     var historyEl = this.describePublicationHistory();
 
