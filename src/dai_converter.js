@@ -159,6 +159,26 @@ DaiConverter.Prototype = function() {
     var poster = state.xmlDoc.querySelector("fig#poster-image");
     var journalId = state.xmlDoc.querySelector("journal-id");
     var publisherName = state.xmlDoc.querySelector("publisher-name");
+    var issnElements = state.xmlDoc.querySelectorAll("issn");
+    var isbnElements = state.xmlDoc.querySelectorAll("isbn");
+
+    var issns = [];
+    issnElements.forEach(issnelem => {
+      issns.push({
+        format: issnelem.getAttribute('publication-format'),
+        type: issnelem.tagName,
+        text: issnelem.textContent
+      })
+    })
+    var isbns = [];
+
+    isbnElements.forEach(isbnelem => {
+      isbns.push({
+        format: isbnelem.getAttribute('publication-format'),
+        type: isbnelem.tagName,
+        text: isbnelem.textContent
+      })
+    })
     
     var publicationInfo = state.doc.get('publication_info');
     publicationInfo.volume = volume;
@@ -166,6 +186,8 @@ DaiConverter.Prototype = function() {
     publicationInfo.poster = poster;
     publicationInfo.journalId = journalId.textContent;
     publicationInfo.publisherName = publisherName.textContent;
+    publicationInfo.issns = issns;
+    publicationInfo.isbns = isbns;
 
     pubInfo.enhancedInfo = publicationInfo;
 
