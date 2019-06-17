@@ -709,6 +709,13 @@ DaiConverter.Prototype = function() {
     return nodes;
   };
 
+  this.enhanceAnnotationData = function(state, anno, el, type){
+    var styleType = el.getAttribute('style-type');
+    if (styleType) {
+      anno.name = styleType
+    }
+  }
+
   // this.enhanceVideo = function(state, node, element) {
   //   var href = element.getAttribute("xlink:href").split(".");
   //   var name = href[0];
