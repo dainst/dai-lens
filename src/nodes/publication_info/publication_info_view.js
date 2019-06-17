@@ -136,6 +136,31 @@ PublicationInfoView.Prototype = function() {
       metaData.appendChild(publisherNameEl);
     }
 
+    if (this.node.publisherLoc) {
+      var publisherLocEl = $$('.publisherLoc.container', {
+        children: [
+          $$('div.label', {text: "Publisher Location"}),
+          $$('div.value', {
+            children: [
+              $$('.publisher-address', {text: `${this.node.publisherLoc.address}`}),
+              $$('.publisher-city', {text: `${this.node.publisherLoc.city}`}),
+              $$('.publisher-country', {text: `${this.node.publisherLoc.country}`}),
+              $$('.publisher-link', {
+                children: [
+                  $$('a', {
+                    href: this.node.publisherLoc.link,
+                    target: "_new",
+                    text: this.node.publisherLoc.link
+                  })
+                ]
+              })
+            ]
+          })
+        ]
+      });
+      metaData.appendChild(publisherLocEl);
+    }
+
     if (this.node.journalId) {
       var journalIdEl = $$('.journalId.container', {
         children: [

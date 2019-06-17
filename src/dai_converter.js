@@ -159,6 +159,17 @@ DaiConverter.Prototype = function() {
     var poster = state.xmlDoc.querySelector("fig#poster-image");
     var journalId = state.xmlDoc.querySelector("journal-id");
     var publisherName = state.xmlDoc.querySelector("publisher-name");
+    var publisherLocAddrElem = state.xmlDoc.querySelector("publisher-loc addr-line");
+    var publisherLocCityElem = state.xmlDoc.querySelector("publisher-loc city");
+    var publisherLocCountryElem = state.xmlDoc.querySelector("publisher-loc country");
+    var publisherLocLinkElem = state.xmlDoc.querySelector("publisher-loc ext-link");
+    var publisherLoc = {
+      address: publisherLocAddrElem ? publisherLocAddrElem.textContent : '',
+      city: publisherLocAddrElem ? publisherLocCityElem.textContent : '',
+      country: publisherLocAddrElem ? publisherLocCountryElem.textContent : '',
+      link: publisherLocAddrElem ? publisherLocLinkElem.textContent : ''
+    }
+
     var issnElements = state.xmlDoc.querySelectorAll("issn");
     var isbnElements = state.xmlDoc.querySelectorAll("isbn");
 
@@ -195,6 +206,7 @@ DaiConverter.Prototype = function() {
     publicationInfo.poster = poster;
     publicationInfo.journalId = journalId.textContent;
     publicationInfo.publisherName = publisherName.textContent;
+    publicationInfo.publisherLoc = publisherLoc;
     publicationInfo.issns = issns;
     publicationInfo.isbns = isbns;
     publicationInfo.selfUris = selfUris;
