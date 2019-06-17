@@ -28,26 +28,43 @@ function isScrolledIntoView(elem){
 function setCoverImage() {
   var documentId = extractDocumentIdFromUrl(window.document.URL);
   var info = window.doc.get('publication_info');
-  var url = info.poster.children[0].getAttribute('xlink:href')
-  let coverImageUrl = [
-    baseDocsURL,
-    documentId + '/',
-    url,
-  ].join('');
-  $("div[class='toc']").prepend( `<div><img class="cover-image" src="${coverImageUrl}"/></div>` );
+  if (info.poster) {
+    var url = info.poster.children[0].getAttribute('xlink:href')
+    let coverImageUrl = [
+      baseDocsURL,
+      documentId + '/',
+      url,
+    ].join('');
+    $("div[class='toc']").prepend( `<div><img class="cover-image" src="${coverImageUrl}"/></div>` );
+  }
 }
 function setTopBarImage() {
   $("div[class='menu-bar']").append( `<div class="menu-bar-logo-container"><a href="https://www.dainst.org/dai/meldungen"><img class="menu-bar-logo" src="2nd_logo.png" /></a></div>` );
 }
 
 function registerNavbarToggle(){
-  $("img.topbar-logo-img").ready(function () {
-    var navBar = function () {
-      $("img.topbar-logo-img").click(function () {
-        $(".resources").toggleClass("active");
-      });
+  $("#main").append( `<div class="mobile-menu"><div class="hamburg">
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+  </div></div>` ); 
+
+  $("div.mobile-menu").click(function () {
+    console.log($(this));
+    if ($(this).hasClass("active")) {
+      $(".context-toggles").removeClass("active");
+      $(".mobile-menu").removeClass("active");
+      $(".resources").removeClass("active");
+      $(".context-menu .hamburg").removeClass("active");
+    } else {
+      $(".context-toggles").addClass("active");
+      $(".mobile-menu").addClass("active");
+      $(".context-menu .hamburg").removeClass("active");
     }
-    setTimeout(navBar, 2500);
+  });
+  $("a.context-toggle").click(function () {
+    $(".context-toggles").removeClass("active");
+    $(".resources").addClass("active");
   });
 }
 
@@ -56,7 +73,9 @@ function registerTOCHighlightFix(latency){
     setTimeout(() => {
       console.log('change')
       $(".heading-ref").removeClass('active');
-      $(event.currentTarget).addClass('active')
+      $(event.currentTarget).addClass('active');
+      $(".resources").removeClass("active");
+      $(".mobile-menu").removeClass("active");
     }, latency || 100);
     
   })
@@ -74,20 +93,52 @@ function registerCentralBarHighlight(){
     let urlSplit = newUrl.split('#')
     if (urlSplit.length > 0){
       let hash = urlSplit[1];
-      let reference = false
+      let reference = false;
+      let show_panel = false;
+      let show_content = false;
       if (hash.indexOf('content/figure_reference') >= 0) {
         reference = hash.split('/')[1]
+        show_panel = true;
       }
+      if (hash.indexOf('content/footnote_reference') >= 0) {
+        show_panel = hash.split('/')[1]
+      }
+      if (hash.indexOf('content/contributor_reference') >= 0) {
+        show_panel = hash.split('/')[1]
+      }
+      if (hash.indexOf('content/citation_reference') >= 0) {
+        show_panel = hash.split('/')[1]
+      }
+      if (hash.indexOf('info/contributor') >= 0) {
+        show_content = hash.split('/')[1]
+      }
+      if (hash.indexOf('footnotes/fn') >= 0) {
+        show_content = hash.split('/')[1]
+      }
+      if (hash.indexOf('citations/article_citation') >= 0) {
+        show_content = hash.split('/')[1]
+      }
+
       if (hash.indexOf('figures/figure') >= 0) {
         let figure = hash.split('/')[1];
         Object.keys(e.currentTarget.figurePreviews).forEach(figureKey => {
           if (e.currentTarget.figurePreviews[figureKey].figure === figure) reference = e.currentTarget.figurePreviews[figureKey].id
         })
+        show_content = hash.split('/')[1]
       }
       $(`.central-bar-preview`).removeClass('selected')
       if (reference) {
-        $(`#${reference}_preview`).addClass('selected')
+        $(`#${reference}_preview`).addClass('selected');
       }
+      if (show_panel) {
+        $(".resources").addClass("active");
+        $(".mobile-menu").addClass("active");
+      }
+      if (show_content) {
+        $(".resources").removeClass("active");
+        $(".mobile-menu").removeClass("active");
+      }
+
     }
 
    });
