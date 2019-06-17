@@ -171,6 +171,17 @@ PublicationInfoView.Prototype = function() {
       metaData.appendChild(journalIdEl);
     }
 
+    if (this.node.articleId) {
+      var articleIdEl = $$('.articleId.container', {
+        children: [
+          $$('div.label', {text: "Article Id"}),
+          $$('div.value', {text: `${this.node.articleId.type} ${this.node.articleId.text}`})
+        ]
+      });
+      metaData.appendChild(articleIdEl);
+    }
+    
+
     if (this.node.journal) {
       var journalNameEl = $$('.journalName.container', {
         children: [
