@@ -160,10 +160,12 @@ DaiConverter.Prototype = function() {
     var journalId = state.xmlDoc.querySelector("journal-id");
     var articleIdElem = state.xmlDoc.querySelector("article-id");
 
-    var articleId = {
+    var articleId = articleIdElem ? {
       type: articleIdElem.getAttribute('pub-id-type'),
       text: articleIdElem.textContent
     }
+    :
+    '';
     
     var publisherName = state.xmlDoc.querySelector("publisher-name");
     var publisherLocAddrElem = state.xmlDoc.querySelector("publisher-loc addr-line");
