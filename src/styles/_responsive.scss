@@ -29,6 +29,9 @@
     .panel {
       border-top: none;
     }
+    .nodes > .content-node.figure {
+      margin-top: 0;
+    }
   }
   .mobile-menu {
     display: block;
