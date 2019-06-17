@@ -1,6 +1,6 @@
 body.reader #main {
   margin-top: $top-bar-height;
-  height: calc( 100% - $top-bar-height );
+  height: calc( 100% - #{$top-bar-height} );
 }
 
 .article .document {
@@ -30,5 +30,5 @@ body.reader #main {
 .article .resources {
   width: 47%;
   margin-top: -$top-bar-height;
-  height: calc( 100% + $top-bar-height );
+  height: calc( 100% + #{$top-bar-height} );
 }
