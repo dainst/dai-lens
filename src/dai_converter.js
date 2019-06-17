@@ -625,6 +625,62 @@ DaiConverter.Prototype = function() {
     return nodeIds;
   };
 
+  this.extractCopyrightAndLicense = function(state, article) {
+    var nodes = [];
+    var doc = state.doc;
+
+    var license = article.querySelector("permissions");
+    if (license) {
+      var h1 = {
+        "type" : "heading",
+        "id" : state.nextId("heading"),
+        "level" : 3,
+        "content" : "Copyright & License"
+      };
+      doc.create(h1);
+      nodes.push(h1.id);
+
+      // TODO: this is quite messy. We should introduce a dedicated note for article info
+      // and do that rendering related things there, e.g., '. ' separator
+
+      var par;
+      var copyrights = license.querySelectorAll("copyright-statement");
+
+      if (copyrights) {
+        copyrights.forEach(copyright => {
+          par = this.paragraphGroup(state, copyright);
+          if (par && par.length) {
+            nodes = nodes.concat( _.map(par, function(p) { return p.id; } ) );
+            // append '.' only if there is none yet
+            if (copyright.textContent.trim().slice(-1) !== '.') {
+              // TODO: this needs to be more robust... what if there are no children
+              var textid = _.last(_.last(par).children);
+              doc.nodes[textid].content += ". ";
+            }
+          }
+        })
+
+      }
+      var licences = license.querySelectorAll("license");
+      if (licences) {
+        licences.forEach(lic => {
+          for (var child = lic.firstElementChild; child; child = child.nextElementSibling) {
+            var type = util.dom.getNodeType(child);
+            if (type === 'p' || type === 'license-p') {
+              par = this.paragraphGroup(state, child);
+              if (par && par.length) {
+                nodes = nodes.concat( _.pluck(par, 'id') );
+              }
+            }
+          }
+        })
+        
+      }
+    }
+
+    return nodes;
+  };
+
   // this.enhanceVideo = function(state, node, element) {
   //   var href = element.getAttribute("xlink:href").split(".");
   //   var name = href[0];
