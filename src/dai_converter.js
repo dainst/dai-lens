@@ -159,6 +159,26 @@ DaiConverter.Prototype = function() {
     var poster = state.xmlDoc.querySelector("fig#poster-image");
     var journalId = state.xmlDoc.querySelector("journal-id");
     var publisherName = state.xmlDoc.querySelector("publisher-name");
+    var issnElements = state.xmlDoc.querySelectorAll("issn");
+    var isbnElements = state.xmlDoc.querySelectorAll("isbn");
+
+    var issns = [];
+    issnElements.forEach(issnelem => {
+      issns.push({
+        format: issnelem.getAttribute('publication-format'),
+        type: issnelem.tagName,
+        text: issnelem.textContent
+      })
+    })
+    var isbns = [];
+
+    isbnElements.forEach(isbnelem => {
+      isbns.push({
+        format: isbnelem.getAttribute('publication-format'),
+        type: isbnelem.tagName,
+        text: isbnelem.textContent
+      })
+    })
     
     var publicationInfo = state.doc.get('publication_info');
     publicationInfo.volume = volume;
@@ -166,6 +186,8 @@ DaiConverter.Prototype = function() {
     publicationInfo.poster = poster;
     publicationInfo.journalId = journalId.textContent;
     publicationInfo.publisherName = publisherName.textContent;
+    publicationInfo.issns = issns;
+    publicationInfo.isbns = isbns;
 
     pubInfo.enhancedInfo = publicationInfo;
 
@@ -337,7 +359,20 @@ DaiConverter.Prototype = function() {
     // However, in the articles seen so far, these were sub-elements of 'contrib-group', which itself was single
     var contribGroups = article.querySelectorAll("article-meta contrib-group");
     if (contribGroups) {
+      
       _.each(contribGroups, (contribGroup) => {
+        var groupNameEl = contribGroup.querySelector('role');
+        if (groupNameEl && groupNameEl.textContent){
+          var header = {
+            "type" : "heading",
+            "id" : state.nextId("heading"),
+            "level" : 5,
+            "content" : "",
+          };
+          header.content = groupNameEl.textContent
+          doc.create(header);
+          doc.show("info", header.id);
+        }
         this.contribGroup(state, contribGroup);
       }, this)
       
@@ -345,7 +380,21 @@ DaiConverter.Prototype = function() {
 
     var journalContribGroups = article.querySelectorAll("journal-meta contrib-group");
     if (journalContribGroups) {
+      
       _.each(journalContribGroups, (contribGroup) => {
+        var groupNameEl = contribGroup.querySelector('role');
+        if (groupNameEl && groupNameEl.textContent){
+          var header = {
+            "type" : "heading",
+            "id" : state.nextId("heading"),
+            "level" : 5,
+            "content" : "",
+          };
+          header.content = groupNameEl.textContent
+          doc.create(header);
+          doc.show("info", header.id);
+        }
+          
         this.contribGroup(state, contribGroup);
       }, this)
     }

@@ -156,6 +156,32 @@ PublicationInfoView.Prototype = function() {
       metaData.appendChild(journalNameEl);
     }
 
+    if (this.node.issns && this.node.issns.length) {
+      this.node.issns.forEach(issn => {
+        let label = `${issn.type} ${issn.format}`;
+        var issnsEl = $$('.issn.container', {
+          children: [
+            $$('div.label', {text: label}),
+            $$('div.value', {text: issn.text})
+          ]
+        });
+        metaData.appendChild(issnsEl);
+      })
+    }
+
+    if (this.node.isbns && this.node.isbns.length) {
+      this.node.isbns.forEach(isbn => {
+        let label = `${isbn.type} ${isbn.format}`;
+        var isbnsEl = $$('.isbn.container', {
+          children: [
+            $$('div.label', {text: label}),
+            $$('div.value', {text: isbn.text})
+          ]
+        });
+        metaData.appendChild(isbnsEl);
+      })
+    }
+
     var historyEl = this.describePublicationHistory();
 
     metaData.appendChild(historyEl);
