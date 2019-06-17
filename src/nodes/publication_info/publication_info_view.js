@@ -247,6 +247,20 @@ PublicationInfoView.Prototype = function() {
 
     metaData.appendChild(historyEl);
 
+
+    if (this.node.customKeywords && this.node.customKeywords.length) {
+      this.node.customKeywords.forEach(keyword => {
+        var words = keyword.keys.join(', ')
+        var keywordEl = $$('.kwd.container', {
+          children: [
+            $$('div.label', {text: keyword.title}),
+            $$('div.value', {text: words})
+          ]
+        });
+        metaData.appendChild(keywordEl);
+      })
+    }
+
     this.content.appendChild(metaData);
 
     // Display article information

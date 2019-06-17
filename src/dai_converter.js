@@ -207,7 +207,26 @@ DaiConverter.Prototype = function() {
         link: selfUriElem.textContent
       })
     })
+
     var issue = state.xmlDoc.querySelector("issue");
+
+
+    var keywordElements = state.xmlDoc.querySelectorAll("kwd-group");
+    var keywords = [];
+
+    keywordElements.forEach(keywordElem => {
+      let titleElem = keywordElem.querySelector('title');
+      let keyElems = keywordElem.querySelectorAll("kwd");
+      let keys = [];
+      keyElems.forEach(key => {
+        keys.push(key.textContent)
+      })
+      keywords.push({
+        lang: keywordElem.getAttribute('xml:lang'),
+        title: titleElem.textContent,
+        keys: keys
+      })
+    })
 
     var publicationInfo = state.doc.get('publication_info');
     publicationInfo.volume = volume;
@@ -221,6 +240,7 @@ DaiConverter.Prototype = function() {
     publicationInfo.isbns = isbns;
     publicationInfo.selfUris = selfUris;
     publicationInfo.issue = issue.textContent;
+    publicationInfo.customKeywords = keywords;
 
     pubInfo.enhancedInfo = publicationInfo;
 
