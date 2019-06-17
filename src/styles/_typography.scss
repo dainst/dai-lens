@@ -118,6 +118,11 @@ a {
   color: $black;
 }
 
+.content-node.text[data-id=abstract_title_hr] .content {
+  border-bottom: 1px solid $gray-light;
+}
+
+
 .article .document {
   line-height: 28px;
   font-size: 16px;

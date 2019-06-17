@@ -397,32 +397,58 @@ DaiConverter.Prototype = function() {
   };
 
   this.abstracts = function(state, articleMeta) {
+    var doc = state.doc;
+    var nodes = [];
     // <abstract> Abstract, zero or more
     var abstracts = articleMeta.querySelectorAll("abstract");
     var trans_abstracts = articleMeta.querySelectorAll("trans-abstract");
-    _.each(abstracts, function(abs) {
-      this.abstract(state, abs);
-    }, this);
-    _.each(trans_abstracts, function(abs) {
-      this.abstract(state, abs);
-    }, this);
+    if (abstracts || trans_abstracts) {
+        var heading = {
+          id: state.nextId("heading"),
+          type: "heading",
+          level: 1,
+          content: "Abstracts"
+        };
+    
+        doc.create(heading);
+        nodes.push(heading);
+        this.show(state, nodes);
+      _.each(abstracts, function(abs) {
+        this.abstract(state, abs);
+      }, this);
+      _.each(trans_abstracts, function(abs) {
+        this.abstract(state, abs);
+      }, this);
+    }
+    
   };
 
   this.abstract = function(state, abs) {
     var doc = state.doc;
     var nodes = [];
 
+    // hack to show a margin on top of abstract title
+    var underline_heading = {
+      id: 'abstract_title_hr',
+      type: "text",
+      content: ' ',
+    };
+    doc.create(underline_heading);
+    nodes.push(underline_heading);
+
     var title = abs.querySelector("title");
 
     var heading = {
       id: state.nextId("heading"),
       type: "heading",
-      level: 1,
-      content: title ? title.textContent : "Abstract"
+      level: 3,
+      content: title ? title.textContent : "Abstract",
     };
 
     doc.create(heading);
     nodes.push(heading);
+
+    
 
     // with eLife there are abstracts having an object-id.
     // TODO: we should store that in the model instead of dropping it
