@@ -241,7 +241,7 @@ DaiConverter.Prototype = function() {
     publicationInfo.issns = issns;
     publicationInfo.isbns = isbns;
     publicationInfo.selfUris = selfUris;
-    publicationInfo.issue = issue.textContent;
+    publicationInfo.issue = issue ? issue.textContent : '';
     publicationInfo.customKeywords = keywords;
 
     pubInfo.enhancedInfo = publicationInfo;
@@ -406,6 +406,34 @@ DaiConverter.Prototype = function() {
     _.each(trans_abstracts, function(abs) {
       this.abstract(state, abs);
     }, this);
+  };
+
+  this.abstract = function(state, abs) {
+    var doc = state.doc;
+    var nodes = [];
+
+    var title = abs.querySelector("title");
+
+    var heading = {
+      id: state.nextId("heading"),
+      type: "heading",
+      level: 1,
+      content: title ? title.textContent : "Abstract"
+    };
+
+    doc.create(heading);
+    nodes.push(heading);
+
+    // with eLife there are abstracts having an object-id.
+    // TODO: we should store that in the model instead of dropping it
+
+    nodes = nodes.concat(this.bodyNodes(state, util.dom.getChildren(abs), {
+      ignore: ["title", "object-id"]
+    }));
+
+    if (nodes.length > 0) {
+      this.show(state, nodes);
+    }
   };
 
   this.extractContributors = function(state, article) {
