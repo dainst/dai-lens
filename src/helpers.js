@@ -47,24 +47,42 @@ function registerNavbarToggle(){
     <span class="line"></span>
     <span class="line"></span>
     <span class="line"></span>
-  </div></div>` ); 
+  </div></div>` );
+  $("#main").append( `<div class="tablet-menu"><div class="hamburg">
+    <span class="line"></span>
+    <span class="line"></span>
+    <span class="line"></span>
+  </div></div>` );
 
   $("div.mobile-menu").click(function () {
-    console.log($(this));
     if ($(this).hasClass("active")) {
       $(".context-toggles").removeClass("active");
       $(".mobile-menu").removeClass("active");
       $(".resources").removeClass("active");
-      $(".context-menu .hamburg").removeClass("active");
     } else {
       $(".context-toggles").addClass("active");
       $(".mobile-menu").addClass("active");
-      $(".context-menu .hamburg").removeClass("active");
     }
   });
   $("a.context-toggle").click(function () {
     $(".context-toggles").removeClass("active");
     $(".resources").addClass("active");
+  });
+
+  $("div.tablet-menu").click(function () {
+    if ($(this).hasClass("active")) {
+      $(".context-toggles").removeClass("active");
+      $(".tablet-menu").removeClass("active");
+      $(".resources").removeClass("active");
+    } else {
+      $(".context-toggles").addClass("active");
+      $(".tablet-menu").addClass("active");
+    }
+  });
+  $("a.context-toggle").click(function () {
+    $(".context-toggles").removeClass("active");
+    $(".resources").addClass("active");
+    $(".tablet-menu").removeClass("active");
   });
 }
 

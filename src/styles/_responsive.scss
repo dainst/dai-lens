@@ -1,10 +1,99 @@
-.topbar-mobile-menu {
+.mobile-menu, .tablet-menu {
   display: none
 }
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1199px) {
   body.reader #container {
     min-width: auto;
   }
+  .tablet-menu {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 20000;
+    height: $top-bar-height;
+    width: $top-bar-height;
+    background: $primary;
+    .hamburg { 
+      display: block;
+      width: $top-bar-height;
+      height: $top-bar-height;
+      position: relative; 
+      margin-left: auto; margin-right: auto;
+      transition: border-radius .5s;
+    }
+    .line { 
+        position: absolute; 
+        right:16px;
+        height: 4px;
+        width: 40px;
+        background: $white; border-radius: 2px;
+        display: block; 
+        transition: 0.5s; 
+        transform-origin: center; 
+    }
+    
+    .line:nth-child(1) { top: 25px; }
+    .line:nth-child(2) { top: 39px; }
+    .line:nth-child(3) { top: 53px; }
+    
+    &.active .hamburg .line:nth-child(1){
+        transform: translateY(13px) rotate(-45deg);
+    }
+    
+    &.active .hamburg .line:nth-child(2){
+        opacity:0;
+    }
+    
+    &.active .hamburg .line:nth-child(3){
+        transform: translateY(-13px) rotate(45deg);
+    }
+  }
+  .menu-bar {
+    .context-toggles {
+      position: fixed;
+      background-color: $primary-light;
+      width: 47%;
+      padding: 2%;
+      transition: 0.5s;
+      right: -60%;
+      &.active {
+        right:0;
+      }
+      a {
+        width: 100%;
+        font-size: 24px;
+        line-height: 30px;
+        margin-bottom: 24px;
+        margin-top: 0;
+        &.active {
+
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 1199px) and (min-width: 768px) {
+  .menu-bar {
+    .context-toggles {
+      margin-top: 82px;
+    }
+  }
+  .menu-bar .context-toggles a{
+    width: 48%;
+  }
+  
+  .menu-bar .context-toggles:not(.active) a.active {
+    position: fixed;
+    left: calc(53% + 4px);
+    top: 59px;
+    width: auto;
+    font-size: 14px;
+    line-height: 24px;
+    box-shadow: 2px -1px 2px 0px rgba(0, 0, 0, 0.4);
+  }
+}
+@media only screen and (max-width: 767px) {
   .article .document, .topbar {
     width: 100%;
   }
@@ -33,12 +122,28 @@
       margin-top: 0;
     }
   }
+  .menu-bar {
+    height: 0;
+    .context-toggles {
+      width: 60%;
+      height: 100%;
+    }
+  }
+  .article .resources {
+    height:100%;
+    .panel {
+      top:0;
+    }
+  }
+  .tablet-menu {
+    display: none;
+  }
   .mobile-menu {
     display: block;
     position: fixed;
     top: 0;
     right: 0;
-    z-index: 999;
+    z-index: 20000;
     height: $top-bar-mobile-height;
     width: 10%;
     min-width: $top-bar-mobile-height;
@@ -53,8 +158,9 @@
     }
     .line { 
         position: absolute; 
-        left:16px;
-        height: 4px; width: 24px; 
+        right:16px;
+        height: 4px;
+        width: 23px;
         background: $white; border-radius: 2px;
         display: block; 
         transition: 0.5s; 
@@ -77,71 +183,4 @@
         transform: translateY(-9px) rotate(45deg);
     }
   }
-  .context-menu {
-    display: block;
-    height: 30px;
-    width: 30px;
-    .hamburg { 
-      display: block;
-      position: relative; 
-      margin-left: auto; margin-right: auto;
-      transition: border-radius .5s;
-    }
-    .line { 
-        position: absolute; 
-        left:16px;
-        height: 4px; width: 24px; 
-        background: $white; border-radius: 2px;
-        display: block; 
-        transition: 0.5s; 
-        transform-origin: center; 
-    }
-    
-    .line:nth-child(1) { top: 18px; }
-    .line:nth-child(2) { top: 27px; }
-    .line:nth-child(3) { top: 36px; }
-    
-    .hamburg.active .line:nth-child(1){
-        transform: translateY(9px) rotate(-45deg);
-    }
-    
-    .hamburg.active .line:nth-child(2){
-        opacity:0;
-    }
-    
-    .hamburg.active .line:nth-child(3){
-        transform: translateY(-9px) rotate(45deg);
-    }
-  }
-  .menu-bar {
-    height: 0;
-    .context-toggles {
-      position: fixed;
-      height: 100%;
-      background-color: $primary;
-      width: 60%; 
-      transition: 0.5s;
-      right: -60%;
-      &.active {
-        right:0;
-      }
-      a {
-        width: 100%;
-        font-size: 24px;
-        line-height: 30px;
-        margin-bottom: 24px;
-        margin-top: 0;
-        &.active {
-
-        }
-      }
-    }
-  }
-  .article .resources {
-    height:100%;
-    .panel {
-      top:0;
-    }
-  }
-  
 }
