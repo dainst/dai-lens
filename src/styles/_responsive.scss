@@ -60,6 +60,7 @@
       right: -60%;
       &.active {
         right:0;
+        overflow-y: scroll;
       }
       a {
         width: 100%;
@@ -127,11 +128,11 @@
     height: 0;
     .context-toggles {
       width: 60%;
-      height: 100%;
+      height: calc(100% - #{$top-bar-mobile-height});
     }
   }
   .article .resources {
-    height:100%;
+    height: calc(100% - #{$top-bar-mobile-height});
     .panel {
       top:0;
     }
