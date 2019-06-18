@@ -50,6 +50,7 @@
     }
   }
   .menu-bar {
+    overflow: initial;
     .context-toggles {
       position: fixed;
       background-color: $primary-light;
