@@ -23,14 +23,14 @@
       transition: border-radius .5s;
     }
     .line { 
-        position: absolute; 
-        right:16px;
-        height: 4px;
-        width: 40px;
-        background: $white; border-radius: 2px;
-        display: block; 
-        transition: 0.5s; 
-        transform-origin: center; 
+      position: absolute; 
+      right:16px;
+      height: 4px;
+      width: 40px;
+      background: $white; border-radius: 2px;
+      display: block; 
+      transition: 0.5s; 
+      transform-origin: center; 
     }
     
     .line:nth-child(1) { top: 25px; }
@@ -42,11 +42,11 @@
     }
     
     &.active .hamburg .line:nth-child(2){
-        opacity:0;
+      opacity:0;
     }
     
     &.active .hamburg .line:nth-child(3){
-        transform: translateY(-13px) rotate(45deg);
+      transform: translateY(-13px) rotate(45deg);
     }
   }
   .menu-bar {
@@ -157,14 +157,14 @@
       transition: border-radius .5s;
     }
     .line { 
-        position: absolute; 
-        right:16px;
-        height: 4px;
-        width: 23px;
-        background: $white; border-radius: 2px;
-        display: block; 
-        transition: 0.5s; 
-        transform-origin: center; 
+      position: absolute; 
+      right:16px;
+      height: 4px;
+      width: 23px;
+      background: $white; border-radius: 2px;
+      display: block; 
+      transition: 0.5s; 
+      transform-origin: center; 
     }
     
     .line:nth-child(1) { top: 18px; }
@@ -172,15 +172,15 @@
     .line:nth-child(3) { top: 36px; }
     
     &.active .hamburg .line:nth-child(1){
-        transform: translateY(9px) rotate(-45deg);
+      transform: translateY(9px) rotate(-45deg);
     }
     
     &.active .hamburg .line:nth-child(2){
-        opacity:0;
+      opacity:0;
     }
     
     &.active .hamburg .line:nth-child(3){
-        transform: translateY(-9px) rotate(45deg);
+      transform: translateY(-9px) rotate(45deg);
     }
   }
 }
