@@ -5,6 +5,9 @@
   body.reader #container {
     min-width: auto;
   }
+  .lens-article .content-node.cover .title {
+    text-align: left;
+  }
   .tablet-menu {
     display: block;
     position: fixed;
@@ -61,6 +64,12 @@
       &.active {
         right:0;
         overflow-y: scroll;
+        a.active {
+          background: none;
+          color: $gray-light;
+          text-decoration: underline;
+          box-shadow: none;
+        }
       }
       a {
         width: 100%;
@@ -68,9 +77,6 @@
         line-height: 30px;
         margin-bottom: 24px;
         margin-top: 0;
-        &.active {
-
-        }
       }
     }
   }
@@ -87,12 +93,12 @@
   
   .menu-bar .context-toggles:not(.active) a.active {
     position: fixed;
-    left: calc(53% + 4px);
+    left: calc(53% + 16px);
     top: 59px;
     width: auto;
     font-size: 14px;
     line-height: 24px;
-    box-shadow: 2px -1px 2px 0px rgba(0, 0, 0, 0.4);
+    box-shadow: none;
   }
 }
 @media only screen and (max-width: 767px) {
@@ -116,12 +122,21 @@
     &.active {
       left: 0;
       right: 0;
+      .menu-bar .context-toggles:not(.active) a.active {
+        position: fixed;
+        left: 16px;
+        top: 56px;
+        width: auto;
+        font-size: 14px;
+        line-height: 24px;
+        box-shadow: none;
+      }
     }
     .panel {
-      border-top: none;
+      border-top: 24px solid $primary;
     }
     .nodes > .content-node.figure {
-      margin-top: 0;
+      margin-top: 3rem;
     }
   }
   .menu-bar {
@@ -132,7 +147,7 @@
     }
   }
   .article .resources {
-    height: calc(100% - #{$top-bar-mobile-height});
+    height: 100%;
     .panel {
       top:0;
     }
