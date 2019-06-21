@@ -178,6 +178,48 @@ DaiConverter.Prototype = function() {
       if (pubDateDayEl) pubDate['day'] = pubDateDayEl.textContent;
     }
 
+    var customArticleContributions = [];
+    var contribGroups = state.xmlDoc.querySelectorAll("article-meta contrib-group");
+    if (contribGroups) {
+      _.each(contribGroups, (contribGroup) => {
+        var contribs = contribGroup.querySelectorAll('contrib')
+        _.each(contribs, (contrib) => {
+          var customArticleContribution = {}
+          var type = contrib.getAttribute('contrib-type');
+          if (type) customArticleContribution['type'] = type
+          var nameEl = contrib.querySelector('name')
+          var addressEl = contrib.querySelector('address')
+          if (nameEl){
+            let surnameEl  = nameEl.querySelector('surname')
+            let givenNamesEl  = nameEl.querySelector('given-names')
+            let prefixEl  = nameEl.querySelector('prefix')
+            customArticleContribution['name'] = {
+              surname: surnameEl ? surnameEl.textContent : '',
+              givenNames: givenNamesEl ? givenNamesEl.textContent : '',
+              prefix: prefixEl ? prefixEl.textContent : '',
+            };
+          }
+          if (addressEl){
+            let labelEl  = addressEl.querySelector('label')
+            let addrLineEl  = addressEl.querySelector('addr-line')
+            let cityEl  = addressEl.querySelector('city')
+            let countryEl  = addressEl.querySelector('country')
+            let emailEl  = addressEl.querySelector('email')
+            customArticleContribution['address'] = {
+              label: labelEl ? labelEl.textContent : '',
+              addrLine: addrLineEl ? addrLineEl.textContent : '',
+              city: cityEl ? cityEl.textContent : '',
+              country: countryEl ? countryEl.textContent : '',
+              email: emailEl ? emailEl.textContent : '',
+            };
+          }
+          customArticleContributions.push(customArticleContribution)
+        }, this)
+        this.contribGroup(state, contribGroup);
+      }, this)
+      
+    }
+
 
 
     var poster = state.xmlDoc.querySelector("fig#poster-image");
@@ -260,6 +302,7 @@ DaiConverter.Prototype = function() {
     publicationInfo.articleTitle = articleTitle.textContent;
     publicationInfo.customMeta = customMeta;
     publicationInfo.customPubDate = pubDate
+    publicationInfo.customArticleContributions = customArticleContributions
     publicationInfo.poster = poster;
     publicationInfo.journalId = journalId.textContent;
     publicationInfo.articleId = articleId;
@@ -672,7 +715,7 @@ DaiConverter.Prototype = function() {
 
 
     doc.create(contribNode);
-    doc.show("info", contribNode.id);
+    // doc.show("info", contribNode.id);
   };
 
   this.extractCustomMetaGroup = function(state, article) {

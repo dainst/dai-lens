@@ -167,6 +167,55 @@ PublicationInfoView.Prototype = function() {
       metaData.appendChild(issueEl);
     }
 
+    // article-authors
+    if (this.node.customArticleContributions && this.node.customArticleContributions.length > 0) {
+      this.node.customArticleContributions.forEach(contributor => {
+        if (contributor.type === 'author'){
+          var authors = $$('.authors');
+          var authorsHeaderEl = $$('.metadata-title', {
+            html: `<span class="metadata-title-text">Authors</span>`
+          });
+          authors.appendChild(authorsHeaderEl);
+          if (contributor.name) {
+            var authorNameEl = $$('.metadata-text-container', {
+              html: `<span class="metadata-text">${contributor.name.prefix} ${contributor.name.givenNames} ${contributor.name.surname}</span>`
+            });
+            authors.appendChild(authorNameEl);
+          }
+          if (contributor.address) {
+            if (contributor.address.addrLine){
+              var addressLineEl = $$('.metadata-text-container', {
+                html: `<span class="metadata-text">${contributor.address.addrLine}</span>`
+              });
+              authors.appendChild(addressLineEl);
+            }
+            if (contributor.address.city){
+              var addressCityEl = $$('.metadata-text-container', {
+                html: `<span class="metadata-text">${contributor.address.city}</span>`
+              });
+              authors.appendChild(addressCityEl);
+            }
+            if (contributor.address.country){
+              var addressCountryEl = $$('.metadata-text-container', {
+                html: `<span class="metadata-text">${contributor.address.country}</span>`
+              });
+              authors.appendChild(addressCountryEl);
+            }
+            if (contributor.address.email){
+              var addressEmailEl = $$('.metadata-text-container', {
+                html: `<span class="metadata-text">${contributor.address.email}</span>`
+              });
+              authors.appendChild(addressEmailEl);
+            }
+          
+          }
+          metaData.appendChild(authors);
+
+        }
+      })
+      
+    }
+
 
 
     if (this.node.publisherName) {
