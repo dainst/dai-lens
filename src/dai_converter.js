@@ -155,6 +155,7 @@ DaiConverter.Prototype = function() {
 
   this.enhancePublicationInfo = function(state, pubInfo) {
     var volume = state.xmlDoc.querySelector("volume");
+    var articleTitle = state.xmlDoc.querySelector("article-title");
     var subtitle = state.xmlDoc.querySelector("subtitle");
     var poster = state.xmlDoc.querySelector("fig#poster-image");
     var journalId = state.xmlDoc.querySelector("journal-id");
@@ -232,7 +233,8 @@ DaiConverter.Prototype = function() {
 
     var publicationInfo = state.doc.get('publication_info');
     publicationInfo.volume = volume;
-    publicationInfo.subtitle = subtitle;
+    publicationInfo.subtitle = subtitle.textContent;
+    publicationInfo.articleTitle = articleTitle.textContent;
     publicationInfo.poster = poster;
     publicationInfo.journalId = journalId.textContent;
     publicationInfo.articleId = articleId;
