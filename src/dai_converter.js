@@ -157,6 +157,29 @@ DaiConverter.Prototype = function() {
     var volume = state.xmlDoc.querySelector("volume");
     var articleTitle = state.xmlDoc.querySelector("article-title");
     var subtitle = state.xmlDoc.querySelector("subtitle");
+    var customMeta = {}
+    var customMetaEls = state.xmlDoc.querySelectorAll('article-meta custom-meta');
+    for (var i = 0; i < customMetaEls.length; i++) {
+      var customMetaEl = customMetaEls[i];
+      var metaNameEl = customMetaEl.querySelector('meta-name');
+      var metaValueEl = customMetaEl.querySelector('meta-value');
+      if (metaNameEl && metaValueEl){
+        customMeta[metaNameEl.textContent] = metaValueEl.textContent;
+      }
+    }
+    var pubDate = {};
+    var pubDateEl = state.xmlDoc.querySelector("pub-date");
+    if (pubDateEl) {
+      var pubDateYearEl = pubDateEl.querySelector("year");
+      if (pubDateYearEl) pubDate['year'] = pubDateYearEl.textContent;
+      var pubDateMonthEl = pubDateEl.querySelector("month");
+      if (pubDateMonthEl) pubDate['month'] = pubDateMonthEl.textContent;
+      var pubDateDayEl = pubDateEl.querySelector("day");
+      if (pubDateDayEl) pubDate['day'] = pubDateDayEl.textContent;
+    }
+
+
+
     var poster = state.xmlDoc.querySelector("fig#poster-image");
     var journalId = state.xmlDoc.querySelector("journal-id");
     var articleIdElem = state.xmlDoc.querySelector("article-id");
@@ -235,6 +258,8 @@ DaiConverter.Prototype = function() {
     publicationInfo.volume = volume;
     publicationInfo.subtitle = subtitle.textContent;
     publicationInfo.articleTitle = articleTitle.textContent;
+    publicationInfo.customMeta = customMeta;
+    publicationInfo.customPubDate = pubDate
     publicationInfo.poster = poster;
     publicationInfo.journalId = journalId.textContent;
     publicationInfo.articleId = articleId;

@@ -151,6 +151,24 @@ PublicationInfoView.Prototype = function() {
       });
       metaData.appendChild(subtitleEl);
     }
+    // article-issue
+    if (this.node.customPubDate && this.node.issue && this.node.journalId) {
+      var issueEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">Issue: ${this.node.journalId} ${this.node.customPubDate.year}/${this.node.issue}</span>`
+      });
+      metaData.appendChild(issueEl);
+    }
+
+    // article-issue-summary
+    if (this.node.customMeta && this.node.customMeta['issue-summary']) {
+      var issueEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.customMeta['issue-summary']}</span>`
+      });
+      metaData.appendChild(issueEl);
+    }
+
+
+
     if (this.node.publisherName) {
       var publisherNameEl = $$('.publisherName.container', {
         children: [
@@ -257,15 +275,6 @@ PublicationInfoView.Prototype = function() {
         });
         metaData.appendChild(selfUrisEl);
       })
-    }
-    if (this.node.issue) {
-      var issueEl = $$('.issue.container', {
-        children: [
-          $$('div.label', {text: "Issue"}),
-          $$('div.value', {text: this.node.issue})
-        ]
-      });
-      metaData.appendChild(issueEl);
     }
 
     var historyEl = this.describePublicationHistory();
