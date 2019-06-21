@@ -34,6 +34,99 @@ PublicationInfoView.Prototype = function() {
 
     var metaData = $$('.meta-data');
 
+    // All sections commented are part of the lens native implementation. Uncomment to show them in the Metadata Panel
+
+
+    // // Article Type
+    // //
+
+    // if (this.node.article_type) {
+    //   var articleTypeEl = $$('.article-type.container', {
+    //     children: [
+    //       $$('div.label', {text: "Article Type"}),
+    //       $$('div.value', {
+    //         text: this.node.article_type
+    //       })
+    //     ]
+    //   });
+    //   metaData.appendChild(articleTypeEl);
+    // }
+
+    // // Subject
+    // //
+
+    // if (this.node.subjects && this.node.subjects.length > 0) {
+    //   var subjectEl = $$('.subject.container', {
+    //     children: [
+    //       $$('div.label', {text: "Subject"}),
+    //       $$('div.value', {
+    //         text: this.node.subjects.join(', ')
+    //       })
+    //     ]
+    //   });
+    //   metaData.appendChild(subjectEl);
+    // }
+
+    // // Organisms
+    // //
+
+    // if (this.node.research_organisms && this.node.research_organisms.length > 0) {
+    //   var organismsEl = $$('.subject.container', {
+    //     children: [
+    //       $$('div.label', {text: "Organism"}),
+    //       $$('div.value', {
+    //         text: this.node.research_organisms.join(', ')
+    //       })
+    //     ]
+    //   });
+    //   metaData.appendChild(organismsEl);
+    // }
+
+    // // Keywords
+    // //
+
+    // if (this.node.keywords && this.node.keywords.length > 0) {
+    //   var keywordsEl = $$('.keywords.container', {
+    //     children: [
+    //       $$('div.label', {text: "Keywords"}),
+    //       $$('div.value', {
+    //         text: this.node.keywords.join(', ')
+    //       })
+    //     ]
+    //   });
+    //   metaData.appendChild(keywordsEl);
+    // }
+
+    // // DOI
+    // //
+
+    // if (this.node.doi) {
+    //   var doiEl = $$('.doi.container', {
+    //     children: [
+    //       $$('div.label', {text: "DOI"}),
+    //       $$('div.value', {
+    //         children: [$$('a', {href: "http://dx.doi.org/"+this.node.doi, text: this.node.doi, target: '_blank'})]
+    //       })
+    //     ]
+    //   });
+    //   metaData.appendChild(doiEl);
+    // }
+
+    // // Related Article
+    // //
+
+    // if (this.node.related_article) {
+    //   var relatedArticleEl = $$('.related-article.container', {
+    //     children: [
+    //       $$('div.label', {text: "Related Article"}),
+    //       $$('div.value', {
+    //         children: [$$('a', {href: this.node.related_article, text: this.node.related_article})]
+    //       })
+    //     ]
+    //   });
+    //   metaData.appendChild(relatedArticleEl);
+    // }
+
     /** 
      * custom overriding to add publication info to metadata panel for DAI
      * */ 
@@ -44,97 +137,6 @@ PublicationInfoView.Prototype = function() {
     });
     metaData.appendChild(articleMetaHeaderEl);
 
-    // Article Type
-    //
-
-    if (this.node.article_type) {
-      var articleTypeEl = $$('.article-type.container', {
-        children: [
-          $$('div.label', {text: "Article Type"}),
-          $$('div.value', {
-            text: this.node.article_type
-          })
-        ]
-      });
-      metaData.appendChild(articleTypeEl);
-    }
-
-    // Subject
-    //
-
-    if (this.node.subjects && this.node.subjects.length > 0) {
-      var subjectEl = $$('.subject.container', {
-        children: [
-          $$('div.label', {text: "Subject"}),
-          $$('div.value', {
-            text: this.node.subjects.join(', ')
-          })
-        ]
-      });
-      metaData.appendChild(subjectEl);
-    }
-
-    // Organisms
-    //
-
-    if (this.node.research_organisms && this.node.research_organisms.length > 0) {
-      var organismsEl = $$('.subject.container', {
-        children: [
-          $$('div.label', {text: "Organism"}),
-          $$('div.value', {
-            text: this.node.research_organisms.join(', ')
-          })
-        ]
-      });
-      metaData.appendChild(organismsEl);
-    }
-
-    // Keywords
-    //
-
-    if (this.node.keywords && this.node.keywords.length > 0) {
-      var keywordsEl = $$('.keywords.container', {
-        children: [
-          $$('div.label', {text: "Keywords"}),
-          $$('div.value', {
-            text: this.node.keywords.join(', ')
-          })
-        ]
-      });
-      metaData.appendChild(keywordsEl);
-    }
-
-    // DOI
-    //
-
-    if (this.node.doi) {
-      var doiEl = $$('.doi.container', {
-        children: [
-          $$('div.label', {text: "DOI"}),
-          $$('div.value', {
-            children: [$$('a', {href: "http://dx.doi.org/"+this.node.doi, text: this.node.doi, target: '_blank'})]
-          })
-        ]
-      });
-      metaData.appendChild(doiEl);
-    }
-
-    // Related Article
-    //
-
-    if (this.node.related_article) {
-      var relatedArticleEl = $$('.related-article.container', {
-        children: [
-          $$('div.label', {text: "Related Article"}),
-          $$('div.value', {
-            children: [$$('a', {href: this.node.related_article, text: this.node.related_article})]
-          })
-        ]
-      });
-      metaData.appendChild(relatedArticleEl);
-    }
-
-    // custom overriding to add publication info to metadata panel
     if (this.node.publisherName) {
       var publisherNameEl = $$('.publisherName.container', {
         children: [
