@@ -137,6 +137,20 @@ PublicationInfoView.Prototype = function() {
     });
     metaData.appendChild(articleMetaHeaderEl);
 
+    // article-title
+    if (this.node.articleTitle) {
+      var articleTitleEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.articleTitle}</span>`
+      });
+      metaData.appendChild(articleTitleEl);
+    }
+    // article-subtite
+    if (this.node.subtitle) {
+      var subtitleEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.subtitle}</span>`
+      });
+      metaData.appendChild(subtitleEl);
+    }
     if (this.node.publisherName) {
       var publisherNameEl = $$('.publisherName.container', {
         children: [
