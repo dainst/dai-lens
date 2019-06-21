@@ -34,6 +34,15 @@ PublicationInfoView.Prototype = function() {
 
     var metaData = $$('.meta-data');
 
+    /** 
+     * custom overriding to add publication info to metadata panel for DAI
+     * */ 
+
+    // article-meta heading
+    var articleMetaHeaderEl = $$('.metadata-header', {
+      html: '<span class="metadata-header-text">Article Metadata</span>'
+    });
+    metaData.appendChild(articleMetaHeaderEl);
 
     // Article Type
     //
