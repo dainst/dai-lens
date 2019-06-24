@@ -336,6 +336,7 @@ PublicationInfoView.Prototype = function() {
     var journalMetaHeaderEl = $$('.metadata-header', {
       html: '<span class="metadata-header-text">Journal Metadata</span>'
     });
+
     // journal
     metaData.appendChild(journalMetaHeaderEl);
     if (this.node.properties && this.node.properties.journal){
@@ -351,6 +352,46 @@ PublicationInfoView.Prototype = function() {
       });
       metaData.appendChild(historyEl);
     }
+    metaData.appendChild($$('br'));
+
+    // journal info
+    var journalInfo = $$('journal-info')
+    if (this.node.journalEditors) {
+      var editors = ''
+      this.node.journalEditors.forEach(editor => {
+        editors += `${editor.surname} ${editor.givenNames}, `
+      })
+      var editorsEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${editors}</span>`
+      });
+      journalInfo.appendChild(editorsEl);
+    }
+    if (this.node.publisherName) {
+      var publisherNameEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.publisherName}</span>`
+      });
+      journalInfo.appendChild(publisherNameEl);
+    }
+    if (this.node.publisherLoc) {
+      var publisherLocAddrEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.publisherLoc.address}</span>`
+      });
+      journalInfo.appendChild(publisherLocAddrEl);
+      var publisherLocCityEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.publisherLoc.city}</span>`
+      });
+      journalInfo.appendChild(publisherLocCityEl);
+      var publisherLocCountryEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.publisherLoc.country}</span>`
+      });
+      journalInfo.appendChild(publisherLocCountryEl);
+      var publisherLocLinkEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.publisherLoc.link}</span>`
+      });
+      journalInfo.appendChild(publisherLocLinkEl);
+    }
+    metaData.appendChild(journalInfo);
+    metaData.appendChild($$('br'));
 
 
 

@@ -362,6 +362,15 @@ DaiConverter.Prototype = function() {
       }
     }
 
+    var journalEditors = [];
+    var journalEditorsEls =  state.xmlDoc.querySelectorAll('contrib[contrib-type="Editor"]');
+    if (journalEditorsEls) {
+      journalEditorsEls.forEach(editorEl => {
+        let surnameEl  = editorEl.querySelector('surname')
+        let givenNamesEl  = editorEl.querySelector('given-names')
+        journalEditors.push({surname: surnameEl.textContent, givenNames: givenNamesEl.textContent })
+      })
+    }
     var publicationInfo = state.doc.get('publication_info');
     publicationInfo.volume = volume;
     publicationInfo.subtitle = subtitle.textContent;
@@ -382,6 +391,8 @@ DaiConverter.Prototype = function() {
     publicationInfo.issue = issue ? issue.textContent : '';
     publicationInfo.customKeywords = keywords;
     publicationInfo.journalCustomMeta = journalCustomMeta;
+    publicationInfo.journalEditors = journalEditors;
+    
 
     pubInfo.enhancedInfo = publicationInfo;
 
