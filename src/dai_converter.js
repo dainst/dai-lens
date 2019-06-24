@@ -316,6 +316,7 @@ DaiConverter.Prototype = function() {
         type: isbnelem.tagName,
         text: isbnelem.textContent
       })
+      permissions[isbnelem.getAttribute('publication-format')]['isbn'] = isbnelem.textContent;
     })
 
     var selfUriElements = state.xmlDoc.querySelectorAll("self-uri");

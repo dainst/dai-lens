@@ -292,6 +292,54 @@ PublicationInfoView.Prototype = function() {
     }
     metaData.appendChild(digitalEdition);
 
+    // article-print-edition
+    var printEdition = $$('print-edition')
+    var deHeaderEl = $$('.metadata-title', {
+      html: `<span class="metadata-title-text">Print edition</span>`
+    });
+    printEdition.appendChild(deHeaderEl);
+    if (this.node.customPermissions && this.node.customPermissions.print){
+      var statementEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.customPermissions.print.statement}</span>`
+      });
+      printEdition.appendChild(statementEl);
+      var holderEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.customPermissions.print.holder}</span>`
+      });
+      printEdition.appendChild(holderEl);
+
+      var issnEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">P-ISSN: ${this.node.customPermissions.print.issn}  ISBN: ${this.node.customPermissions.print.isbn}</span>`
+      });
+      printEdition.appendChild(issnEl);
+
+      printEdition.appendChild($$('br'));
+
+      if (this.node.customPermissions.print.license){
+        var licenseEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${this.node.customPermissions.print.license}</span>`
+        });
+        printEdition.appendChild(licenseEl);
+      }
+      printEdition.appendChild($$('br'));
+      var urlEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text"> For the print issueclick here ????????????????????</span>`
+      });
+      printEdition.appendChild(urlEl);
+      printEdition.appendChild($$('br'));
+      printEdition.appendChild($$('br'));
+    }
+    metaData.appendChild(printEdition);
+
+
+    // journal-meta heading
+    var journalMetaHeaderEl = $$('.metadata-header', {
+      html: '<span class="metadata-header-text">Journal Metadata</span>'
+    });
+    metaData.appendChild(journalMetaHeaderEl);
+
+
+
 
 
 
