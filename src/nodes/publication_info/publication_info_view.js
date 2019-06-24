@@ -336,7 +336,21 @@ PublicationInfoView.Prototype = function() {
     var journalMetaHeaderEl = $$('.metadata-header', {
       html: '<span class="metadata-header-text">Journal Metadata</span>'
     });
+    // journal
     metaData.appendChild(journalMetaHeaderEl);
+    if (this.node.properties && this.node.properties.journal){
+      var journalEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.properties.journal}</span>`
+      });
+      metaData.appendChild(journalEl);
+    }
+    // journal history
+     if (this.node.journalCustomMeta && this.node.journalCustomMeta['publishing-history']) {
+      var historyEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.journalCustomMeta['publishing-history']}</span>`
+      });
+      metaData.appendChild(historyEl);
+    }
 
 
 
