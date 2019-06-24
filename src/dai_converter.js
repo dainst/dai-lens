@@ -371,6 +371,21 @@ DaiConverter.Prototype = function() {
         journalEditors.push({surname: surnameEl.textContent, givenNames: givenNamesEl.textContent })
       })
     }
+
+    var journalCoEditors = {role: '', list: []};
+    var journalCoEditorGroupEl =  state.xmlDoc.querySelector('contrib-group[content-type="Mitherausgeber/Co-Editors"]');
+    if (journalCoEditorGroupEl) {
+      let roleEl = journalCoEditorGroupEl.querySelector('role');
+      if (roleEl) journalCoEditors.role = roleEl.textContent;
+    }
+    var journalCoEditorsEls = state.xmlDoc.querySelectorAll('contrib[contrib-type="Co-Editor"]');
+    journalCoEditorsEls.forEach(coEditor => {
+      let surnameEl  = coEditor.querySelector('surname')
+      let givenNamesEl  = coEditor.querySelector('given-names')
+      let cityEl  = coEditor.querySelector('city')
+      journalCoEditors.list.push(`${givenNamesEl.textContent} ${surnameEl.textContent} (${cityEl.textContent})`)
+    })
+    journalCoEditors.joinedList = journalCoEditors.list.join(', ')
     var publicationInfo = state.doc.get('publication_info');
     publicationInfo.volume = volume;
     publicationInfo.subtitle = subtitle.textContent;
@@ -392,6 +407,7 @@ DaiConverter.Prototype = function() {
     publicationInfo.customKeywords = keywords;
     publicationInfo.journalCustomMeta = journalCustomMeta;
     publicationInfo.journalEditors = journalEditors;
+    publicationInfo.journalCoEditors = journalCoEditors;
     
 
     pubInfo.enhancedInfo = publicationInfo;

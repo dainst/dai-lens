@@ -356,7 +356,12 @@ PublicationInfoView.Prototype = function() {
 
     // journal info
     var journalInfo = $$('journal-info')
+    
     if (this.node.journalEditors) {
+      var titleEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">Publisher/Editors</span>`
+      });
+      journalInfo.appendChild(titleEl);
       var editors = ''
       this.node.journalEditors.forEach(editor => {
         editors += `${editor.surname} ${editor.givenNames}, `
@@ -392,6 +397,31 @@ PublicationInfoView.Prototype = function() {
     }
     metaData.appendChild(journalInfo);
     metaData.appendChild($$('br'));
+
+    // co-editors
+    if (this.node.journalCoEditors){
+      var coEditorsEl = $$('co-editors')
+      var coHeaderEl = $$('.metadata-title', {
+        html: `<span class="metadata-title-text">Co-Editors</span>`
+      });
+      coEditorsEl.appendChild(coHeaderEl);
+
+      var roleEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.journalCoEditors.role}</span>`
+      });
+      coEditorsEl.appendChild(roleEl);
+
+      var listEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.journalCoEditors.joinedList}</span>`
+      });
+      coEditorsEl.appendChild(listEl);
+
+      metaData.appendChild(coEditorsEl);
+    }
+    
+
+
+
 
 
 
