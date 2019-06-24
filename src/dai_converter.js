@@ -220,6 +220,56 @@ DaiConverter.Prototype = function() {
       
     }
 
+    // var digitalEdition = {};
+    // digitalEdition.title = 'Digital edition'
+
+    // var printEdition = {};
+    // digitalEdition.title = 'Digital edition'
+    var permissions = {online: {}, print: {}};
+    var permissionsEl = state.xmlDoc.querySelector("article-meta permissions")
+    if (permissionsEl) {
+      var statementElements = permissionsEl.querySelectorAll('copyright-statement');
+      if (statementElements){
+        statementElements.forEach(statementEl => {
+          let type = statementEl.getAttribute('content-type');
+          if (type) {
+              permissions[type]['statement'] = statementEl.textContent
+          }
+        })
+      }
+      var holderElements = permissionsEl.querySelectorAll('copyright-holder');
+      if (holderElements){
+        holderElements.forEach(holderEl => {
+          let type = holderEl.getAttribute('content-type');
+          if (type) {
+              permissions[type]['holder'] = holderEl.textContent
+          }
+        })
+      }
+      var licenseElements = permissionsEl.querySelectorAll('license');
+      if (licenseElements){
+        licenseElements.forEach(licenseEl => {
+          let type = licenseEl.getAttribute('license-type');
+          if (type === 'print') {
+            permissions[type]['license'] = licenseEl.textContent
+          }
+          if (type === 'online'){
+            let onlineLicense = {};
+            onlineLicense.href = licenseEl.getAttribute('xlink:href')
+            let copyrightEl = licenseEl.querySelector('license-p[content-type="copyright"]')
+            let termsEl = licenseEl.querySelector('license-p[content-type="terms-of-use"]')
+            if (copyrightEl){
+              onlineLicense.copyright = copyrightEl.textContent
+            }
+            if (termsEl){
+              onlineLicense.terms = termsEl.textContent
+            }
+            permissions[type]['license'] = onlineLicense;
+          }
+        })
+      }
+    }
+
 
 
     var poster = state.xmlDoc.querySelector("fig#poster-image");
@@ -255,6 +305,8 @@ DaiConverter.Prototype = function() {
         type: issnelem.tagName,
         text: issnelem.textContent
       })
+      permissions[issnelem.getAttribute('publication-format')]['issn'] = issnelem.textContent;
+
     })
     var isbns = [];
 
@@ -268,12 +320,14 @@ DaiConverter.Prototype = function() {
 
     var selfUriElements = state.xmlDoc.querySelectorAll("self-uri");
     var selfUris = [];
+    var selfUrisObj = {};
 
     selfUriElements.forEach(selfUriElem => {
       selfUris.push({
         type: selfUriElem.getAttribute('content-type'),
         link: selfUriElem.textContent
       })
+      selfUrisObj[selfUriElem.getAttribute('content-type')] = selfUriElem.textContent
     })
 
     var issue = state.xmlDoc.querySelector("issue");
@@ -303,6 +357,7 @@ DaiConverter.Prototype = function() {
     publicationInfo.customMeta = customMeta;
     publicationInfo.customPubDate = pubDate
     publicationInfo.customArticleContributions = customArticleContributions
+    publicationInfo.customPermissions = permissions
     publicationInfo.poster = poster;
     publicationInfo.journalId = journalId.textContent;
     publicationInfo.articleId = articleId;
@@ -311,6 +366,7 @@ DaiConverter.Prototype = function() {
     publicationInfo.issns = issns;
     publicationInfo.isbns = isbns;
     publicationInfo.selfUris = selfUris;
+    publicationInfo.selfUrisObj = selfUrisObj;
     publicationInfo.issue = issue ? issue.textContent : '';
     publicationInfo.customKeywords = keywords;
 

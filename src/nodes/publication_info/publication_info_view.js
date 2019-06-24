@@ -213,8 +213,85 @@ PublicationInfoView.Prototype = function() {
 
         }
       })
-      
     }
+
+    // article-digital-edition
+    var digitalEdition = $$('digital-edition')
+    var deHeaderEl = $$('.metadata-title', {
+      html: `<span class="metadata-title-text">Digital edition</span>`
+    });
+    digitalEdition.appendChild(deHeaderEl);
+    if (this.node.customPermissions && this.node.customPermissions.online){
+      var statementEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.customPermissions.online.statement}</span>`
+      });
+      digitalEdition.appendChild(statementEl);
+
+      var issnEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">E-ISSN: ${this.node.customPermissions.online.issn}</span>`
+      });
+      digitalEdition.appendChild(issnEl);
+
+      if (this.node.selfUrisObj && this.node.selfUrisObj['lens-url']){
+        var urlEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">URL: ${this.node.selfUrisObj['lens-url']}</span>`
+        });
+        digitalEdition.appendChild(urlEl);
+      }
+      digitalEdition.appendChild($$('br'))
+      if (this.node.customPermissions.online.license){
+        var copyrightEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${this.node.customPermissions.online.license.copyright}</span>`
+        });
+        digitalEdition.appendChild(copyrightEl);
+      }
+      var publishedEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">Online Published On: ????????????????????</span>`
+      });
+      digitalEdition.appendChild(publishedEl);
+
+      if (this.node.customMeta && this.node.customMeta['citation-guideline']) {
+        var citGuideEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${this.node.customMeta['citation-guideline']}</span>`
+        });
+        digitalEdition.appendChild(citGuideEl);
+      }
+      digitalEdition.appendChild($$('br'));
+      if (this.node.selfUrisObj && this.node.selfUrisObj['pdf-url']){
+        var urlEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">URN(PDF): ${this.node.selfUrisObj['pdf-url']}</span>`
+        });
+        digitalEdition.appendChild(urlEl);
+        var urlEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">URL(Viewer): ????????????????????</span>`
+        });
+        digitalEdition.appendChild(urlEl);
+      }
+      digitalEdition.appendChild($$('br'));
+      if (this.node.customKeywords && this.node.customKeywords.length) {
+        this.node.customKeywords.forEach(keyword => {
+          var words = keyword.keys.join(', ')
+          var keywordEl = $$('.metadata-text-container', {
+            html: `<span class="metadata-text">${keyword.title}: ${words}</span>`
+          });
+          digitalEdition.appendChild(keywordEl);
+        })
+      }
+      if (this.node.customMeta && this.node.customMeta['issue-bibliography']) {
+        var issueBibEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${this.node.customMeta['issue-bibliography']}</span>`
+        });
+        digitalEdition.appendChild(issueBibEl);
+      }
+      if (this.node.customPermissions.online.license){
+        var termsEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${this.node.customPermissions.online.license.terms}</span>`
+        });
+        digitalEdition.appendChild(termsEl);
+      }
+    }
+    metaData.appendChild(digitalEdition);
+
 
 
 
