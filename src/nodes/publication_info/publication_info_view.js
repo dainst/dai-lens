@@ -245,10 +245,13 @@ PublicationInfoView.Prototype = function() {
         });
         digitalEdition.appendChild(copyrightEl);
       }
-      var publishedEl = $$('.metadata-text-container', {
-        html: `<span class="metadata-text">Online Published On: ????????????????????</span>`
-      });
-      digitalEdition.appendChild(publishedEl);
+      if (this.node.customPubDate){
+        var publishedEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">Online Published On: ${this.node.customPubDate.day}.${this.node.customPubDate.month}.${this.node.customPubDate.year}</span>`
+        });
+        digitalEdition.appendChild(publishedEl);
+      }
+      
 
       if (this.node.customMeta && this.node.customMeta['citation-guideline']) {
         var citGuideEl = $$('.metadata-text-container', {
@@ -263,7 +266,7 @@ PublicationInfoView.Prototype = function() {
         });
         digitalEdition.appendChild(urlEl);
         var urlEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">URL(Viewer): ????????????????????</span>`
+          html: `<span class="metadata-text">URL(Viewer): ${this.node.selfUrisObj['lens-url']}</span>`
         });
         digitalEdition.appendChild(urlEl);
       }
@@ -322,10 +325,10 @@ PublicationInfoView.Prototype = function() {
         printEdition.appendChild(licenseEl);
       }
       printEdition.appendChild($$('br'));
-      var urlEl = $$('.metadata-text-container', {
-        html: `<span class="metadata-text"> For the print issueclick here ????????????????????</span>`
+      var podOrderEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text"> <a class="metadata-link" href="${this.node.customMeta['pod_order_link']}">${this.node.customMeta['pod-order']}</a></span>`
       });
-      printEdition.appendChild(urlEl);
+      printEdition.appendChild(podOrderEl);
       printEdition.appendChild($$('br'));
       printEdition.appendChild($$('br'));
     }

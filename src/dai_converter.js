@@ -167,6 +167,11 @@ DaiConverter.Prototype = function() {
         customMeta[metaNameEl.textContent] = metaValueEl.textContent;
       }
     }
+    var podOrderLink = state.xmlDoc.querySelector('ext-link[ext-link-type="pod-order"]')
+    if (podOrderLink) {
+      customMeta['pod_order_link'] = podOrderLink.getAttribute('xlink:href')
+    }
+
     var pubDate = {};
     var pubDateEl = state.xmlDoc.querySelector("pub-date");
     if (pubDateEl) {
