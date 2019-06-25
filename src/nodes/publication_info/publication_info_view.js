@@ -234,7 +234,7 @@ PublicationInfoView.Prototype = function() {
 
       if (this.node.selfUrisObj && this.node.selfUrisObj['lens-url']){
         var urlEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">URL: ${this.node.selfUrisObj['lens-url']}</span>`
+          html: `<span class="metadata-text">URL: ???????${this.node.selfUrisObj['lens-url']}</span>`
         });
         digitalEdition.appendChild(urlEl);
       }
