@@ -477,140 +477,57 @@ PublicationInfoView.Prototype = function() {
       metaData.appendChild(peerReviewText);
     }
 
-    
 
+    // editing-typesetting
+    var editingEl = $$('editing-typesetting')
+    var editingHeaderEl = $$('.metadata-title', {
+      html: `<span class="metadata-title-text">Editing and Typesetting</span>`
+    });
+    editingEl.appendChild(editingHeaderEl);
 
-
-
-
-
-
-
-
-    if (this.node.publisherName) {
-      var publisherNameEl = $$('.publisherName.container', {
-        children: [
-          $$('div.label', {text: "Publisher Name"}),
-          $$('div.value', {text: this.node.publisherName})
-        ]
+    if (this.node.journalCustomMeta && this.node.journalCustomMeta['editing-notice-publishing-editor']) {
+      var publishingEditor = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.journalCustomMeta['editing-notice-publishing-editor']}</span>`
       });
-      metaData.appendChild(publisherNameEl);
+      editingEl.appendChild(publishingEditor);
     }
 
-    if (this.node.publisherLoc) {
-      var publisherLocEl = $$('.publisherLoc.container', {
-        children: [
-          $$('div.label', {text: "Publisher Location"}),
-          $$('div.value', {
-            children: [
-              $$('.publisher-address', {text: `${this.node.publisherLoc.address}`}),
-              $$('.publisher-city', {text: `${this.node.publisherLoc.city}`}),
-              $$('.publisher-country', {text: `${this.node.publisherLoc.country}`}),
-              $$('.publisher-link', {
-                children: [
-                  $$('a', {
-                    href: this.node.publisherLoc.link,
-                    target: "_new",
-                    text: this.node.publisherLoc.link
-                  })
-                ]
-              })
-            ]
-          })
-        ]
+    if (this.node.journalCustomMeta && this.node.journalCustomMeta['editing-notice-article-submissions']) {
+      var articleSubmissions = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.journalCustomMeta['editing-notice-article-submissions']}</span>`
       });
-      metaData.appendChild(publisherLocEl);
+      editingEl.appendChild(articleSubmissions);
     }
 
-    if (this.node.journalId) {
-      var journalIdEl = $$('.journalId.container', {
-        children: [
-          $$('div.label', {text: "Journal Id"}),
-          $$('div.value', {text: this.node.journalId})
-        ]
+    if (this.node.journalCustomMeta && this.node.journalCustomMeta['editing-notice-editing']) {
+      var editing = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.journalCustomMeta['editing-notice-editing']}</span>`
       });
-      metaData.appendChild(journalIdEl);
+      editingEl.appendChild(editing);
     }
 
-    if (this.node.articleId) {
-      var articleIdEl = $$('.articleId.container', {
-        children: [
-          $$('div.label', {text: "Article Id"}),
-          $$('div.value', {text: `${this.node.articleId.type} ${this.node.articleId.text}`})
-        ]
+    if (this.node.journalCustomMeta && this.node.journalCustomMeta['editing-notice-typesetting']) {
+      var editingTypesetting = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.journalCustomMeta['editing-notice-typesetting']}</span>`
       });
-      metaData.appendChild(articleIdEl);
+      editingEl.appendChild(editingTypesetting);
     }
-    
 
-    if (this.node.journal) {
-      var journalNameEl = $$('.journalName.container', {
-        children: [
-          $$('div.label', {text: "Journal Name"}),
-          $$('div.value', {text: this.node.journal})
-        ]
+    if (this.node.journalCustomMeta && this.node.journalCustomMeta['editing-notice-layout']) {
+      var editingTypesetting = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.journalCustomMeta['editing-notice-layout']}</span>`
       });
-      metaData.appendChild(journalNameEl);
+      editingEl.appendChild(editingTypesetting);
     }
 
-    if (this.node.issns && this.node.issns.length) {
-      this.node.issns.forEach(issn => {
-        let label = `${issn.type} ${issn.format}`;
-        var issnsEl = $$('.issn.container', {
-          children: [
-            $$('div.label', {text: label}),
-            $$('div.value', {text: issn.text})
-          ]
-        });
-        metaData.appendChild(issnsEl);
-      })
-    }
+    metaData.appendChild(editingEl);
+    metaData.appendChild($$('br'));
 
-    if (this.node.isbns && this.node.isbns.length) {
-      this.node.isbns.forEach(isbn => {
-        let label = `${isbn.type} ${isbn.format}`;
-        var isbnsEl = $$('.isbn.container', {
-          children: [
-            $$('div.label', {text: label}),
-            $$('div.value', {text: isbn.text})
-          ]
-        });
-        metaData.appendChild(isbnsEl);
-      })
-    }
-
-    if (this.node.selfUris && this.node.selfUris.length) {
-      this.node.selfUris.forEach(selfUri => {
-        var selfUrisEl = $$('.self-uri.container', {
-          children: [
-            $$('b', {text: selfUri.type}),
-            $$('a.self-uri-link', {
-              href: selfUri.link,
-              target: "_new",
-              text: selfUri.link
-            })
-          ]
-        });
-        metaData.appendChild(selfUrisEl);
-      })
-    }
-
-    var historyEl = this.describePublicationHistory();
-
-    metaData.appendChild(historyEl);
-
-
-    if (this.node.customKeywords && this.node.customKeywords.length) {
-      this.node.customKeywords.forEach(keyword => {
-        var words = keyword.keys.join(', ')
-        var keywordEl = $$('.kwd.container', {
-          children: [
-            $$('div.label', {text: keyword.title}),
-            $$('div.value', {text: words})
-          ]
-        });
-        metaData.appendChild(keywordEl);
-      })
+    if (this.node.journalCustomMeta && this.node.journalCustomMeta['printing-notice']) {
+      var printingNotice = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.journalCustomMeta['printing-notice']}</span>`
+      });
+      metaData.appendChild(printingNotice);
     }
 
     this.content.appendChild(metaData);

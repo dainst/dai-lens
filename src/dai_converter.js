@@ -655,18 +655,18 @@ DaiConverter.Prototype = function() {
     if (contribGroups) {
       
       _.each(contribGroups, (contribGroup) => {
-        var groupNameEl = contribGroup.querySelector('role');
-        if (groupNameEl && groupNameEl.textContent){
-          var header = {
-            "type" : "heading",
-            "id" : state.nextId("heading"),
-            "level" : 5,
-            "content" : "",
-          };
-          header.content = groupNameEl.textContent
-          doc.create(header);
-          doc.show("info", header.id);
-        }
+        // var groupNameEl = contribGroup.querySelector('role');
+        // if (groupNameEl && groupNameEl.textContent){
+        //   var header = {
+        //     "type" : "heading",
+        //     "id" : state.nextId("heading"),
+        //     "level" : 5,
+        //     "content" : "",
+        //   };
+        //   header.content = groupNameEl.textContent
+        //   doc.create(header);
+        //   doc.show("info", header.id);
+        // }
         this.contribGroup(state, contribGroup);
       }, this)
       
@@ -676,18 +676,18 @@ DaiConverter.Prototype = function() {
     if (journalContribGroups) {
       
       _.each(journalContribGroups, (contribGroup) => {
-        var groupNameEl = contribGroup.querySelector('role');
-        if (groupNameEl && groupNameEl.textContent){
-          var header = {
-            "type" : "heading",
-            "id" : state.nextId("heading"),
-            "level" : 5,
-            "content" : "",
-          };
-          header.content = groupNameEl.textContent
-          doc.create(header);
-          doc.show("info", header.id);
-        }
+        // var groupNameEl = contribGroup.querySelector('role');
+        // if (groupNameEl && groupNameEl.textContent){
+        //   var header = {
+        //     "type" : "heading",
+        //     "id" : state.nextId("heading"),
+        //     "level" : 5,
+        //     "content" : "",
+        //   };
+        //   header.content = groupNameEl.textContent
+        //   doc.create(header);
+        //   doc.show("info", header.id);
+        // }
           
         this.contribGroup(state, contribGroup);
       }, this)
@@ -837,30 +837,30 @@ DaiConverter.Prototype = function() {
     var nodeIds = [];
     var doc = state.doc;
 
-    var customMetaEls = article.querySelectorAll('custom-meta');
-    if (customMetaEls.length === 0) return nodeIds;
+    // var customMetaEls = article.querySelectorAll('custom-meta');
+    // if (customMetaEls.length === 0) return nodeIds;
 
-    for (var i = 0; i < customMetaEls.length; i++) {
-      var customMetaEl = customMetaEls[i];
+    // for (var i = 0; i < customMetaEls.length; i++) {
+    //   var customMetaEl = customMetaEls[i];
 
-      var metaNameEl = customMetaEl.querySelector('meta-name');
-      var metaValueEl = customMetaEl.querySelector('meta-value');
+    //   var metaNameEl = customMetaEl.querySelector('meta-name');
+    //   var metaValueEl = customMetaEl.querySelector('meta-value');
 
-      if (!_.include(this.__ignoreCustomMetaNames, metaNameEl.textContent)) {
-        var header = {
-          "type" : "heading",
-          "id" : state.nextId("heading"),
-          "level" : 3,
-          "content" : ""
-        };
-        header.content = this.annotatedText(state, metaNameEl, [header.id, 'content']);
-        doc.create(header);
-        var bodyNodes = this.paragraphGroup(state, metaValueEl);
+    //   if (!_.include(this.__ignoreCustomMetaNames, metaNameEl.textContent)) {
+    //     var header = {
+    //       "type" : "heading",
+    //       "id" : state.nextId("heading"),
+    //       "level" : 3,
+    //       "content" : ""
+    //     };
+    //     header.content = this.annotatedText(state, metaNameEl, [header.id, 'content']);
+    //     doc.create(header);
+    //     var bodyNodes = this.paragraphGroup(state, metaValueEl);
 
-        nodeIds.push(header.id);
-        nodeIds = nodeIds.concat(_.pluck(bodyNodes, 'id'));
-      }
-    }
+    //     nodeIds.push(header.id);
+    //     nodeIds = nodeIds.concat(_.pluck(bodyNodes, 'id'));
+    //   }
+    // }
     return nodeIds;
   };
 
