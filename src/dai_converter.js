@@ -351,6 +351,7 @@ DaiConverter.Prototype = function() {
       })
     })
 
+
     var journalCustomMeta = {}
     var customMetaEls = state.xmlDoc.querySelectorAll('journal-meta custom-meta');
     for (var i = 0; i < customMetaEls.length; i++) {
@@ -385,7 +386,24 @@ DaiConverter.Prototype = function() {
       let cityEl  = coEditor.querySelector('city')
       journalCoEditors.list.push(`${givenNamesEl.textContent} ${surnameEl.textContent} (${cityEl.textContent})`)
     })
-    journalCoEditors.joinedList = journalCoEditors.list.join(', ')
+
+    var journalAdvisoryBoard = {role: '', list: []};
+    var journalAdvBoardGroupEl =  state.xmlDoc.querySelector('contrib-group[content-type="Wissenschaftlicher Beirat/Advisory Board"]');
+    if (journalAdvBoardGroupEl) {
+      let roleEl = journalAdvBoardGroupEl.querySelector('role');
+      if (roleEl) journalAdvisoryBoard.role = roleEl.textContent;
+    }
+    var journalAdvisoryBoardEls = state.xmlDoc.querySelectorAll('contrib[contrib-type="Advisory Board Member"]');
+    journalAdvisoryBoardEls.forEach(coEditor => {
+      let surnameEl  = coEditor.querySelector('surname')
+      let givenNamesEl  = coEditor.querySelector('given-names')
+      let cityEl  = coEditor.querySelector('city')
+      journalAdvisoryBoard.list.push(`${givenNamesEl.textContent} ${surnameEl.textContent} (${cityEl.textContent})`)
+    })
+    journalAdvisoryBoard.joinedList = journalAdvisoryBoard.list.join(', ')
+
+
+
     var publicationInfo = state.doc.get('publication_info');
     publicationInfo.volume = volume;
     publicationInfo.subtitle = subtitle.textContent;
@@ -408,6 +426,7 @@ DaiConverter.Prototype = function() {
     publicationInfo.journalCustomMeta = journalCustomMeta;
     publicationInfo.journalEditors = journalEditors;
     publicationInfo.journalCoEditors = journalCoEditors;
+    publicationInfo.journalAdvisoryBoard = journalAdvisoryBoard;
     
 
     pubInfo.enhancedInfo = publicationInfo;

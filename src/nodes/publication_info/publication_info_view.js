@@ -418,6 +418,27 @@ PublicationInfoView.Prototype = function() {
 
       metaData.appendChild(coEditorsEl);
     }
+
+    // advisory-board
+    if (this.node.journalAdvisoryBoard){
+      var advBoardEl = $$('advisory-board')
+      var coHeaderEl = $$('.metadata-title', {
+        html: `<span class="metadata-title-text">Advisory Board</span>`
+      });
+      advBoardEl.appendChild(coHeaderEl);
+
+      var roleEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.journalAdvisoryBoard.role}</span>`
+      });
+      advBoardEl.appendChild(roleEl);
+
+      var listEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.journalAdvisoryBoard.joinedList}</span>`
+      });
+      advBoardEl.appendChild(listEl);
+
+      metaData.appendChild(advBoardEl);
+    }
     
 
 
