@@ -169,13 +169,14 @@ PublicationInfoView.Prototype = function() {
 
     // article-authors
     if (this.node.customArticleContributions && this.node.customArticleContributions.length > 0) {
-      this.node.customArticleContributions.forEach(contributor => {
-        if (contributor.type === 'author'){
-          var authors = $$('.authors');
+      var authors = $$('.authors');
           var authorsHeaderEl = $$('.metadata-title', {
             html: `<span class="metadata-title-text">Authors</span>`
           });
           authors.appendChild(authorsHeaderEl);
+      this.node.customArticleContributions.forEach(contributor => {
+        if (contributor.type === 'author'){
+          
           if (contributor.name) {
             var authorNameEl = $$('.metadata-text-container', {
               html: `<span class="metadata-text">${contributor.name.prefix} ${contributor.name.givenNames} ${contributor.name.surname}</span>`
@@ -209,10 +210,12 @@ PublicationInfoView.Prototype = function() {
             }
           
           }
-          metaData.appendChild(authors);
+          authors.appendChild($$('br'));
 
         }
       })
+      metaData.appendChild(authors);
+
     }
 
     // article-digital-edition
