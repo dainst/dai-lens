@@ -364,17 +364,21 @@ DaiConverter.Prototype = function() {
     var keywords = [];
 
     keywordElements.forEach(keywordElem => {
-      let titleElem = keywordElem.querySelector('title');
-      let keyElems = keywordElem.querySelectorAll("kwd");
-      let keys = [];
-      keyElems.forEach(key => {
-        keys.push(key.textContent)
-      })
-      keywords.push({
-        lang: keywordElem.getAttribute('xml:lang'),
-        title: titleElem.textContent,
-        keys: keys
-      })
+      let lang = keywordElem.getAttribute('xml:lang');
+      if (lang == 'en'){
+        let titleElem = keywordElem.querySelector('title');
+        let keyElems = keywordElem.querySelectorAll("kwd");
+        let keys = [];
+        keyElems.forEach(key => {
+          keys.push(key.textContent)
+        })
+        keywords.push({
+          lang: keywordElem.getAttribute('xml:lang'),
+          title: titleElem.textContent,
+          keys: keys
+        })
+      }
+      
     })
 
 
