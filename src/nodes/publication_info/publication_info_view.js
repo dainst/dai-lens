@@ -210,6 +210,27 @@ PublicationInfoView.Prototype = function() {
             }
           
           }
+
+          if (contributor.aff) {
+            if (contributor.aff.addrLine){
+              var institutionEl = $$('.metadata-text-container', {
+                html: `<span class="metadata-text">${contributor.aff.institution}</span>`
+              });
+              authors.appendChild(institutionEl);
+            }
+            if (contributor.aff.city){
+              var affCityEl = $$('.metadata-text-container', {
+                html: `<span class="metadata-text">${contributor.aff.city}</span>`
+              });
+              authors.appendChild(affCityEl);
+            }
+            if (contributor.aff.country){
+              var affCountryEl = $$('.metadata-text-container', {
+                html: `<span class="metadata-text">${contributor.aff.country}</span>`
+              });
+              authors.appendChild(affCountryEl);
+            }
+          }
           authors.appendChild($$('br'));
 
         }

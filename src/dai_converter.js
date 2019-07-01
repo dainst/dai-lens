@@ -194,6 +194,7 @@ DaiConverter.Prototype = function() {
           if (type) customArticleContribution['type'] = type
           var nameEl = contrib.querySelector('name')
           var addressEl = contrib.querySelector('address')
+          var affEl = contrib.querySelector('aff')
           if (nameEl){
             let surnameEl  = nameEl.querySelector('surname')
             let givenNamesEl  = nameEl.querySelector('given-names')
@@ -216,6 +217,16 @@ DaiConverter.Prototype = function() {
               city: cityEl ? cityEl.textContent : '',
               country: countryEl ? countryEl.textContent : '',
               email: emailEl ? emailEl.textContent : '',
+            };
+          }
+          if (affEl){
+            let institutionEl  = affEl.querySelector('institution')
+            let cityEl  = affEl.querySelector('city')
+            let countryEl  = affEl.querySelector('country')
+            customArticleContribution['aff'] = {
+              institution: institutionEl ? institutionEl.textContent : '',
+              city: cityEl ? cityEl.textContent : '',
+              country: countryEl ? countryEl.textContent : '',
             };
           }
           customArticleContributions.push(customArticleContribution)
