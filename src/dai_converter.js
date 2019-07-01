@@ -256,7 +256,17 @@ DaiConverter.Prototype = function() {
         licenseElements.forEach(licenseEl => {
           let type = licenseEl.getAttribute('license-type');
           if (type === 'print') {
-            permissions[type]['license'] = licenseEl.textContent
+            let printLicense = {};
+            printLicense.href = licenseEl.getAttribute('xlink:href')
+            let copyrightEl = licenseEl.querySelector('license-p[content-type="copyright"]')
+            let termsEl = licenseEl.querySelector('license-p[content-type="terms-of-use"]')
+            if (copyrightEl){
+              printLicense.copyright = copyrightEl.textContent
+            }
+            if (termsEl){
+              printLicense.terms = termsEl.textContent
+            }
+            permissions[type]['license'] = printLicense;
           }
           if (type === 'online'){
             let onlineLicense = {};

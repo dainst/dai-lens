@@ -216,7 +216,7 @@ PublicationInfoView.Prototype = function() {
     }
 
     // article-digital-edition
-    var digitalEdition = $$('digital-edition')
+    var digitalEdition = $$('digitaledition')
     var deHeaderEl = $$('.metadata-title', {
       html: `<span class="metadata-title-text">Digital edition</span>`
     });
@@ -296,7 +296,7 @@ PublicationInfoView.Prototype = function() {
     metaData.appendChild(digitalEdition);
 
     // article-print-edition
-    var printEdition = $$('print-edition')
+    var printEdition = $$('printedition')
     var deHeaderEl = $$('.metadata-title', {
       html: `<span class="metadata-title-text">Print edition</span>`
     });
@@ -320,7 +320,7 @@ PublicationInfoView.Prototype = function() {
 
       if (this.node.customPermissions.print.license){
         var licenseEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">${this.node.customPermissions.print.license}</span>`
+          html: `<span class="metadata-text">${this.node.customPermissions.print.license.terms}</span>`
         });
         printEdition.appendChild(licenseEl);
       }
