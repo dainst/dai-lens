@@ -385,8 +385,8 @@ PublicationInfoView.Prototype = function() {
     var journalInfo = $$('journal-info')
     
     if (this.node.journalEditors) {
-      var titleEl = $$('.metadata-text-container', {
-        html: `<span class="metadata-text">Publisher/Editors</span>`
+      var titleEl = $$('.metadata-title', {
+        html: `<span class="metadata-title-text">Publisher/Editors</span>`
       });
       journalInfo.appendChild(titleEl);
       var editors = ''
