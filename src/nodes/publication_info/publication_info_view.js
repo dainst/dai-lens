@@ -454,10 +454,10 @@ PublicationInfoView.Prototype = function() {
       });
       advBoardEl.appendChild(coHeaderEl);
 
-      var roleEl = $$('.metadata-text-container', {
-        html: `<span class="metadata-text">${this.node.journalAdvisoryBoard.role}</span>`
-      });
-      advBoardEl.appendChild(roleEl);
+      // var roleEl = $$('.metadata-text-container', {
+      //   html: `<span class="metadata-text">${this.node.journalAdvisoryBoard.role}</span>`
+      // });
+      // advBoardEl.appendChild(roleEl);
 
       var listEl = $$('.metadata-text-container', {
         html: `<span class="metadata-text">${this.node.journalAdvisoryBoard.joinedList}</span>`
