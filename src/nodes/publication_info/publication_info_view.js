@@ -232,9 +232,9 @@ PublicationInfoView.Prototype = function() {
       });
       digitalEdition.appendChild(issnEl);
 
-      if (this.node.selfUrisObj && this.node.selfUrisObj['lens-url']){
+      if (this.node.selfUrisObj && this.node.selfUrisObj['online-url']){
         var urlEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">URL: ???????${this.node.selfUrisObj['lens-url']}</span>`
+          html: `<span class="metadata-text">${this.node.selfUrisObj['online-url']}</span>`
         });
         digitalEdition.appendChild(urlEl);
       }
