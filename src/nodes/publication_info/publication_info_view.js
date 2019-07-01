@@ -241,7 +241,7 @@ PublicationInfoView.Prototype = function() {
       digitalEdition.appendChild($$('br'))
       if (this.node.customPermissions.online.license){
         var copyrightEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">${this.node.customPermissions.online.license.copyright}</span>`
+          html: `<span class="metadata-text">All rights reserved.</span>`
         });
         digitalEdition.appendChild(copyrightEl);
       }
