@@ -38,6 +38,7 @@ CitationView.Prototype = function() {
       _.each(node.properties.custom_urls, function(url) {
         titleViewEl.appendChild($$('a.citation-custom-url', {
           href: url.url,
+          target: '_blank',
           text: '>>',
           'data-title': " iDAI.bibliography"
         }));
