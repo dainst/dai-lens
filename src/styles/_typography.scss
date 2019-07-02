@@ -200,4 +200,13 @@ a {
   border-left: 0px;
 }
 
+.article .panel .content-node .link {
+  font-weight: bold;
+  color: $black;
+  text-decoration: underline;
+  &:hover {
+    background-color: #d1d1d1
+  }
+}
+
 
