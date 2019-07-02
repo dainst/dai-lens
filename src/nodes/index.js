@@ -3,5 +3,6 @@ module.exports = {
   "footnote": require("./footnote"),
   "footnote_reference": require("./footnote_reference"),
   "citation": require("./citation"),
-  "publication_info": require("./publication_info")
+  "publication_info": require("./publication_info"),
+  "link": require("./link")
 };
