@@ -14,7 +14,7 @@ CustomCoverView.Prototype = function() {
     
     if (year.length > 3) year = year.slice(2,4)
     var edition = pubInfo.volume ? pubInfo.volume.textContent : '';
-    var subtitleText = pubInfo.subtitle ?  pubInfo.subtitle.textContent : '';
+    var subtitleText = pubInfo.subtitle;
 
     // Add feeback info
     var topBar = $$('.topbar', {
