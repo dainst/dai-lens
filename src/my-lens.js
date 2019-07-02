@@ -23,7 +23,7 @@ var ContainerPanel = require('lens/reader/panels/container_panel');
 // to build your own Lens panel
 
 // var notesPanel = require('./panels/notes');
-// var metaDataPanel = require('./panels/metaData');
+var supplementsPanel = require('./panels/supplements');
 
 var notesPanel = new ContainerPanel({
   type: 'resource',
@@ -43,6 +43,7 @@ panels.map(panel => {
 
 // Insert altmetrics panel at next to last position
 panels.splice(1, 0, notesPanel);
+panels.push(supplementsPanel);
 // panels.splice(-1, 0, metaDataPanel);
 
 var LensApp = function(config) {
