@@ -10,7 +10,9 @@ LinkView.Prototype = function() {
   this.createElement = function() {
     var el = document.createElement('a');
     el.setAttribute('href', this.node.url);
-    el.setAttribute('target', '_blank');
+    if (this.node.properties.specificUse && this.node.properties.specificUse === "weblink"){
+      el.setAttribute('target', '_blank');
+    }
     return el;
   };
 

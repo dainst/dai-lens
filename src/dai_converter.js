@@ -955,6 +955,10 @@ DaiConverter.Prototype = function() {
     if (styleType) {
       anno.name = styleType
     }
+    var specificUse = el.getAttribute('specific-use');
+    if (specificUse) {
+      anno.specificUse = specificUse
+    }
   }
 
   // this.enhanceVideo = function(state, node, element) {
