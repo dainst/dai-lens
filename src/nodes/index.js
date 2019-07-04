@@ -4,5 +4,6 @@ module.exports = {
   "footnote_reference": require("./footnote_reference"),
   "citation": require("./citation"),
   "publication_info": require("./publication_info"),
-  "link": require("./link")
+  "link": require("./link"),
+  "link_reference": require("./link_reference")
 };
