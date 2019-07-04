@@ -35,6 +35,7 @@ SupplementsView.Prototype = function() {
     $supplements.append($('<div class="value"></div>').text(supplements.title));
     $supplements.append($('<div class="label">Subtitle</div>'));
     $supplements.append($('<div class="value"></div>').text(supplements.subtitle));
+    $supplements.append($('<div class="value"></div>').text(JSON.stringify(supplements)));
 
     this.$el.append($supplements);
   };
