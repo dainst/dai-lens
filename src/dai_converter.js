@@ -957,7 +957,9 @@ DaiConverter.Prototype = function() {
     }
     var specificUse = el.getAttribute('specific-use');
     if (specificUse) {
-      anno.specificUse = specificUse
+      anno.specificUse = specificUse;
+      if (specificUse !== "weblink")
+        anno.type = "link_reference";
     }
   }
 
