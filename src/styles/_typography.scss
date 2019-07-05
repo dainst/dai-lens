@@ -119,6 +119,8 @@ a {
 }
 
 .content-node.text[data-id=abstract_title_hr] .content {
+  height: 2px;
+  padding-bottom: 5px;
   border-bottom: 1px solid $gray-light;
 }
 

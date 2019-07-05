@@ -759,6 +759,14 @@ DaiConverter.Prototype = function() {
         if (kwdGroup.lang === lang) {
           absKeywords = kwdGroup.keys;
           if (absKeywords.length) {
+            var heading = {
+              id: state.nextId("text"),
+              type: "text",
+              content: kwdGroup.title,
+              classes: ['abstract-elem', 'abstract-kwd-heading']
+            };
+            doc.create(heading);
+            nodes.push(heading);
             var absKeywordsEl = {
               id: state.nextId("text"),
               type: "text",
