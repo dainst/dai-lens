@@ -1,17 +1,37 @@
-.annotation.abstract-title {
-  color: $primary;
-  font-size: 16px;
-}
+.surface.content .nodes > .content-node {
+  &.text.abstract-heading {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 16px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
+  &.text.abstract-title {
+    color: $primary;
+    font-size: 16px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
+  &.text.abstract-subtitle {
+    color: $primary;
+    font-size: 16px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
+  
+  &.text.abstract-author {
+    font-size: 16px;
+    padding-bottom: 15px;
+    padding-top: 0px;
+  }
+  
+  &.text.abstract-text {
+    font-size: 16px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
 
-.annotation.abstract-subtitle {
-  color: $primary;
-  font-size: 16px;
-}
+  &.text.abstract-kwd {
+    font-family: 'Noto Sans', sans-serif;
+  }
+} 
 
-.annotation.abstract-author {
-  font-size: 16px;
-}
-
-.annotation.abstract-text {
-  font-size: 16px;
-}
