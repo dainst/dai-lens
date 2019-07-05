@@ -368,16 +368,21 @@ DaiConverter.Prototype = function() {
 
     var keywordElements = state.xmlDoc.querySelectorAll("kwd-group");
     var keywords = [];
-
+    var abstractKeywords = []
     keywordElements.forEach(keywordElem => {
       let lang = keywordElem.getAttribute('xml:lang');
-      if (lang == 'en'){
         let titleElem = keywordElem.querySelector('title');
         let keyElems = keywordElem.querySelectorAll("kwd");
         let keys = [];
         keyElems.forEach(key => {
           keys.push(key.textContent)
         })
+        abstractKeywords.push({
+          lang: keywordElem.getAttribute('xml:lang'),
+          title: titleElem.textContent,
+          keys: keys
+        })
+      if (lang == 'en'){
         keywords.push({
           lang: keywordElem.getAttribute('xml:lang'),
           title: titleElem.textContent,
@@ -459,6 +464,7 @@ DaiConverter.Prototype = function() {
     publicationInfo.selfUrisObj = selfUrisObj;
     publicationInfo.issue = issue ? issue.textContent : '';
     publicationInfo.customKeywords = keywords;
+    publicationInfo.abstractKeywords = abstractKeywords;
     publicationInfo.journalCustomMeta = journalCustomMeta;
     publicationInfo.journalEditors = journalEditors;
     publicationInfo.journalCoEditors = journalCoEditors;
@@ -689,30 +695,95 @@ DaiConverter.Prototype = function() {
       id: 'abstract_title_hr',
       type: "text",
       content: ' ',
+      classes: ['abstract-elem', 'abstract_title_hr']
     };
     doc.create(underline_heading);
     nodes.push(underline_heading);
 
     var title = abs.querySelector("title");
-
     var heading = {
-      id: state.nextId("heading"),
-      type: "heading",
-      level: 3,
+      id: state.nextId("text"),
+      type: "text",
       content: title ? title.textContent : "Abstract",
+      classes: ['abstract-elem', 'abstract-heading']
     };
-
     doc.create(heading);
     nodes.push(heading);
+
+    var absTitle = abs.querySelector('styled-content[style-type="abstract-title"]')
+    var absTitleText = {
+      id: state.nextId("text"),
+      type: "text",
+      content: absTitle ? absTitle.textContent : '',
+      classes: ['abstract-elem', 'abstract-title']
+    };
+    doc.create(absTitleText);
+    nodes.push(absTitleText);
+
+    var absSubtitle = abs.querySelector('styled-content[style-type="abstract-subtitle"]')
+    var absSubtitleText = {
+      id: state.nextId("text"),
+      type: "text",
+      content: absSubtitle ? absSubtitle.textContent : '',
+      classes: ['abstract-elem', 'abstract-subtitle']
+    };
+    doc.create(absSubtitleText);
+    nodes.push(absSubtitleText);
+
+    var absAuthor = abs.querySelector('styled-content[style-type="abstract-author"]')
+    var absAuthorText = {
+      id: state.nextId("text"),
+      type: "text",
+      content: absAuthor ? absAuthor.textContent : '',
+      classes: ['abstract-elem', 'abstract-author']
+    };
+    doc.create(absAuthorText);
+    nodes.push(absAuthorText);
+
+    var absText = abs.querySelector('styled-content[style-type="abstract-text"]')
+    var absTextEl = {
+      id: state.nextId("text"),
+      type: "text",
+      content: absText ? absText.textContent : '',
+      classes: ['abstract-elem', 'abstract-text']
+    };
+    doc.create(absTextEl);
+    nodes.push(absTextEl);
+
+    var lang = abs.getAttribute('xml:lang');
+
+    var absKeywords = null;
+    if ( lang && doc && doc.nodes && doc.nodes.publication_info && doc.nodes.publication_info.abstractKeywords) {
+
+      doc.nodes.publication_info.abstractKeywords.forEach(kwdGroup => {
+        if (kwdGroup.lang === lang) {
+          absKeywords = kwdGroup.keys;
+          if (absKeywords.length) {
+            var absKeywordsEl = {
+              id: state.nextId("text"),
+              type: "text",
+              content: absKeywords.join(', '),
+              classes: ['abstract-elem', 'abstract-kwd']
+            };
+            doc.create(absKeywordsEl);
+            nodes.push(absKeywordsEl);
+          }
+          
+        }
+      })
+    }
+    
+
+
 
     
 
     // with eLife there are abstracts having an object-id.
     // TODO: we should store that in the model instead of dropping it
-
-    nodes = nodes.concat(this.bodyNodes(state, util.dom.getChildren(abs), {
+    var newNodes = this.bodyNodes(state, util.dom.getChildren(abs), {
       ignore: ["title", "object-id"]
-    }));
+    });
+    // nodes = nodes.concat(newNodes);
 
     if (nodes.length > 0) {
       this.show(state, nodes);
