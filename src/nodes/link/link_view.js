@@ -8,12 +8,15 @@ var LinkView = function(node) {
 LinkView.Prototype = function() {
 
   this.createElement = function() {
-    var el = document.createElement('a');
+    var div = document.createElement('div');
+    var el = document.createElement('span');
     el.setAttribute('href', this.node.url);
     if (this.node.properties.specificUse && this.node.properties.specificUse === "weblink"){
       el.setAttribute('target', '_blank');
     }
-    return el;
+    el.textContent = this.node.url;
+    div.appendChild(el)
+    return div;
   };
 
   this.setClasses = function() {

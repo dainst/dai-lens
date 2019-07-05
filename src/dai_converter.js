@@ -55,6 +55,10 @@ DaiConverter.Prototype = function() {
     // Make up a cover node
     this.extractCover(state, article);
 
+    this.extractLinks(state, article);
+
+    
+
 
 
     // Populate Publication Info node
@@ -81,6 +85,8 @@ DaiConverter.Prototype = function() {
 
     this.enhanceArticle(state, article);
   };
+
+
 
   // Override app group to remove appendix
   this.appGroup = function(state, appGroup) {
@@ -502,6 +508,42 @@ DaiConverter.Prototype = function() {
       
       state.doc.show("footnotes", footnote.id);
     }
+  };
+
+  this.extractLinks = function(state, article) {
+
+    var linkEls = article.querySelectorAll('ext-link[ext-link-type="uri"]');
+    for (var i = 0; i < linkEls.length; i++) {
+      var specUse = linkEls[i].getAttribute('specific-use')
+      if (specUse === "supplements" || specUse === "extrafeatures") {
+        var linkEl = linkEls[i];
+        if (linkEl.__converted__) continue;
+        var link = this.link(state, linkEl);
+        state.doc.show("supplements", link.id);
+      }
+      
+    }
+  };
+
+  this.link = function(state, linkElement) {
+    var doc = state.doc;
+    var nextId = state.nextId('link')
+    var link = {
+      type: 'link',
+      id: nextId,
+      source_id: nextId,
+      label: 'link',
+      children: [],
+      url: '',
+      title: ''
+    };
+    link.title = linkElement.textContent;
+    link.url = linkElement.getAttribute('xlink:href')
+    doc.create(link);
+    // leave a trace for the catch-all converter
+    // to know that this has been converted already
+    linkElement.__converted__ = true;
+    return link;
   };
 
   this.citation = function(state, ref, citation) {
@@ -950,6 +992,8 @@ DaiConverter.Prototype = function() {
     return nodes;
   };
 
+  var linkID = 1;
+
   this.enhanceAnnotationData = function(state, anno, el, type){
     var styleType = el.getAttribute('style-type');
     if (styleType) {
@@ -958,9 +1002,17 @@ DaiConverter.Prototype = function() {
     var specificUse = el.getAttribute('specific-use');
     if (specificUse) {
       anno.specificUse = specificUse;
-      if (specificUse !== "weblink")
+      if (specificUse !== "weblink") {
         anno.type = "link_reference";
+        anno.target = "link_" + linkID
+        linkID++
+        // let linkAnno = Object.assign({}, anno)
+        // linkAnno.type = "link"
+        // state.annotations.push(linkAnno);
+      }
+        
     }
+
   }
 
   // this.enhanceVideo = function(state, node, element) {

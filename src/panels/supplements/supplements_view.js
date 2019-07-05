@@ -1,7 +1,11 @@
 var PanelView = require('lens/reader').PanelView;
+var Lens = require('lens/reader');
+var ResourcePanelViewFactory = Lens.ResourcePanelViewFactory;
 
-var SupplementsView = function(panelCtrl, config) {
-  PanelView.call(this, panelCtrl, config);
+var ContainerPanelView = Lens.ContainerPanelView;
+var SupplementsView = function(panelCtrl, viewFactory, config) {
+  ContainerPanelView.call(this, panelCtrl, viewFactory, config);
+
 
   this.$el.addClass('supplements-panel');
 
@@ -41,7 +45,7 @@ SupplementsView.Prototype = function() {
   };
 };
 
-SupplementsView.Prototype.prototype = PanelView.prototype;
+SupplementsView.Prototype.prototype = ContainerPanelView.prototype;
 SupplementsView.prototype = new SupplementsView.Prototype();
 SupplementsView.prototype.constructor = SupplementsView;
 

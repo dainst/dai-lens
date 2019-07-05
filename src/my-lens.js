@@ -23,7 +23,7 @@ var ContainerPanel = require('lens/reader/panels/container_panel');
 // to build your own Lens panel
 
 // var notesPanel = require('./panels/notes');
-var supplementsPanel = require('./panels/supplements');
+// var supplementsPanel = require('./panels/supplements');
 
 var notesPanel = new ContainerPanel({
   type: 'resource',
@@ -32,6 +32,15 @@ var notesPanel = new ContainerPanel({
   title: 'Notes',
   icon: 'fa-book',
   references: ['footnote_reference'],
+});
+
+var supplementsPanel = new ContainerPanel({
+  type: 'resource',
+  name: 'supplements',
+  container: 'supplements',
+  title: 'Supplements',
+  icon: 'fa-link',
+  references: ['link_reference'],
 });
 
 console.log(panels)
