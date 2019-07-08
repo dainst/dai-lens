@@ -323,7 +323,7 @@ PublicationInfoView.Prototype = function() {
 
       if (this.node.customMeta && this.node.customMeta['citation-guideline']) {
         var citGuideEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">${this.node.customMeta['citation-guideline']}</span>`
+          html: `<span class="metadata-text"> Please cite the article as follows: ${this.node.customMeta['citation-guideline']}</span>`
         });
         digitalEdition.appendChild(citGuideEl);
       }
@@ -350,7 +350,7 @@ PublicationInfoView.Prototype = function() {
       }
       if (this.node.customMeta && this.node.customMeta['issue-bibliography']) {
         var issueBibEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">${this.node.customMeta['issue-bibliography']}</span>`
+          html: `<span class="metadata-text"> Bibliographic reference: ${this.node.customMeta['issue-bibliography']}</span>`
         });
         digitalEdition.appendChild(issueBibEl);
       }
