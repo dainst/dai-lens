@@ -187,6 +187,14 @@ a {
   font-size: 14px;
 }
 
+.lens-article .content-node.cover .content .authors {
+  font-family: 'Noto Sans SemBd', sans-serif;
+  padding-top: 30px;
+  color: $gray-darker;
+  overflow: auto;
+  margin-bottom: 24px;
+}
+
 .surface.content .nodes > .content-node.heading {
   padding-bottom: 0px;
 }
