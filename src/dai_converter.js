@@ -393,7 +393,7 @@ DaiConverter.Prototype = function() {
           title: titleElem.textContent,
           keys: keys
         })
-      if (lang == 'en'){
+      if (lang == 'en-GB'){
         keywords.push({
           lang: keywordElem.getAttribute('xml:lang'),
           title: titleElem.textContent,
