@@ -1094,6 +1094,14 @@ DaiConverter.Prototype = function() {
 
   }
 
+  this.enhanceCover = function(state, cover, article){
+    console.log(article)
+    cover.authors.forEach((authorRef, idx) => {
+      if (idx < (cover.authors.length -1)) {
+        doc.get(authorRef).properties.content += ','
+      }
+    })
+  }
   // this.enhanceVideo = function(state, node, element) {
   //   var href = element.getAttribute("xlink:href").split(".");
   //   var name = href[0];
