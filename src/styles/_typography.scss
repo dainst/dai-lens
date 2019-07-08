@@ -130,7 +130,7 @@ a {
   font-size: 16px;
 }
 
-.article span.annotation:not(.styled-content,.emphasis) {
+.article span[class="annotation"] {
   font-family: 'Noto Sans Med', sans-serif;
   font-weight: 500;
   color: $gray-medium;
