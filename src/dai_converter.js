@@ -1101,6 +1101,9 @@ DaiConverter.Prototype = function() {
         // let linkAnno = Object.assign({}, anno)
         // linkAnno.type = "link"
         // state.annotations.push(linkAnno);
+      } else {
+        anno.type = "weblink_reference"
+        anno.urltext = el.textContent;
       }
         
     }
