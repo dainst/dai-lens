@@ -33,12 +33,7 @@ PublicationInfoView.Prototype = function() {
       });
       authors.appendChild(authorNameEl);
     }
-    if (contributor.contribId) {
-      var authorContribIdEl = $$('.metadata-text-container', {
-        html: `<a class="metadata-link" target="_blank" href="${contributor.contribId}"><span class="metadata-text">${contributor.contribId}</span></a>`
-      });
-      authors.appendChild(authorContribIdEl);
-    }
+    
     if (contributor.address) {
       if (contributor.address.addrLine){
         var addressLineEl = $$('.metadata-text-container', {
@@ -58,12 +53,7 @@ PublicationInfoView.Prototype = function() {
         });
         authors.appendChild(addressCountryEl);
       }
-      if (contributor.address.email){
-        var addressEmailEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">${contributor.address.email}</span>`
-        });
-        authors.appendChild(addressEmailEl);
-      }
+      
     
     }
 
@@ -74,12 +64,6 @@ PublicationInfoView.Prototype = function() {
           html: `<span class="metadata-text">${contributor.aff.institution}</span>`
         });
         authors.appendChild(institutionEl);
-      }
-      if (contributor.aff.institutionId){
-        var institutionIdEl = $$('.metadata-text-container', {
-          html: `<a class="metadata-link" target="_blank" href="${contributor.aff.institutionId}"><span class="metadata-text">${contributor.aff.institutionId}</span></a>`
-        });
-        authors.appendChild(institutionIdEl);
       }
       if (contributor.aff.addrLine){
         var affAddrEl = $$('.metadata-text-container', {
@@ -99,6 +83,30 @@ PublicationInfoView.Prototype = function() {
         });
         authors.appendChild(affCountryEl);
       }
+    }
+    if (contributor.address && contributor.address.email){
+      var addressEmailEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${contributor.address.email}</span>`
+      });
+      authors.appendChild(addressEmailEl);
+    }
+    if (contributor.aff && contributor.aff.email){
+      var addressEmailEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${contributor.aff.email}</span>`
+      });
+      authors.appendChild(addressEmailEl);
+    }
+    if (contributor.contribId) {
+      var authorContribIdEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">ORCID-ID: <a class="metadata-link" target="_blank" href="${contributor.contribId}">${contributor.contribId}</a></span>`
+      });
+      authors.appendChild(authorContribIdEl);
+    }
+    if (contributor.aff && contributor.aff.institutionId){
+      var institutionIdEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">GND: <a class="metadata-link" target="_blank" href="${contributor.aff.institutionId}">${contributor.aff.institutionId}</a></span>`
+      });
+      authors.appendChild(institutionIdEl);
     }
     authors.appendChild($$('br'));
   }
