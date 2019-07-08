@@ -26,6 +26,84 @@ var PublicationInfoView = function(node, viewFactory) {
 
 PublicationInfoView.Prototype = function() {
 
+  this.renderAuthorInfo = function(authors, contributor) {
+    if (contributor.name) {
+      var authorNameEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${contributor.name.prefix} ${contributor.name.givenNames} ${contributor.name.surname}</span>`
+      });
+      authors.appendChild(authorNameEl);
+    }
+    if (contributor.contribId) {
+      var authorContribIdEl = $$('.metadata-text-container', {
+        html: `<a class="metadata-link" target="_blank" href="${contributor.contribId}"><span class="metadata-text">${contributor.contribId}</span></a>`
+      });
+      authors.appendChild(authorContribIdEl);
+    }
+    if (contributor.address) {
+      if (contributor.address.addrLine){
+        var addressLineEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${contributor.address.addrLine}</span>`
+        });
+        authors.appendChild(addressLineEl);
+      }
+      if (contributor.address.city){
+        var addressCityEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${contributor.address.city}</span>`
+        });
+        authors.appendChild(addressCityEl);
+      }
+      if (contributor.address.country){
+        var addressCountryEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${contributor.address.country}</span>`
+        });
+        authors.appendChild(addressCountryEl);
+      }
+      if (contributor.address.email){
+        var addressEmailEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${contributor.address.email}</span>`
+        });
+        authors.appendChild(addressEmailEl);
+      }
+    
+    }
+
+    if (contributor.aff) {
+      
+      if (contributor.aff.institution){
+        var institutionEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${contributor.aff.institution}</span>`
+        });
+        authors.appendChild(institutionEl);
+      }
+      if (contributor.aff.institutionId){
+        var institutionIdEl = $$('.metadata-text-container', {
+          html: `<a class="metadata-link" target="_blank" href="${contributor.aff.institutionId}"><span class="metadata-text">${contributor.aff.institutionId}</span></a>`
+        });
+        authors.appendChild(institutionIdEl);
+      }
+      if (contributor.aff.addrLine){
+        var affAddrEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${contributor.aff.addrLine}</span>`
+        });
+        authors.appendChild(affAddrEl);
+      }
+      if (contributor.aff.city){
+        var affCityEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${contributor.aff.city}</span>`
+        });
+        authors.appendChild(affCityEl);
+      }
+      if (contributor.aff.country){
+        var affCountryEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${contributor.aff.country}</span>`
+        });
+        authors.appendChild(affCountryEl);
+      }
+    }
+    authors.appendChild($$('br'));
+  }
+
+
   this.render = function() {
     NodeView.prototype.render.call(this);
 
@@ -176,87 +254,25 @@ PublicationInfoView.Prototype = function() {
           authors.appendChild(authorsHeaderEl);
       this.node.customArticleContributions.forEach(contributor => {
         if (contributor.type === 'author'){
-
-          
-          if (contributor.name) {
-            var authorNameEl = $$('.metadata-text-container', {
-              html: `<span class="metadata-text">${contributor.name.prefix} ${contributor.name.givenNames} ${contributor.name.surname}</span>`
-            });
-            authors.appendChild(authorNameEl);
-          }
-          if (contributor.contribId) {
-            var authorContribIdEl = $$('.metadata-text-container', {
-              html: `<a class="metadata-link" target="_blank" href="${contributor.contribId}"><span class="metadata-text">${contributor.contribId}</span></a>`
-            });
-            authors.appendChild(authorContribIdEl);
-          }
-          if (contributor.address) {
-            if (contributor.address.addrLine){
-              var addressLineEl = $$('.metadata-text-container', {
-                html: `<span class="metadata-text">${contributor.address.addrLine}</span>`
-              });
-              authors.appendChild(addressLineEl);
-            }
-            if (contributor.address.city){
-              var addressCityEl = $$('.metadata-text-container', {
-                html: `<span class="metadata-text">${contributor.address.city}</span>`
-              });
-              authors.appendChild(addressCityEl);
-            }
-            if (contributor.address.country){
-              var addressCountryEl = $$('.metadata-text-container', {
-                html: `<span class="metadata-text">${contributor.address.country}</span>`
-              });
-              authors.appendChild(addressCountryEl);
-            }
-            if (contributor.address.email){
-              var addressEmailEl = $$('.metadata-text-container', {
-                html: `<span class="metadata-text">${contributor.address.email}</span>`
-              });
-              authors.appendChild(addressEmailEl);
-            }
-          
-          }
-
-          if (contributor.aff) {
-            
-            if (contributor.aff.institution){
-              var institutionEl = $$('.metadata-text-container', {
-                html: `<span class="metadata-text">${contributor.aff.institution}</span>`
-              });
-              authors.appendChild(institutionEl);
-            }
-            if (contributor.aff.institutionId){
-              var institutionIdEl = $$('.metadata-text-container', {
-                html: `<a class="metadata-link" target="_blank" href="${contributor.aff.institutionId}"><span class="metadata-text">${contributor.aff.institutionId}</span></a>`
-              });
-              authors.appendChild(institutionIdEl);
-            }
-            if (contributor.aff.addrLine){
-              var affAddrEl = $$('.metadata-text-container', {
-                html: `<span class="metadata-text">${contributor.aff.addrLine}</span>`
-              });
-              authors.appendChild(affAddrEl);
-            }
-            if (contributor.aff.city){
-              var affCityEl = $$('.metadata-text-container', {
-                html: `<span class="metadata-text">${contributor.aff.city}</span>`
-              });
-              authors.appendChild(affCityEl);
-            }
-            if (contributor.aff.country){
-              var affCountryEl = $$('.metadata-text-container', {
-                html: `<span class="metadata-text">${contributor.aff.country}</span>`
-              });
-              authors.appendChild(affCountryEl);
-            }
-          }
-          authors.appendChild($$('br'));
-
+          this.renderAuthorInfo(authors, contributor)
         }
       })
       metaData.appendChild(authors);
+    }
 
+    // article-coauthors
+    if (this.node.customArticleContributions && this.node.customArticleContributions.length > 0) {
+      var coauthors = $$('.co-authors');
+          var authorsHeaderEl = $$('.metadata-title', {
+            html: `<span class="metadata-title-text">Co-Authors</span>`
+          });
+          coauthors.appendChild(authorsHeaderEl);
+      this.node.customArticleContributions.forEach(contributor => {
+        if (contributor.type === 'co-author'){
+          this.renderAuthorInfo(coauthors, contributor)
+        }
+      })
+      metaData.appendChild(coauthors);
     }
 
     // article-digital-edition
@@ -446,7 +462,7 @@ PublicationInfoView.Prototype = function() {
     metaData.appendChild($$('br'));
 
     // co-editors
-    if (this.node.journalCoEditors){
+    if (this.node.journalCoEditors && this.node.journalCoEditors.list.length){
       var coEditorsEl = $$('co-editors')
       var coHeaderEl = $$('.metadata-title', {
         html: `<span class="metadata-title-text">Co-Editors</span>`
