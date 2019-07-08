@@ -39,6 +39,10 @@ CustomCoverView.Prototype = function() {
     // Prepend
     this.content.insertBefore(topBar, this.content.firstChild);
     this.content.insertBefore(subtitle, this.content.childNodes[3]);
+
+    if (this.content.lastElementChild.className === "published-on") {
+      this.content.removeChild(this.content.lastElementChild)
+    }
     
     return this;
   }
