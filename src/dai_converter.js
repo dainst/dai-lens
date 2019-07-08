@@ -558,6 +558,7 @@ DaiConverter.Prototype = function() {
     };
     link.title = linkElement.textContent;
     link.url = linkElement.getAttribute('xlink:href')
+    link.slug = link.url.substring(link.url.lastIndexOf("/") + 1);
     doc.create(link);
     // leave a trace for the catch-all converter
     // to know that this has been converted already
