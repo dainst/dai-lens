@@ -176,12 +176,19 @@ PublicationInfoView.Prototype = function() {
           authors.appendChild(authorsHeaderEl);
       this.node.customArticleContributions.forEach(contributor => {
         if (contributor.type === 'author'){
+
           
           if (contributor.name) {
             var authorNameEl = $$('.metadata-text-container', {
               html: `<span class="metadata-text">${contributor.name.prefix} ${contributor.name.givenNames} ${contributor.name.surname}</span>`
             });
             authors.appendChild(authorNameEl);
+          }
+          if (contributor.contribId) {
+            var authorContribIdEl = $$('.metadata-text-container', {
+              html: `<a class="metadata-link" target="_blank" href="${contributor.contribId}"><span class="metadata-text">${contributor.contribId}</span></a>`
+            });
+            authors.appendChild(authorContribIdEl);
           }
           if (contributor.address) {
             if (contributor.address.addrLine){
@@ -212,11 +219,24 @@ PublicationInfoView.Prototype = function() {
           }
 
           if (contributor.aff) {
-            if (contributor.aff.addrLine){
+            
+            if (contributor.aff.institution){
               var institutionEl = $$('.metadata-text-container', {
                 html: `<span class="metadata-text">${contributor.aff.institution}</span>`
               });
               authors.appendChild(institutionEl);
+            }
+            if (contributor.aff.institutionId){
+              var institutionIdEl = $$('.metadata-text-container', {
+                html: `<a class="metadata-link" target="_blank" href="${contributor.aff.institutionId}"><span class="metadata-text">${contributor.aff.institutionId}</span></a>`
+              });
+              authors.appendChild(institutionIdEl);
+            }
+            if (contributor.aff.addrLine){
+              var affAddrEl = $$('.metadata-text-container', {
+                html: `<span class="metadata-text">${contributor.aff.addrLine}</span>`
+              });
+              authors.appendChild(affAddrEl);
             }
             if (contributor.aff.city){
               var affCityEl = $$('.metadata-text-container', {

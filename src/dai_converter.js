@@ -198,9 +198,14 @@ DaiConverter.Prototype = function() {
           var customArticleContribution = {}
           var type = contrib.getAttribute('contrib-type');
           if (type) customArticleContribution['type'] = type
+          var contribIdEl = contrib.querySelector('contrib-id')
           var nameEl = contrib.querySelector('name')
           var addressEl = contrib.querySelector('address')
           var affEl = contrib.querySelector('aff')
+
+          if (contribIdEl) {
+            customArticleContribution['contribId'] = contribIdEl.textContent
+          }
           if (nameEl){
             let surnameEl  = nameEl.querySelector('surname')
             let givenNamesEl  = nameEl.querySelector('given-names')
@@ -226,13 +231,19 @@ DaiConverter.Prototype = function() {
             };
           }
           if (affEl){
+            let institutionIdEl  = affEl.querySelector('institution-id')
             let institutionEl  = affEl.querySelector('institution')
+            let addrLineEl  = affEl.querySelector('addr-line')
             let cityEl  = affEl.querySelector('city')
+            let emailEl  = affEl.querySelector('email')
             let countryEl  = affEl.querySelector('country')
             customArticleContribution['aff'] = {
+              institutionId: institutionIdEl ? institutionIdEl.textContent : '',
               institution: institutionEl ? institutionEl.textContent : '',
+              addrLine: addrLineEl ? addrLineEl.textContent : '',
               city: cityEl ? cityEl.textContent : '',
               country: countryEl ? countryEl.textContent : '',
+              email: emailEl ? emailEl.textContent : '',
             };
           }
           customArticleContributions.push(customArticleContribution)
