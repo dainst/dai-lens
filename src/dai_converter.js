@@ -438,6 +438,8 @@ DaiConverter.Prototype = function() {
       let cityEl  = coEditor.querySelector('city')
       journalCoEditors.list.push(`${givenNamesEl.textContent} ${surnameEl.textContent} (${cityEl.textContent})`)
     })
+    journalCoEditors.joinedList = journalCoEditors.list.join(', ')
+
 
     var journalAdvisoryBoard = {role: '', list: []};
     var journalAdvBoardGroupEl =  state.xmlDoc.querySelector('contrib-group[content-type="Wissenschaftlicher Beirat/Advisory Board"]');
