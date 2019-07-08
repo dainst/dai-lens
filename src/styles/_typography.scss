@@ -213,7 +213,8 @@ a {
 .article .panel .content-node .link {
   font-weight: 300;
   color: $black;
-  text-decoration: underline;
+  // text-decoration: underline;
+  border-bottom: 1px solid;
   &:hover {
     background-color: #d1d1d1
   }

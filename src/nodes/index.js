@@ -6,5 +6,6 @@ module.exports = {
   "publication_info": require("./publication_info"),
   "link": require("./link"),
   "link_reference": require("./link_reference"),
-  "text": require("./text")
+  "text": require("./text"),
+  "weblink_reference": require("./weblink_reference")
 };
