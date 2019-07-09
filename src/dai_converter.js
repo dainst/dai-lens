@@ -557,13 +557,20 @@ DaiConverter.Prototype = function() {
       type: type,
       id: nextId,
       source_id: nextId,
-      label: type,
+      label: linkElement.textContent,
       children: [],
       url: '',
       title: ''
     };
     link.title = linkElement.textContent;
     link.url = linkElement.getAttribute('xlink:href')
+    link.urltype = 'external';
+    if (link.url.includes('arachne')) {
+      link.urltype = 'arachne'
+    }
+    if (link.url.includes('gazetteer')) {
+      link.urltype = 'gazetteer'
+    }
     link.slug = link.url.substring(link.url.lastIndexOf("/") + 1);
     doc.create(link);
     // leave a trace for the catch-all converter

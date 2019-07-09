@@ -32,48 +32,28 @@ ExtrafeatureView.Prototype = function() {
     this.$el.append($extrafeatures);
   };
 
-  // this.createElement = function() {
-  //   var div = document.createElement('div');
-  //   var el = null;
-  //   if (this.node.properties.specificUse && this.node.properties.specificUse === "weblink"){
-  //     el = document.createElement('a');
-  //     el.setAttribute('target', '_blank');
-  //     el.setAttribute('href', this.node.url);
-  //     el.classList.add('external-link-ref')
-  //     // el.addClass('external-weblink')
-  //     el.text = this.node.properties.text;
-    
-  //   } else {
-  //     el = document.createElement('span');
-  //     el.textContent = this.node.url;
-  //   }
-  //   div.appendChild(el)
-  //   return div;
-  // };
+  this.renderExternalLink = function(properties) {
+    var $extrafeatures = $('<div class="extrafeatures-link"></div>');
+    $extrafeatures.append($(`<a class="external" href="${properties.url}" target="_blank"></a>`).text(properties.url));
+
+    this.$el.append($extrafeatures);
+  }
+
   this.renderBody = function() {
     var self = this;
-    this.content.appendChild($$('.label', {text: this.node.properties.title}));
 
-    // if (this.node.url) {
-    //   // Add graphic (img element)
-    //   var imgEl = $$('.image-wrapper', {
-    //     children: [
-    //       $$("a", {
-    //         href: 'this.node.url',
-    //         target: "_blank",
-    //         children: [$$("img", {src: 'this.node.url'})]
-    //       })
-    //     ]
-    //   });
-    //   this.content.appendChild(imgEl);
-    // }
-    service.getExtrafeature(this.node.properties.slug, function(err, extrafeatures) {
-      if (!err) {
-        self.renderExtrafeature(extrafeatures); 
-      } else {
-        console.error("Could not retrieve extrafeatures data:", err);
-      }
-    });
+    if (this.node.properties && this.node.properties.urltype === 'external') {
+      this.renderExternalLink(this.node.properties)
+    } else {
+      service.getLinkData(this.node.properties.slug, function(err, extrafeatures) {
+        if (!err) {
+          self.renderExtrafeature(extrafeatures); 
+        } else {
+          self.renderExternalLink(this.node.properties)
+        }
+      });
+    }
+    
     // this.renderChildren();
     // Attrib
     if (this.node.attrib) {
