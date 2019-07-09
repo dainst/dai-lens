@@ -40,9 +40,17 @@ var supplementsPanel = new ContainerPanel({
   container: 'supplements',
   title: 'Supplements',
   icon: 'fa-link',
-  references: ['link_reference'],
+  references: ['supplement_reference'],
 });
 
+var extrafeaturesPanel = new ContainerPanel({
+  type: 'resource',
+  name: 'extrafeatures',
+  container: 'extrafeatures',
+  title: 'Extra Features',
+  icon: 'fa-link',
+  references: ['extrafeature_reference'],
+});
 console.log(panels)
 
 panels.map(panel => {
@@ -53,6 +61,7 @@ panels.map(panel => {
 // Insert altmetrics panel at next to last position
 panels.splice(1, 0, notesPanel);
 panels.push(supplementsPanel);
+panels.push(extrafeaturesPanel);
 // panels.splice(-1, 0, metaDataPanel);
 
 var LensApp = function(config) {

@@ -534,24 +534,30 @@ DaiConverter.Prototype = function() {
     var linkEls = article.querySelectorAll('ext-link[ext-link-type="uri"]');
     for (var i = 0; i < linkEls.length; i++) {
       var specUse = linkEls[i].getAttribute('specific-use')
-      if (specUse === "supplements" || specUse === "extrafeatures") {
+      if (specUse === "supplements") {
         var linkEl = linkEls[i];
         if (linkEl.__converted__) continue;
-        var link = this.link(state, linkEl);
+        var link = this.link(state, linkEl, "supplement");
         state.doc.show("supplements", link.id);
+      }
+      if (specUse === "extrafeatures") {
+        var linkEl = linkEls[i];
+        if (linkEl.__converted__) continue;
+        var link = this.link(state, linkEl, "extrafeature");
+        state.doc.show("extrafeatures", link.id);
       }
       
     }
   };
 
-  this.link = function(state, linkElement) {
+  this.link = function(state, linkElement, type) {
     var doc = state.doc;
-    var nextId = state.nextId('link')
+    var nextId = state.nextId(type)
     var link = {
-      type: 'link',
+      type: type,
       id: nextId,
       source_id: nextId,
-      label: 'link',
+      label: type,
       children: [],
       url: '',
       title: ''
@@ -1085,7 +1091,8 @@ DaiConverter.Prototype = function() {
     return nodes;
   };
 
-  var linkID = 1;
+  var supplementID = 1;
+  var extraFeatureID = 1;
 
   this.enhanceAnnotationData = function(state, anno, el, type){
     var styleType = el.getAttribute('style-type');
@@ -1095,20 +1102,21 @@ DaiConverter.Prototype = function() {
     var specificUse = el.getAttribute('specific-use');
     if (specificUse) {
       anno.specificUse = specificUse;
-      if (specificUse !== "weblink") {
-        anno.type = "link_reference";
-        anno.target = "link_" + linkID
-        linkID++
-        // let linkAnno = Object.assign({}, anno)
-        // linkAnno.type = "link"
-        // state.annotations.push(linkAnno);
-      } else {
+      if (specificUse === "supplements") {
+        anno.type = "supplement_reference";
+        anno.target = "supplement_" + supplementID
+        supplementID++
+      } 
+      else if (specificUse === "extrafeatures") {
+        anno.type = "extrafeature_reference";
+        anno.target = "extrafeature_" + extraFeatureID
+        extraFeatureID++
+      }
+      else {
         anno.type = "weblink_reference"
         anno.urltext = el.textContent;
       }
-        
     }
-
   }
 
   this.enhanceCover = function(state, cover, article){

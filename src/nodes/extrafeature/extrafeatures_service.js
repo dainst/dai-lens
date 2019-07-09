@@ -8,7 +8,7 @@ ExtrafeaturesService.Prototype = function() {
   // ---------------
   //
 
-  this.getExtrafeatures = function(slug, cb) {
+  this.getExtrafeature = function(slug, cb) {
     // var doi = this.document.get('publication_info').doi;
 
 		$.ajax({
