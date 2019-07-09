@@ -18,16 +18,25 @@ ExtrafeatureView.Prototype = function() {
 
   var service = new ExtrafeatureService();
   
-  this.renderExtrafeature = function(extrafeature) {
+  this.renderExtrafeature = function(extrafeature, type, url) {
     // Finally data is available so we tell the panel to show up as a tab
     // this.showToggle();
     var $extrafeatures = $('<div class="extrafeatures"></div>');
+    if (type === 'arachne') {
+      if (extrafeature.images && extrafeature.images.length) {
 
-    Object.keys(extrafeature).forEach(key => {
-      $extrafeatures.append($(`<div class="label">${key}</div>`));
-      $extrafeatures.append($(`<div class="value"></div>`).text(JSON.stringify(extrafeature[key])));
-      $extrafeatures.append($(`<br>`));
-    })
+        $extrafeatures.append($(`<img class="extrafeature-image" src="https://arachne.dainst.org/data/image/${extrafeature.images[0].imageId}" >`))
+      }
+      if (extrafeature.title ) {
+        $extrafeatures.append($(`<div class="extrafeature-title">${extrafeature.title}</div>`));
+      }
+      if (extrafeature.subtitle ) {
+        $extrafeatures.append($(`<div class="extrafeature-subtitle">${extrafeature.subtitle}</div>`));
+      }
+      $extrafeatures.append($(`<a class="external" href="${url}" target="_blank"></a>`).text(url));
+
+
+    }
 
     // var $extrafeatures = $('<div class="extrafeatures"></div>');
     // if (extrafeature.titel){
@@ -69,7 +78,7 @@ ExtrafeatureView.Prototype = function() {
     } else {
       service.getLinkData(this.node.properties, function(err, extrafeatures) {
         if (!err) {
-          self.renderExtrafeature(extrafeatures); 
+          self.renderExtrafeature(extrafeatures, self.node.properties.urltype, self.node.properties.url); 
         } else {
           self.renderExternalLink(this.node.properties)
         }

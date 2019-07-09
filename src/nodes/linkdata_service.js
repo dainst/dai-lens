@@ -13,12 +13,12 @@ LinkDataService.Prototype = function() {
   }
 
   this.parseArachneData = function(res) {
-    // return {
-    //   title: res.title,
-    //   subtitle: res.subtitle,
-    //   images: res.images,
-    // }
-    return res;
+    return {
+      title: res.title,
+      subtitle: res.subtitle,
+      images: res.images,
+    }
+    // return res;
   }
   this.parseGazetteerData = function(res) {
     // return {
