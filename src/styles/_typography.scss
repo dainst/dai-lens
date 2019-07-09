@@ -12,6 +12,19 @@
 }
 
 @font-face {
+  font-family: 'Noto Serif Med';
+  src: url('NotoSerif-Medium.eot');
+  src: local('Noto Serif Medium'), local('NotoSerif-Medium'),
+      url('NotoSerif-Medium.eot?#iefix') format('embedded-opentype'),
+      url('NotoSerif-Medium.woff2') format('woff2'),
+      url('NotoSerif-Medium.woff') format('woff'),
+      url('NotoSerif-Medium.ttf') format('truetype'),
+      url('NotoSerif-Medium.svg#NotoSerif-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Noto Sans Lt';
   src: url('fonts/NotoSans-Light.eot');
   src: local('fonts/Noto Sans Light'), local('fonts/NotoSans-Light'),
