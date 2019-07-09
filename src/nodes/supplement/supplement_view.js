@@ -18,17 +18,17 @@ SupplementView.Prototype = function() {
 
   var service = new SupplementsService();
   
-  this.renderSupplements = function(supplements) {
+  this.renderSupplements = function(supplement, type) {
     // Finally data is available so we tell the panel to show up as a tab
     // this.showToggle();
 
     var $supplements = $('<div class="supplements"></div>');
-    // $supplements.append($('<div class="label">Title</div>'));
-    // $supplements.append($('<div class="value"></div>').text(supplements.title));
-    // $supplements.append($('<div class="label">Subtitle</div>'));
-    // $supplements.append($('<div class="value"></div>').text(supplements.subtitle));
-    $supplements.append($('<div class="value"></div>').text(JSON.stringify(supplements)));
 
+    Object.keys(supplement).forEach(key => {
+      $supplements.append($(`<div class="label">${key}</div>`));
+      $supplements.append($(`<div class="value"></div>`).text(JSON.stringify(supplement[key])));
+      $supplements.append($(`<br>`));
+    })
     this.$el.append($supplements);
   };
 
@@ -45,9 +45,9 @@ SupplementView.Prototype = function() {
     if (this.node.properties && this.node.properties.urltype === 'external') {
       this.renderExternalLink(this.node.properties)
     } else {
-      service.getLinkData(this.node.properties.slug, function(err, supplements) {
+      service.getLinkData(this.node.properties, function(err, supplements) {
         if (!err) {
-          self.renderSupplements(supplements); 
+          self.renderSupplements(supplements, self.node.properties.urltype); 
         } else {
           self.renderExternalLink(this.node.properties)
         }
