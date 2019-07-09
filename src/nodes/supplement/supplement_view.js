@@ -3,7 +3,7 @@ var LensNodes = require("lens/article/nodes");
 var AnnotationView = LensNodes["annotation"].View;
 var NodeView = LensNodes["node"].View;
 var ResourceView = require('lens/article/resource_view');
-var SupplementsService = require('./supplements_service');
+var SupplementsService = require('../linkdata_service');
 var $$ = require("lens/substance/application").$$;
 
 var SupplementView = function(node, viewFactory, options) {
