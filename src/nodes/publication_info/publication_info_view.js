@@ -286,7 +286,7 @@ PublicationInfoView.Prototype = function() {
     // article-digital-edition
     var digitalEdition = $$('digitaledition')
     var deHeaderEl = $$('.metadata-title', {
-      html: `<span class="metadata-title-text">Digital edition</span>`
+      html: `<span class="metadata-title-text">Digital Edition</span>`
     });
     digitalEdition.appendChild(deHeaderEl);
     if (this.node.customPermissions && this.node.customPermissions.online){
@@ -366,7 +366,7 @@ PublicationInfoView.Prototype = function() {
     // article-print-edition
     var printEdition = $$('printedition')
     var deHeaderEl = $$('.metadata-title', {
-      html: `<span class="metadata-title-text">Print edition</span>`
+      html: `<span class="metadata-title-text">Print Edition</span>`
     });
     printEdition.appendChild(deHeaderEl);
     if (this.node.customPermissions && this.node.customPermissions.print){
