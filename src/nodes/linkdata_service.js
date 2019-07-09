@@ -1,14 +1,14 @@
-var SupplementsService = function() {
+var LinkDataService = function() {
   
 };
 
-SupplementsService.Prototype = function() {
+LinkDataService.Prototype = function() {
 
   // Get all key references for a particular article
   // ---------------
   //
 
-  this.getSupplements = function(slug, cb) {
+  this.getLinkData = function(slug, cb) {
     // var doi = this.document.get('publication_info').doi;
 
 		$.ajax({
@@ -21,12 +21,12 @@ SupplementsService.Prototype = function() {
 
 };
 
-SupplementsService.prototype = new SupplementsService.Prototype();
+LinkDataService.prototype = new LinkDataService.Prototype();
 
 var __instance__ = null;
-SupplementsService.instance = function() {
-  if (!__instance__) __instance__ = new SupplementsService();
+LinkDataService.instance = function() {
+  if (!__instance__) __instance__ = new LinkDataService();
   return __instance__;
 };
 
-module.exports = SupplementsService;
+module.exports = LinkDataService;
