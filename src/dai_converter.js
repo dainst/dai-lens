@@ -13,7 +13,7 @@ var DaiConverter = function(options) {
 DaiConverter.Prototype = function() {
   this.test = function(xmlDoc) {
     var publisherName = xmlDoc.querySelector("publisher-name").textContent;
-    var isDaiDocument = xmlDoc.URL.search(Helpers.baseDocsURL) >= 0;
+    var isDaiDocument = window.location.href.search(Helpers.baseDocsURL) >= 0;
     console.log('isDaiDocument', isDaiDocument)
     return isDaiDocument;
   };
@@ -503,7 +503,7 @@ DaiConverter.Prototype = function() {
       // get the document id from the url
       let documentId = '0000'
       if (state && state.xmlDoc) {
-        let fullUrl = state.xmlDoc.URL;
+        let fullUrl = window.location.href;
         documentId = Helpers.extractDocumentIdFromUrl(fullUrl)
       }
 
