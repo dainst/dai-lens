@@ -3,7 +3,7 @@ var LensNodes = require("lens/article/nodes");
 var AnnotationView = LensNodes["annotation"].View;
 var NodeView = LensNodes["node"].View;
 var ResourceView = require('lens/article/resource_view');
-var SupplementsService = require('./supplements_service');
+var SupplementsService = require('../linkdata_service');
 var $$ = require("lens/substance/application").$$;
 
 var SupplementView = function(node, viewFactory, options) {
@@ -32,48 +32,27 @@ SupplementView.Prototype = function() {
     this.$el.append($supplements);
   };
 
-  // this.createElement = function() {
-  //   var div = document.createElement('div');
-  //   var el = null;
-  //   if (this.node.properties.specificUse && this.node.properties.specificUse === "weblink"){
-  //     el = document.createElement('a');
-  //     el.setAttribute('target', '_blank');
-  //     el.setAttribute('href', this.node.url);
-  //     el.classList.add('external-link-ref')
-  //     // el.addClass('external-weblink')
-  //     el.text = this.node.properties.text;
-    
-  //   } else {
-  //     el = document.createElement('span');
-  //     el.textContent = this.node.url;
-  //   }
-  //   div.appendChild(el)
-  //   return div;
-  // };
+  this.renderExternalLink = function(properties) {
+    var $supplements = $('<div class="supplements-link"></div>');
+    $supplements.append($(`<a class="external" href="${properties.url}" target="_blank"></a>`).text(properties.url));
+
+    this.$el.append($supplements);
+  }
+
   this.renderBody = function() {
     var self = this;
-    this.content.appendChild($$('.label', {text: this.node.properties.title}));
 
-    // if (this.node.url) {
-    //   // Add graphic (img element)
-    //   var imgEl = $$('.image-wrapper', {
-    //     children: [
-    //       $$("a", {
-    //         href: 'this.node.url',
-    //         target: "_blank",
-    //         children: [$$("img", {src: 'this.node.url'})]
-    //       })
-    //     ]
-    //   });
-    //   this.content.appendChild(imgEl);
-    // }
-    service.getSupplements(this.node.properties.slug, function(err, supplements) {
-      if (!err) {
-        self.renderSupplements(supplements); 
-      } else {
-        console.error("Could not retrieve supplements data:", err);
-      }
-    });
+    if (this.node.properties && this.node.properties.urltype === 'external') {
+      this.renderExternalLink(this.node.properties)
+    } else {
+      service.getLinkData(this.node.properties.slug, function(err, supplements) {
+        if (!err) {
+          self.renderSupplements(supplements); 
+        } else {
+          self.renderExternalLink(this.node.properties)
+        }
+      });
+    }
     // this.renderChildren();
     // Attrib
     if (this.node.attrib) {
