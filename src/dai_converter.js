@@ -518,7 +518,6 @@ DaiConverter.Prototype = function() {
   };
 
   this.extractFootNotes = function(state, article) {
-    console.log('called dai extract footnotes')
     var fnEls = article.querySelectorAll('fn');
     for (var i = 0; i < fnEls.length; i++) {
       var fnEl = fnEls[i];
@@ -580,7 +579,6 @@ DaiConverter.Prototype = function() {
   };
 
   this.citation = function(state, ref, citation) {
-    console.log('called dai citation')
     var doc = state.doc;
     var citationNode;
     var i;
