@@ -17,10 +17,21 @@ ExtrafeatureView.Prototype = function() {
   _.extend(this, ResourceView.prototype);
 
   var service = new ExtrafeatureService();
+
+  this.initMap = function(id, coord) {
+    // The location of Uluru
+    var uluru = {lat: coord[1], lng: coord[0]};
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+        document.getElementById("map_" + id), {zoom: 4, center: uluru});
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({position: uluru, map: map});
+  }
   
   this.renderExtrafeature = function(extrafeature, type, url) {
     // Finally data is available so we tell the panel to show up as a tab
-    // this.showToggle();
+    // this.showToggle()
+
     var $extrafeatures = $('<div class="extrafeatures"></div>');
     if (type === 'arachne') {
       if (extrafeature.images && extrafeature.images.length) {
@@ -33,34 +44,37 @@ ExtrafeatureView.Prototype = function() {
       if (extrafeature.subtitle ) {
         $extrafeatures.append($(`<div class="extrafeature-subtitle">${extrafeature.subtitle}</div>`));
       }
-      $extrafeatures.append($(`<a class="external" href="${url}" target="_blank"></a>`).text(url));
+      var $extrafeaturesLink = $('<div class="extrafeature-link"></div>');
 
+      $extrafeaturesLink.append($(`<a class="external" href="${url}" target="_blank"></a>`).text(url));
+      $extrafeatures.append($extrafeaturesLink)
+      // $extrafeatures.append($(`<div style="height: 400px" id="map"></div>`));
+      
+
+    }
+    if (type === 'gazetteer') {
+      if (extrafeature.gazId && extrafeature.location && extrafeature.location.coordinates && extrafeature.location.coordinates.length) {
+        $extrafeatures.append($(`<div style="height: 400px" id="map_${extrafeature.gazId}"></div>`));
+      }
+      if (extrafeature.prefName ) {
+        $extrafeatures.append($(`<div class="extrafeature-title">Name: ${extrafeature.prefName.title}</div>`));
+      }
+      if (extrafeature.location && extrafeature.location.coordinates && extrafeature.location.coordinates.length ) {
+        $extrafeatures.append($(`<div class="extrafeature-location">Lage: Breite: ${extrafeature.location.coordinates[1]}, Länge: ${extrafeature.location.coordinates[0]}</div>`));
+      }
+      var $extrafeaturesLink = $('<div class="extrafeature-link"></div>');
+
+      $extrafeaturesLink.append($(`<a class="external" href="${url}" target="_blank"></a>`).text(url));
+      $extrafeatures.append($extrafeaturesLink)
 
     }
 
-    // var $extrafeatures = $('<div class="extrafeatures"></div>');
-    // if (extrafeature.titel){
-    //   $extrafeatures.append($('<div class="label">Title</div>'));
-    //   $extrafeatures.append($('<div class="value"></div>').text(extrafeatures.title));
-    // }
-    // if (extrafeature.subtitle){
-    //   $extrafeatures.append($('<div class="label">Subtitle</div>'));
-    //   $extrafeatures.append($('<div class="value"></div>').text(extrafeatures.subtitle));
-    // }
-
-    // if (extrafeature.prefName){
-    //   $extrafeatures.append($('<div class="label">Title</div>'));
-    //   $extrafeatures.append($('<div class="value"></div>').text(extrafeatures.prefName.title));
-    // }
-
-    // if (extrafeature.location){
-    //   $extrafeatures.append($('<div class="label">Coordinates</div>'));
-    //   $extrafeatures.append($('<div class="value"></div>').text(extrafeatures.coordinates.join(', ')));
-    // }
-    
-    // $extrafeatures.append($('<div class="value"></div>').text(JSON.stringify(extrafeatures, null, 2)));
-
     this.$el.append($extrafeatures);
+    if (extrafeature.gazId && extrafeature.location && extrafeature.location.coordinates && extrafeature.location.coordinates.length) {
+      this.initMap(extrafeature.gazId, extrafeature.location.coordinates);
+    }
+    
+
   };
 
   this.renderExternalLink = function(properties) {

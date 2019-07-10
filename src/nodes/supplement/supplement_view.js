@@ -17,11 +17,21 @@ SupplementView.Prototype = function() {
   _.extend(this, ResourceView.prototype);
 
   var service = new SupplementsService();
+
+  this.initMap = function(id, coord) {
+    // The location of Uluru
+    var uluru = {lat: coord[1], lng: coord[0]};
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+        document.getElementById("map_" + id), {zoom: 4, center: uluru});
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({position: uluru, map: map});
+  }
   
   this.renderSupplement = function(supplement, type, url) {
     // Finally data is available so we tell the panel to show up as a tab
-    // this.showToggle();
-    
+    // this.showToggle()
+
     var $supplements = $('<div class="supplements"></div>');
     if (type === 'arachne') {
       if (supplement.images && supplement.images.length) {
@@ -34,16 +44,37 @@ SupplementView.Prototype = function() {
       if (supplement.subtitle ) {
         $supplements.append($(`<div class="supplement-subtitle">${supplement.subtitle}</div>`));
       }
-      $supplements.append($(`<a class="external" href="${url}" target="_blank"></a>`).text(url));
+      var $supplementsLink = $('<div class="supplement-link"></div>');
 
+      $supplementsLink.append($(`<a class="external" href="${url}" target="_blank"></a>`).text(url));
+      $supplements.append($supplementsLink)
+      // $supplements.append($(`<div style="height: 400px" id="map"></div>`));
+      
 
     }
-    // Object.keys(supplement).forEach(key => {
-    //   $supplements.append($(`<div class="label">${key}</div>`));
-    //   $supplements.append($(`<div class="value"></div>`).text(JSON.stringify(supplement[key])));
-    //   $supplements.append($(`<br>`));
-    // })
+    if (type === 'gazetteer') {
+      if (supplement.gazId && supplement.location && supplement.location.coordinates && supplement.location.coordinates.length) {
+        $supplements.append($(`<div style="height: 400px" id="map_${supplement.gazId}"></div>`));
+      }
+      if (supplement.prefName ) {
+        $supplements.append($(`<div class="supplement-title">Name: ${supplement.prefName.title}</div>`));
+      }
+      if (supplement.location && supplement.location.coordinates && supplement.location.coordinates.length ) {
+        $supplements.append($(`<div class="supplement-location">Lage: Breite: ${supplement.location.coordinates[1]}, Länge: ${supplement.location.coordinates[0]}</div>`));
+      }
+      var $supplementsLink = $('<div class="supplement-link"></div>');
+
+      $supplementsLink.append($(`<a class="external" href="${url}" target="_blank"></a>`).text(url));
+      $supplements.append($supplementsLink)
+      
+
+    }
     this.$el.append($supplements);
+    if (supplement.gazId && supplement.location && supplement.location.coordinates && supplement.location.coordinates.length) {
+      this.initMap(supplement.gazId, supplement.location.coordinates);
+    }
+    
+
   };
 
   this.renderExternalLink = function(properties) {
