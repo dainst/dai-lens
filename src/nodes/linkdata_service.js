@@ -21,12 +21,12 @@ LinkDataService.Prototype = function() {
     // return res;
   }
   this.parseGazetteerData = function(res) {
-    // return {
-    //   provenance: res.provenance,
-    //   location: res.prefLocation,
-    //   prefName: res.prefName
-    // }
-    return res;
+    return {
+      provenance: res.provenance,
+      location: res.prefLocation,
+      prefName: res.prefName,
+      gazId: res.gazId
+    }
   }
 
   this.getLinkData = function(nodeProperties, cb) {
