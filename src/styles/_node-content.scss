@@ -8,6 +8,7 @@
     content: "\003E";
     color: transparent;
     margin-right: 5px;
+    font-size: 20px;
   }
   &.active {
     color: $black;
@@ -15,6 +16,7 @@
     border: 1px solid transparent;
     > :before {
       color: $primary;
+      font-size: 20px;
     }
   }
 }
@@ -29,14 +31,14 @@
   font-weight: 300;
   font-size: 14px;
   line-height: 24px;
-  padding-left: 20px;
+  padding-left: 30px;
 }
 .resource-view.toc .heading-ref.level-3 {
   font-family: 'Noto Sans Lt', sans-serif;
   font-weight: 300;
   font-size: 14px;
   line-height: 24px;
-  padding-left: 30px;
+  padding-left: 40px;
 }
 
 .resource-view.toc .heading-ref {
@@ -46,7 +48,8 @@
     border: 1px solid transparent;
     > :before {
       color: $primary;
-    }
+      font-size: 20px;
+  }
   }
 }
 
