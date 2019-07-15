@@ -36,7 +36,15 @@ function setCoverImage() {
       url,
     ].join('');
     $("div[class='toc']").prepend( `<div><img class="cover-image" src="${coverImageUrl}"/></div>` );
+
   }
+}
+
+function setPanelHeadings() {
+  $("div[class='surface resource-view supplements']").prepend( `<div class="supplements_heading">Supplementary online content of the article. This content is created by the author, peer-reviewed and edited by the editorial office of the DAI.
+  </div>` );
+  $("div[class='surface resource-view extrafeatures']").prepend( `<div class="extrafeatures_heading">Additional information to the article. These annotations are not necessarily part of the article content, but provide further illustrative and explanatory information.</div>` );
+
 }
 function setTopBarImage() {
   $("div[class='menu-bar']").append( `<div class="menu-bar-logo-container"><a href="https://www.dainst.org/dai/meldungen"><img class="menu-bar-logo" src="2nd_logo.png" /></a></div>` );
@@ -235,5 +243,6 @@ module.exports = {
   registerContentScroll: registerContentScroll,
   updateCentralBar: updateCentralBar,
   registerCentralBarHighlight: registerCentralBarHighlight,
-  registerTOCHighlightFix: registerTOCHighlightFix
+  registerTOCHighlightFix: registerTOCHighlightFix,
+  setPanelHeadings: setPanelHeadings
 };

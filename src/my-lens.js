@@ -107,6 +107,7 @@ module.exports = LensApp;module.exports = LensApp;
 
 function initialSetup() {
   Helpers.setCoverImage();
+  Helpers.setPanelHeadings();
   Helpers.setTopBarImage();
   Helpers.updateCentralBar();
   Helpers.registerContentScroll();
