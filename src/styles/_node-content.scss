@@ -4,11 +4,13 @@
   font-size: 14px;
   line-height: 24px;
   color: $gray-light;
+  margin-left: 15px;
   > :before {
     content: "\003E";
     color: transparent;
     margin-right: 5px;
     font-size: 20px;
+    margin-left: -16px
   }
   &.active {
     color: $black;
