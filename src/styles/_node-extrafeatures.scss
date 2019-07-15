@@ -87,8 +87,13 @@ a.extrafeature_preview_link {
   line-height: 0;
 }
 
-.extrafeature-image {
-  width: 100%;
+
+.extrafeature-title,
+.extrafeature-subtitle,
+.extrafeature-location,
+.extrafeature-link {
+  font-family: 'Noto Sans Lt', sans-serif;
+  padding-left: 25px
 }
 
 .lens-article .content-node.caption > .content > .content-node.paragraph {
@@ -96,7 +101,7 @@ a.extrafeature_preview_link {
 }
 
 .surface.resource-view.extrafeatures {
-  padding-bottom: 50px
+  padding-bottom: 40px
 }
 
 
