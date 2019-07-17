@@ -13,26 +13,26 @@
 
 @font-face {
   font-family: 'Noto Serif Med';
-  src: url('NotoSerif-Medium.eot');
-  src: local('Noto Serif Medium'), local('NotoSerif-Medium'),
-      url('NotoSerif-Medium.eot?#iefix') format('embedded-opentype'),
-      url('NotoSerif-Medium.woff2') format('woff2'),
-      url('NotoSerif-Medium.woff') format('woff'),
-      url('NotoSerif-Medium.ttf') format('truetype'),
-      url('NotoSerif-Medium.svg#NotoSerif-Medium') format('svg');
+  src: url('fonts/NotoSerif-Medium.eot');
+  src: local('Noto Serif Medium'), local('fonts/NotoSerif-Medium'),
+      url('fonts/NotoSerif-Medium.eot?#iefix') format('embedded-opentype'),
+      url('fonts/NotoSerif-Medium.woff2') format('woff2'),
+      url('fonts/NotoSerif-Medium.woff') format('woff'),
+      url('fonts/NotoSerif-Medium.ttf') format('truetype'),
+      url('fonts/NotoSerif-Medium.svg#NotoSerif-Medium') format('svg');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Noto Sans';
-  src: url('NotoSans-Regular.eot');
-  src: local('Noto Sans Regular'), local('NotoSans-Regular'),
-      url('NotoSans-Regular.eot?#iefix') format('embedded-opentype'),
-      url('NotoSans-Regular.woff2') format('woff2'),
-      url('NotoSans-Regular.woff') format('woff'),
-      url('NotoSans-Regular.ttf') format('truetype'),
-      url('NotoSans-Regular.svg#NotoSans-Regular') format('svg');
+  src: url('fonts/NotoSans-Regular.eot');
+  src: local('Noto Sans Regular'), local('fonts/NotoSans-Regular'),
+      url('fonts/NotoSans-Regular.eot?#iefix') format('embedded-opentype'),
+      url('fonts/NotoSans-Regular.woff2') format('woff2'),
+      url('fonts/NotoSans-Regular.woff') format('woff'),
+      url('fonts/NotoSans-Regular.ttf') format('truetype'),
+      url('fonts/NotoSans-Regular.svg#NotoSans-Regular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
