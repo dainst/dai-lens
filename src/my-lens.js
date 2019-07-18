@@ -60,7 +60,7 @@ panels.map(panel => {
 
 // Insert altmetrics panel at next to last position
 panels.splice(1, 0, notesPanel);
-panels.push(supplementsPanel);
+panels.splice(3, 0, supplementsPanel);
 panels.push(extrafeaturesPanel);
 // panels.splice(-1, 0, metaDataPanel);
 
