@@ -121,9 +121,21 @@ DaiConverter.Prototype = function() {
   // 
 
   this.enhanceFigure = function(state, node, element) {
+
     var graphic = element.querySelector("graphic");
     var url = graphic.getAttribute("xlink:href");
     node.url = this.resolveURL(state, url);
+
+    var attrib = element.querySelector("attrib");
+    if (attrib) {
+      var linkElem = attrib.querySelector('ext-link')
+      if (linkElem){
+        var url = linkElem.getAttribute('xlink:href')
+        var linkText = linkElem.textContent
+        node.attribLink = {url, linkText}
+      }
+    }
+    console.log(attrib)
   };
 
   this.extractFigures = function(state, xmlDoc) {

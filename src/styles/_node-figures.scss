@@ -56,6 +56,9 @@
 .lens-article .content-node.figure .figure-attribution {
   font-style: italic;
 }
+.lens-article .content-node.figure .figure-attribution .figure-attribution-link {
+  color: $white;
+}
 
 .lens-article .content-node.figure.highlighted .content-node.caption {
   font-family: 'Noto Sans Med', sans-serif;
