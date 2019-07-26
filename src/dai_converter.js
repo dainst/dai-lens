@@ -222,12 +222,14 @@ DaiConverter.Prototype = function() {
             let cityEl  = addressEl.querySelector('city')
             let countryEl  = addressEl.querySelector('country')
             let emailEl  = addressEl.querySelector('email')
+            let phoneEl  = addressEl.querySelector('phone')
             customArticleContribution['address'] = {
               label: labelEl ? labelEl.textContent : '',
               addrLine: addrLineEl ? addrLineEl.textContent : '',
               city: cityEl ? cityEl.textContent : '',
               country: countryEl ? countryEl.textContent : '',
               email: emailEl ? emailEl.textContent : '',
+              phone: phoneEl ? phoneEl.textContent : '',
             };
           }
           if (affEl){

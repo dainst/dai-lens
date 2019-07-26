@@ -53,6 +53,13 @@ PublicationInfoView.Prototype = function() {
         });
         authors.appendChild(addressCountryEl);
       }
+
+      if (contributor.address.phone){
+        var addressPhoneEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${contributor.address.phone}</span>`
+        });
+        authors.appendChild(addressPhoneEl);
+      }
       
     
     }
