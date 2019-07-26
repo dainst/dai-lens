@@ -315,7 +315,7 @@ PublicationInfoView.Prototype = function() {
 
       if (this.node.selfUrisObj && this.node.selfUrisObj['online-url']){
         var urlEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">${this.node.selfUrisObj['online-url']}</span>`
+          html: `<span class="metadata-text">URL(Online):  <a class="metadata-link" href="${this.node.selfUrisObj['online-url']}">${this.node.selfUrisObj['online-url']}</a></span>`
         });
         digitalEdition.appendChild(urlEl);
       }
@@ -343,11 +343,12 @@ PublicationInfoView.Prototype = function() {
       digitalEdition.appendChild($$('br'));
       if (this.node.selfUrisObj && this.node.selfUrisObj['pdf-url']){
         var urlEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">URN(PDF): ${this.node.selfUrisObj['pdf-url']}</span>`
+          html: `<span class="metadata-text">URL(PDF):  <a class="metadata-link" href="${this.node.selfUrisObj['pdf-url']}">${this.node.selfUrisObj['pdf-url']}</a></span>`
         });
         digitalEdition.appendChild(urlEl);
         var urlEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">URL(Viewer): ${this.node.selfUrisObj['lens-url']}</span>`
+          html: `<span class="metadata-text">URL(Viewer):  <a class="metadata-link" href="${this.node.selfUrisObj['lens-url']}">${this.node.selfUrisObj['lens-url']}</a></span>`
+
         });
         digitalEdition.appendChild(urlEl);
       }
@@ -363,13 +364,13 @@ PublicationInfoView.Prototype = function() {
       }
       if (this.node.customMeta && this.node.customMeta['issue-bibliography']) {
         var issueBibEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text"> Bibliographic reference: ${this.node.customMeta['issue-bibliography']}</span>`
+          html: `<span class="metadata-text">Bibliographic reference:   <a class="metadata-link" href="${this.node.customMeta['issue-bibliography']}">${this.node.customMeta['issue-bibliography']}</a></span>`
         });
         digitalEdition.appendChild(issueBibEl);
       }
       if (this.node.customPermissions.online.license){
         var termsEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">${this.node.customPermissions.online.license.terms}</span>`
+          html: `<span class="metadata-text">Terms:   <a class="metadata-link" href="${this.node.customPermissions.online.license.terms}">${this.node.customPermissions.online.license.terms}</a></span>`
         });
         digitalEdition.appendChild(termsEl);
       }
