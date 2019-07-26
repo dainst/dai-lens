@@ -766,14 +766,11 @@ DaiConverter.Prototype = function() {
     nodes.push(absAuthorText);
 
     var absText = abs.querySelector('styled-content[style-type="abstract-text"]')
-    var absTextEl = {
-      id: state.nextId("text"),
-      type: "text",
-      content: absText ? absText.textContent : '',
-      classes: ['abstract-elem', 'abstract-text']
-    };
-    doc.create(absTextEl);
-    nodes.push(absTextEl);
+
+    var textNodes = this.paragraphGroup(state, absText);
+
+    nodes = nodes.concat(textNodes);
+
 
     var lang = abs.getAttribute('xml:lang');
 
