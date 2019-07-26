@@ -239,12 +239,14 @@ DaiConverter.Prototype = function() {
             let cityEl  = affEl.querySelector('city')
             let emailEl  = affEl.querySelector('email')
             let countryEl  = affEl.querySelector('country')
+            let phoneEl  = affEl.querySelector('phone')
             customArticleContribution['aff'] = {
               institutionId: institutionIdEl ? institutionIdEl.textContent : '',
               institution: institutionEl ? institutionEl.textContent : '',
               addrLine: addrLineEl ? addrLineEl.textContent : '',
               city: cityEl ? cityEl.textContent : '',
               country: countryEl ? countryEl.textContent : '',
+              phone: phoneEl ? phoneEl.textContent : '',
               email: emailEl ? emailEl.textContent : '',
             };
           }

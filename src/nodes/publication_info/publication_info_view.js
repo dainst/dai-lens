@@ -90,6 +90,12 @@ PublicationInfoView.Prototype = function() {
         });
         authors.appendChild(affCountryEl);
       }
+      if (contributor.aff.phone){
+        var affPhoneEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${contributor.aff.phone}</span>`
+        });
+        authors.appendChild(affPhoneEl);
+      }
     }
     if (contributor.address && contributor.address.email){
       var addressEmailEl = $$('.metadata-text-container', {
