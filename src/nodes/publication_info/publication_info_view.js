@@ -448,8 +448,11 @@ PublicationInfoView.Prototype = function() {
       });
       journalInfo.appendChild(titleEl);
       var editors = ''
-      this.node.journalEditors.forEach(editor => {
-        editors += `${editor.surname} ${editor.givenNames}, `
+      this.node.journalEditors.forEach((editor, idx) => {
+        editors += `${editor.givenNames} ${editor.surname}`
+        if (this.node.journalEditors.length != (idx+1)){
+          editors += `, `
+        }
       })
       var editorsEl = $$('.metadata-text-container', {
         html: `<span class="metadata-text">${editors}</span>`
