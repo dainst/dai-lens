@@ -57,6 +57,7 @@
     .context-toggles {
       position: fixed;
       background-color: $primary-light;
+      height: calc(100% - #{$top-bar-mobile-height});
       width: 47%;
       padding: 2%;
       transition: 0.5s;
@@ -86,9 +87,6 @@
     .context-toggles {
       margin-top: 82px;
     }
-  }
-  .menu-bar .context-toggles a{
-    width: 48%;
   }
   
   .menu-bar .context-toggles:not(.active) a.active {
@@ -143,7 +141,6 @@
     height: 0;
     .context-toggles {
       width: 60%;
-      height: calc(100% - #{$top-bar-mobile-height});
     }
   }
   .article .resources {
