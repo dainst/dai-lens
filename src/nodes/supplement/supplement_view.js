@@ -45,8 +45,8 @@ SupplementView.Prototype = function() {
         $supplements.append($(`<div class="supplement-subtitle">${supplement.subtitle}</div>`));
       }
       var $supplementsLink = $('<div class="supplement-link"></div>');
-
-      $supplementsLink.append($(`<a class="external" href="${url}" target="_blank"></a>`).text(url));
+      $supplementsLink.append($(`<span>Link to iDAI.world: </span>`));
+      $supplementsLink.append($(`<a class="external" href="${url}" target="_blank" rel="noopener noreferrer"></a>`).text(url));
       $supplements.append($supplementsLink)
       // $supplements.append($(`<div style="height: 400px" id="map"></div>`));
       
@@ -60,11 +60,11 @@ SupplementView.Prototype = function() {
         $supplements.append($(`<div class="supplement-title">Name: ${supplement.prefName.title}</div>`));
       }
       if (supplement.location && supplement.location.coordinates && supplement.location.coordinates.length ) {
-        $supplements.append($(`<div class="supplement-location">Lage: Breite: ${supplement.location.coordinates[1]}, Länge: ${supplement.location.coordinates[0]}</div>`));
+        $supplements.append($(`<div class="supplement-location">Location: Latitude: ${supplement.location.coordinates[1]}, Longitude: ${supplement.location.coordinates[0]}</div>`));
       }
       var $supplementsLink = $('<div class="supplement-link"></div>');
-
-      $supplementsLink.append($(`<a class="external" href="${url}" target="_blank"></a>`).text(url));
+      $supplementsLink.append($(`<span>Link to iDAI.world: </span>`));
+      $supplementsLink.append($(`<a class="external" href="${url}" target="_blank" rel="noopener noreferrer"></a></span>`).text(url));
       $supplements.append($supplementsLink)
       
 
