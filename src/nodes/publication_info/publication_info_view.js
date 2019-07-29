@@ -408,7 +408,7 @@ PublicationInfoView.Prototype = function() {
       }
       printEdition.appendChild($$('br'));
       var podOrderEl = $$('.metadata-text-container', {
-        html: `<span class="metadata-text"> <a class="metadata-link" target="_blank" rel="noopener noreferrer" href="${this.node.customMeta['pod_order_link']}">${this.node.customMeta['pod-order']}</a></span>`
+        html: `<span class="metadata-text">For the print issue click here: <a class="metadata-link" target="_blank" rel="noopener noreferrer" href="${this.node.customMeta['pod-order']}">${this.node.customMeta['pod-order']}</a></span>`
       });
       printEdition.appendChild(podOrderEl);
       printEdition.appendChild($$('br'));
