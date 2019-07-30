@@ -1,6 +1,9 @@
 .article .resources .nodes > .content-node.figure {
   color: $white;
-  margin-top: 100px;
+  margin-top: $top-bar-height;
+  &.fullscreen:first-child {
+    margin-top: $top-bar-height;
+  } 
   font-size: $panel-text-size;
   .resource-header {
     background-color: $gray-dark;
