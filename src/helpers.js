@@ -45,9 +45,9 @@ function removeAnnotationInTOC() {
 }
 
 function setPanelHeadings() {
-  $("div[class='surface resource-view supplements']").prepend( `<div class="supplements_heading">Supplementary online content of the article. This content is created by the author, peer-reviewed and edited by the editorial office of the DAI.
+  $("div[class='surface resource-view supplements']").prepend( `<div class="supplements_heading">Supplementary online content of the article.<br/>This content is created by the author, peer-reviewed and edited by the editorial office of the DAI.
   </div>` );
-  $("div[class='surface resource-view extrafeatures']").prepend( `<div class="extrafeatures_heading">Additional information to the article. These annotations are not necessarily part of the article content, but provide further illustrative and explanatory information.</div>` );
+  $("div[class='surface resource-view extrafeatures']").prepend( `<div class="extrafeatures_heading">Additional information to the article.<br/>These annotations are not necessarily part of the article content, but provide further illustrative and explanatory information.</div>` );
 
 }
 function setTopBarImage() {
