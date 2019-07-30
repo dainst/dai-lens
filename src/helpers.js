@@ -36,8 +36,12 @@ function setCoverImage() {
       url,
     ].join('');
     $("div[class='toc']").prepend( `<div><img class="cover-image" src="${coverImageUrl}"/></div>` );
+    
 
   }
+}
+function removeAnnotationInTOC() {
+  $(".heading-ref > span").find(".annotation").remove();
 }
 
 function setPanelHeadings() {
@@ -244,5 +248,6 @@ module.exports = {
   updateCentralBar: updateCentralBar,
   registerCentralBarHighlight: registerCentralBarHighlight,
   registerTOCHighlightFix: registerTOCHighlightFix,
+  removeAnnotationInTOC: removeAnnotationInTOC,
   setPanelHeadings: setPanelHeadings
 };

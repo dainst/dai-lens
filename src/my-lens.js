@@ -109,6 +109,7 @@ function initialSetup() {
   Helpers.setCoverImage();
   Helpers.setPanelHeadings();
   Helpers.setTopBarImage();
+  Helpers.removeAnnotationInTOC();
   Helpers.updateCentralBar();
   Helpers.registerContentScroll();
   Helpers.registerCentralBarHighlight();
