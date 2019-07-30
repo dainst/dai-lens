@@ -500,7 +500,7 @@ PublicationInfoView.Prototype = function() {
       coEditorsEl.appendChild(roleEl);
 
       var listEl = $$('.metadata-text-container', {
-        html: `<span class="metadata-text">${this.node.journalCoEditors.joinedList}</span>`
+        html: `<span class="metadata-text"><span>The directors of the departments and commissions:</span><br/>${this.node.journalCoEditors.joinedList}</span>`
       });
       coEditorsEl.appendChild(listEl);
 
