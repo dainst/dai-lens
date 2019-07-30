@@ -4,7 +4,6 @@
   font-size: $panel-text-size;
   .resource-header {
     background-color: $gray-dark;
-    margin-left: -3px;
     padding-top: 0;
     .name, .toggle {
       font-family: 'Noto Sans SemBd', sans-serif;
@@ -101,13 +100,14 @@ a.supplement_preview_link {
 }
 
 .supplements_heading {
-  font-family: 'Noto Sans Lt', sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   font-weight: 300;
-  padding-bottom: 15px;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-style: italic;
-  font-size: 14px
+  font-size: 14px;
+  color: #b8b4ae;
 }
 
 .supplement-title,
@@ -115,5 +115,5 @@ a.supplement_preview_link {
 .supplement-location,
 .supplement-link {
   font-family: 'Noto Sans Lt', sans-serif;
-  padding-left: 25px
+  padding-left: 20px
 }

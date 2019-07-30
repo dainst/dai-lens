@@ -4,7 +4,6 @@
   font-size: $panel-text-size;
   .resource-header {
     background-color: $gray-dark;
-    margin-left: -3px;
     padding-top: 0;
     .name, .toggle {
       font-family: 'Noto Sans SemBd', sans-serif;
@@ -97,7 +96,7 @@ a.extrafeature_preview_link {
 .extrafeature-location,
 .extrafeature-link {
   font-family: 'Noto Sans Lt', sans-serif;
-  padding-left: 25px
+  padding-left: 20px
 }
 
 .lens-article .content-node.caption > .content > .content-node.paragraph {
@@ -112,9 +111,9 @@ a.extrafeature_preview_link {
 .extrafeatures_heading {
   font-family: 'Noto Sans Lt', sans-serif;
   font-weight: 300;
-  padding-bottom: 15px;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
   font-style: italic;
   font-size: 14px
 }
