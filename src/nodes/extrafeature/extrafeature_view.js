@@ -45,7 +45,7 @@ ExtrafeatureView.Prototype = function() {
         $extrafeatures.append($(`<div class="extrafeature-subtitle">${extrafeature.subtitle}</div>`));
       }
       var $extrafeaturesLink = $('<div class="extrafeature-link"></div>');
-
+      $extrafeaturesLink.append($(`<span>Link to iDAI.world: </span>`));
       $extrafeaturesLink.append($(`<a class="external" href="${url}" target="_blank"></a>`).text(url));
       $extrafeatures.append($extrafeaturesLink)
       // $extrafeatures.append($(`<div style="height: 400px" id="map"></div>`));
@@ -63,7 +63,7 @@ ExtrafeatureView.Prototype = function() {
         $extrafeatures.append($(`<div class="extrafeature-location">Lage: Breite: ${extrafeature.location.coordinates[1]}, Länge: ${extrafeature.location.coordinates[0]}</div>`));
       }
       var $extrafeaturesLink = $('<div class="extrafeature-link"></div>');
-
+      $extrafeaturesLink.append($(`<span>Link to iDAI.world: </span>`));
       $extrafeaturesLink.append($(`<a class="external" href="${url}" target="_blank"></a>`).text(url));
       $extrafeatures.append($extrafeaturesLink)
 
@@ -78,7 +78,8 @@ ExtrafeatureView.Prototype = function() {
   };
 
   this.renderExternalLink = function(properties) {
-    var $extrafeatures = $('<div class="extrafeatures-link"></div>');
+    var $extrafeatures = $('<div class="extrafeature-link"></div>');
+    $extrafeatures.append($(`<span>Link to iDAI.world: </span>`));
     $extrafeatures.append($(`<a class="external" href="${properties.url}" target="_blank"></a>`).text(properties.url));
 
     this.$el.append($extrafeatures);
