@@ -1,10 +1,10 @@
-.panel.footnotes .surface.footnotes {
-  padding-bottom: 20px;
-}
 .article .resources .content-node.footnote {
   border: none;
   border-radius: 0px;
   font-size: $panel-text-size;
+  &:last-of-type {
+    margin-bottom: 30px;
+  }
 }
 
 .article .resources .nodes > .content-node.footnote > .content {
