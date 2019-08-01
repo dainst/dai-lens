@@ -42,6 +42,7 @@ function setCoverImage() {
 }
 function removeAnnotationInTOC() {
   $(".heading-ref > span").find(".annotation").remove();
+  $(".heading-ref > span").each(function(){ $(this).text($(this).text().trim()) });
 }
 
 function setPanelHeadings() {
@@ -60,6 +61,7 @@ function registerNavbarToggle(){
     <span class="line"></span>
     <span class="line"></span>
   </div></div>` );
+  $("body").append('<div class="topbar topbar-tablet">' + $("#main .topbar").html() + '</div>');
   $("#main").append( `<div class="tablet-menu"><div class="hamburg">
     <span class="line"></span>
     <span class="line"></span>
