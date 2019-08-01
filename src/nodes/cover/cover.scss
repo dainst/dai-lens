@@ -10,6 +10,16 @@
   color: $gray-light;
 }
 
+.loading .topbar-tablet {
+  display: none;
+}
+@supports not (-webkit-overflow-scrolling: touch) {
+  /* CSS for other than iOS devices */
+  .topbar-tablet {
+    display: none;
+  }
+}
+
 .topbar-logo {
   height: 100%;
   float: left;
