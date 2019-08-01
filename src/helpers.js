@@ -139,6 +139,12 @@ function registerCentralBarHighlight(){
       if (hash.indexOf('content/citation_reference') >= 0) {
         show_panel = hash.split('/')[1]
       }
+      if (hash.indexOf('content/supplement_reference') >= 0) {
+        show_panel = hash.split('/')[1]
+      }
+      if (hash.indexOf('content/extrafeature_reference') >= 0) {
+        show_panel = hash.split('/')[1]
+      }
       if (hash.indexOf('info/contributor') >= 0) {
         show_content = hash.split('/')[1]
       }
