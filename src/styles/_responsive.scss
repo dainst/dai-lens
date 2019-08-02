@@ -28,7 +28,7 @@
     .line { 
       position: absolute; 
       right:16px;
-      height: 4px;
+      height: 6px;
       width: 40px;
       background: $white;
       display: block; 
@@ -41,7 +41,7 @@
     .line:nth-child(3) { top: 53px; }
     
     &.active .hamburg .line:nth-child(1){
-      transform: translateY(14px) rotate(-45deg);
+      transform: translateY(15px) rotate(-45deg);
     }
     
     &.active .hamburg .line:nth-child(2){
