@@ -35,7 +35,9 @@
 }
 .article .resources .supplements .content-node.supplement.highlighted {
   border-left: 0px;
-  font-weight: bold;
+  .supplement-title, .supplement-location {
+    font-family: 'Noto Sans Med', sans-serif;
+  }
   .resource-header {
     background-color: $secondary;
   }
@@ -51,9 +53,6 @@
 
 .supplement-link .external{
   color: $white;
-}
-.highlighted .supplement-link .external{
-  font-weight: bold;
 }
 
 

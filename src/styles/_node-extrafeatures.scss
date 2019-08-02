@@ -35,7 +35,9 @@
 }
 .article .resources .extrafeatures .content-node.extrafeature.highlighted {
   border-left: 0px;
-  font-weight: bold;
+  .extrafeature-title, .extrafeature-subtitle {
+    font-family: 'Noto Sans Med', sans-serif;
+  }
   .resource-header {
     background-color: $secondary;
   }
@@ -45,17 +47,10 @@
   color: $white;
   padding-left: 10%;
 }
-.highlighted .extrafeatures-link .external{
-  font-weight: bold;
-}
 
 .extrafeature-link .external{
   color: $white;
 }
-.highlighted .extrafeature-link .external{
-  font-weight: bold;
-}
-
 
 .article .resources .extrafeatures .content-node.fullscreen .resource-header .toggle.toggle-fullscreen, .article .resources .math .content-node.fullscreen .resource-header .toggle.toggle-fullscreen,
 .article .resources .extrafeatures .content-node.highlighted .resource-header .toggle.toggle-res, .article .resources .math .content-node.highlighted .resource-header .toggle.toggle-res {
