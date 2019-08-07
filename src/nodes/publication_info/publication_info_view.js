@@ -297,7 +297,7 @@ PublicationInfoView.Prototype = function() {
     }
 
     // article-digital-edition
-    var digitalEdition = $$('digitaledition')
+    var digitalEdition = $$('.digitaledition')
     var deHeaderEl = $$('.metadata-title', {
       html: `<span class="metadata-title-text">Digital Edition</span>`
     });
@@ -378,7 +378,7 @@ PublicationInfoView.Prototype = function() {
     metaData.appendChild(digitalEdition);
 
     // article-print-edition
-    var printEdition = $$('printedition')
+    var printEdition = $$('.printedition')
     var deHeaderEl = $$('.metadata-title', {
       html: `<span class="metadata-title-text">Print Edition</span>`
     });
@@ -440,7 +440,7 @@ PublicationInfoView.Prototype = function() {
     metaData.appendChild($$('br'));
 
     // journal info
-    var journalInfo = $$('journal-info')
+    var journalInfo = $$('.journal-info')
     
     if (this.node.journalEditors) {
       var titleEl = $$('.metadata-title', {
@@ -488,7 +488,7 @@ PublicationInfoView.Prototype = function() {
 
     // co-editors
     if (this.node.journalCoEditors && this.node.journalCoEditors.list.length){
-      var coEditorsEl = $$('co-editors')
+      var coEditorsEl = $$('.co-editors')
       var coHeaderEl = $$('.metadata-title', {
         html: `<span class="metadata-title-text">Co-Editors</span>`
       });
@@ -509,7 +509,7 @@ PublicationInfoView.Prototype = function() {
 
     // advisory-board
     if (this.node.journalAdvisoryBoard){
-      var advBoardEl = $$('advisory-board')
+      var advBoardEl = $$('.advisory-board')
       var coHeaderEl = $$('.metadata-title', {
         html: `<span class="metadata-title-text">Advisory Board</span>`
       });
@@ -546,7 +546,7 @@ PublicationInfoView.Prototype = function() {
 
 
     // editing-typesetting
-    var editingEl = $$('editing-typesetting')
+    var editingEl = $$('.editing-typesetting')
     var editingHeaderEl = $$('.metadata-title', {
       html: `<span class="metadata-title-text">Editing and Typesetting</span>`
     });
