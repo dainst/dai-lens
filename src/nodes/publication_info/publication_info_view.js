@@ -282,7 +282,7 @@ PublicationInfoView.Prototype = function() {
     }
 
     // article-coauthors
-    if (this.node.customArticleContributions && this.node.customArticleContributions.length > 0) {
+    if (this.node.customArticleContributions && this.node.customArticleContributions.length > 1) {
       var coauthors = $$('.co-authors');
           var authorsHeaderEl = $$('.metadata-title', {
             html: `<span class="metadata-title-text">Co-Authors</span>`
