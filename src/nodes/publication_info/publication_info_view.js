@@ -437,7 +437,6 @@ PublicationInfoView.Prototype = function() {
       });
       metaData.appendChild(historyEl);
     }
-    metaData.appendChild($$('br'));
 
     // journal info
     var journalInfo = $$('.journal-info')
@@ -484,7 +483,6 @@ PublicationInfoView.Prototype = function() {
       journalInfo.appendChild(publisherLocLinkEl);
     }
     metaData.appendChild(journalInfo);
-    metaData.appendChild($$('br'));
 
     // co-editors
     if (this.node.journalCoEditors && this.node.journalCoEditors.list.length){
@@ -527,8 +525,6 @@ PublicationInfoView.Prototype = function() {
 
       metaData.appendChild(advBoardEl);
     }
-
-    metaData.appendChild($$('br'));
 
     // peer review
     if (this.node.journalCustomMeta && this.node.journalCustomMeta['peer-review-label']) {
