@@ -135,11 +135,9 @@ DaiConverter.Prototype = function() {
         node.attribLink = {url, linkText}
       }
     }
-    console.log(attrib)
   };
 
   this.extractFigures = function(state, xmlDoc) {
-    console.log('override extract figures')
     // Globally query all figure-ish content, <fig>, <supplementary-material>, <table-wrap>, <media video>
     // mimetype="video"
 
