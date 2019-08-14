@@ -94,3 +94,8 @@ The `dai_converter` is the place where the xml document is parsed and data is co
 
 <a id="helpers"></a>
 ## 4. JQuery Helpers
+Some of the features are implemented with JQuery and added to the page after the Lens parsing and displaying is done. All of these functions are defined in the `src/helpers.js` and called on document load. Check this file if you want to make a change to any of the following features:
+- central scrollbar with figures
+- mobile menu behaviour
+- TOC cover image
+- top bar image
