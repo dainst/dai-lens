@@ -51,10 +51,8 @@ var extrafeaturesPanel = new ContainerPanel({
   icon: 'fa-link',
   references: ['extrafeature_reference'],
 });
-console.log(panels)
 
 panels.map(panel => {
-  console.log('panel', panel);
   if (panel.config.name === 'info') panel.config.title = 'Metadata'
 })
 
