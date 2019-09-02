@@ -10,6 +10,7 @@ variables:
 
 stages:
   - build
+  - release
   
 docker-build:
   stage: build
@@ -28,7 +29,7 @@ docker-build:
     - develop
     - master
   except:
-    -tags
+    - tags
 
 release-image:
   stage: release
