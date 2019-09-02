@@ -1,0 +1,61 @@
+.article .resources .nodes > .content-node {
+  color: $white;
+  background: $gray-dark;
+  border-bottom: none;
+
+  .resource-header a {
+    color: $white;
+    &:hover{
+      color: $white;
+      background: none;
+      text-decoration: underline;
+    }
+  }
+}
+
+.article .resources .nodes > .content-node.publication-info .content-node[data-id=articleinfo] .heading.level-3 .content {
+  font-family: 'Noto Sans SemBd', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  color: $gray-light;
+}
+
+
+.lens-article .content-node.publication-info {
+  font-size: $panel-text-size;
+}
+
+.lens-article .content-node.publication-info .label {
+  float: left;
+  font-weight: 600;
+  width: 150px;
+  color: $white;
+}
+
+.metadata-header {
+  border-bottom: 1px solid;
+  font-family: 'Noto Sans Med', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #dedace;
+  margin-bottom : 25px;
+}
+
+.metadata-title {
+  font-family: 'Noto Sans Med', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  color: #dedace;
+  margin-top : 30px;
+}
+
+.metadata-link {
+  color: #FFFFFF;
+}
+
+.metadata-text {
+  font-family: 'Noto Sans Lt', sans-serif;
+}

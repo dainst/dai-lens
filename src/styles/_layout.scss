@@ -1,0 +1,34 @@
+body.reader #main {
+  margin-top: $top-bar-height;
+  height: calc( 100% - #{$top-bar-height} );
+}
+
+.article .document {
+  width: 53%;
+  border-right: 0px;
+  .surface.content {
+    width: 90%;
+
+  }
+  .scrollbar-cover {
+    width: 10%;
+    background-color: $gray-lighter;
+    .central-bar-preview {
+      width: 100%;
+      max-height: $top-bar-height;
+      text-align: center;
+      a:hover {
+        background: none;
+      }
+    }
+    .central-bar-preview.selected {
+      border-top: 3px solid $primary
+    }
+  }
+}
+
+.article .resources {
+  width: 47%;
+  margin-top: -$top-bar-height;
+  height: calc( 100% + #{$top-bar-height} );
+}

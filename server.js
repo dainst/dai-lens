@@ -15,7 +15,8 @@ app.use(express.cookieParser());
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 
-
+const dotenv = require('dotenv');
+dotenv.config();
 app.get('/lens.js', function (req, res, next) {
   browserify({ debug: true, cache: false })
     .add(path.join(__dirname, "boot.js"))

@@ -25,3 +25,33 @@
 .altmetrics-panel .altmetrics {
   padding: 20px;
 }
+
+@import 'src/styles/variables';
+@import 'src/styles/typography';
+
+@import 'src/styles/menu';
+@import 'src/styles/node-abstracts';
+@import 'src/styles/node-citations';
+@import 'src/styles/node-content';
+@import 'src/styles/node-figures';
+@import 'src/styles/node-supplements';
+@import 'src/styles/node-extrafeatures';
+@import 'src/styles/node-footnotes';
+@import 'src/styles/node-info-meta';
+@import 'src/styles/nodes';
+@import 'src/styles/layout';
+
+@import 'src/nodes/cover/cover';
+
+@import 'src/styles/responsive';
+
+.surface-scrollbar .visible-area {
+  background-color: rgba(63, 63, 63, 0.3);
+}
+
+.cover-image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
