@@ -23,7 +23,7 @@ ExtrafeatureView.Prototype = function() {
     var uluru = {lat: coord[1], lng: coord[0]};
     // The map, centered at Uluru
     var map = new google.maps.Map(
-        document.getElementById("map_" + id), {zoom: 4, center: uluru});
+        document.getElementById("map_" + id), {zoom: 8, center: uluru});
     // The marker, positioned at Uluru
     var marker = new google.maps.Marker({position: uluru, map: map});
   }
