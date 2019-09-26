@@ -9,12 +9,17 @@
     "underscore": "1.8.x"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
     "browserify": "*",
-    "gulp": "^3.8.11",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-concat": "^2.6.1",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^2.0.3",
+    "gulp-sass": "^4.0.2",
     "gulp-uglify": "^1.2.0",
     "node-sass": "^4.12.0",
+    "rollup": "^1.21.4",
     "through2": "^2.0.0"
   },
   "version": "2.0.0"
