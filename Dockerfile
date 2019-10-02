@@ -29,9 +29,4 @@ COPY --from=builder /usr/src/app/dist/ /usr/share/nginx/html/
 # RUN adduser myuser
 # USER myuser
 
-# Bundle app source
-# COPY . .
-
-# CMD ["serve", "./dist"]
-# CMD [ "node", "server"]
 CMD ["nginx", "-g", "daemon off;"]
