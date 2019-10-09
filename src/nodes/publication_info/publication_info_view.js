@@ -583,6 +583,39 @@ PublicationInfoView.Prototype = function() {
       editingEl.appendChild(editingTypesetting);
     }
 
+    if (this.node.journalCustomMeta && this.node.journalCustomMeta['editing-notice-webdesign']) {
+      var link = ''
+      if(this.node.journalCustomMeta['editing-notice-webdesign-url']){
+        link = `<a class="metadata-link" href="${this.node.journalCustomMeta['editing-notice-webdesign-url']}" target="_blank">(${this.node.journalCustomMeta['editing-notice-webdesign-url']})</a> `;
+      }
+      var editingTypesetting = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.journalCustomMeta['editing-notice-webdesign']}</span>&nbsp${link}`
+      });
+      editingEl.appendChild(editingTypesetting);
+    }
+
+    if (this.node.journalCustomMeta && this.node.journalCustomMeta['editing-notice-conversion']) {
+      var link = ''
+      if(this.node.journalCustomMeta['editing-notice-conversion-url']){
+        link = `<a class="metadata-link" href="${this.node.journalCustomMeta['editing-notice-conversion-url']}" target="_blank">(${this.node.journalCustomMeta['editing-notice-conversion-url']})</a> `;
+      }
+      var editingTypesetting = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.journalCustomMeta['editing-notice-conversion']}</span>&nbsp${link}`
+      });
+      editingEl.appendChild(editingTypesetting);
+    }
+
+    if (this.node.journalCustomMeta && this.node.journalCustomMeta['editing-notice-development']) {
+      var link = ''
+      if(this.node.journalCustomMeta['editing-notice-development-url']){
+        link = `<a class="metadata-link" href="${this.node.journalCustomMeta['editing-notice-development-url']}" target="_blank">(${this.node.journalCustomMeta['editing-notice-development-url']})</a> `;
+      }
+      var editingTypesetting = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">${this.node.journalCustomMeta['editing-notice-development']}</span>&nbsp${link}`
+      });
+      editingEl.appendChild(editingTypesetting);
+    }
+
     metaData.appendChild(editingEl);
     metaData.appendChild($$('br'));
 
