@@ -29,4 +29,4 @@ COPY --from=builder /usr/src/app/dist/ /usr/share/nginx/html/
 # RUN adduser myuser
 # USER myuser
 
-CMD ["sudo", "nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
