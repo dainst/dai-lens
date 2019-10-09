@@ -320,6 +320,13 @@ PublicationInfoView.Prototype = function() {
         digitalEdition.appendChild(urlEl);
       }
       digitalEdition.appendChild($$('br'))
+      if (this.node.customMeta && this.node.customMeta['cover-illustration']) {
+        var coverIllustEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text"> ${this.node.customMeta['cover-illustration']}</span>`
+        });
+        digitalEdition.appendChild(coverIllustEl);
+      }
+      digitalEdition.appendChild($$('br'))
       if (this.node.customPermissions.online.license){
         var copyrightEl = $$('.metadata-text-container', {
           html: `<span class="metadata-text">All rights reserved.</span>`
@@ -349,6 +356,18 @@ PublicationInfoView.Prototype = function() {
         var urlEl = $$('.metadata-text-container', {
           html: `<span class="metadata-text">URL (Viewer):  <a class="metadata-link" target="_blank" rel="noopener noreferrer" href="${this.node.selfUrisObj['lens-url']}">${this.node.selfUrisObj['lens-url']}</a></span>`
 
+        });
+        digitalEdition.appendChild(urlEl);
+      }
+      if (this.node.selfUrisObj && this.node.selfUrisObj['pdf-urn']){
+        var urlEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">URN:  ${this.node.selfUrisObj['pdf-urn']}</span>`
+        });
+        digitalEdition.appendChild(urlEl);
+      }
+      if (this.node.articleId && this.node.articleId.text){
+        var urlEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">DOI:  ${this.node.articleId.text}</span>`
         });
         digitalEdition.appendChild(urlEl);
       }
