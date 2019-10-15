@@ -127,6 +127,8 @@ PublicationInfoView.Prototype = function() {
 
   this.stripLink = function(link) {
     var res = link.replace("https://", "");
+    res = res.replace("www.", "");
+    if (res.endsWith("/")) res = res.slice(0, -1);
     return res;
   }
 
