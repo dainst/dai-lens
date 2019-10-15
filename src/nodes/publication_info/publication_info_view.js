@@ -16,6 +16,7 @@ var _labels = {
   "default": "updated",
 };
 
+
 // Lens.PublicationInfo.View
 // ==========================================================================
 
@@ -122,6 +123,11 @@ PublicationInfoView.Prototype = function() {
       authors.appendChild(institutionIdEl);
     }
     authors.appendChild($$('br'));
+  }
+
+  this.stripLink = function(link) {
+    var res = link.replace("https://", "");
+    return res;
   }
 
 
@@ -322,7 +328,7 @@ PublicationInfoView.Prototype = function() {
       digitalEdition.appendChild($$('br'))
       if (this.node.customMeta && this.node.customMeta['cover-illustration']) {
         var coverIllustEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text"> ${this.node.customMeta['cover-illustration']}</span>`
+          html: `<span class="metadata-text">Cover Illustration: ${this.node.customMeta['cover-illustration']}</span>`
         });
         digitalEdition.appendChild(coverIllustEl);
       }
@@ -605,7 +611,8 @@ PublicationInfoView.Prototype = function() {
     if (this.node.journalCustomMeta && this.node.journalCustomMeta['editing-notice-webdesign']) {
       var link = ''
       if(this.node.journalCustomMeta['editing-notice-webdesign-url']){
-        link = `<a class="metadata-link" href="${this.node.journalCustomMeta['editing-notice-webdesign-url']}" target="_blank">(${this.node.journalCustomMeta['editing-notice-webdesign-url']})</a> `;
+        var strippedLink = this.stripLink(this.node.journalCustomMeta['editing-notice-webdesign-url'])
+        link = `<a class="metadata-link" href="${this.node.journalCustomMeta['editing-notice-webdesign-url']}" target="_blank">(${strippedLink})</a> `;
       }
       var editingTypesetting = $$('.metadata-text-container', {
         html: `<span class="metadata-text">${this.node.journalCustomMeta['editing-notice-webdesign']}</span>&nbsp${link}`
@@ -616,7 +623,8 @@ PublicationInfoView.Prototype = function() {
     if (this.node.journalCustomMeta && this.node.journalCustomMeta['editing-notice-conversion']) {
       var link = ''
       if(this.node.journalCustomMeta['editing-notice-conversion-url']){
-        link = `<a class="metadata-link" href="${this.node.journalCustomMeta['editing-notice-conversion-url']}" target="_blank">(${this.node.journalCustomMeta['editing-notice-conversion-url']})</a> `;
+        var strippedLink = this.stripLink(this.node.journalCustomMeta['editing-notice-conversion-url'])
+        link = `<a class="metadata-link" href="${this.node.journalCustomMeta['editing-notice-conversion-url']}" target="_blank">(${strippedLink})</a> `;
       }
       var editingTypesetting = $$('.metadata-text-container', {
         html: `<span class="metadata-text">${this.node.journalCustomMeta['editing-notice-conversion']}</span>&nbsp${link}`
@@ -627,7 +635,8 @@ PublicationInfoView.Prototype = function() {
     if (this.node.journalCustomMeta && this.node.journalCustomMeta['editing-notice-development']) {
       var link = ''
       if(this.node.journalCustomMeta['editing-notice-development-url']){
-        link = `<a class="metadata-link" href="${this.node.journalCustomMeta['editing-notice-development-url']}" target="_blank">(${this.node.journalCustomMeta['editing-notice-development-url']})</a> `;
+        var strippedLink = this.stripLink(this.node.journalCustomMeta['editing-notice-development-url'])
+        link = `<a class="metadata-link" href="${this.node.journalCustomMeta['editing-notice-development-url']}" target="_blank">(${strippedLink})</a> `;
       }
       var editingTypesetting = $$('.metadata-text-container', {
         html: `<span class="metadata-text">${this.node.journalCustomMeta['editing-notice-development']}</span>&nbsp${link}`
