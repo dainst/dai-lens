@@ -359,15 +359,15 @@ PublicationInfoView.Prototype = function() {
         });
         digitalEdition.appendChild(urlEl);
       }
-      if (this.node.selfUrisObj && this.node.selfUrisObj['pdf-urn']){
-        var urlEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">URN:  ${this.node.selfUrisObj['pdf-urn']}</span>`
-        });
-        digitalEdition.appendChild(urlEl);
-      }
       if (this.node.articleId && this.node.articleId.text){
         var urlEl = $$('.metadata-text-container', {
           html: `<span class="metadata-text">DOI:  ${this.node.articleId.text}</span>`
+        });
+        digitalEdition.appendChild(urlEl);
+      }
+      if (this.node.selfUrisObj && this.node.selfUrisObj['pdf-urn']){
+        var urlEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">URN:  ${this.node.selfUrisObj['pdf-urn']}</span>`
         });
         digitalEdition.appendChild(urlEl);
       }
