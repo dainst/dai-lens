@@ -291,17 +291,27 @@ PublicationInfoView.Prototype = function() {
 
     // article-coauthors
     if (this.node.customArticleContributions && this.node.customArticleContributions.length > 1) {
-      var coauthors = $$('.co-authors');
+      let addCoauthors = false;
+      this.node.customArticleContributions.forEach(contributor => {
+        if (contributor.type === 'co-author'){
+          addCoauthors = true;
+        }
+      })
+      if(addCoauthors){
+        var coauthors = $$('.co-authors');
           var authorsHeaderEl = $$('.metadata-title', {
             html: `<span class="metadata-title-text">Co-Authors</span>`
           });
           coauthors.appendChild(authorsHeaderEl);
-      this.node.customArticleContributions.forEach(contributor => {
-        if (contributor.type === 'co-author'){
-          this.renderAuthorInfo(coauthors, contributor)
-        }
-      })
+        this.node.customArticleContributions.forEach(contributor => {
+          if (contributor.type === 'co-author'){
+            this.renderAuthorInfo(coauthors, contributor)
+          }
+        })
       metaData.appendChild(coauthors);
+
+      }
+      
     }
 
     // article-digital-edition
