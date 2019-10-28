@@ -28,7 +28,7 @@ ExtrafeatureView.Prototype = function() {
     var marker = new google.maps.Marker({position: uluru, map: map});
   }
   
-  this.renderExtrafeature = function(extrafeature, type, url) {
+  this.renderExtrafeature = function(extrafeature, type, url, extrafeatureId) {
     // Finally data is available so we tell the panel to show up as a tab
     // this.showToggle()
 
@@ -54,7 +54,7 @@ ExtrafeatureView.Prototype = function() {
     }
     if (type === 'gazetteer') {
       if (extrafeature.gazId && extrafeature.location && extrafeature.location.coordinates && extrafeature.location.coordinates.length) {
-        $extrafeatures.append($(`<div style="height: 400px" id="map_${extrafeature.gazId}"></div>`));
+        $extrafeatures.append($(`<div style="height: 400px" id="map_${extrafeatureId}_${extrafeature.gazId}"></div>`));
       }
       if (extrafeature.prefName ) {
         $extrafeatures.append($(`<div class="extrafeature-title">Name: ${extrafeature.prefName.title}</div>`));
@@ -71,7 +71,7 @@ ExtrafeatureView.Prototype = function() {
 
     this.$el.append($extrafeatures);
     if (extrafeature.gazId && extrafeature.location && extrafeature.location.coordinates && extrafeature.location.coordinates.length) {
-      this.initMap(extrafeature.gazId, extrafeature.location.coordinates);
+      this.initMap(`${extrafeatureId}_${extrafeature.gazId}`, extrafeature.location.coordinates);
     }
     
 
@@ -91,9 +91,9 @@ ExtrafeatureView.Prototype = function() {
     if (this.node.properties && this.node.properties.urltype === 'external') {
       this.renderExternalLink(this.node.properties)
     } else {
-      service.getLinkData(this.node.properties, function(err, extrafeatures) {
+      service.getLinkData(this.node.properties, function(err, extrafeatureData) {
         if (!err) {
-          self.renderExtrafeature(extrafeatures, self.node.properties.urltype, self.node.properties.url); 
+          self.renderExtrafeature(extrafeatureData, self.node.properties.urltype, self.node.properties.url, self.node.properties.id); 
         } else {
           self.renderExternalLink(this.node.properties)
         }
