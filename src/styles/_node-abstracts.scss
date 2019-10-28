@@ -1,0 +1,58 @@
+.surface.content .nodes > .content-node {
+  
+  &.text.abstract_title_hr {
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
+  &.text.abstract-heading {
+    font-family: 'Noto Sans Med', sans-serif;
+    font-size: 16px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    .content {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+  &.text.abstract-title {
+    font-family: 'Noto Serif Med', serif;
+    color: $primary;
+    font-size: 16px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
+  &.text.abstract-subtitle {
+    color: $primary;
+    font-size: 16px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+  }
+  
+  &.text.abstract-author {
+    font-size: 16px;
+    padding-bottom: 15px;
+    padding-top: 0px;
+  }
+  
+  &.text.abstract-text {
+    font-size: 16px;
+    padding-bottom: 0px;
+    padding-top: 15px;
+  }
+
+  &.text.abstract-kwd-heading {
+    font-family: 'Noto Sans Med', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 16px;
+    padding-bottom: 0px;
+    padding-top: 15px;
+  }
+
+  &.text.abstract-kwd {
+    padding-bottom: 20px;
+    padding-top: 0px;
+
+  }
+} 
+

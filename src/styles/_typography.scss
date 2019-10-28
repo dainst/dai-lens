@@ -1,0 +1,254 @@
+@font-face {
+  font-family: 'Noto Serif Lt';
+  src: url('fonts/NotoSerif-Light.eot');
+  src: local('fonts/Noto Serif Light'), local('fonts/NotoSerif-Light'),
+      url('fonts/NotoSerif-Light.eot?#iefix') format('embedded-opentype'),
+      url('fonts/NotoSerif-Light.woff2') format('woff2'),
+      url('fonts/NotoSerif-Light.woff') format('woff'),
+      url('fonts/NotoSerif-Light.ttf') format('truetype'),
+      url('fonts/NotoSerif-Light.svg#NotoSerif-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Serif Med';
+  src: url('fonts/NotoSerif-Medium.eot');
+  src: local('Noto Serif Medium'), local('fonts/NotoSerif-Medium'),
+      url('fonts/NotoSerif-Medium.eot?#iefix') format('embedded-opentype'),
+      url('fonts/NotoSerif-Medium.woff2') format('woff2'),
+      url('fonts/NotoSerif-Medium.woff') format('woff'),
+      url('fonts/NotoSerif-Medium.ttf') format('truetype'),
+      url('fonts/NotoSerif-Medium.svg#NotoSerif-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans';
+  src: url('fonts/NotoSans-Regular.eot');
+  src: local('Noto Sans Regular'), local('fonts/NotoSans-Regular'),
+      url('fonts/NotoSans-Regular.eot?#iefix') format('embedded-opentype'),
+      url('fonts/NotoSans-Regular.woff2') format('woff2'),
+      url('fonts/NotoSans-Regular.woff') format('woff'),
+      url('fonts/NotoSans-Regular.ttf') format('truetype'),
+      url('fonts/NotoSans-Regular.svg#NotoSans-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans Lt';
+  src: url('fonts/NotoSans-Light.eot');
+  src: local('fonts/Noto Sans Light'), local('fonts/NotoSans-Light'),
+      url('fonts/NotoSans-Light.eot?#iefix') format('embedded-opentype'),
+      url('fonts/NotoSans-Light.woff2') format('woff2'),
+      url('fonts/NotoSans-Light.woff') format('woff'),
+      url('fonts/NotoSans-Light.ttf') format('truetype'),
+      url('fonts/NotoSans-Light.svg#NotoSans-Light') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans Med';
+  src: url('fonts/NotoSans-Medium.eot');
+  src: local('fonts/Noto Sans Medium'), local('fonts/NotoSans-Medium'),
+      url('fonts/NotoSans-Medium.eot?#iefix') format('embedded-opentype'),
+      url('fonts/NotoSans-Medium.woff2') format('woff2'),
+      url('fonts/NotoSans-Medium.woff') format('woff'),
+      url('fonts/NotoSans-Medium.ttf') format('truetype'),
+      url('fonts/NotoSans-Medium.svg#NotoSans-Medium') format('svg');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans SemBd';
+  src: url('fonts/NotoSans-SemiBold.eot');
+  src: local('fonts/Noto Sans SemiBold'), local('fonts/NotoSans-SemiBold'),
+      url('fonts/NotoSans-SemiBold.eot?#iefix') format('embedded-opentype'),
+      url('fonts/NotoSans-SemiBold.woff2') format('woff2'),
+      url('fonts/NotoSans-SemiBold.woff') format('woff'),
+      url('fonts/NotoSans-SemiBold.ttf') format('truetype'),
+      url('fonts/NotoSans-SemiBold.svg#NotoSans-SemiBold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans ExtLt';
+  src: url('fonts/NotoSans-ExtraLight.eot');
+  src: local('fonts/Noto Sans ExtraLight'), local('fonts/NotoSans-ExtraLight'),
+      url('fonts/NotoSans-ExtraLight.eot?#iefix') format('embedded-opentype'),
+      url('fonts/NotoSans-ExtraLight.woff2') format('woff2'),
+      url('fonts/NotoSans-ExtraLight.woff') format('woff'),
+      url('fonts/NotoSans-ExtraLight.ttf') format('truetype'),
+      url('fonts/NotoSans-ExtraLight.svg#NotoSans-ExtraLight') format('svg');
+  font-weight: 200;
+  font-style: normal;
+}
+
+body, textarea, p, input {
+  font-family: 'Noto Serif Lt', serif;
+  font-weight: 300;
+  color: $black;
+}
+
+a {
+  color: $gray-darker;
+  &:hover{
+    background-color: $gray-darker;
+    color: $white;
+  }
+}
+
+.lens-article .content-node.cover .title {
+  font-family: 'Noto Sans Lt', sans-serif;
+  font-weight: 300;
+  color: $primary;
+  font-size: 48px;
+  line-height: 55px;
+  padding-top: 20px;
+  text-align: left;
+}
+
+.lens-article .content-node.cover .cover-subtitle {
+  font-family: 'Noto Sans Lt', sans-serif;
+  font-weight: 300;
+  color: $primary;
+  font-size: 30px;
+  line-height: 36px;
+  padding-top: 20px;
+  text-align: left;
+}
+
+
+.lens-article .content-node.cover .authors {
+  text-align: justify;
+}
+.content-node.heading .content {
+  font-family: 'Noto Sans Med', sans-serif;
+  font-weight: 500;
+  color: $primary;
+  font-size: 24px;
+  line-height: 1.3
+}
+
+.content-node.heading.level-2 .content {
+  font-size: 17px;
+}
+
+.content-node.heading.level-3 .content {
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 16px;
+  color: $black;
+}
+
+.content-node.text[data-id=abstract_title_hr] .content {
+  height: 2px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid $gray-light;
+}
+
+
+.article .document {
+  line-height: 28px;
+  font-size: 16px;
+}
+
+.article span[class="annotation"] {
+  font-family: 'Noto Sans Med', sans-serif;
+  font-weight: 500;
+  color: $gray-medium;
+  font-size: 12px;
+  line-height: 28px;
+  margin-right: 30px;
+}
+
+.annotation.text-medium {
+  font-family: 'Noto Serif Med', serif;
+  font-weight: 500;
+}
+
+
+.content-node .figure_reference {
+  font-family: 'Noto Serif Lt', serif;
+  font-weight: 300;
+  background: none;
+  color: $primary-dark;
+  &:hover {
+    background-color: #eee2d9;
+  }
+  border-bottom: 1px solid $primary-dark;
+  padding-right: 3px;
+  padding-left: 3px;
+}
+
+.content-node .cross_reference {
+  background: none;
+  color: $gray-darker;
+  &:hover {
+    background-color: $gray-darker;
+    color: $white;
+  }
+  border-bottom: 1px solid $gray-darker;
+  padding-right: 3px;
+  padding-left: 3px;
+}
+
+.content-node .citation_reference {
+  font-family: 'Noto Serif Lt', serif;
+  font-weight: 300;
+  background: none;
+  color: $secondary;
+  &:hover {
+    background-color: $secondary;
+    color: $white;
+  }
+  border-bottom: 1px solid $secondary;
+  padding-right: 3px;
+  padding-left: 3px;
+}
+
+.content-node .contributor_reference {
+  font-family: 'Noto Sans SemBd', sans-serif;
+  font-weight: 600;
+  color: $gray-darker;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.lens-article .content-node.cover .content .authors {
+  font-family: 'Noto Sans SemBd', sans-serif;
+  padding-top: 30px;
+  color: $gray-darker;
+  overflow: auto;
+  margin-bottom: 24px;
+}
+
+.surface.content .nodes > .content-node.heading {
+  padding-bottom: 0px;
+}
+.surface.content .nodes > .content-node.heading.level-1 .content {
+  font-size: 20px;
+}
+
+.surface.content .nodes > .content-node.paragraph {
+  padding-top: 2px;
+}
+
+.article .resources .nodes > .content-node {
+  border-left: 0px;
+}
+
+.article .panel .content-node .link {
+  font-weight: 300;
+  color: $black;
+  // text-decoration: underline;
+  border-bottom: 1px solid;
+  &:hover {
+    background-color: #d1d1d1
+  }
+}
+

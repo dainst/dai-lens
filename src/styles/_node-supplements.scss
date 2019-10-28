@@ -1,0 +1,121 @@
+.article .resources .nodes > .content-node.supplement {
+  color: $white;
+  margin-top: 100px;
+  font-size: $panel-text-size;
+  .resource-header {
+    background-color: $gray-dark;
+    padding-top: 0;
+    .name, .toggle {
+      font-family: 'Noto Sans SemBd', sans-serif;
+      font-weight: 600;
+      color: $white;
+      line-height: 21px;
+      min-height: 21px;
+      font-size: 12px;
+    }
+    .toggle:hover {
+      background: none;
+      text-decoration: underline;
+    }
+  }
+  .image-wrapper {
+    padding: 0;
+    a:hover {
+      background: none;
+    }
+    img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  .content {
+    padding: 0;
+  }
+}
+.article .resources .supplements .content-node.supplement.highlighted {
+  border-left: 0px;
+  .supplement-title, .supplement-location {
+    font-family: 'Noto Sans Med', sans-serif;
+  }
+  .resource-header {
+    background-color: $secondary;
+  }
+}
+
+.supplements-link .external{
+  color: $white;
+  padding-left: 10%;
+}
+.highlighted .supplements-link .external{
+  font-weight: bold;
+}
+
+.supplement-link .external{
+  color: $white;
+}
+
+
+.article .resources .supplements .content-node.fullscreen .resource-header .toggle.toggle-fullscreen, .article .resources .math .content-node.fullscreen .resource-header .toggle.toggle-fullscreen,
+.article .resources .supplements .content-node.highlighted .resource-header .toggle.toggle-res, .article .resources .math .content-node.highlighted .resource-header .toggle.toggle-res {
+  color: $white;
+}
+
+
+
+.content-node .supplement_reference.highlighted { 
+  background-color: $secondary-light;
+}
+
+.content-node .supplement_reference {
+  font-family: 'Noto Serif Lt', serif;
+  font-weight: 300;
+  background: none;
+  color: $secondary;
+  border-bottom: 1px solid $secondary;
+  padding-right: 3px;
+  padding-left: 3px;
+}
+
+a.supplement_preview_link {
+  width: 100%;
+  height: 50px;
+  overflow: hidden;
+  display: block;
+  line-height: 0;
+}
+
+.supplement-image {
+  width: 100%;
+}
+
+.lens-article .content-node.caption > .content > .content-node.paragraph {
+  padding-bottom: 0px;
+}
+
+
+.panel.supplements.resource-view .nodes:last-child {
+  padding-bottom: 40px
+}
+
+.supplements_heading {
+  font-family: 'Noto Sans Med', sans-serif;
+  font-weight: 300;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-style: italic;
+  font-size: 14px;
+  color: #d2cfc9;
+}
+
+.supplement-title,
+.supplement-subtitle,
+.supplement-location,
+.supplement-link {
+  font-family: 'Noto Sans Lt', sans-serif;
+  padding-left: 20px
+}
+.supplement-title {
+  margin-top: 7px;
+}

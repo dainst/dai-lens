@@ -1,0 +1,84 @@
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 53%;
+  height: $top-bar-height;
+  background-color: $primary;
+  font-size: 14px;
+  line-height: 24px;
+  color: $gray-light;
+}
+
+.loading .topbar-tablet {
+  display: none;
+}
+@supports not (-webkit-overflow-scrolling: touch) {
+  /* CSS for other than iOS devices */
+  .topbar-tablet {
+    display: none;
+  }
+}
+
+.topbar-logo {
+  height: 100%;
+  float: left;
+}
+
+.topbar-logo-img {
+  height: 68%;
+  position: absolute;
+  top: 16%;
+  left: 10px;
+}
+
+.topbar-title {
+  position: absolute;
+  right: 12%;
+  bottom: 0;
+  bottom: 0;
+  width: 55%;
+  text-align: end;
+  font-family: 'Noto Sans Med', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.topbar-date {
+  background-color: $primary-light;
+  height: 100%;
+  width: 10%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: center;
+  span {
+    font-family: 'Noto Sans ExtLt', sans-serif;
+    font-weight: 200;
+    color: #dedace;
+    font-size: 2vw;
+    line-height: 47px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}
+
+.lens-article .content-node.cover .content {
+  border-bottom: 1px solid $gray-light;
+}
+
+.lens-article .content-node.cover .authors .content {
+  border-bottom: none;
+}
+
+.lens-article .content-node.cover .authors .text {
+  display: inline-block;
+  padding: 0px;
+  margin: 0px;
+  font-size: 17px;
+  margin-right: 4px;
+  margin-bottom: 0px;
+}

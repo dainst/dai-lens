@@ -1,45 +1,56 @@
-'use strict';
- 
-var gulp = require('gulp');
+const { src, dest, series } = require('gulp');
+const uglify = require('gulp-uglify');
+const rename = require('gulp-rename');
 var sass = require('gulp-sass');
-var browserify = require('browserify');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
+// sass.compiler = require('node-sass');
 var through2 = require('through2');
-var path = require('path');
+var browserify = require('browserify');
+var babelify    = require('babelify');
 
-gulp.task('assets', function() {
-  gulp.src('assets/**/*', {base:"./assets"})
-        .pipe(gulp.dest('dist'));
+function assets(cb) {
+  src('assets/**/*', {base:"./assets"})
+    .pipe(dest('./dist'));
+  src('data/**/*', {base:"."})
+    .pipe(dest('./dist'));
+  cb()
+}
 
-  gulp.src('data/**/*', {base:"."})
-        .pipe(gulp.dest('dist'));
-});
-
-gulp.task('sass', function () {
-  gulp.src('./lens.scss')
+function styles(cb) {
+  return src('./lens.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(rename('lens.css'))
-    .pipe(gulp.dest('./dist'));
-});
+    .pipe(dest('./dist'));
+};
 
-gulp.task('browserify', function () {
-    return gulp.src('./boot.js')
-        .pipe(through2.obj(function (file, enc, next) {
-            browserify(file.path)
-                .bundle(function (err, res) {
-                    if (err) { return next(err); }
-                    file.contents = res;
-                    next(null, file);
-                });
-        }))
-        .on('error', function (error) {
-            console.log(error.stack);
-            this.emit('end');
-        })
-        .pipe(uglify())
-        .pipe(rename('lens.js'))
-        .pipe(gulp.dest('./dist'));
-});
 
-gulp.task('default', ['assets', 'sass', 'browserify']);
+
+function buildjs(cb){
+  return src('./boot.js')
+    .pipe(through2.obj(function (file, enc, next) {
+        browserify({
+              entries: './boot.js',
+              debug: true,
+              transform: [babelify.configure({
+                presets: ['@babel/env']
+              })]
+            })
+            .bundle(function (err, res) {
+                if (err) { 
+                  console.log('error here')
+                  return next(err); 
+                }
+                file.contents = res;
+                next(null, file);
+            });
+    }))
+    .on('error', function (error) {
+        console.log('aaaaaaaa', error)
+        console.log(error.stack);
+        this.emit('end');
+    })
+    .pipe(rename('lens.js'))
+    .pipe(uglify())
+    .pipe(dest('./dist'));
+}
+
+exports.default = series(assets, styles, buildjs);

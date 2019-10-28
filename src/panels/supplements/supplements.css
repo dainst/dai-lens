@@ -1,0 +1,20 @@
+.supplements-panel {
+	padding: 70px;
+	padding-top: 20px;
+}
+
+.supplements-panel .supplements .label {
+	padding-top: 20px;
+	font-size: 15px;
+	color: #999;
+}
+
+.supplements-panel .supplements .value {
+	font-size: 26px;
+}
+
+.supplements-panel .supplements .copyright {
+	padding-top: 50px;
+	color: #666;
+	font-style: italic;
+}

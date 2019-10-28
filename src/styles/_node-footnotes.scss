@@ -1,0 +1,111 @@
+.article .resources .content-node.footnote {
+  border: none;
+  border-radius: 0px;
+  font-size: $panel-text-size;
+  &:last-of-type {
+    margin-bottom: 30px;
+  }
+}
+
+.article .resources .nodes > .content-node.footnote > .content {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 75px;
+  padding-top: 15px;
+}
+
+.article .resources .content-node.footnote .resource-header .name {
+  color: $white;
+  font-size: $panel-text-size;
+  font-weight: 600;
+  padding-right: 0;
+  width: 75px;
+  padding-top: 15px;
+}
+
+.article .resources .footnotes .content-node.highlighted {
+  background-color: $gray-lighter;
+  border-left: 3px solid transparent;
+  color: $black;
+  .resource-header a.toggle.toggle-res {
+    color: transparent;
+  }
+}
+.article .resources .content-node.footnote.highlighted .resource-header .name {
+  color: $primary;
+}
+
+.lens-article .content-node.footnote .content .authors {
+  order: 1;
+  font-size: $panel-text-size;
+  margin-right: 4px;
+}
+
+.lens-article .content-node.footnote .content .title {
+  order: 2;
+  font-size: $panel-text-size;
+  font-weight: 300;
+  font-style: italic;
+  margin-bottom: 0;
+  margin-right: 4px;
+}
+
+.lens-article .content-node.footnote .content .source {
+  order: 3;
+}
+
+.article .resources .content-node.footnote .resource-header .toggles {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0;
+  bottom: 0;
+}
+
+.article .resources .content-node.footnote .resource-header {
+  padding-top: 0;
+  font-weight: 600;
+  position: absolute;
+  width: 10%;
+  height: 100%;
+}
+
+.article .resources .content-node.footnote .resource-header a.toggle {
+  width: 100%;
+  height: 100%;
+  color: transparent;
+  &:hover {
+    color: transparent;
+  }
+}
+
+.article .resources .content-node.footnote .content .text a {
+  color: $gray-lighter;
+  &:hover {
+    background-color: $gray-lighter;
+    color: $white;
+  }
+  border-bottom: 1px solid $gray-lighter;
+}
+
+.article .resources .content-node.footnote.highlighted .content .text a {
+  color: $primary;
+  &:hover {
+    background-color: $primary;
+    color: $white;
+  }
+  border-bottom: 1px solid $primary;
+}
+.footnote_reference {
+  border-bottom: 1px solid;
+  margin-left: 2px;
+  margin-right: 2px;
+}
+.footnote_reference.highlighted {
+  background-color: $gray-darker;
+  color: $white;
+}
+
+.article .resources .content-node.footnote .toggles {
+  overflow: hidden;
+}

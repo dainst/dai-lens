@@ -9,21 +9,44 @@ var CustomCoverView = function(node, viewFactory) {
 CustomCoverView.Prototype = function() {
   this.render = function() {
     CoverView.prototype.render.call(this);
-
-    var refUrl = encodeURIComponent(window.location.href);
+    var pubInfo = this.node.document.get('publication_info');
+    var year = pubInfo.published_on || '';
+    
+    if (year.length > 3) year = year.slice(2,4)
+    var edition = pubInfo.volume ? pubInfo.volume.textContent : '';
+    var subtitleText = pubInfo.subtitle;
 
     // Add feeback info
-    var introEl = $$('.intro.container', {
+    var topBar = $$('.topbar', {
       children: [
-        $$('.intro-text', {
-          html: '<i class="icon-info"></i>&nbsp;&nbsp;<b>Lens</b> provides a novel way of viewing research'
+        $$('.topbar-logo', {
+          html: '<a href="https://publications.dainst.org/journals/index.php/aa" ><img class="topbar-logo-img" src="AA_Logo.png" /></a>'
         }),
-        $$('a.send-feedback', {href: "mailto:feeback@example.com", text: "Send feedback", target: "_blank" })
+        $$('.topbar-title', {
+          html: `<span></span>`
+        }),
+        $$('.topbar-date', {
+          html: `<span> ${edition}/${year} </span>`
+        })
+
       ]
     });
 
+    var subtitle = $$('.cover-subtitle', {
+      html: subtitleText
+    });
+
     // Prepend
-    this.content.insertBefore(introEl, this.content.firstChild);
+    this.content.insertBefore(topBar, this.content.firstChild);
+    this.content.insertBefore(subtitle, this.content.childNodes[3]);
+
+    if (this.content.lastElementChild.className === "doi") {
+      this.content.removeChild(this.content.lastElementChild)
+    }
+
+    if (this.content.lastElementChild.className === "published-on") {
+      this.content.removeChild(this.content.lastElementChild)
+    }
     
     return this;
   }
