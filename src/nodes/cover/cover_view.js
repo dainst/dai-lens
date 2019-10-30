@@ -36,9 +36,26 @@ CustomCoverView.Prototype = function() {
       html: subtitleText
     });
 
+    // Add coauthors
+    var coauthors = pubInfo.customArticleContributions.filter(contrib => contrib.type === "co-author")
+    if (coauthors.length){
+      var coauthorsHtml = "<span>mit Beiträgen von ";
+      coauthors.forEach((coauthor, idx) => {
+        if( idx !== coauthors.length -1){
+          coauthorsHtml += `${coauthor.name.givenNames} ${coauthor.name.surname}, `
+        } else {
+          coauthorsHtml += `und ${coauthor.name.givenNames} ${coauthor.name.surname}`
+        }
+      })
+      coauthorsHtml += '</span>'
+      var cover_coauthors = $$('.cover-coauthors', {
+        html: coauthorsHtml
+      });
+    }
     // Prepend
     this.content.insertBefore(topBar, this.content.firstChild);
     this.content.insertBefore(subtitle, this.content.childNodes[3]);
+    
 
     if (this.content.lastElementChild.className === "doi") {
       this.content.removeChild(this.content.lastElementChild)
@@ -46,6 +63,10 @@ CustomCoverView.Prototype = function() {
 
     if (this.content.lastElementChild.className === "published-on") {
       this.content.removeChild(this.content.lastElementChild)
+    }
+
+    if(coauthors.length){
+      this.content.append(cover_coauthors);
     }
     
     return this;
