@@ -266,13 +266,13 @@ PublicationInfoView.Prototype = function() {
       metaData.appendChild(issueEl);
     }
 
-    // article-issue-summary
-    if (this.node.customMeta && this.node.customMeta['issue-summary']) {
-      var issueEl = $$('.metadata-text-container', {
-        html: `<span class="metadata-text">${this.node.customMeta['issue-summary']}</span>`
-      });
-      metaData.appendChild(issueEl);
-    }
+    // // article-issue-summary
+    // if (this.node.customMeta && this.node.customMeta['issue-summary']) {
+    //   var issueEl = $$('.metadata-text-container', {
+    //     html: `<span class="metadata-text">${this.node.customMeta['issue-summary']}</span>`
+    //   });
+    //   metaData.appendChild(issueEl);
+    // }
 
     // article-authors
     if (this.node.customArticleContributions && this.node.customArticleContributions.length > 0) {
@@ -353,7 +353,7 @@ PublicationInfoView.Prototype = function() {
       }
       if (this.node.customPubDate){
         var publishedEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">Online Published On: ${this.node.customPubDate.day}.${this.node.customPubDate.month}.${this.node.customPubDate.year}</span>`
+          html: `<span class="metadata-text">Published On: ${this.node.customPubDate.day}.${this.node.customPubDate.month}.${this.node.customPubDate.year}</span>`
         });
         digitalEdition.appendChild(publishedEl);
       }
@@ -436,6 +436,24 @@ PublicationInfoView.Prototype = function() {
       printEdition.appendChild(issnEl);
 
       printEdition.appendChild($$('br'));
+
+      // article-issue-summary
+      if (this.node.customMeta && this.node.customMeta['issue-summary']) {
+        var issueEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${this.node.customMeta['issue-summary']}</span>`
+        });
+        printEdition.appendChild(issueEl);
+      }
+
+      if (this.node.journalCustomMeta && this.node.journalCustomMeta['printing-notice']) {
+        var printingNotice = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${this.node.journalCustomMeta['printing-notice']}</span>`
+        });
+        printEdition.appendChild(printingNotice);
+      }
+
+      printEdition.appendChild($$('br'));
+
 
       if (this.node.customPermissions.print.license){
         var licenseEl = $$('.metadata-text-container', {
@@ -659,12 +677,12 @@ PublicationInfoView.Prototype = function() {
     metaData.appendChild(editingEl);
     metaData.appendChild($$('br'));
 
-    if (this.node.journalCustomMeta && this.node.journalCustomMeta['printing-notice']) {
-      var printingNotice = $$('.metadata-text-container', {
-        html: `<span class="metadata-text">${this.node.journalCustomMeta['printing-notice']}</span>`
-      });
-      metaData.appendChild(printingNotice);
-    }
+    // if (this.node.journalCustomMeta && this.node.journalCustomMeta['printing-notice']) {
+    //   var printingNotice = $$('.metadata-text-container', {
+    //     html: `<span class="metadata-text">${this.node.journalCustomMeta['printing-notice']}</span>`
+    //   });
+    //   metaData.appendChild(printingNotice);
+    // }
 
     this.content.appendChild(metaData);
 
