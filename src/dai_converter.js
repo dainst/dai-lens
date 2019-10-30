@@ -14,7 +14,6 @@ DaiConverter.Prototype = function() {
   this.test = function(xmlDoc) {
     var publisherName = xmlDoc.querySelector("publisher-name").textContent;
     var isDaiDocument = window.location.href.search(Helpers.baseDocsURL) >= 0;
-    console.log('isDaiDocument', isDaiDocument)
     return isDaiDocument;
   };
 

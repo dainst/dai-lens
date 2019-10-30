@@ -36,7 +36,6 @@ function buildjs(cb){
             })
             .bundle(function (err, res) {
                 if (err) { 
-                  console.log('error here')
                   return next(err); 
                 }
                 file.contents = res;
@@ -44,8 +43,7 @@ function buildjs(cb){
             });
     }))
     .on('error', function (error) {
-        console.log('aaaaaaaa', error)
-        console.log(error.stack);
+        console.log(error, error.stack);
         this.emit('end');
     })
     .pipe(rename('lens.js'))
