@@ -224,7 +224,16 @@ a {
   padding-top: 30px;
   color: $gray-darker;
   overflow: auto;
-  margin-bottom: 24px;
+  margin-bottom: 14px;
+}
+
+.lens-article .content-node.cover .content .cover-coauthors {
+  font-family: 'Noto Sans SemBd', sans-serif;
+  color: #929292;
+  overflow: auto;
+  margin-bottom: 10px;
+  text-align: left;
+  font-size: 13px;
 }
 
 .surface.content .nodes > .content-node.heading {

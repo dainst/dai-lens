@@ -103,7 +103,6 @@ function registerNavbarToggle(){
 function registerTOCHighlightFix(latency){
   $(".heading-ref").click(function(event) {
     setTimeout(() => {
-      console.log('change')
       $(".heading-ref").removeClass('active');
       $(event.currentTarget).addClass('active');
       $(".resources").removeClass("active");
