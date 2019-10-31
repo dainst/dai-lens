@@ -27,10 +27,11 @@ var PublicationInfoView = function(node, viewFactory) {
 
 PublicationInfoView.Prototype = function() {
 
-  this.renderAuthorInfo = function(authors, contributor) {
+  this.renderAuthorInfo = function(authors, contributor, contributorId) {
     if (contributor.name) {
+      const dataId = contributorId ? `data-id="${contributorId}"` : ''
       var authorNameEl = $$('.metadata-text-container', {
-        html: `<span class="metadata-text">${contributor.name.prefix} ${contributor.name.givenNames} ${contributor.name.surname}</span>`
+        html: `<span class="metadata-text" ${dataId}>${contributor.name.prefix} ${contributor.name.givenNames} ${contributor.name.surname}</span>`
       });
       authors.appendChild(authorNameEl);
     }
@@ -283,7 +284,12 @@ PublicationInfoView.Prototype = function() {
           authors.appendChild(authorsHeaderEl);
       this.node.customArticleContributions.forEach(contributor => {
         if (contributor.type === 'author'){
-          this.renderAuthorInfo(authors, contributor)
+          var contibutorId = false;
+          var authorData = this.node.document.authors.filter(contr => {
+            return contr.name.includes(contributor.name.surname) && contr.name.includes(contributor.name.givenNames)
+            })
+          if (authorData.length) contibutorId = authorData[0].id
+          this.renderAuthorInfo(authors, contributor, contibutorId)
         }
       })
       metaData.appendChild(authors);
@@ -303,9 +309,9 @@ PublicationInfoView.Prototype = function() {
             html: `<span class="metadata-title-text">Co-Authors</span>`
           });
           coauthors.appendChild(authorsHeaderEl);
-        this.node.customArticleContributions.forEach(contributor => {
+        this.node.customArticleContributions.forEach((contributor, idx) => {
           if (contributor.type === 'co-author'){
-            this.renderAuthorInfo(coauthors, contributor)
+            this.renderAuthorInfo(coauthors, contributor, `contributor_reference_${idx + 1}`)
           }
         })
       metaData.appendChild(coauthors);
