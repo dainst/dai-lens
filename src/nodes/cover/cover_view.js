@@ -41,8 +41,9 @@ CustomCoverView.Prototype = function() {
     if (coauthors.length){
       var coauthorsHtml = "<span>mit Beiträgen von ";
       coauthors.forEach((coauthor, idx) => {
-        if( idx !== coauthors.length -1){
-          coauthorsHtml += `${coauthor.name.givenNames} ${coauthor.name.surname}, `
+        if( idx !== coauthors.length -1 || coauthors.length === 1){
+          coauthorsHtml += `${coauthor.name.givenNames} ${coauthor.name.surname}`
+          if (coauthors.length > 1) coauthorsHtml += ','
         } else {
           coauthorsHtml += `und ${coauthor.name.givenNames} ${coauthor.name.surname}`
         }
