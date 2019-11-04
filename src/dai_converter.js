@@ -131,7 +131,7 @@ DaiConverter.Prototype = function() {
       if (linkElem){
         var url = linkElem.getAttribute('xlink:href')
         var linkText = linkElem.textContent
-        node.attribLink = {url, linkText}
+        node.attribLink = {url: url, linkText: linkText}
       }
     }
   };
@@ -560,6 +560,36 @@ DaiConverter.Prototype = function() {
       }
       
     }
+  };
+
+  this.footnote = function(state, footnoteElement) {
+    var doc = state.doc;
+    var footnote = {
+      type: 'footnote',
+      id: state.nextId('fn'),
+      source_id: footnoteElement.getAttribute("id"),
+      label: '',
+      children: []
+    };
+    var children = footnoteElement.children;
+    var i = 0;
+    if (children && children[i] && children[i].tagName.toLowerCase() === 'label') {
+      footnote.label = this.annotatedText(state, children[i], [footnote.id, 'label']);
+      i++;
+    }
+    footnote.children = [];
+    if(children){
+      for (; i<children.length; i++) {
+        var nodes = this.paragraphGroup(state, children[i]);
+        Array.prototype.push.apply(footnote.children, _.pluck(nodes, 'id'));
+      }
+    }
+    
+    doc.create(footnote);
+    // leave a trace for the catch-all converter
+    // to know that this has been converted already
+    footnoteElement.__converted__ = true;
+    return footnote;
   };
 
   this.link = function(state, linkElement, type) {
