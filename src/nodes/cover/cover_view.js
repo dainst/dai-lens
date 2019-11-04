@@ -39,13 +39,13 @@ CustomCoverView.Prototype = function() {
     // Add coauthors
     var coauthors = pubInfo.customArticleContributions.filter(contrib => contrib.type === "co-author")
     if (coauthors.length){
-      var coauthorsHtml = "<span>mit Beitr&auml;gen von ";
+      var coauthorsHtml = "<span>";
       coauthors.forEach((coauthor, idx) => {
         if( idx !== coauthors.length -1 || coauthors.length === 1){
           coauthorsHtml += `${coauthor.name.givenNames} ${coauthor.name.surname}`
-          if (coauthors.length > 1 && idx !== coauthors.length -2) coauthorsHtml += ', '
+          if (coauthors.length > 1 ) coauthorsHtml += ', '
         } else {
-          coauthorsHtml += ` und ${coauthor.name.givenNames} ${coauthor.name.surname}`
+          coauthorsHtml += `${coauthor.name.givenNames} ${coauthor.name.surname}`
         }
       })
       coauthorsHtml += '</span>'
