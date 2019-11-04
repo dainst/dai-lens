@@ -1,4 +1,5 @@
 window.Lens = require("./src/my-lens");
+require('nodelist-foreach-polyfill');
 
 // Little helper used to parse query strings from urls
 // --------

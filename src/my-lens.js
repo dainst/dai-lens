@@ -3,6 +3,7 @@
 var Lens = require("lens/reader");
 var panels = Lens.getDefaultPanels();
 var Helpers = require('./helpers')
+require('nodelist-foreach-polyfill');
 
 
 // All available converters
@@ -95,11 +96,13 @@ LensApp.Prototype = function() {
   };
 };
 
+
+
 LensApp.Prototype.prototype = Lens.prototype;
 LensApp.prototype = new LensApp.Prototype();
 LensApp.prototype.constructor = LensApp;
 
-module.exports = LensApp;module.exports = LensApp;
+module.exports = LensApp;
 
 
 
