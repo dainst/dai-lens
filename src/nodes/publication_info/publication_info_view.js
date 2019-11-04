@@ -359,7 +359,7 @@ PublicationInfoView.Prototype = function() {
       }
       if (this.node.customPubDate){
         var publishedEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">Published On: ${this.node.customPubDate.day}.${this.node.customPubDate.month}.${this.node.customPubDate.year}</span>`
+          html: `<span class="metadata-text">Published on: ${this.node.customPubDate.day}.${this.node.customPubDate.month}.${this.node.customPubDate.year}</span>`
         });
         digitalEdition.appendChild(publishedEl);
       }
