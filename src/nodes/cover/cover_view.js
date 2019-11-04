@@ -39,7 +39,7 @@ CustomCoverView.Prototype = function() {
     // Add coauthors
     var coauthors = pubInfo.customArticleContributions.filter(contrib => contrib.type === "co-author")
     if (coauthors.length){
-      var coauthorsHtml = "<span>mit Beiträgen von ";
+      var coauthorsHtml = "<span>mit Beitr&auml;gen von ";
       coauthors.forEach((coauthor, idx) => {
         if( idx !== coauthors.length -1 || coauthors.length === 1){
           coauthorsHtml += `${coauthor.name.givenNames} ${coauthor.name.surname}`
