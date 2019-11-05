@@ -60,7 +60,7 @@ ExtrafeatureView.Prototype = function() {
         $extrafeatures.append($(`<div class="extrafeature-title">Name: ${extrafeature.prefName.title}</div>`));
       }
       if (extrafeature.location && extrafeature.location.coordinates && extrafeature.location.coordinates.length ) {
-        $extrafeatures.append($(`<div class="extrafeature-location">Lage: Breite: ${extrafeature.location.coordinates[1]}, Länge: ${extrafeature.location.coordinates[0]}</div>`));
+        $extrafeatures.append($(`<div class="extrafeature-location">Location: Latitude: ${extrafeature.location.coordinates[1]}, Longitude: ${extrafeature.location.coordinates[0]}</div>`));
       }
       var $extrafeaturesLink = $('<div class="extrafeature-link"></div>');
       $extrafeaturesLink.append($(`<span>Link to iDAI.world: </span>`));

@@ -23,6 +23,17 @@ This document will guide you through the usage of the DAI integration for the Le
 
   How different xml documents can be loaded or stored will be treated in the [ Loading XML Documents ](#loadxml) section
 
+### Building and running docker container
+  docker images are build via CI pipeline and stored in the gitlab registry:
+  https://gitlab.com/dainst/dai-lens/container_registry
+  if you are logged in in your terminal you can pull and start the container with:
+  `docker run -e PORT=80 --rm -d -p 80:80/tcp registry.gitlab.com/dainst/dai-lens:master`
+
+  if you want to build a new image locally you can do this by:
+  - go to project folder
+  - build with: `PORT=80 docker build -t "dai-lens:latest" .`
+  - start with: `docker run -e PORT=80 --rm -d -p 80:80/tcp dai-lens:latest`
+
 ### Running Locally
 - Clone the current repository locally (ssh: `git@gitlab.com:bkry/dai/dai-lens.git`)
 - Install Node if missing on your machine
