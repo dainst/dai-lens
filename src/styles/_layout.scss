@@ -32,3 +32,8 @@ body.reader #main {
   margin-top: -$top-bar-height;
   height: calc( 100% + #{$top-bar-height} );
 }
+
+// for IE
+.panel.content.document{
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
