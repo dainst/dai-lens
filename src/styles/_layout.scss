@@ -2,6 +2,10 @@ body.reader #main {
   margin-top: $top-bar-height;
   height: calc( 100% - #{$top-bar-height} );
 }
+// for Edge
+html { 
+  -ms-overflow-style: -ms-autohiding-scrollbar; 
+} 
 
 .article .document {
   width: 53%;
@@ -31,9 +35,4 @@ body.reader #main {
   width: 47%;
   margin-top: -$top-bar-height;
   height: calc( 100% + #{$top-bar-height} );
-}
-
-// for IE
-.panel.content.document{
-  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
