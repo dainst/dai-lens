@@ -1,7 +1,7 @@
 "use strict";
 
 const extractDocumentIdFromUrl = function(url) {
-  let daiMatchIndex = url.search("dai-examples")
+  let daiMatchIndex = url.search("repository")
   if (daiMatchIndex >= 0) {
     let daiSubstring = url.substring(daiMatchIndex);
     return daiSubstring.split('/')[1]
@@ -9,7 +9,7 @@ const extractDocumentIdFromUrl = function(url) {
   return '0000'
 };
 
-const baseDocsURL = "https://bkry.gitlab.io/dai/dai-examples/";
+const baseDocsURL = "/repository/";
 
 
 function isScrolledIntoView(elem){
@@ -36,7 +36,7 @@ function setCoverImage() {
       url,
     ].join('');
     $("div[class='toc']").prepend( `<div><img class="cover-image" src="${coverImageUrl}"/></div>` );
-    
+
 
   }
 }
@@ -108,7 +108,7 @@ function registerTOCHighlightFix(latency){
       $(".resources").removeClass("active");
       $(".mobile-menu").removeClass("active");
     }, latency || 100);
-    
+
   })
 }
 
@@ -241,7 +241,7 @@ function updateCentralBar() {
       } else {
         $(".scrollbar-cover").append($(figurePreviews[previewKey].content).css(figurePreviews[previewKey].css))
       }
-    })  
+    })
   window.figurePreviews = figurePreviews;
 }
 

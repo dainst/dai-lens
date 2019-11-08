@@ -13,7 +13,7 @@ var DaiConverter = function(options) {
 DaiConverter.Prototype = function() {
   this.test = function(xmlDoc) {
     var publisherName = xmlDoc.querySelector("publisher-name").textContent;
-    var isDaiDocument = publisherName.search("Deutsches Archäologisches Institut") >= 0;
+    var isDaiDocument = window.location.href.search(Helpers.baseDocsURL) >= 0;
     return isDaiDocument;
   };
 
