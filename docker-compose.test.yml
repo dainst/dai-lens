@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+
+  nginx:
+    build:
+      context: .
+    image: dainst/dai-lens
+    ports:
+      - "8080:80"
+    environment:
+      PORT: 80
+    networks:
+      - web
+    deploy:
+      labels:
+        - "traefik.docker.network=web"
+        - "traefik.enable=true"
+        - "traefik.frontend.rule=Host:lens.test.idai.world"
+        - "traefik.port=80"
+
+networks:
+  web:
+    external: true

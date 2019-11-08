@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+
+  nginx:
+    build:
+      context: .
+    image: dainst/dai-lens
+    ports:
+      - "8080:80"
+    environment:
+      PORT: 80
