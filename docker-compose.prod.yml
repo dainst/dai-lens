@@ -6,18 +6,23 @@ services:
     build:
       context: .
     image: dainst/dai-lens
-    ports:
-      - "8080:80"
     environment:
       PORT: 80
     networks:
       - web
+    volumes:
+      - repository:/usr/share/nginx/html/repository
     deploy:
       labels:
         - "traefik.docker.network=web"
         - "traefik.enable=true"
         - "traefik.frontend.rule=Host:lens.idai.world"
         - "traefik.port=80"
+
+volumes:
+  repository:
+    name: lens_repository
+    external: true
 
 networks:
   web:

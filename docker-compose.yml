@@ -8,5 +8,7 @@ services:
     image: dainst/dai-lens
     ports:
       - "8080:80"
+    volumes:
+      - ./repository:/usr/share/nginx/html/repository
     environment:
       PORT: 80
