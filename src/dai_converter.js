@@ -13,7 +13,7 @@ var DaiConverter = function(options) {
 DaiConverter.Prototype = function() {
   this.test = function(xmlDoc) {
     var publisherName = xmlDoc.querySelector("publisher-name").textContent;
-    var isDaiDocument = window.location.href.search(Helpers.baseDocsURL) >= 0;
+    var isDaiDocument = publisherName.search("Deutsches Archäologisches Institut") >= 0;
     return isDaiDocument;
   };
 
@@ -56,7 +56,7 @@ DaiConverter.Prototype = function() {
 
     this.extractLinks(state, article);
 
-    
+
 
 
 
@@ -117,7 +117,7 @@ DaiConverter.Prototype = function() {
 
   // Resolve figure urls
   // --------
-  // 
+  //
 
   this.enhanceFigure = function(state, node, element) {
 
@@ -263,7 +263,7 @@ DaiConverter.Prototype = function() {
         }, this)
         this.contribGroup(state, contribGroup);
       }, this)
-      
+
     }
 
     // var digitalEdition = {};
@@ -338,7 +338,7 @@ DaiConverter.Prototype = function() {
     }
     :
     '';
-    
+
     var publisherName = state.xmlDoc.querySelector("publisher-name");
     var publisherLocAddrElem = state.xmlDoc.querySelector("publisher-loc addr-line");
     var publisherLocCityElem = state.xmlDoc.querySelector("publisher-loc city");
@@ -413,7 +413,7 @@ DaiConverter.Prototype = function() {
           keys: keys
         })
       }
-      
+
     })
 
 
@@ -495,7 +495,7 @@ DaiConverter.Prototype = function() {
     publicationInfo.journalEditors = journalEditors;
     publicationInfo.journalCoEditors = journalCoEditors;
     publicationInfo.journalAdvisoryBoard = journalAdvisoryBoard;
-    
+
 
     pubInfo.enhancedInfo = publicationInfo;
 
@@ -536,7 +536,7 @@ DaiConverter.Prototype = function() {
       var fnEl = fnEls[i];
       if (fnEl.__converted__) continue;
       var footnote = this.footnote(state, fnEl);
-      
+
       state.doc.show("footnotes", footnote.id);
     }
   };
@@ -558,7 +558,7 @@ DaiConverter.Prototype = function() {
         var link = this.link(state, linkEl, "extrafeature");
         state.doc.show("extrafeatures", link.id);
       }
-      
+
     }
   };
 
@@ -584,7 +584,7 @@ DaiConverter.Prototype = function() {
         Array.prototype.push.apply(footnote.children, _.pluck(nodes, 'id'));
       }
     }
-    
+
     doc.create(footnote);
     // leave a trace for the catch-all converter
     // to know that this has been converted already
@@ -658,7 +658,7 @@ DaiConverter.Prototype = function() {
         for (i = 0; i < nameElements.length; i++) {
           citationNode.authors.push(this.getName(nameElements[i]));
         }
-  
+
         // Consider collab elements (treat them as authors)
         var collabElements = personGroup.querySelectorAll("collab");
         for (i = 0; i < collabElements.length; i++) {
@@ -740,7 +740,7 @@ DaiConverter.Prototype = function() {
           level: 1,
           content: "Abstracts"
         };
-    
+
         doc.create(heading);
         nodes.push(heading);
         this.show(state, nodes);
@@ -751,7 +751,7 @@ DaiConverter.Prototype = function() {
         this.abstract(state, abs);
       }, this);
     }
-    
+
   };
 
   this.abstract = function(state, abs) {
@@ -841,15 +841,15 @@ DaiConverter.Prototype = function() {
             doc.create(absKeywordsEl);
             nodes.push(absKeywordsEl);
           }
-          
+
         }
       })
     }
-    
 
 
 
-    
+
+
 
     // with eLife there are abstracts having an object-id.
     // TODO: we should store that in the model instead of dropping it
@@ -869,7 +869,7 @@ DaiConverter.Prototype = function() {
     // However, in the articles seen so far, these were sub-elements of 'contrib-group', which itself was single
     var contribGroups = article.querySelectorAll("article-meta contrib-group");
     if (contribGroups) {
-      
+
       _.each(contribGroups, (contribGroup) => {
         // var groupNameEl = contribGroup.querySelector('role');
         // if (groupNameEl && groupNameEl.textContent){
@@ -885,12 +885,12 @@ DaiConverter.Prototype = function() {
         // }
         this.contribGroup(state, contribGroup);
       }, this)
-      
+
     }
 
     var journalContribGroups = article.querySelectorAll("journal-meta contrib-group");
     if (journalContribGroups) {
-      
+
       _.each(journalContribGroups, (contribGroup) => {
         // var groupNameEl = contribGroup.querySelector('role');
         // if (groupNameEl && groupNameEl.textContent){
@@ -904,7 +904,7 @@ DaiConverter.Prototype = function() {
         //   doc.create(header);
         //   doc.show("info", header.id);
         // }
-          
+
         this.contribGroup(state, contribGroup);
       }, this)
     }
@@ -1041,7 +1041,7 @@ DaiConverter.Prototype = function() {
     }
 
     if (!contribNode.role) contribNode.role = contribType
-    
+
 
 
 
@@ -1129,7 +1129,7 @@ DaiConverter.Prototype = function() {
     //         }
     //       }
     //     })
-        
+
     //   }
     // }
 
@@ -1151,7 +1151,7 @@ DaiConverter.Prototype = function() {
         anno.type = "supplement_reference";
         anno.target = "supplement_" + supplementID
         supplementID++
-      } 
+      }
       else if (specificUse === "extrafeatures") {
         anno.type = "extrafeature_reference";
         anno.target = "extrafeature_" + extraFeatureID
