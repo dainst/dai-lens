@@ -116,6 +116,8 @@ function initialSetup() {
   Helpers.registerCentralBarHighlight();
   Helpers.registerTOCHighlightFix(50);
   Helpers.registerNavbarToggle();
+  Helpers.setPageTitle();
+  Helpers.setColors();
 }
 
 //TODO: move this somewhere else

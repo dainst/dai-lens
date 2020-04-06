@@ -245,6 +245,25 @@ function updateCentralBar() {
   window.figurePreviews = figurePreviews;
 }
 
+function setPageTitle() {
+  document.title = window.app.config.journal_config.title;
+}
+
+function setColors() {
+  function setColor(cls, color = window.app.config.journal_config.colors.primary) {
+    if(color !== undefined) {
+      $(cls).each((i, e) => {
+        e.style.backgroundColor = color;
+        console.log("E", e);
+      })
+    }
+  }
+  setColor('.topbar');
+  setColor('.menu-bar');
+  setColor('.topbar-date', window.app.config.journal_config.colors.topbar_issue);
+
+}
+
 module.exports = {
   extractDocumentIdFromUrl: extractDocumentIdFromUrl,
   baseDocsURL: baseDocsURL,
@@ -256,5 +275,7 @@ module.exports = {
   registerCentralBarHighlight: registerCentralBarHighlight,
   registerTOCHighlightFix: registerTOCHighlightFix,
   removeAnnotationInTOC: removeAnnotationInTOC,
-  setPanelHeadings: setPanelHeadings
+  setPanelHeadings: setPanelHeadings,
+  setPageTitle: setPageTitle,
+  setColors: setColors
 };
