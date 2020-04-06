@@ -9,11 +9,25 @@ var CustomCoverView = function(node, viewFactory) {
 CustomCoverView.Prototype = function() {
   this.render = function() {
     CoverView.prototype.render.call(this);
+
+    function getTopBarDate(pubInfo) {
+      var topBarDate;
+      var issuePattern = window.app.config.journal_config.issue_pattern;
+
+      var year = pubInfo.published_on || '';
+      if (year.length > 3) year = year.slice(2,4);
+      var edition = pubInfo.volume ? pubInfo.volume.textContent : '';
+
+      if (issuePattern === "volume") {
+        topBarDate = edition;
+      } else {
+        topBarDate = `${edition}/${year}`;
+      }
+      return topBarDate;
+    }
     var pubInfo = this.node.document.get('publication_info');
-    var year = pubInfo.published_on || '';
-    
-    if (year.length > 3) year = year.slice(2,4)
-    var edition = pubInfo.volume ? pubInfo.volume.textContent : '';
+    var topBarDate = getTopBarDate(pubInfo);
+
     var subtitleText = pubInfo.subtitle;
 
     // Add feeback info
@@ -26,7 +40,7 @@ CustomCoverView.Prototype = function() {
           html: `<span></span>`
         }),
         $$('.topbar-date', {
-          html: `<span> ${edition}/${year} </span>`
+          html: `<span> ${topBarDate} </span>`
         })
 
       ]
