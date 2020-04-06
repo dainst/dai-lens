@@ -254,7 +254,6 @@ function setColors() {
     if(color !== undefined) {
       $(cls).each((i, e) => {
         e.style.backgroundColor = color;
-        console.log("E", e);
       })
     }
   }
