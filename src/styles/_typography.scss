@@ -106,7 +106,7 @@ a {
 .lens-article .content-node.cover .title {
   font-family: 'Noto Sans Lt', sans-serif;
   font-weight: 300;
-  color: $primary;
+  color: $headlines;
   font-size: 48px;
   line-height: 55px;
   padding-top: 20px;
@@ -116,7 +116,7 @@ a {
 .lens-article .content-node.cover .cover-subtitle {
   font-family: 'Noto Sans Lt', sans-serif;
   font-weight: 300;
-  color: $primary;
+  color: $headlines;
   font-size: 30px;
   line-height: 36px;
   padding-top: 20px;
@@ -130,7 +130,7 @@ a {
 .content-node.heading .content {
   font-family: 'Noto Sans Med', sans-serif;
   font-weight: 500;
-  color: $primary;
+  color: $headlines;
   font-size: 24px;
   line-height: 1.3
 }
