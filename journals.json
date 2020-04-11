@@ -1,6 +1,6 @@
 [
   {
-    "xml_identifier": "Archäologischer Anzeiger",
+    "xml_identifier": "AA",
     "config": {
       "title": "Archäologischer Anzeiger",
       "logo": "AA_Logo.png",
@@ -12,7 +12,7 @@
     }
   },
   {
-    "xml_identifier": "j2",
+    "xml_identifier": "JoGA",
     "config": {
       "title": "Journal 2",
       "logo": "j2.png",

@@ -44,7 +44,7 @@ function get_journal_config(document_url) {
     "title": "Lens Viewer",
     "logo": "AA_Logo.png",
   };
-  var journal_identifier = load_xml(document_url).querySelector("journal-title").textContent;
+  var journal_identifier = load_xml(document_url).querySelector("journal-id").textContent;
   var journal = journals.find(e => e.xml_identifier === journal_identifier);
   return journal ? journal.config : standard_config;
 }
