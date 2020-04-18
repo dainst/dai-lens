@@ -9,7 +9,7 @@
     background-color: $gray-dark;
     padding-top: 0;
     .name, .toggle {
-      font-family: 'Noto Sans SemBd', sans-serif;
+      font-family: $sans-semi-bold;
       font-weight: 600;
       color: $white;
       line-height: 21px;
@@ -50,7 +50,7 @@
 
 .lens-article .content-node.figure .content-node.caption,
 .lens-article .content-node.figure .figure-attribution {
-  font-family: 'Noto Sans Lt', sans-serif;
+  font-family: $sans-light;
   font-weight: 300;
   padding-left: 20px;
   padding-right: 20px;
@@ -63,7 +63,7 @@
 }
 
 .lens-article .content-node.figure.highlighted .content-node.caption {
-  font-family: 'Noto Sans Med', sans-serif;
+  font-family: $sans-med;
   color: $white;
 }
 

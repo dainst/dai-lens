@@ -39,7 +39,7 @@
   bottom: 0;
   width: 55%;
   text-align: end;
-  font-family: 'Noto Sans Med', sans-serif;
+  font-family: $sans-med;
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
@@ -54,7 +54,7 @@
   top: 0;
   text-align: center;
   span {
-    font-family: 'Noto Sans ExtLt', sans-serif;
+    font-family: $sans-extra-light;
     font-weight: 200;
     color: #dedace;
     font-size: 2vw;

@@ -14,7 +14,7 @@
 }
 
 .article .resources .nodes > .content-node.publication-info .content-node[data-id=articleinfo] .heading.level-3 .content {
-  font-family: 'Noto Sans SemBd', sans-serif;
+  font-family: $sans-semi-bold;
   font-weight: 600;
   font-size: 14px;
   line-height: 24px;
@@ -35,7 +35,7 @@
 
 .metadata-header {
   border-bottom: 1px solid;
-  font-family: 'Noto Sans Med', sans-serif;
+  font-family: $sans-med;
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
@@ -44,7 +44,7 @@
 }
 
 .metadata-title {
-  font-family: 'Noto Sans Med', sans-serif;
+  font-family: $sans-med;
   font-weight: 600;
   font-size: 14px;
   line-height: 24px;
@@ -57,5 +57,5 @@
 }
 
 .metadata-text {
-  font-family: 'Noto Sans Lt', sans-serif;
+  font-family: $sans-light;
 }

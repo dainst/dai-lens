@@ -5,7 +5,7 @@
     padding-top: 0px;
   }
   &.text.abstract-heading {
-    font-family: 'Noto Sans Med', sans-serif;
+    font-family: $sans-med;
     font-size: 16px;
     padding-bottom: 0px;
     padding-top: 0px;
@@ -15,7 +15,7 @@
     }
   }
   &.text.abstract-title {
-    font-family: 'Noto Serif Med', serif;
+    font-family: $serif-med;
     color: $primary;
     font-size: 16px;
     padding-bottom: 0px;
@@ -41,7 +41,7 @@
   }
 
   &.text.abstract-kwd-heading {
-    font-family: 'Noto Sans Med', sans-serif;
+    font-family: $sans-med;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 16px;

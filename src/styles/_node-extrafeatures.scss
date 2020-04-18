@@ -6,7 +6,7 @@
     background-color: $gray-dark;
     padding-top: 0;
     .name, .toggle {
-      font-family: 'Noto Sans SemBd', sans-serif;
+      font-family: $sans-semi-bold;
       font-weight: 600;
       color: $white;
       line-height: 21px;
@@ -36,7 +36,7 @@
 .article .resources .extrafeatures .content-node.extrafeature.highlighted {
   border-left: 0px;
   .extrafeature-title, .extrafeature-subtitle {
-    font-family: 'Noto Sans Med', sans-serif;
+    font-family: $sans-med;
   }
   .resource-header {
     background-color: $secondary;
@@ -64,7 +64,7 @@
 }
 
 .content-node .extrafeature_reference {
-  font-family: 'Noto Serif Lt', serif;
+  font-family: $serif-light;
   font-weight: 300;
   background: none;
   color: $secondary;
@@ -90,7 +90,7 @@ a.extrafeature_preview_link {
 .extrafeature-subtitle,
 .extrafeature-location,
 .extrafeature-link {
-  font-family: 'Noto Sans Lt', sans-serif;
+  font-family: $sans-light;
   padding-left: 20px
 }
 .extrafeature-title {
@@ -107,7 +107,7 @@ a.extrafeature_preview_link {
 
 
 .extrafeatures_heading {
-  font-family: 'Noto Sans Med', sans-serif;
+  font-family: $sans-med;
   font-weight: 300;
   padding-bottom: 40px;
   padding-left: 20px;

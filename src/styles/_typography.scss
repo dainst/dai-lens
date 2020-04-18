@@ -90,7 +90,7 @@
 }
 
 body, textarea, p, input {
-  font-family: 'Noto Serif Lt', serif;
+  font-family: $serif-light;
   font-weight: 300;
   color: $black;
 }
@@ -104,7 +104,7 @@ a {
 }
 
 .lens-article .content-node.cover .title {
-  font-family: 'Noto Sans Lt', sans-serif;
+  font-family: $sans-light;
   font-weight: 300;
   color: $headlines;
   font-size: 48px;
@@ -114,7 +114,7 @@ a {
 }
 
 .lens-article .content-node.cover .cover-subtitle {
-  font-family: 'Noto Sans Lt', sans-serif;
+  font-family: $sans-light;
   font-weight: 300;
   color: $headlines;
   font-size: 30px;
@@ -128,7 +128,7 @@ a {
   text-align: justify;
 }
 .content-node.heading .content {
-  font-family: 'Noto Sans Med', sans-serif;
+  font-family: $sans-med;
   font-weight: 500;
   color: $headlines;
   font-size: 24px;
@@ -140,7 +140,7 @@ a {
 }
 
 .content-node.heading.level-3 .content {
-  font-family: 'Noto Sans', sans-serif;
+  font-family: $sans;
   font-size: 16px;
   color: $black;
 }
@@ -158,7 +158,7 @@ a {
 }
 
 .article span[class="annotation"] {
-  font-family: 'Noto Sans Med', sans-serif;
+  font-family: $sans-med;
   font-weight: 500;
   color: $gray-medium;
   font-size: 12px;
@@ -167,13 +167,13 @@ a {
 }
 
 .annotation.text-medium {
-  font-family: 'Noto Serif Med', serif;
+  font-family: $serif-med;
   font-weight: 500;
 }
 
 
 .content-node .figure_reference {
-  font-family: 'Noto Serif Lt', serif;
+  font-family: $serif-light;
   font-weight: 300;
   background: none;
   color: $primary-dark;
@@ -198,7 +198,7 @@ a {
 }
 
 .content-node .citation_reference {
-  font-family: 'Noto Serif Lt', serif;
+  font-family: $serif-light;
   font-weight: 300;
   background: none;
   color: $secondary;
@@ -212,7 +212,7 @@ a {
 }
 
 .content-node .contributor_reference {
-  font-family: 'Noto Sans SemBd', sans-serif;
+  font-family: $sans-semi-bold;
   font-weight: 600;
   color: $gray-darker;
   text-transform: uppercase;
@@ -220,7 +220,7 @@ a {
 }
 
 .lens-article .content-node.cover .content .authors {
-  font-family: 'Noto Sans SemBd', sans-serif;
+  font-family: $sans-semi-bold;
   padding-top: 30px;
   color: $gray-darker;
   overflow: auto;
@@ -228,7 +228,7 @@ a {
 }
 
 .lens-article .content-node.cover .content .cover-coauthors {
-  font-family: 'Noto Sans SemBd', sans-serif;
+  font-family: $sans-semi-bold;
   color: #929292;
   overflow: auto;
   margin-bottom: 10px;
