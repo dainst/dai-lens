@@ -40,13 +40,22 @@ function load_xml(document_url) {
 
 function get_journal_config(document_url) {
   var journals = require('./journals.json');
-  var standard_config = {
+  var config = {
     "title": "Lens Viewer",
-    "logo": "AA_Logo.png",
+    "logo": "lens.png",
+    "colors": {
+      "primary": "black",
+      "topbar_issue": "white",
+      "headline": "grey"
+    },
+    "issue_pattern": "volume/year"
   };
   var journal_identifier = load_xml(document_url).querySelector("journal-id").textContent;
   var journal = journals.find(e => e.xml_identifier === journal_identifier);
-  return journal ? journal.config : standard_config;
+  if (journal) {
+    $.extend(true, config, journal.config);
+  }
+  return config;
 }
 
 
