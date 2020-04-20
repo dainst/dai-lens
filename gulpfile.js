@@ -7,6 +7,12 @@ var through2 = require('through2');
 var browserify = require('browserify');
 var babelify    = require('babelify');
 
+
+function config(cb) {
+    return src('journals.json').
+        pipe(dest('./dist'));
+}
+
 function assets(cb) {
   src('assets/**/*', {base:"./assets"})
     .pipe(dest('./dist'));
@@ -51,4 +57,4 @@ function buildjs(cb){
     .pipe(dest('./dist'));
 }
 
-exports.default = series(assets, styles, buildjs);
+exports.default = series(config, assets, styles, buildjs);
