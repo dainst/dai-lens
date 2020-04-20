@@ -6,7 +6,8 @@
       "logo": "AA_Logo.png",
       "colors": {
         "primary": "#E2510C",
-        "topbar_issue": "#DA7D37"
+        "topbar_issue": "#DA7D37",
+        "headline": "#E2510C"
       },
       "issue_pattern": "volume/year"
     }

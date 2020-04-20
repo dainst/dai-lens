@@ -250,16 +250,26 @@ function setPageTitle() {
 }
 
 function setColors() {
-  function setColor(cls, color = window.app.config.journal_config.colors.primary) {
-    if(color !== undefined) {
-      $(cls).each((i, e) => {
-        e.style.backgroundColor = color;
-      })
-    }
+
+  function setBackgroundColor(cls, color) {
+    $(cls).each((i, e) => {
+      e.style.backgroundColor = color;
+    })
   }
-  setColor('.topbar');
-  setColor('.menu-bar');
-  setColor('.topbar-date', window.app.config.journal_config.colors.topbar_issue);
+
+  function setFontColor(cls, color) {
+    console.log('Setting');
+    $(cls).each((i, e) => {
+      console.log('found');
+      e.style.color = color;
+    })
+  }
+
+  var colors = window.app.config.journal_config.colors;
+  setBackgroundColor('.topbar', colors.primary);
+  setBackgroundColor('.menu-bar', colors.primary);
+  setFontColor('.lens-article .content-node.cover .title', colors.headline);
+  setBackgroundColor('.topbar-date', colors.topbar_issue);
 
 }
 
