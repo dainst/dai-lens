@@ -107,8 +107,6 @@ module.exports = LensApp;
 
 
 function initialSetup() {
-  Helpers.setPageTitle();
-  Helpers.setColors();
   Helpers.setCoverImage();
   Helpers.setPanelHeadings();
   Helpers.setTopBarImage();
@@ -122,13 +120,31 @@ function initialSetup() {
 
 //TODO: move this somewhere else
 
-
 $( window ).on( "load", function() {
   if (window && window.doc) {
-    initialSetup()
+    initialSetup();
   } else {
     setTimeout(initialSetup, 2000);
   }
 })
 
 
+var waitForEl = function(selector, callback) {
+  if (jQuery(selector).length) {
+    callback();
+  } else {
+    setTimeout(function() {
+      waitForEl(selector, callback);
+    }, 100);
+  }
+};
+
+function setStyle() {
+  Helpers.setPageTitle();
+  Helpers.setFavicon();
+  Helpers.setColors();
+}
+
+waitForEl('.topbar', function() {
+  setStyle();
+});

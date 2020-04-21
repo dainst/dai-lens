@@ -43,6 +43,7 @@ function get_journal_config(document_url) {
   var config = {
     "title": "Lens Viewer",
     "logo": "lens.png",
+    "favicon": "lens.png",
     "colors": {
       "primary": "black",
       "topbar_issue": "white",

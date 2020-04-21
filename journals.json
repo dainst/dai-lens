@@ -4,6 +4,7 @@
     "config": {
       "title": "Archäologischer Anzeiger",
       "logo": "AA_Logo.png",
+      "favicon": "AA_favicon.png",
       "colors": {
         "primary": "#E2510C",
         "topbar_issue": "#DA7D37",
@@ -17,6 +18,7 @@
     "config": {
       "title": "JoGA",
       "logo": "JoGA_Logo.png",
+      "favicon": "JoGA_favicon.jpg",
       "colors": {
         "primary": "#515249",
         "topbar_issue": "#666761",

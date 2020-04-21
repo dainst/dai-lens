@@ -250,7 +250,6 @@ function setPageTitle() {
 }
 
 function setColors() {
-
   function setBackgroundColor(cls, color) {
     $(cls).each((i, e) => {
       e.style.backgroundColor = color;
@@ -258,9 +257,7 @@ function setColors() {
   }
 
   function setFontColor(cls, color) {
-    console.log('Setting');
     $(cls).each((i, e) => {
-      console.log('found');
       e.style.color = color;
     })
   }
@@ -273,7 +270,14 @@ function setColors() {
 
 }
 
+function setFavicon() {
+  $('link[rel="shortcut icon"]').attr('href', window.app.config.journal_config.favicon)
+}
+
 module.exports = {
+  setPageTitle: setPageTitle,
+  setColors: setColors,
+  setFavicon: setFavicon,
   extractDocumentIdFromUrl: extractDocumentIdFromUrl,
   baseDocsURL: baseDocsURL,
   setTopBarImage: setTopBarImage,
@@ -284,7 +288,5 @@ module.exports = {
   registerCentralBarHighlight: registerCentralBarHighlight,
   registerTOCHighlightFix: registerTOCHighlightFix,
   removeAnnotationInTOC: removeAnnotationInTOC,
-  setPanelHeadings: setPanelHeadings,
-  setPageTitle: setPageTitle,
-  setColors: setColors
+  setPanelHeadings: setPanelHeadings
 };
