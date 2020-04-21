@@ -15,13 +15,16 @@ CustomCoverView.Prototype = function() {
       var issuePattern = window.app.config.journal_config.issue_pattern;
 
       var year = pubInfo.published_on || '';
-      if (year.length > 3) year = year.slice(2,4);
       var edition = pubInfo.volume ? pubInfo.volume.textContent : '';
 
       if (issuePattern === "volume") {
         topBarDate = edition;
-      } else {
+      } else if (issuePattern === "volume/year") {
+        if (year.length > 3) year = year.slice(2,4);
         topBarDate = `${edition}/${year}`;
+      } else if (issuePattern === "year") {
+        if (year.length > 3) year = year.slice(0,4);
+        topBarDate = year;
       }
       return topBarDate;
     }

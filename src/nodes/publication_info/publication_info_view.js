@@ -422,56 +422,61 @@ PublicationInfoView.Prototype = function() {
 
     // article-print-edition
     var printEdition = $$('.printedition')
-    var deHeaderEl = $$('.metadata-title', {
-      html: `<span class="metadata-title-text">Print Edition</span>`
-    });
-    printEdition.appendChild(deHeaderEl);
-    if (this.node.customPermissions && this.node.customPermissions.print){
-      var statementEl = $$('.metadata-text-container', {
-        html: `<span class="metadata-text">${this.node.customPermissions.print.statement}</span>`
+    if (window.app.config.journal_config.print === true) {
+      var deHeaderEl = $$('.metadata-title', {
+        html: `<span class="metadata-title-text">Print Edition</span>`
       });
-      printEdition.appendChild(statementEl);
-      var holderEl = $$('.metadata-text-container', {
-        html: `<span class="metadata-text">${this.node.customPermissions.print.holder}</span>`
-      });
-      printEdition.appendChild(holderEl);
-
-      var issnEl = $$('.metadata-text-container', {
-        html: `<span class="metadata-text">P-ISSN: ${this.node.customPermissions.print.issn}  ISBN: ${this.node.customPermissions.print.isbn}</span>`
-      });
-      printEdition.appendChild(issnEl);
-
-      printEdition.appendChild($$('br'));
-
-      // article-issue-summary
-      if (this.node.customMeta && this.node.customMeta['issue-summary']) {
-        var issueEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">${this.node.customMeta['issue-summary']}</span>`
+      printEdition.appendChild(deHeaderEl);
+      if (this.node.customPermissions && this.node.customPermissions.print) {
+        var statementEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${this.node.customPermissions.print.statement}</span>`
         });
-        printEdition.appendChild(issueEl);
-      }
-
-      if (this.node.journalCustomMeta && this.node.journalCustomMeta['printing-notice']) {
-        var printingNotice = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">${this.node.journalCustomMeta['printing-notice']}</span>`
+        printEdition.appendChild(statementEl);
+        var holderEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">${this.node.customPermissions.print.holder}</span>`
         });
-        printEdition.appendChild(printingNotice);
-      }
+        printEdition.appendChild(holderEl);
 
-      printEdition.appendChild($$('br'));
-
-
-      if (this.node.customPermissions.print.license){
-        var licenseEl = $$('.metadata-text-container', {
-          html: `<span class="metadata-text">${this.node.customPermissions.print.license.terms}</span>`
+        var issnEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">P-ISSN: ${this.node.customPermissions.print.issn}  ISBN: ${this.node.customPermissions.print.isbn}</span>`
         });
-        printEdition.appendChild(licenseEl);
+        printEdition.appendChild(issnEl);
+
+        printEdition.appendChild($$('br'));
+
+        // article-issue-summary
+        if (this.node.customMeta && this.node.customMeta['issue-summary']) {
+          var issueEl = $$('.metadata-text-container', {
+            html: `<span class="metadata-text">${this.node.customMeta['issue-summary']}</span>`
+          });
+          printEdition.appendChild(issueEl);
+        }
+
+        if (this.node.journalCustomMeta && this.node.journalCustomMeta['printing-notice']) {
+          var printingNotice = $$('.metadata-text-container', {
+            html: `<span class="metadata-text">${this.node.journalCustomMeta['printing-notice']}</span>`
+          });
+          printEdition.appendChild(printingNotice);
+        }
+
+        printEdition.appendChild($$('br'));
+
+
+        if (this.node.customPermissions.print.license) {
+          var licenseEl = $$('.metadata-text-container', {
+            html: `<span class="metadata-text">${this.node.customPermissions.print.license.terms}</span>`
+          });
+          printEdition.appendChild(licenseEl);
+        }
+        printEdition.appendChild($$('br'));
+        var podOrderEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">For the print issue click here: <a class="metadata-link" target="_blank" rel="noopener noreferrer" href="${this.node.customMeta['pod-order']}">${this.node.customMeta['pod-order']}</a></span>`
+        });
+        printEdition.appendChild(podOrderEl);
+        printEdition.appendChild($$('br'));
+        printEdition.appendChild($$('br'));
       }
-      printEdition.appendChild($$('br'));
-      var podOrderEl = $$('.metadata-text-container', {
-        html: `<span class="metadata-text">For the print issue click here: <a class="metadata-link" target="_blank" rel="noopener noreferrer" href="${this.node.customMeta['pod-order']}">${this.node.customMeta['pod-order']}</a></span>`
-      });
-      printEdition.appendChild(podOrderEl);
+    } else {
       printEdition.appendChild($$('br'));
       printEdition.appendChild($$('br'));
     }

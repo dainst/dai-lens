@@ -16,12 +16,14 @@
     "xml_identifier": "JoGA",
     "config": {
       "title": "JoGA",
-      "logo": "j2.png",
+      "logo": "JoGA_Logo.png",
       "colors": {
-        "primary": "blue",
-        "topbar_issue": "red"
+        "primary": "#515249",
+        "topbar_issue": "#666761",
+        "headline": "#515249"
       },
-      "issue_pattern": "volume"
+      "issue_pattern": "year",
+      "print": false
     }
   }
 ]

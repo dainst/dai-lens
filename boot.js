@@ -48,7 +48,8 @@ function get_journal_config(document_url) {
       "topbar_issue": "white",
       "headline": "grey"
     },
-    "issue_pattern": "volume/year"
+    "issue_pattern": "volume/year",
+    "print": true
   };
   var journal_identifier = load_xml(document_url).querySelector("journal-id").textContent;
   var journal = journals.find(e => e.xml_identifier === journal_identifier);
