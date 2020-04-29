@@ -277,9 +277,11 @@ PublicationInfoView.Prototype = function() {
 
     // article-authors
     if (this.node.customArticleContributions && this.node.customArticleContributions.length > 0) {
+      var headline = "Authors";
+      if (this.node.customArticleContributions.length === 1) headline = "Author";
       var authors = $$('.authors');
           var authorsHeaderEl = $$('.metadata-title', {
-            html: `<span class="metadata-title-text">Authors</span>`
+            html: `<span class="metadata-title-text">${headline}</span>`
           });
           authors.appendChild(authorsHeaderEl);
       this.node.customArticleContributions.forEach(contributor => {
