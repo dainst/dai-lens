@@ -253,7 +253,7 @@ function setColors() {
   var colors = window.app.config.journal_config.colors;
 
   $(".topbar, .menu-bar").css("background-color", colors.primary);
-  $(".content-node.cover .title, .cover-subtitle, .abstract-title, .abstract-subtitle").css("color", "purple");
+  $(".content-node.cover .title, .cover-subtitle, .abstract-title, .abstract-subtitle").css("color", colors.headline);
   $(".topbar-date").css("background-color", colors.topbar_issue);
 
   // Sadly necessary https://stackoverflow.com/q/5041494 and the fact some objects aren't generated on page load
