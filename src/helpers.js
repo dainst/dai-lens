@@ -250,24 +250,20 @@ function setPageTitle() {
 }
 
 function setColors() {
-  function setBackgroundColor(cls, color) {
-    $(cls).each((i, e) => {
-      e.style.backgroundColor = color;
-    })
-  }
-
-  function setFontColor(cls, color) {
-    $(cls).each((i, e) => {
-      e.style.color = color;
-    })
-  }
-
   var colors = window.app.config.journal_config.colors;
-  setBackgroundColor('.topbar', colors.primary);
-  setBackgroundColor('.menu-bar', colors.primary);
-  setFontColor('.lens-article .content-node.cover .title', colors.headline);
-  setBackgroundColor('.topbar-date', colors.topbar_issue);
 
+  $(".topbar, .menu-bar").css("background-color", colors.primary);
+  $(".content-node.cover .title, .cover-subtitle, .abstract-title, .abstract-subtitle").css("color", "purple");
+  $(".topbar-date").css("background-color", colors.topbar_issue);
+
+  // Sadly necessary https://stackoverflow.com/q/5041494 and the fact some objects aren't generated on page load
+  $('head').append('<style>' +
+      '.article .resources .content-node.citation.highlighted .resource-header .name{color: ' + colors.secondary + '!important;}' +
+      '.article .resources .figures .content-node.figure.highlighted .resource-header{background-color: ' + colors.secondary + '!important;}' +
+      '.central-bar-preview.selected{border-top: 3px solid ' + colors.secondary + '!important;}' +
+      '.resource-view.toc .heading-ref.active >:before{color: ' + colors.secondary + '!important;}' +
+      '.resource-view.toc .heading-ref:hover >:before{color: ' + colors.secondary + '!important;}' +
+      '</style>');
 }
 
 function setFavicon() {

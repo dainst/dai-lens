@@ -47,7 +47,8 @@ function get_journal_config(document_url) {
     "colors": {
       "primary": "black",
       "topbar_issue": "white",
-      "headline": "grey"
+      "headline": "grey",
+      "secondary": "#800032"
     },
     "issue_pattern": "volume/year",
     "print": true
