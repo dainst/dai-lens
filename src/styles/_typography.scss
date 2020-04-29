@@ -89,6 +89,54 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Noto Sans Anatolian Hieroglyphs';
+  src: local('fonts/Noto Sans Anatolian Hieroglyphs'),
+      url('fonts/NotoSansAnatolianHieroglyphs-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans Egyptian Hieroglyphs';
+  src: local('fonts/Noto Sans Egyptian Hieroglyphs'),
+      url('fonts/NotoSansEgyptianHieroglyphs-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans Arabic Light';
+  src: local('fonts/Noto Sans Arabic Light'),
+      url('fonts/NotoSansArabic-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans Devanagari Light';
+  src: local('fonts/Noto Sans Devanagari Light'),
+      url('fonts/NotoSansDevanagari-Light.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK SC';
+  src: local('fonts/Noto Sans CJK SC'),
+      url('fonts/NotoSansCJKsc-Light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans CJK TC';
+  src: local('fonts/Noto Sans CJK TC'),
+      url('fonts/NotoSansCJKtc-Light.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body, textarea, p, input {
   font-family: $serif-light;
   font-weight: 300;
