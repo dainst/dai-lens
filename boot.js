@@ -51,7 +51,7 @@ function get_journal_config(document_url) {
       "secondary": "rgba(128, 0, 50)",
       "reference_highlight": "rgba(128, 0, 50, 0.1)" // "#eee2d9"
     },
-    "issue_pattern": "volume/year",
+    "issue_pattern": "volume",
     "print": true
   };
   var journal_identifier = load_xml(document_url).querySelector("journal-id").textContent;
