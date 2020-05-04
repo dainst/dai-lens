@@ -48,7 +48,8 @@ function get_journal_config(document_url) {
       "primary": "black",
       "topbar_issue": "white",
       "headline": "grey",
-      "secondary": "#800032"
+      "secondary": "rgba(128, 0, 50)",
+      "reference_highlight": "rgba(128, 0, 50, 0.1)" // "#eee2d9"
     },
     "issue_pattern": "volume/year",
     "print": true

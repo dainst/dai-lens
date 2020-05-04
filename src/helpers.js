@@ -263,6 +263,9 @@ function setColors() {
       '.central-bar-preview.selected{border-top: 3px solid ' + colors.secondary + '!important;}' +
       '.resource-view.toc .heading-ref.active >:before{color: ' + colors.secondary + '!important;}' +
       '.resource-view.toc .heading-ref:hover >:before{color: ' + colors.secondary + '!important;}' +
+      '.content-node .figure_reference{color: ' + colors.secondary + '!important;}' +
+      '.content-node .figure_reference.highlighted{background-color: ' + colors.reference_highlight + '!important;}' +
+      '.content-node .figure_reference:hover{background-color: ' + colors.reference_highlight + '!important;}' +
       '</style>');
 }
 
