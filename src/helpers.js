@@ -252,7 +252,7 @@ function setPageTitle() {
 function setColors() {
   var colors = window.app.config.journal_config.colors;
 
-  $(".topbar, .menu-bar").css("background-color", colors.primary);
+  $(".topbar, .menu-bar").css("background-color", colors.topbar);
   $(".content-node.cover .title, .cover-subtitle, .abstract-title, .abstract-subtitle").css("color", colors.headline);
   $(".topbar-date").css("background-color", colors.topbar_issue);
 

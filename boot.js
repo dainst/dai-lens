@@ -45,11 +45,11 @@ function get_journal_config(document_url) {
     "logo": "lens.png",
     "favicon": "lens.png",
     "colors": {
-      "primary": "black",
+      "topbar": "black",
       "topbar_issue": "white",
       "headline": "grey",
       "secondary": "rgba(128, 0, 50)",
-      "reference_highlight": "rgba(128, 0, 50, 0.1)" // "#eee2d9"
+      "reference_highlight": "rgba(128, 0, 50, 0.1)"
     },
     "issue_pattern": "volume",
     "print": true
