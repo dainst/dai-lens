@@ -11,6 +11,19 @@ CustomCoverView.Prototype = function() {
     CoverView.prototype.render.call(this);
 
     function getTopBarDate(pubInfo) {
+      function fitString(myString) {
+        var len = myString.length;
+        var calcSize = 3 - len/4;
+        if (len > 8) {
+          myString = myString.substring(0, Math.ceil(len/2)) + '<br>' + myString.substring(Math.ceil(len/2), len);
+          calcSize *= 2;
+        }
+        // limits size between 1 and 2 vw
+        var size = Math.min(Math.max(calcSize, 1), 2);
+        var style = '<style>.topbar-date span{font-size: '+ size +'vw !important;}</style>';
+        $('head').append(style);
+        return myString;
+      }
       var topBarDate;
       var issuePattern = window.app.config.journal_config.issue_pattern;
 
@@ -25,8 +38,10 @@ CustomCoverView.Prototype = function() {
       } else if (issuePattern === "year") {
         if (year.length > 3) year = year.slice(0,4);
         topBarDate = year;
+      } else {
+        topBarDate = edition;
       }
-      return topBarDate;
+      return fitString(topBarDate);
     }
     var pubInfo = this.node.document.get('publication_info');
     var topBarDate = getTopBarDate(pubInfo);
