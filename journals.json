@@ -5,6 +5,7 @@
       "title": "Archäologischer Anzeiger",
       "logo": "AA_Logo.png",
       "favicon": "AA_favicon.png",
+      "homepage": "https://publications.dainst.org/journals/index.php/aa",
       "colors": {
         "topbar": "#E2510C",
         "topbar_issue": "#DA7D37",
@@ -20,6 +21,7 @@
       "title": "JoGA",
       "logo": "JoGA_Logo.png",
       "favicon": "JoGA_favicon.jpg",
+      "homepage": "https://publications.dainst.org/journals/index.php/joga",
       "colors": {
         "topbar": "#515249",
         "topbar_issue": "#666761",

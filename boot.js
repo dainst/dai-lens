@@ -44,6 +44,7 @@ function get_journal_config(document_url) {
     "title": "Lens Viewer",
     "logo": "lens.png",
     "favicon": "lens.png",
+    "homepage": "https://publications.dainst.org/journals/index.php",
     "colors": {
       "topbar": "black",
       "topbar_issue": "white",

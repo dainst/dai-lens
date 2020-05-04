@@ -123,6 +123,7 @@ Right now, `logo`, `favicon`, `topbar` and `topbar_issue` are only placeholders 
         "title": "Lens Viewer",
         "logo": "lens.png",
         "favicon": "lens.png",
+        "homepage": "https://publications.dainst.org/journals/index.php",
         "colors": {
           "topbar": "black",
           "topbar_issue": "white",
@@ -143,6 +144,7 @@ This meens you should leave out the parts of the config where you wish to use th
 * `title`: The html-title for this journal, displayed in the browsers tab.
 * `logo`: The logo in the top-left corner.
 * `favicon`: The favicon next to the title.
+* `homepage`: URL to another source of the journal, e.g. OJS
 * `topbar`: Color used in the topbar
 * `topbar_issue`: Color used in the middle of the topbar
 * `headline`: Color used for important headlines
