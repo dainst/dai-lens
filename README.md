@@ -110,3 +110,44 @@ Some of the features are implemented with JQuery and added to the page after the
 - mobile menu behaviour
 - TOC cover image
 - top bar image
+
+## 5. Multi-Journal Feature
+It is possible to adapt the Lens-Viewer to different journals using the `journals.json`.
+### Default configuration
+This is the default configuration. This one is hardcoded and NOT part of the `journals.json`, in case it is corrupted or missing.
+Right now, `logo`, `favicon`, `topbar` and `topbar_issue` are only placeholders and shold really be overwritten.
+```
+{
+    "xml_identifier": "*",
+    "config": {
+        "title": "Lens Viewer",
+        "logo": "lens.png",
+        "favicon": "lens.png",
+        "colors": {
+          "topbar": "black",
+          "topbar_issue": "white",
+          "headline": "grey",
+          "secondary": "rgba(128, 0, 50)",
+          "reference_highlight": "rgba(128, 0, 50, 0.1)"
+        },
+        "issue_pattern": "volume",
+        "print": true
+    }
+}
+```
+### How it works
+The default configuration applies automatically to all journals. It can be (entirely or partly) overwritten by a specific journal configuration.
+This meens you should leave out the parts of the config where you wish to use the default values. In case they are changed some day your journal will then take the new default values.
+
+* `xlm_identifier <required>`: Used to identify the journal. It is provided within the journal-id tag of the XML.
+* `title`: The html-title for this journal, displayed in the browsers tab.
+* `logo`: The logo in the top-left corner.
+* `favicon`: The favicon next to the title.
+* `topbar`: Color used in the topbar
+* `topbar_issue`: Color used in the middle of the topbar
+* `headline`: Color used for important headlines
+* `secondary`: Color used for highlighting citations, references and images
+* `reference_highlight`: Transparent background of highlighted references (often a transparent version of secondary)
+* `issue_pattern`: How the issue in the middle of the topbar will be displayed. Available patterns are "volume", "volume/year" and "year". The topbar section adaps the font size, so issues up to a number of 8 characters can be displayed in one line. After that two separate lines are used.
+* `print`: Can be `false` or `true` (without " or '!). Decides if some additional print metadata should be shown or not. Use false for web-only journals. 
+   
