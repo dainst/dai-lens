@@ -28,8 +28,7 @@ var qs = function () {
 
 
 function load_xml(document_url) {
-  var xhttp;
-  xhttp = new XMLHttpRequest();
+  var xhttp = new XMLHttpRequest();
   xhttp.open("GET", document_url, false);
   xhttp.send();
   if (!xhttp.responseXML) {
@@ -38,12 +37,18 @@ function load_xml(document_url) {
   return xhttp.responseXML;
 }
 
+function load_journals_json() {
+  var xhttp = new XMLHttpRequest();
+  xhttp.open("GET", '/repository/config/journals.json', false);
+  xhttp.send();
+  if (xhttp.status !== 200) return [];
+  return JSON.parse(xhttp.responseText) || [];
+}
 function get_journal_config(document_url) {
-  var journals = require('./journals.json');
   var config = {
     "title": "Lens Viewer",
-    "logo": "lens.png",
-    "favicon": "lens.png",
+    "logo": "/repository/config/lens.png",
+    "favicon": "/repository/config/lens.png",
     "homepage": "https://publications.dainst.org/journals/index.php",
     "colors": {
       "topbar": "black",
@@ -56,7 +61,7 @@ function get_journal_config(document_url) {
     "print": true
   };
   var journal_identifier = load_xml(document_url).querySelector("journal-id").textContent;
-  var journal = journals.find(e => e.xml_identifier === journal_identifier);
+  var journal = load_journals_json().find(e => e.xml_identifier === journal_identifier);
   if (journal) {
     $.extend(true, config, journal.config);
   }
