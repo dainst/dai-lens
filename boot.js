@@ -45,6 +45,7 @@ function load_journals_json() {
   return JSON.parse(xhttp.responseText) || [];
 }
 function get_journal_config(document_url) {
+	
   var config = {
     "title": "Lens Viewer",
     "logo": "/repository/config/lens.png",
@@ -53,13 +54,16 @@ function get_journal_config(document_url) {
     "colors": {
       "topbar": "black",
       "topbar_issue": "white",
-      "headline": "grey",
+      "cover-headline": "grey",
+	  "content-headline": "grey",
       "secondary": "rgba(128, 0, 50)",
       "reference_highlight": "rgba(128, 0, 50, 0.1)"
     },
     "issue_pattern": "volume",
-    "print": true
+    "print": true,
+	"advisory_board": true
   };
+  
   var journal_identifier = load_xml(document_url).querySelector("journal-id").textContent;
   var journal = load_journals_json().find(e => e.xml_identifier === journal_identifier);
   if (journal) {
