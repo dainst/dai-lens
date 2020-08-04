@@ -46,11 +46,29 @@ function removeAnnotationInTOC() {
 }
 
 function setPanelHeadings() {
-  $("div[class='surface resource-view supplements']").prepend( `<div class="supplements_heading">Supplementary online content of the article.<br/>This content is created by the author, peer-reviewed and edited by the editorial office of the DAI.
-  </div>` );
-  $("div[class='surface resource-view extrafeatures']").prepend( `<div class="extrafeatures_heading">Additional information to the article.<br/>These annotations are not necessarily part of the article content, but provide further illustrative and explanatory information.</div>` );
+	
+	// supplements panel heading:
+	var metadata = window.doc.get('publication_info');
+	var projectPage = metadata.customMeta.hasProjectPage;
+	
+  
+	if(projectPage != "") {
+	  
+	 $("div[class='surface resource-view supplements']").prepend( `<div class="supplements_heading">Supplementary online content of the article. This content is created by the author, peer-reviewed and edited by the editorial office of the DAI.
+	 <div class = "project_page">For further informations s. <a style = "color: #3a5979;" href = \'${projectPage}\'>${projectPage}</a></div></div>` );
+  
+	}
+	else {
+	  
+	$("div[class='surface resource-view supplements']").prepend( `<div class="supplements_heading">Supplementary online content of the article. This content is created by the author, peer-reviewed and edited by the editorial office of the DAI.</div>` );
+	 
+	};
+  
+	// extrafeature panel heading:
+	$("div[class='surface resource-view extrafeatures']").prepend( `<div class="extrafeatures_heading">Additional information to the article.<br/>These annotations are not necessarily part of the article content, but provide further illustrative and explanatory information.</div>` );
 
 }
+
 function setTopBarImage() {
   $("div[class='menu-bar']").append( `<div class="menu-bar-logo-container"><a href="https://www.dainst.org/dai/meldungen"><img class="menu-bar-logo" src="2nd_logo.png" /></a></div>` );
 }
@@ -182,7 +200,6 @@ function registerCentralBarHighlight(){
 }
 
 
-
 function updateCentralBar() {
 
   var figurePreviews = {}
@@ -250,23 +267,43 @@ function setPageTitle() {
 }
 
 function setColors() {
+	
   var colors = window.app.config.journal_config.colors;
-
+  
   $(".topbar, .menu-bar").css("background-color", colors.topbar);
-  $(".content-node.cover .title, .cover-subtitle, .abstract-title, .abstract-subtitle").css("color", colors.headline);
+  $(".content-node.cover .title, .cover-subtitle, .abstract-title, .abstract-subtitle").css("color", colors.cover_headline);
+  $(".content-node.heading .content").css("color", colors.content_headline);
   $(".topbar-date").css("background-color", colors.topbar_issue);
+  $(".content-node .figure_reference").css("color", colors.figure_reference);
+  $(".content-node .figure_reference").css("border-bottom", "1px solid " + colors.figure_reference);
+  $(".content-node .extrafeature_reference").css("color", colors.extrafeature_reference);
+  $(".content-node .extrafeature_reference").css("border-bottom", "1px solid " + colors.extrafeature_reference);
+  $(".content-node .citation_reference").css("color", colors.citation_reference);
+  $(".content-node .citation_reference").css("border-bottom", "1px solid " + colors.citation_reference);
+  $(".content-node .footnote_reference").css("color", colors.footnote_reference);
+  $(".content-node .footnote_reference").css("border-bottom", "1px solid " + colors.footnote_reference);
+  $(".resources .content-node.footnote .content .text a").css("color", colors.footnote_resources);
+  $(".resources .content-node.footnote .content .text a").css("border-bottom", "1px solid " + colors.footnote_resources);
+ 
 
-  // Sadly necessary https://stackoverflow.com/q/5041494 and the fact some objects aren't generated on page load
+  // Sadly necessary https://stackoverflow.com/q/5041494 and the fact some objects aren't generated on page load 
   $('head').append('<style>' +
       '.article .resources .content-node.citation.highlighted .resource-header .name{color: ' + colors.secondary + '!important;}' +
       '.article .resources .figures .content-node.figure.highlighted .resource-header{background-color: ' + colors.secondary + '!important;}' +
       '.central-bar-preview.selected{border-top: 3px solid ' + colors.secondary + '!important;}' +
       '.resource-view.toc .heading-ref.active >:before{color: ' + colors.secondary + '!important;}' +
       '.resource-view.toc .heading-ref:hover >:before{color: ' + colors.secondary + '!important;}' +
-      '.content-node .figure_reference{color: ' + colors.secondary + '!important;}' +
-      '.content-node .figure_reference.highlighted{background-color: ' + colors.reference_highlight + '!important;}' +
-      '.content-node .figure_reference:hover{background-color: ' + colors.reference_highlight + '!important;}' +
+      '.content-node .figure_reference.highlighted{background-color: ' + colors.figure_reference_focus + '!important;}' +
+      '.content-node .figure_reference:hover{background-color: ' + colors.figure_reference_hover + '!important;}' +
+	  '.content-node .extrafeature_reference.highlighted{background-color: ' + colors.extrafeature_reference_focus + '!important;}' +
+      '.content-node .extrafeature_reference:hover{background-color: ' + colors.extrafeature_reference_hover + '!important;}' +
+	  '.content-node .citation_reference.highlighted{background-color: ' + colors.citation_reference_focus + '!important;}' +
+      '.content-node .citation_reference:hover{background-color: ' + colors.citation_reference_hover + '!important;}' +
+	  '.content-node .footnote_reference.highlighted{background-color: ' + colors.footnote_reference_focus + '!important;}' +
+      '.content-node .footnote_reference:hover{background-color: ' + colors.footnote_reference_hover + '!important;}' +
+	  '.resources .content-node.footnote .content .text a:hover{background-color: ' + colors.footnote_resources_hover + '!important;}' +
       '</style>');
+	  
 }
 
 function setFavicon() {
