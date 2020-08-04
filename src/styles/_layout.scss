@@ -2,7 +2,9 @@ body.reader #main {
   margin-top: $top-bar-height;
   height: calc( 100% - #{$top-bar-height} );
 }
-// for Edge
+
+/* for Edge */
+
 html { 
   -ms-overflow-style: -ms-autohiding-scrollbar; 
 } 

@@ -154,7 +154,7 @@ a {
 .lens-article .content-node.cover .title {
   font-family: $sans-light;
   font-weight: 300;
-  color: $headlines;
+  color: $cover_headline;
   font-size: 48px;
   line-height: 55px;
   padding-top: 20px;
@@ -164,13 +164,12 @@ a {
 .lens-article .content-node.cover .cover-subtitle {
   font-family: $sans-light;
   font-weight: 300;
-  color: $headlines;
+  color: $cover_headline;
   font-size: 30px;
   line-height: 36px;
   padding-top: 20px;
   text-align: left;
 }
-
 
 .lens-article .content-node.cover .authors {
   text-align: justify;
@@ -178,12 +177,18 @@ a {
 .content-node.heading .content {
   font-family: $sans-med;
   font-weight: 500;
-  color: $headlines;
+  color: #content_headline;
   font-size: 24px;
   line-height: 1.3
 }
 
+.content-node.heading.level-1 .content {
+  color: #content_headline;
+  font-size: 20px;
+}
+
 .content-node.heading.level-2 .content {
+  color: #content_headline;
   font-size: 17px;
 }
 
@@ -219,6 +224,8 @@ a {
   font-weight: 500;
 }
 
+/* reference-elements:
+-----------------------*/
 
 .content-node .figure_reference {
   font-family: $serif-light;
@@ -226,9 +233,9 @@ a {
   background: none;
   color: $primary-dark;
   &:hover {
-    background-color: #eee2d9;
+    background-color: $reference_higlight;
   }
-  border-bottom: 1px solid $primary-dark;
+  border-bottom: 1px solid $secondary;
   padding-right: 3px;
   padding-left: 3px;
 }
@@ -237,13 +244,14 @@ a {
   background: none;
   color: $gray-darker;
   &:hover {
-    background-color: $gray-darker;
+    background-color: $reference_higlight;
     color: $white;
   }
-  border-bottom: 1px solid $gray-darker;
+  border-bottom: 1px solid $secondary;
   padding-right: 3px;
   padding-left: 3px;
 }
+
 
 .content-node .citation_reference {
   font-family: $serif-light;
@@ -251,7 +259,7 @@ a {
   background: none;
   color: $secondary;
   &:hover {
-    background-color: $secondary;
+    background-color: $reference_higlight;
     color: $white;
   }
   border-bottom: 1px solid $secondary;
@@ -266,6 +274,8 @@ a {
   text-transform: uppercase;
   font-size: 14px;
 }
+
+/*-------------------*/
 
 .lens-article .content-node.cover .content .authors {
   font-family: $sans-semi-bold;
