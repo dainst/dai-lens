@@ -142,8 +142,8 @@ PublicationInfoView.Prototype = function() {
 
     var metaData = $$('.meta-data');
 
-    // All sections commented are part of the lens native implementation. Uncomment to show them in the Metadata Panel
-
+    /* All sections commented are part of the lens native implementation. Uncomment to show them in the Metadata Panel
+	-------------------------------------------------------------------------------------------------------------------*/
 
     // // Article Type
     // //
@@ -238,6 +238,11 @@ PublicationInfoView.Prototype = function() {
     /** 
      * custom overriding to add publication info to metadata panel for DAI
      * */ 
+	 
+	 
+	 
+	/* ARTICLE METADATA
+	-------------------------*/
 
     // article-meta heading
     var articleMetaHeaderEl = $$('.metadata-header', {
@@ -483,7 +488,10 @@ PublicationInfoView.Prototype = function() {
       printEdition.appendChild($$('br'));
     }
     metaData.appendChild(printEdition);
+	
 
+	/* JOURNAL METADATA
+	----------------------------*/
 
     // journal-meta heading
     var journalMetaHeaderEl = $$('.metadata-header', {
@@ -574,7 +582,8 @@ PublicationInfoView.Prototype = function() {
     }
 
     // advisory-board
-    if (this.node.journalAdvisoryBoard){
+    if (window.app.config.journal_config.advisory_board === true) {
+
       var advBoardEl = $$('.advisory-board')
       var coHeaderEl = $$('.metadata-title', {
         html: `<span class="metadata-title-text">Advisory Board</span>`
@@ -689,6 +698,23 @@ PublicationInfoView.Prototype = function() {
 
     metaData.appendChild(editingEl);
     metaData.appendChild($$('br'));
+	
+	/* SYSTEM METADATA
+	----------------------------*/
+	
+    // system-meta heading
+	
+    var systemMetaHeaderEl = $$('.metadata-header', {
+      html: '<span class="metadata-header-text">System Metadata</span>'
+    });
+	
+	metaData.appendChild(systemMetaHeaderEl);
+	
+	var systemNoticeEl = $$('.metadata-text-container', {
+        html: `<span class="metadata-text">The DAI-Journal-Viewer is a customized version of 
+		the open source reader eLife Lens (elifesciences.org)</span>`
+      });
+      metaData.appendChild(systemNoticeEl);
 
     // if (this.node.journalCustomMeta && this.node.journalCustomMeta['printing-notice']) {
     //   var printingNotice = $$('.metadata-text-container', {
