@@ -5,7 +5,7 @@
 .article .resources .nodes > .content-node.citation > .content {
   display: flex;
   flex-wrap: wrap;
-  padding-left: 170px;
+  padding-left: 185px;
   padding-top: 13px;
 }
 
@@ -40,11 +40,12 @@
   order: 2;
   font-size: $panel-text-size;
   font-weight: 300;
+  text-align: justify;
   margin-bottom: 0;
   margin-right: 4px;
 }
 .lens-article .content-node.citation .content .title a {
-  color: $black;
+  color: #3d4aa5;
 }
 
 .lens-article .content-node.citation .content .source {

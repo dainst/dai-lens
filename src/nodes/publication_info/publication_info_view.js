@@ -712,7 +712,8 @@ PublicationInfoView.Prototype = function() {
 	
 	var systemNoticeEl = $$('.metadata-text-container', {
         html: `<span class="metadata-text">The DAI-Journal-Viewer is a customized version of 
-		the open source reader eLife Lens (elifesciences.org)</span>`
+		the open source reader eLife Lens 2.0.0 
+		(<a href = "https://lens.elifesciences.org/" style = "color: #3d4aa5;" target = "_blank">https://lens.elifesciences.org/</a>)</span>`
       });
       metaData.appendChild(systemNoticeEl);
 
