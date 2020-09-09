@@ -78,8 +78,7 @@ function get_journal_config(document_url) {
 		"resources_focus_footnote_number": "#E2510C",
 		"resources_focus_author_year": "#E2510C",
 		"resources_focus_references": "#E2510C",
-		"resources_focus_element_header_background": "#E2510C",
-		"resources_element_background": "#918A82"
+		"resources_focus_element_header_background": "#E2510C"
     },
     "issue_pattern": "volume",
     "print": true,

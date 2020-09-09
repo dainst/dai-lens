@@ -300,9 +300,9 @@ function setColors() {
       '.content-node .extrafeature_reference:hover{background-color: ' + colors.content_extrafeature_reference_hover + '!important;}' +
 	  '.content-node .citation_reference.highlighted{background-color: ' + colors.content_citation_reference_focus + '!important;}' +
       '.content-node .citation_reference:hover{background-color: ' + colors.content_citation_reference_hover + '!important;}' +
-	  '.resources .nodes > .content-node, .resource-header{background-color: ' +  colors.resources_element_background  + '!important;}' +
-	  '.resources .panel{background-color: ' + colors.panel + '!important; border-top: 40px solid ' +  colors.panel + '!important; }' +
-	  '.resources .content-node.footnote .content .text a:hover{color: white !important; background-color: ' + colors.resources_references_hover + '!important; }' +
+	  '.resources .panel{background-color: ' + colors.panel + '!important; border-top: 40px solid ' +  colors.panel + '!important;}' +
+	  '.resources .nodes > .content-node.publication-info > .content{background-color: ' + colors.panel + '!important;}' +
+	  '.resources .content-node.footnote .content .text a:hover{color: white !important; background-color: ' + colors.resources_references_hover + '!important;}' +
 	  '.resources .content-node.footnote.highlighted .resource-header .name{color: ' + colors.resources_focus_footnote_number + '!important;}' +
 	  '.resources .content-node.footnote.highlighted .content .text a{border-bottom: 1px solid ' + colors.resources_focus_references + '!important; color: ' + colors.resources_focus_references + '!important;}' +
 	  '.resources .content-node.footnote.highlighted .content .text a:hover{color: white !important; background-color: ' + colors.resources_focus_references + '!important; }' +
