@@ -54,7 +54,11 @@ function get_journal_config(document_url) {
     "colors": {
 		"topbar": "#E2510C",
         "topbar_issue": "#DA7D37",
+		"topbar_text": "#dedace",
+		"scrollbar": "#CDC7C0",
+		"panel": "#918A82",
         "cover_headline": "#E2510C",
+		"cover_subtitle": "#E2510C",
         "content_headline_1": "#E2510C",
 		"content_headline_2": "#000000",
         "content_figure_reference": "#E2510C",
@@ -67,12 +71,15 @@ function get_journal_config(document_url) {
         "content_citation_reference_hover": "#E2510C",
         "content_citation_reference_focus": "#fbd5c4",
 		"resources_contents_toc": "#E2510C",
+		"resources_contents_toc_headlines": "#dedace",
+		"resources_contents_toc_headlines_hover": "#ebf1fd", 
 		"resources_references": "#CDC7C0",
 		"resources_references_hover": "#CDC7C0",
 		"resources_focus_footnote_number": "#E2510C",
 		"resources_focus_author_year": "#E2510C",
 		"resources_focus_references": "#E2510C",
-		"resources_focus_header_background": "#E2510C"
+		"resources_focus_element_header_background": "#E2510C",
+		"resources_element_background": "#918A82"
     },
     "issue_pattern": "volume",
     "print": true,

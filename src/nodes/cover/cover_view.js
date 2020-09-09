@@ -46,8 +46,6 @@ CustomCoverView.Prototype = function() {
     var pubInfo = this.node.document.get('publication_info');
     var topBarDate = getTopBarDate(pubInfo);
 
-    var subtitleText = pubInfo.subtitle;
-
     // Add feeback info
     var topBar = $$('.topbar', {
       children: [
@@ -63,9 +61,21 @@ CustomCoverView.Prototype = function() {
 
       ]
     });
+	
+	var subtitleText = pubInfo.subtitle;
+	var titleDepartementText = pubInfo.titleDepartement;
+	var titleTopicLocationText = pubInfo.titleTopicLocation;
 
     var subtitle = $$('.cover-subtitle', {
       html: subtitleText
+    });
+	
+	var coverDepartement = $$('.cover-departement', {
+      html: titleDepartementText
+    });
+	
+	var coverTopicLocation = $$('.cover-topic-location', {
+      html: titleTopicLocationText
     });
 
     // Add coauthors
@@ -87,7 +97,9 @@ CustomCoverView.Prototype = function() {
     }
     // Prepend
     this.content.insertBefore(topBar, this.content.firstChild);
-    this.content.insertBefore(subtitle, this.content.childNodes[3]);
+	this.content.insertBefore(subtitle, this.content.childNodes[3]);
+	this.content.insertBefore(coverDepartement, this.content.childNodes[2]);
+	this.content.insertBefore(coverTopicLocation, this.content.childNodes[3]);
     
 
     if (this.content.lastElementChild.className === "doi") {

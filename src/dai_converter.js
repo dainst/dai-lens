@@ -57,9 +57,6 @@ DaiConverter.Prototype = function() {
     this.extractLinks(state, article);
 
 
-
-
-
     // Populate Publication Info node
     this.extractPublicationInfo(state, article);
 
@@ -84,8 +81,6 @@ DaiConverter.Prototype = function() {
 
     this.enhanceArticle(state, article);
   };
-
-
 
   // Override app group to remove appendix
   this.appGroup = function(state, appGroup) {
@@ -172,6 +167,8 @@ DaiConverter.Prototype = function() {
     var volume = state.xmlDoc.querySelector("volume");
     var articleTitle = state.xmlDoc.querySelector("article-title");
     var subtitle = state.xmlDoc.querySelector("subtitle");
+	var titleDepartement = state.xmlDoc.querySelector("title-departement");
+    var titleTopicLocation = state.xmlDoc.querySelector("title-topic-location");
     var customMeta = {}
     var customMetaEls = state.xmlDoc.querySelectorAll('article-meta custom-meta');
     for (var i = 0; i < customMetaEls.length; i++) {
@@ -475,6 +472,8 @@ DaiConverter.Prototype = function() {
     publicationInfo.volume = volume;
     publicationInfo.subtitle = subtitle ? subtitle.textContent : '';
     publicationInfo.articleTitle = articleTitle ? articleTitle.textContent : '';
+	publicationInfo.titleDepartement = titleDepartement ? titleDepartement.textContent : '';
+	publicationInfo.titleTopicLocation = titleTopicLocation ? titleTopicLocation.textContent : '';
     publicationInfo.customMeta = customMeta;
     publicationInfo.customPubDate = pubDate
     publicationInfo.customArticleContributions = customArticleContributions

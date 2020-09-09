@@ -50,8 +50,6 @@ function setPanelHeadings() {
 	// supplements panel heading:
 	var metadata = window.doc.get('publication_info');
 	
-	console.log(metadata.customMeta.hasProjectPage);
-	
 	if(typeof metadata.customMeta.hasProjectPage !== 'undefined') {
 	  
 		$("div[class='surface resource-view supplements']").prepend( `<div class="supplements_heading">Supplementary online content of the article. This content is created by the author, peer-reviewed and edited by the editorial office of the DAI.
@@ -272,7 +270,12 @@ function setColors() {
   
   $(".topbar, .menu-bar").css("background-color", colors.topbar);
   $(".topbar-date").css("background-color", colors.topbar_issue);
-  $(".content-node.cover .title, .cover-subtitle, .abstract-title, .abstract-subtitle").css("color", colors.cover_headline);
+  $(".topbar-date span, .menu-bar .context-toggles a").css("color", colors.topbar_text);
+  $(".scrollbar-cover").css("background-color", colors.scrollbar);
+  $(".content-node.cover .title, .abstract-title, .abstract-subtitle").css("color", colors.cover_headline);
+  $(".content-node.cover .cover-subtitle").css("color", colors.cover_subtitle);
+  $(".content-node.cover .cover-departement").css("color", colors.cover_departement);
+  $(".content-node.cover .cover-topic-location").css("color", colors.cover_topic_location);
   $(".content-node.heading.level-1 .content").css("color", colors.content_headline_1);
   $(".content-node.heading.level-2 .content").css("color", colors.content_headline_2);
   $(".content-node .figure_reference").css("color", colors.content_figure_reference);
@@ -286,24 +289,29 @@ function setColors() {
   
   // Sadly necessary https://stackoverflow.com/q/5041494 and the fact some objects aren't generated on page load 
   $('head').append('<style>' +
-      '.central-bar-preview.selected{border-top: 3px solid ' + colors.resources_focus_header_background  + '!important;}' +
+      '.central-bar-preview.selected{border-top: 3px solid ' + colors.resources_focus_element_header_background  + '!important;}' +
 	  '.mobile-menu{background-color: ' + colors.topbar_issue + '!important;}' +
 	  '.tablet-menu{background-color: ' + colors.topbar_issue + '!important;}' +
 	  '.menu-bar .context-toggles{background-color: ' + colors.topbar_issue + '!important;}' + 
-      '.content-node .figure_reference.highlighted{background-color: ' + colors.content_figure_reference_focus + '!important;}' +
+	  '.menu-bar .context-toggles a.active{background-color: ' + colors.panel + '!important;}' + 
+	  '.content-node .figure_reference.highlighted{background-color: ' + colors.content_figure_reference_focus + '!important;}' +
       '.content-node .figure_reference:hover{background-color: ' + colors.content_figure_reference_hover + '!important;}' +
 	  '.content-node .extrafeature_reference.highlighted{background-color: ' + colors.content_extrafeature_reference_focus + '!important;}' +
       '.content-node .extrafeature_reference:hover{background-color: ' + colors.content_extrafeature_reference_hover + '!important;}' +
 	  '.content-node .citation_reference.highlighted{background-color: ' + colors.content_citation_reference_focus + '!important;}' +
       '.content-node .citation_reference:hover{background-color: ' + colors.content_citation_reference_hover + '!important;}' +
+	  '.resources .nodes > .content-node, .resource-header{background-color: ' +  colors.resources_element_background  + '!important;}' +
+	  '.resources .panel{background-color: ' + colors.panel + '!important; border-top: 40px solid ' +  colors.panel + '!important; }' +
 	  '.resources .content-node.footnote .content .text a:hover{color: white !important; background-color: ' + colors.resources_references_hover + '!important; }' +
 	  '.resources .content-node.footnote.highlighted .resource-header .name{color: ' + colors.resources_focus_footnote_number + '!important;}' +
 	  '.resources .content-node.footnote.highlighted .content .text a{border-bottom: 1px solid ' + colors.resources_focus_references + '!important; color: ' + colors.resources_focus_references + '!important;}' +
 	  '.resources .content-node.footnote.highlighted .content .text a:hover{color: white !important; background-color: ' + colors.resources_focus_references + '!important; }' +
 	  '.resources .content-node.citation.highlighted .resource-header .name{color: ' + colors.resources_focus_author_year + '!important;}' +
-	  '.resources .figures .content-node.figure.highlighted .resource-header{background-color: ' + colors.resources_focus_header_background  + '!important;}' +
-	  '.resources .supplements .content-node.supplement.highlighted .resource-header{background-color: ' + colors.resources_focus_header_background  + '!important;}' +
-	  '.resources .extrafeatures .content-node.extrafeature.highlighted .resource-header{background-color: ' + colors.resources_focus_header_background + '!important;}' +
+	  '.resources .figures .content-node.figure.highlighted .resource-header{background-color: ' + colors.resources_focus_element_header_background  + '!important;}' +
+	  '.resources .supplements .content-node.supplement.highlighted .resource-header{background-color: ' + colors.resources_focus_element_header_background  + '!important;}' +
+	  '.resources .extrafeatures .content-node.extrafeature.highlighted .resource-header{background-color: ' + colors.resources_focus_element_header_background + '!important;}' +
+	  '.resource-view.toc .heading-ref{color: ' + colors.resources_contents_toc_headlines + '!important;}' +
+	  '.resource-view.toc .heading-ref:hover{color: ' + colors.resources_contents_toc_headlines_hover + '!important;}' +
       '.resource-view.toc .heading-ref.active >:before{color: ' + colors.resources_contents_toc + '!important;}' +
       '.resource-view.toc .heading-ref:hover >:before{color: ' + colors.resources_contents_toc + '!important;}' +	  
       '</style>');
