@@ -39,7 +39,8 @@ CitationView.Prototype = function() {
         titleViewEl.appendChild($$('a.citation-custom-url', {
           href: url.url,
           target: '_blank',
-          text: 'iDAI.bibliography'
+          text: '>>',
+          'data-title': " iDAI.bibliography"
         }));
       });
     }
