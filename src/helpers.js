@@ -46,22 +46,22 @@ function removeAnnotationInTOC() {
 }
 
 function setPanelHeadings() {
-	
+
 	// supplements panel heading:
 	var metadata = window.doc.get('publication_info');
-	
+
 	if(typeof metadata.customMeta.hasProjectPage !== 'undefined') {
-	  
+
 		$("div[class='surface resource-view supplements']").prepend( `<div class="supplements_heading">Supplementary online content of the article. This content is created by the author, peer-reviewed and edited by the editorial office of the DAI.
-		<div class = "project_page">For further informations s. <a style = "color: #fefeff;" href = \'${metadata.customMeta.hasProjectPage}\'>${metadata.customMeta.hasProjectPage}</a></div></div>` );
-  
+		<div class = "project_page">For further information s. <a style = "color: #fefeff;" href = \'${metadata.customMeta.hasProjectPage}\'>${metadata.customMeta.hasProjectPage}</a></div></div>` );
+
 	}
 	else {
-	  
+
 		$("div[class='surface resource-view supplements']").prepend( `<div class="supplements_heading">Supplementary online content of the article. This content is created by the author, peer-reviewed and edited by the editorial office of the DAI.</div>` );
-	 
+
 	};
-  
+
 	// extrafeature panel heading:
 	$("div[class='surface resource-view extrafeatures']").prepend( `<div class="extrafeatures_heading">Additional information to the article.<br/>These annotations are not necessarily part of the article content, but provide further illustrative and explanatory information.</div>` );
 
@@ -265,9 +265,9 @@ function setPageTitle() {
 }
 
 function setColors() {
-	
+
   var colors = window.app.config.journal_config.colors;
-  
+
   $(".topbar, .menu-bar").css("background-color", colors.topbar);
   $(".topbar-date").css("background-color", colors.topbar_issue);
   $(".topbar-date span, .menu-bar .context-toggles a").css("color", colors.topbar_text);
@@ -284,22 +284,26 @@ function setColors() {
   $(".content-node .extrafeature_reference").css("border-bottom", "1px solid " + colors.content_extrafeature_reference);
   $(".content-node .citation_reference").css("color", colors.content_citation_reference);
   $(".content-node .citation_reference").css("border-bottom", "1px solid " + colors.content_citation_reference);
+  $(".content-node .supplement_reference").css("color", colors.content_supplement_reference);
+  $(".content-node .supplement_reference").css("border-bottom", "1px solid " + colors.content_supplement_reference);
   $(".resources .content-node.footnote .content .text a").css("color", colors.resources_references);
   $(".resources .content-node.footnote .content .text a").css("border-bottom", "1px solid " + colors.resources_references);
-  
-  // Sadly necessary https://stackoverflow.com/q/5041494 and the fact some objects aren't generated on page load 
+
+  // Sadly necessary https://stackoverflow.com/q/5041494 and the fact some objects aren't generated on page load
   $('head').append('<style>' +
       '.central-bar-preview.selected{border-top: 3px solid ' + colors.resources_focus_element_header_background  + '!important;}' +
 	  '.mobile-menu{background-color: ' + colors.topbar_issue + '!important;}' +
 	  '.tablet-menu{background-color: ' + colors.topbar_issue + '!important;}' +
-	  '.menu-bar .context-toggles{background-color: ' + colors.topbar_issue + '!important;}' + 
-	  '.menu-bar .context-toggles a.active{background-color: ' + colors.panel + '!important;}' + 
+	  '.menu-bar .context-toggles{background-color: ' + colors.topbar_issue + '!important;}' +
+	  '.menu-bar .context-toggles a.active{background-color: ' + colors.panel + '!important;}' +
 	  '.content-node .figure_reference.highlighted{background-color: ' + colors.content_figure_reference_focus + '!important;}' +
       '.content-node .figure_reference:hover{background-color: ' + colors.content_figure_reference_hover + '!important;}' +
 	  '.content-node .extrafeature_reference.highlighted{background-color: ' + colors.content_extrafeature_reference_focus + '!important;}' +
       '.content-node .extrafeature_reference:hover{background-color: ' + colors.content_extrafeature_reference_hover + '!important;}' +
 	  '.content-node .citation_reference.highlighted{background-color: ' + colors.content_citation_reference_focus + '!important;}' +
       '.content-node .citation_reference:hover{background-color: ' + colors.content_citation_reference_hover + '!important;}' +
+	  '.content-node .supplement_reference.highlighted{background-color: ' + colors.content_supplement_reference_focus + '!important;}' +
+      '.content-node .supplement_reference:hover{background-color: ' + colors.content_supplement_reference_hover + '!important;}' +
 	  '.resources .panel{background-color: ' + colors.panel + '!important; border-top: 40px solid ' +  colors.panel + '!important;}' +
 	  '.resources .nodes > .content-node.publication-info > .content{background-color: ' + colors.panel + '!important;}' +
 	  '.resources .content-node.footnote .content .text a:hover{color: white !important; background-color: ' + colors.resources_references_hover + '!important;}' +
@@ -313,9 +317,9 @@ function setColors() {
 	  '.resource-view.toc .heading-ref{color: ' + colors.resources_contents_toc_headlines + '!important;}' +
 	  '.resource-view.toc .heading-ref:hover{color: ' + colors.resources_contents_toc_headlines_hover + '!important;}' +
       '.resource-view.toc .heading-ref.active >:before{color: ' + colors.resources_contents_toc + '!important;}' +
-      '.resource-view.toc .heading-ref:hover >:before{color: ' + colors.resources_contents_toc + '!important;}' +	  
+      '.resource-view.toc .heading-ref:hover >:before{color: ' + colors.resources_contents_toc + '!important;}' +
       '</style>');
-	  
+
 }
 
 function setFavicon() {

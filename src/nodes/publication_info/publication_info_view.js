@@ -35,7 +35,7 @@ PublicationInfoView.Prototype = function() {
       });
       authors.appendChild(authorNameEl);
     }
-    
+
     if (contributor.address) {
       if (contributor.address.addrLine){
         var addressLineEl = $$('.metadata-text-container', {
@@ -62,12 +62,12 @@ PublicationInfoView.Prototype = function() {
         });
         authors.appendChild(addressPhoneEl);
       }
-      
-    
+
+
     }
 
     if (contributor.aff) {
-      
+
       if (contributor.aff.institution){
         var institutionEl = $$('.metadata-text-container', {
           html: `<span class="metadata-text">${contributor.aff.institution}</span>`
@@ -113,13 +113,13 @@ PublicationInfoView.Prototype = function() {
     }
     if (contributor.contribId) {
       var authorContribIdEl = $$('.metadata-text-container', {
-        html: `<span class="metadata-text">ORCID-ID: <a class="metadata-link" target="_blank" rel="noopener noreferrer" href="${contributor.contribId}">${contributor.contribId}</a></span>`
+        html: `<span class="metadata-text"><a class="metadata-link" target="_blank" rel="noopener noreferrer" href="${contributor.contribId}">${contributor.contribId}</a></span>`
       });
       authors.appendChild(authorContribIdEl);
     }
     if (contributor.aff && contributor.aff.institutionId){
       var institutionIdEl = $$('.metadata-text-container', {
-        html: `<span class="metadata-text">GND: <a class="metadata-link" target="_blank" rel="noopener noreferrer" href="${contributor.aff.institutionId}">${contributor.aff.institutionId}</a></span>`
+        html: `<span class="metadata-text"><a class="metadata-link" target="_blank" rel="noopener noreferrer" href="${contributor.aff.institutionId}">${contributor.aff.institutionId}</a></span>`
       });
       authors.appendChild(institutionIdEl);
     }
@@ -235,12 +235,12 @@ PublicationInfoView.Prototype = function() {
     //   metaData.appendChild(relatedArticleEl);
     // }
 
-    /** 
+    /**
      * custom overriding to add publication info to metadata panel for DAI
-     * */ 
-	 
-	 
-	 
+     * */
+
+
+
 	/* ARTICLE METADATA
 	-------------------------*/
 
@@ -324,7 +324,7 @@ PublicationInfoView.Prototype = function() {
       metaData.appendChild(coauthors);
 
       }
-      
+
     }
 
     // article-digital-edition
@@ -370,7 +370,7 @@ PublicationInfoView.Prototype = function() {
         });
         digitalEdition.appendChild(publishedEl);
       }
-      
+
 
       if (this.node.customMeta && this.node.customMeta['citation-guideline']) {
         var citGuideEl = $$('.metadata-text-container', {
@@ -488,7 +488,7 @@ PublicationInfoView.Prototype = function() {
       printEdition.appendChild($$('br'));
     }
     metaData.appendChild(printEdition);
-	
+
 
 	/* JOURNAL METADATA
 	----------------------------*/
@@ -516,7 +516,7 @@ PublicationInfoView.Prototype = function() {
 
     // journal info
     var journalInfo = $$('.journal-info')
-    
+
     if (this.node.journalEditors) {
       var titleEl = $$('.metadata-title', {
         html: `<span class="metadata-title-text">Publisher/Editors</span>`
@@ -698,22 +698,22 @@ PublicationInfoView.Prototype = function() {
 
     metaData.appendChild(editingEl);
     metaData.appendChild($$('br'));
-	
+
 	/* SYSTEM METADATA
 	----------------------------*/
-	
+
     // system-meta heading
-	
+
     var systemMetaHeaderEl = $$('.metadata-header', {
       html: '<span class="metadata-header-text">System Metadata</span>'
     });
-	
+
 	metaData.appendChild(systemMetaHeaderEl);
-	
+
 	var systemNoticeEl = $$('.metadata-text-container', {
         html: `<span class="metadata-text">The DAI-Journal-Viewer is a customized version of 
 		the open source reader eLife Lens 2.0.0 
-		(<a href = "https://lens.elifesciences.org/" style = "color: #3d4aa5;" target = "_blank">https://lens.elifesciences.org/</a>)</span>`
+		(<a href = "https://lens.elifesciences.org/" style = "color: #FFFFFF;" target = "_blank">https://lens.elifesciences.org/</a>)</span>`
       });
       metaData.appendChild(systemNoticeEl);
 

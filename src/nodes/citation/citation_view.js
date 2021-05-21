@@ -25,7 +25,7 @@ CitationView.Prototype = function() {
   _.extend(this, ResourceView.prototype);
 
   this.renderBody = function() {
-    
+
     var frag = document.createDocumentFragment();
     var node = this.node;
     // Add title
@@ -40,7 +40,7 @@ CitationView.Prototype = function() {
           href: url.url,
           target: '_blank',
           text: '>>',
-          'data-title': " iDAI.bibliography"
+          'data-title': "iDAI.bibliography"
         }));
       });
     }
@@ -142,11 +142,11 @@ CitationView.Prototype = function() {
         }));
       });
 
-      frag.appendChild(citationUrlsEl);      
+      frag.appendChild(citationUrlsEl);
     }
 
     // custom DAI urls
-    
+
 
     this.content.appendChild(frag);
   };
