@@ -12,11 +12,23 @@
 
     <script src="lib/jquery.min.js"></script>
 
+    <!-- MathJAX-lib, extension for displaying Math-Formulas -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        svg: {
+          fontCache: 'global'
+        }
+      };
+    </script>
+
+    <script type="text/javascript" id="MathJax-script" async src="lib/mathJax_tex-svg.js">
+    </script>
+
     <script src='lens.js'></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgOtfGEjAs7aW45x36XyjrT5gRZB7oT8Y"></script>
-	<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-	<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
 
   </head>
   <body class="loading">
