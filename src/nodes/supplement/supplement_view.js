@@ -1,6 +1,6 @@
 var _ = require('underscore');
 var LensNodes = require("lens/article/nodes");
-var AnnotationView = LensNodes["annotation"].View;
+// var AnnotationView = LensNodes["annotation"].View;
 var NodeView = LensNodes["node"].View;
 var ResourceView = require('lens/article/resource_view');
 var SupplementsService = require('../linkdata_service');
@@ -19,24 +19,21 @@ SupplementView.Prototype = function() {
   var service = new SupplementsService();
 
   this.initMap = function(id, coord) {
-    // The location of Uluru
-    var uluru = {lat: coord[1], lng: coord[0]};
-    // The map, centered at Uluru
+
+    var location = {lat: coord[1], lng: coord[0]};
     var map = new google.maps.Map(
-        document.getElementById("map_" + id), {zoom: 8, center: uluru});
-    // The marker, positioned at Uluru
-    var marker = new google.maps.Marker({position: uluru, map: map});
-  }
-  
+        document.getElementById("map_" + id), {zoom: 8, center: location});
+    var marker = new google.maps.Marker({position: location, map: map});
+  };
+
   this.renderSupplement = function(supplement, type, url) {
-    // Finally data is available so we tell the panel to show up as a tab
-    // this.showToggle()
 
     var $supplements = $('<div class="supplements"></div>');
-    if (type === 'arachne') {
-      if (supplement.images && supplement.images.length) {
 
-        $supplements.append($(`<img class="supplement-image" src="https://arachne.dainst.org/data/image/${supplement.images[0].imageId}" >`))
+    if (type === 'arachne') {
+
+      if (supplement.images && supplement.images.length) {
+       $supplements.append($(`<img class="supplement-image" src="https://arachne.dainst.org/data/image/${supplement.images[0].imageId}" >`));
       }
       if (supplement.title ) {
         $supplements.append($(`<div class="supplement-title">${supplement.title}</div>`));
@@ -44,12 +41,11 @@ SupplementView.Prototype = function() {
       if (supplement.subtitle ) {
         $supplements.append($(`<div class="supplement-subtitle">${supplement.subtitle}</div>`));
       }
+
       var $supplementsLink = $('<div class="supplement-link"></div>');
-      $supplementsLink.append($(`<span>Link to iDAI.world: </span>`));
+      $supplementsLink.append($('<span>Link to iDAI.objects: </span>'));
       $supplementsLink.append($(`<a class="external" href="${url}" target="_blank" rel="noopener noreferrer"></a>`).text(url));
-      $supplements.append($supplementsLink)
-      // $supplements.append($(`<div style="height: 400px" id="map"></div>`));
-      
+      $supplements.append($supplementsLink);
 
     }
     if (type === 'gazetteer') {
@@ -63,38 +59,50 @@ SupplementView.Prototype = function() {
         $supplements.append($(`<div class="supplement-location">Location: Latitude: ${supplement.location.coordinates[1]}, Longitude: ${supplement.location.coordinates[0]}</div>`));
       }
       var $supplementsLink = $('<div class="supplement-link"></div>');
-      $supplementsLink.append($(`<span>Link to iDAI.world: </span>`));
+      $supplementsLink.append($('<span>Link to iDAI.gazetteer: </span>'));
       $supplementsLink.append($(`<a class="external" href="${url}" target="_blank" rel="noopener noreferrer"></a></span>`).text(url));
-      $supplements.append($supplementsLink)
-      
-
+      $supplements.append($supplementsLink);
     }
+    if (type === 'field') {
+
+      if (supplement.imageSource) {
+        $supplements.append($(`<img class="supplement-image" src="${supplement.imageSource}" >`));
+      }
+      if (supplement.shortDescription) {
+        $supplements.append($(`<div class="supplement-title">${supplement.shortDescription}</div>`));
+      }
+      var $supplementsLink = $('<div class="supplement-link"></div>');
+      $supplementsLink.append($('<span>Link to iDAI.field-web: </span>'));
+      $supplementsLink.append($(`<a class="external" href="${url}" target="_blank" rel="noopener noreferrer"></a>`).text(url));
+      $supplements.append($supplementsLink);
+    }
+
     this.$el.append($supplements);
     if (supplement.gazId && supplement.location && supplement.location.coordinates && supplement.location.coordinates.length) {
       this.initMap(supplement.gazId, supplement.location.coordinates);
     }
-    
+
 
   };
 
   this.renderExternalLink = function(properties) {
     var $supplements = $('<div class="supplements-link"></div>');
-    $supplements.append($(`<a class="external" href="${properties.url}" target="_blank"></a>`).text(properties.url));
+    $supplements.append($('<a class="external" href="${properties.url}" target="_blank"></a>').text(properties.url));
 
     this.$el.append($supplements);
-  }
+  };
 
   this.renderBody = function() {
     var self = this;
 
     if (this.node.properties && this.node.properties.urltype === 'external') {
-      this.renderExternalLink(this.node.properties)
+      this.renderExternalLink(this.node.properties);
     } else {
       service.getLinkData(this.node.properties, function(err, supplements) {
         if (!err) {
-          self.renderSupplement(supplements, self.node.properties.urltype, self.node.properties.url); 
+          self.renderSupplement(supplements, self.node.properties.urltype, self.node.properties.url);
         } else {
-          self.renderExternalLink(this.node.properties)
+          self.renderExternalLink(this.node.properties);
         }
       });
     }
