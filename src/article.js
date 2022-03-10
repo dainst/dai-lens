@@ -208,7 +208,6 @@ Article.describe = function() {
       content: introText,
     });
 
-
     // Show it in the content view
     doc.show("content", [headingId, introId], -1);
 
