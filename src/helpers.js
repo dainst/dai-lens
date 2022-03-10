@@ -1,12 +1,12 @@
 "use strict";
 
 const extractDocumentIdFromUrl = function(url) {
-  let daiMatchIndex = url.search("repository")
+  let daiMatchIndex = url.search("repository");
   if (daiMatchIndex >= 0) {
     let daiSubstring = url.substring(daiMatchIndex);
-    return daiSubstring.split('/')[1]
+    return daiSubstring.split('/')[1];
   }
-  return '0000'
+  return '0000';
 };
 
 const baseDocsURL = "/repository/";
@@ -25,22 +25,20 @@ function isScrolledIntoView(elem){
   return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 }
 
-function setCoverImage() {
+function setCoverImage() {
   var documentId = extractDocumentIdFromUrl(window.document.URL);
   var info = window.doc.get('publication_info');
   if (info.poster) {
-    var url = info.poster.children[0].getAttribute('xlink:href')
-    let coverImageUrl = [
+    var url = info.poster.children[0].getAttribute('xlink:href');
+    var coverImageUrl = [
       baseDocsURL,
       documentId + '/',
       url,
     ].join('');
     $("div[class='toc']").prepend( `<div><img class="cover-image" src="${coverImageUrl}"/></div>` );
-
-
   }
 }
-function removeAnnotationInTOC() {
+function removeAnnotationInTOC() {
   $(".heading-ref > span").find(".annotation").remove();
   $(".heading-ref > span").each(function(){ $(this).text($(this).text().trim()) });
 }
@@ -51,13 +49,10 @@ function setPanelHeadings() {
 	var metadata = window.doc.get('publication_info');
 
 	if(typeof metadata.customMeta.hasProjectPage !== 'undefined') {
-
 		$("div[class='surface resource-view supplements']").prepend( `<div class="supplements_heading">Supplementary online content of the article. This content is created by the author, peer-reviewed and edited by the editorial office of the DAI.
 		<div class = "project_page">For further information s. <a style = "color: #fefeff;" href = \'${metadata.customMeta.hasProjectPage}\'>${metadata.customMeta.hasProjectPage}</a></div></div>` );
-
 	}
 	else {
-
 		$("div[class='surface resource-view supplements']").prepend( `<div class="supplements_heading">Supplementary online content of the article. This content is created by the author, peer-reviewed and edited by the editorial office of the DAI.</div>` );
 
 	};
@@ -197,10 +192,9 @@ function registerCentralBarHighlight(){
    });
 }
 
-
 function updateCentralBar() {
 
-  var figurePreviews = {}
+  var figurePreviews = {};
     let lastHeight = 0;
     $('.content .figure_reference').each(function(){
       let data_id = this.attributes['data-id'];
@@ -211,7 +205,7 @@ function updateCentralBar() {
         let referencePosition = $elem.offset().top;
         if ( window && window.doc && data_id && data_id.nodeValue) {
           var referenceNode = window.doc.get(data_id.nodeValue);
-          var target = referenceNode.target
+          var target = referenceNode.target;
           if (target) {
             var targetNode = window.doc.get(target);
             var height = referencePosition - 80;
@@ -219,14 +213,15 @@ function updateCentralBar() {
             var isDuplicate = false;
             Object.keys(figurePreviews).forEach(preview => {
               if(figurePreviews[preview].figure === target) isDuplicate = true;
-            })
+            });
             if (!isDuplicate) {
+              var targetNodeUrl = (targetNode.url !== undefined) ? targetNode.url : "table-icon.png"; // table-icon instead?
               figurePreviews[data_id.nodeValue] = {
                 figure: target,
                 figureUrl: targetNode.url,
                 id: data_id.nodeValue,
                 topOffset: referencePosition,
-                content: `<div class="central-bar-preview ${selected ? 'selected' : ''}" reference="${data_id.nodeValue}" id="${data_id.nodeValue}_preview" data-id="${target}_preview"><a href="#content/${data_id.nodeValue}" class="figure_preview_link"><img class="figure_preview_img" src="${targetNode.url}" /></a></div>`,
+                content: `<div class="central-bar-preview ${selected ? 'selected' : ''}" reference="${data_id.nodeValue}" id="${data_id.nodeValue}_preview" data-id="${target}_preview"><a href="#content/${data_id.nodeValue}" class="figure_preview_link"><img class="figure_preview_img" src="${targetNodeUrl ? targetNodeUrl : ''}" /></a></div>`,
                 css: {top: height, position: 'absolute'},
                 selected: selected
               }
