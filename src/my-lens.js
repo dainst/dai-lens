@@ -2,9 +2,8 @@
 
 var Lens = require("lens/reader");
 var panels = Lens.getDefaultPanels();
-var Helpers = require('./helpers')
+var Helpers = require('./helpers');
 require('nodelist-foreach-polyfill');
-
 
 // All available converters
 var LensConverter = require("lens/converter");
@@ -13,18 +12,6 @@ var DaiConverter = require("./dai_converter");
 var ElifeConverter = require("lens/converter/elife_converter");
 
 var ContainerPanel = require('lens/reader/panels/container_panel');
-// Custom Panels
-// -------------------
-// 
-// The following lines enable the altmetrics panel
-// which can be considered a demo implementation for a custom
-// panel in Lens
-// 
-// Find the code in panels/altmetrics and use it as an inspiration
-// to build your own Lens panel
-
-// var notesPanel = require('./panels/notes');
-// var supplementsPanel = require('./panels/supplements');
 
 var notesPanel = new ContainerPanel({
   type: 'resource',
@@ -53,15 +40,16 @@ var extrafeaturesPanel = new ContainerPanel({
   references: ['extrafeature_reference'],
 });
 
+// rename custom info panel (=> "Metadata");
 panels.map(panel => {
-  if (panel.config.name === 'info') panel.config.title = 'Metadata'
-})
+  if (panel.config.name === 'info') panel.config.title = 'Metadata';
+});
 
-// Insert altmetrics panel at next to last position
+// reorder panels positions in menu-bar (on the right):
 panels.splice(1, 0, notesPanel);
 panels.splice(3, 0, supplementsPanel);
-panels.push(extrafeaturesPanel);
-// panels.splice(-1, 0, metaDataPanel);
+panels.splice(4, 0, extrafeaturesPanel);
+
 
 var LensApp = function(config) {
   Lens.call(this, config);
@@ -71,7 +59,7 @@ LensApp.Prototype = function() {
 
   // Custom converters
   // --------------
-  // 
+  //
   // Provides a sequence of converter instances
   // Converter.match will be called on each instance with the
   // XML document to processed. The one that returns true first
@@ -89,7 +77,7 @@ LensApp.Prototype = function() {
 
   // Custom panels
   // --------------
-  // 
+  //
 
   this.getPanels = function() {
     return panels.slice(0);
