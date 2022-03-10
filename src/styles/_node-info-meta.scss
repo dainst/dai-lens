@@ -20,6 +20,9 @@
   color: $gray-light;
 }
 
+.content-node[data-id=articleinfo] {
+  display:none;
+}
 
 .lens-article .content-node.publication-info {
   font-size: $panel-text-size;
