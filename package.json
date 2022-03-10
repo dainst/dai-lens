@@ -8,7 +8,7 @@
     "express": "3.21.x",
     "lens": "elifesciences/lens.git#f86820be66c3fc17fa8643d211f5bba0c62f4086",
     "nodelist-foreach-polyfill": "^1.2.0",
-    "underscore": "1.8.x"
+    "underscore": "^1.13.2"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
