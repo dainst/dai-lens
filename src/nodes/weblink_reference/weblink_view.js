@@ -15,8 +15,8 @@ WebLinkView.Prototype = function() {
       el = document.createElement('a');
       el.setAttribute('target', '_blank');
       el.setAttribute('href', this.node.url);
-      el.classList.add('external-link-ref')
-    
+      el.classList.add('external-link-ref');
+
     }
     return el;
   };

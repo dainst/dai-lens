@@ -1,5 +1,5 @@
 var SupplementsService = function() {
-  
+
 };
 
 SupplementsService.Prototype = function() {
@@ -12,7 +12,7 @@ SupplementsService.Prototype = function() {
     // var doi = this.document.get('publication_info').doi;
 
 		$.ajax({
-		  url: `https://arachne.dainst.org/data/entity/${slug}`,
+		  url: "https://arachne.dainst.org/data/entity/${slug}",
 		  dataType: "json",
 		}).done(function(res) {
 			cb(null, res);

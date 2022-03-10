@@ -701,9 +701,6 @@ PublicationInfoView.Prototype = function() {
 
 	/* SYSTEM METADATA
 	----------------------------*/
-
-    // system-meta heading
-
     var systemMetaHeaderEl = $$('.metadata-header', {
       html: '<span class="metadata-header-text">System Metadata</span>'
     });
@@ -730,7 +727,6 @@ PublicationInfoView.Prototype = function() {
     // ----------------
 
     var articleInfo = this.node.getArticleInfo();
-
     var articleInfoView = this.viewFactory.createView(articleInfo);
     var articleInfoViewEl = articleInfoView.render().el;
     this.content.appendChild(articleInfoViewEl);

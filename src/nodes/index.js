@@ -12,5 +12,6 @@ module.exports = {
   "extrafeature": require("./extrafeature"),
   "extrafeature_reference": require("./extrafeature_reference"),
   "text": require("./text"),
-  "weblink_reference": require("./weblink_reference")
+  "weblink_reference": require("./weblink_reference"),
+  "table": require("./content-table"),
 };

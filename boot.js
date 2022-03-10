@@ -2,8 +2,6 @@ window.Lens = require("./src/my-lens");
 require('nodelist-foreach-polyfill');
 
 // Little helper used to parse query strings from urls
-// --------
-//
 
 var qs = function () {
   var query_string = {};
@@ -41,11 +39,14 @@ function load_journals_json() {
   var xhttp = new XMLHttpRequest();
   xhttp.open("GET", '/repository/config/journals.json', false);
   xhttp.send();
-  if (xhttp.status !== 200) return [];
+  if (xhttp.status !== 200) {
+      alert("config/journals.json could not be found!");
+      return [];
+  }
   return JSON.parse(xhttp.responseText) || [];
 }
 function get_journal_config(document_url) {
-	
+
   var config = {
     "title": "Lens Viewer",
     "logo": "/repository/config/lens.png",
@@ -72,7 +73,7 @@ function get_journal_config(document_url) {
         "content_citation_reference_focus": "#fbd5c4",
 		"resources_contents_toc": "#E2510C",
 		"resources_contents_toc_headlines": "#dedace",
-		"resources_contents_toc_headlines_hover": "#ebf1fd", 
+		"resources_contents_toc_headlines_hover": "#ebf1fd",
 		"resources_references": "#CDC7C0",
 		"resources_references_hover": "#CDC7C0",
 		"resources_focus_footnote_number": "#E2510C",
@@ -84,7 +85,7 @@ function get_journal_config(document_url) {
     "print": true,
 	"advisory_board": true
   };
-  
+
   var journal_identifier = load_xml(document_url).querySelector("journal-id").textContent;
   var journal = load_journals_json().find(e => e.xml_identifier === journal_identifier);
   if (journal) {
@@ -105,8 +106,6 @@ $(function() {
   // --------
   //
   // Injects itself into body
-
-
   var document_url = qs.url ? decodeURIComponent(qs.url) : documentURL;
   var app = new window.Lens({
     document_url: document_url,
