@@ -90,3 +90,44 @@ a.figure_preview_link {
 .panel.figures.resource-view .nodes:last-child {
   padding-bottom: 40px
 }
+
+/* table styles
+------------------*/
+
+.resources .nodes > .content-node.html-table .footers {
+  display: none;
+}
+
+.resources .nodes > .content-node.html-table table {
+  table-layout: fixed;
+  width: 100%;
+  position: relative;
+  border-collapse: collapse;
+  border-spacing: 0;
+  margin: 0;
+}
+
+.resources .nodes > .content-node.html-table .table-wrapper {
+  background-color: white;
+}
+
+.resources .nodes > .content-node.html-table table tr:first-child td {
+  font-weight: 600;
+  background: lightgrey;
+}
+
+.resources .nodes > .content-node.html-table .resource-header .name {
+  font-size: 12px;
+}
+
+.resources .nodes > .content-node.html-table .caption-title {
+  font-size: 12px;
+}
+
+.resources .nodes > .content-node.html-table .paragraph {
+  font-size: 12px;
+}
+
+td {
+  color: #51534a;
+}
