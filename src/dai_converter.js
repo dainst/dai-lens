@@ -76,6 +76,13 @@ DaiConverter.Prototype = function() {
     "speaker": true
   };
 
+  this.appGroup = function(state, appGroup) {
+    var title = appGroup.querySelector('title');
+    if (!title) {
+      console.error("FIXME: every app should have a title", this.toHtml(title));
+    }
+  };
+
   this._bodyNodes["table-wrap"] = function (state, child) {
     return this.tableWrap(state, child);
   };
