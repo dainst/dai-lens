@@ -7,7 +7,6 @@ LinkDataService.Prototype = function() {
   // Get all key references for a particular article
   // ------------------------------------------------
   this.getBaseURLForType = {
-
     "arachne": "https://arachne.dainst.org/data/entity/",
     "gazetteer": "https://gazetteer.dainst.org/doc/",
     "field": "https://field.idai.world/api/documents/"
@@ -32,23 +31,31 @@ LinkDataService.Prototype = function() {
 
   this.parseFieldData = function(res) {
 
+    var shortDescription = (res.resource.shortDescription !== undefined) ? res.resource.shortDescription : false;
     var ImageSource = false;
 
-    if(res.resource.groups[0].relations[0].targets.length) {
-      var categoryName = res.resource.groups[0].relations[0].targets[0].resource.category.name;
+    try{
+      var group = res.resource.groups.find(group => group.fields.map(field => field.name).includes('isDepictedIn'));
+      var targets = group ? group.fields.find(field => field.name === 'isDepictedIn').targets : undefined;
 
       // extract first related image:
-      if(categoryName == "Photo" || categoryName == "Drawing") {
-        var primaryImageId = res.resource.groups[0].relations[0].targets[0].resource.id;
-        var imageApiUrl = "https://field.idai.world/api/images/" + res.project + "/" + primaryImageId + ".jp2";
-        var imageSpecs = "/x/full/!1280,1280/0/default.jpg";
-        ImageSource = imageApiUrl + imageSpecs;
+      if(targets) {
+        var categoryName = targets[0].resource.category.name;
+
+        if(categoryName == "Photo" || categoryName == "Drawing") {
+          var primaryImageId = targets[0].resource.id;
+          var imageApiUrl = "https://field.idai.world/api/images/" + res.project + "/" + primaryImageId + ".jp2";
+          var imageSpecs = "/x/full/!500,500/0/default.jpg";
+          ImageSource = imageApiUrl + imageSpecs;
+        }
       }
+    } catch(e){
+      console.log( "TypeError: targets are undefined");
     }
 
     return {
       project: res.project,
-      shortDescription: res.resource.shortDescription,
+      shortDescription: shortDescription,
       imageSource: ImageSource
     };
   };
