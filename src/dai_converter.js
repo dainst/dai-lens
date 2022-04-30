@@ -59,6 +59,8 @@ DaiConverter.Prototype = function() {
 
     this.extractFigures(state, article);
 
+    this.enhanceArticle(state, article);
+
     this.extractBack(state, article);
   };
 
@@ -79,7 +81,7 @@ DaiConverter.Prototype = function() {
   this.appGroup = function(state, appGroup) {
     var title = appGroup.querySelector('title');
     if (!title) {
-      console.error("FIXME: every app should have a title", this.toHtml(title));
+      this.logging("Notice: Every app should have a title:" + "\n" + this.toHtml("No app-title"));
     }
   };
 
@@ -1332,14 +1334,14 @@ DaiConverter.Prototype = function() {
     // doc.show("info", contribNode.id);
   };
 
+  var supplementID = 1;
+  var extraFeatureID = 1;
+
   this.enhanceAnnotationData = function(state, anno, el, type){
     var styleType = el.getAttribute('style-type');
     if (styleType) {
       anno.name = styleType
     }
-
-    var supplementID = 1;
-    var extraFeatureID = 1;
     var specificUse = el.getAttribute('specific-use');
     if (specificUse) {
       anno.specificUse = specificUse;
