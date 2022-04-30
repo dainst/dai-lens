@@ -29,28 +29,28 @@ LinkDataService.Prototype = function() {
     };
   };
 
-  this.parseFieldData = function(res) {
-
-    var shortDescription = (res.resource.shortDescription !== undefined) ? res.resource.shortDescription : false;
-    var ImageSource = false;
+  this.parseFieldData = function(res, url) {
 
     try{
+      var ImageSource = false;
+      var shortDescription = (res.resource.shortDescription !== undefined) ? res.resource.shortDescription : false;
       var group = res.resource.groups.find(group => group.fields.map(field => field.name).includes('isDepictedIn'));
-      var targets = group ? group.fields.find(field => field.name === 'isDepictedIn').targets : undefined;
+      var targets = group ? group.fields.find(field => field.name === 'isDepictedIn').targets : false;
 
-      // extract first related image:
+      // extract first image of resource:
       if(targets) {
         var categoryName = targets[0].resource.category.name;
 
         if(categoryName == "Photo" || categoryName == "Drawing") {
           var primaryImageId = targets[0].resource.id;
           var imageApiUrl = "https://field.idai.world/api/images/" + res.project + "/" + primaryImageId + ".jp2";
-          var imageSpecs = "/x/full/!500,500/0/default.jpg";
+          var imageSpecs = "/x/full/!500,500/0/default.jpg"; // watch out: https://iiif.io/api/image/2.0/
           ImageSource = imageApiUrl + imageSpecs;
         }
       }
+
     } catch(e){
-      console.log( "TypeError: targets are undefined");
+        this.logging("TypeError: Properties are undefined for given resource " + url + " " + e.message);
     }
 
     return {
@@ -61,28 +61,34 @@ LinkDataService.Prototype = function() {
   };
 
   this.getLinkData = function(nodeProperties, cb) {
-    // var doi = this.document.get('publication_info').doi;
     var self = this;
     var url = "";
     url += this.getBaseURLForType[nodeProperties.urltype];
     url += nodeProperties.slug;
-		$.ajax({
-		  url: url,
-		  dataType: "json",
-		}).done(function(res) {
 
-          var parsedResponse = res;
-          if (nodeProperties.urltype === 'arachne') {
-            parsedResponse = self.parseArachneData(res);
-          }
-          if (nodeProperties.urltype === 'gazetteer') {
-            parsedResponse = self.parseGazetteerData(res);
-          }
-          if (nodeProperties.urltype === 'field') {
-            parsedResponse = self.parseFieldData(res);
-          }
-          cb(null, parsedResponse);
-        });
+      $.ajax({
+        url: url,
+        dataType: "json",
+      }).done(function(res) {
+
+        var parsedResponse = res;
+        if (nodeProperties.urltype === 'arachne') {
+          parsedResponse = self.parseArachneData(res);
+        }
+        if (nodeProperties.urltype === 'gazetteer') {
+          parsedResponse = self.parseGazetteerData(res);
+        }
+        if (nodeProperties.urltype === 'field') {
+          parsedResponse = self.parseFieldData(res, nodeProperties.url);
+        }
+        cb(null, parsedResponse);
+      });
+  };
+
+  this.logging = function(log) {
+    console.groupCollapsed("Notice:");
+    console.info(log);
+    console.groupEnd();
   };
 
 };
