@@ -33,7 +33,7 @@ ExtrafeatureView.Prototype = function() {
     if (type === 'arachne') {
       if (extrafeature.images && extrafeature.images.length) {
 
-        $extrafeatures.append($(`<img class="extrafeature-image" src="https://arachne.dainst.org/data/image/${extrafeature.images[0].imageId}" >`));
+        $extrafeatures.append($(`<img class="extrafeature-image" loading="lazy" src="https://arachne.dainst.org/data/image/${extrafeature.images[0].imageId}" >`));
       }
       if (extrafeature.title ) {
         $extrafeatures.append($(`<div class="extrafeature-title">${extrafeature.title}</div>`));
@@ -65,7 +65,7 @@ ExtrafeatureView.Prototype = function() {
 
     if (type === 'field') {
       if (extrafeature.imageSource) {
-        $extrafeatures.append($(`<img class="supplement-image" src="${extrafeature.imageSource}" >`));
+        $extrafeatures.append($(`<img class="supplement-image" loading="lazy" src="${extrafeature.imageSource}" >`));
       }
       if (extrafeature.shortDescription) {
         $extrafeatures.append($(`<div class="supplement-title">${extrafeature.shortDescription}</div>`));

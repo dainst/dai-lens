@@ -33,7 +33,7 @@ SupplementView.Prototype = function() {
     if (type === 'arachne') {
 
       if (supplement.images && supplement.images.length) {
-       $supplements.append($(`<img class="supplement-image" src="https://arachne.dainst.org/data/image/${supplement.images[0].imageId}" >`));
+       $supplements.append($(`<img class="supplement-image" loading="lazy" src="https://arachne.dainst.org/data/image/${supplement.images[0].imageId}" >`));
       }
       if (supplement.title ) {
         $supplements.append($(`<div class="supplement-title">${supplement.title}</div>`));
@@ -66,7 +66,11 @@ SupplementView.Prototype = function() {
     if (type === 'field') {
 
       if (supplement.imageSource) {
-        $supplements.append($(`<img class="supplement-image" src="${supplement.imageSource}" >`));
+        $supplements.append($(`<img class="supplement-image" loading="lazy" src="${supplement.imageSource}" >`));
+
+        /* onerror="var imgSrc = $(this).attr('src');
+        $(this).attr('src',imgSrc); console.log('src refreshed for ' + imgSrc);"
+         */
       }
       if (supplement.shortDescription) {
         $supplements.append($(`<div class="supplement-title">${supplement.shortDescription}</div>`));
