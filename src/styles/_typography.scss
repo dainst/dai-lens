@@ -1,154 +1,154 @@
 @font-face {
   font-family: 'Noto Serif Lt';
-  src: url('fonts/NotoSerif-Light.eot');
-  src: local('fonts/Noto Serif Light'), local('fonts/NotoSerif-Light'),
-      url('fonts/NotoSerif-Light.eot?#iefix') format('embedded-opentype'),
-      url('fonts/NotoSerif-Light.woff2') format('woff2'),
-      url('fonts/NotoSerif-Light.woff') format('woff'),
-      url('fonts/NotoSerif-Light.ttf') format('truetype'),
-      url('fonts/NotoSerif-Light.svg#NotoSerif-Light') format('svg');
+  src: url('assets/fonts/NotoSerif-Light.eot');
+  src: local('assets/fonts/Noto Serif Light'), local('assets/fonts/NotoSerif-Light'),
+      url('assets/fonts/NotoSerif-Light.eot?#iefix') format('embedded-opentype'),
+      url('assets/fonts/NotoSerif-Light.woff2') format('woff2'),
+      url('assets/fonts/NotoSerif-Light.woff') format('woff'),
+      url('assets/fonts/NotoSerif-Light.ttf') format('truetype'),
+      url('assets/fonts/NotoSerif-Light.svg#NotoSerif-Light') format('svg');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Noto Serif Med';
-  src: url('fonts/NotoSerif-Medium.eot');
-  src: local('Noto Serif Medium'), local('fonts/NotoSerif-Medium'),
-      url('fonts/NotoSerif-Medium.eot?#iefix') format('embedded-opentype'),
-      url('fonts/NotoSerif-Medium.woff2') format('woff2'),
-      url('fonts/NotoSerif-Medium.woff') format('woff'),
-      url('fonts/NotoSerif-Medium.ttf') format('truetype'),
-      url('fonts/NotoSerif-Medium.svg#NotoSerif-Medium') format('svg');
+  src: url('assets/fonts/NotoSerif-Medium.eot');
+  src: local('Noto Serif Medium'), local('assets/fonts/NotoSerif-Medium'),
+      url('assets/fonts/NotoSerif-Medium.eot?#iefix') format('embedded-opentype'),
+      url('assets/fonts/NotoSerif-Medium.woff2') format('woff2'),
+      url('assets/fonts/NotoSerif-Medium.woff') format('woff'),
+      url('assets/fonts/NotoSerif-Medium.ttf') format('truetype'),
+      url('assets/fonts/NotoSerif-Medium.svg#NotoSerif-Medium') format('svg');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Noto Sans';
-  src: url('fonts/NotoSans-Regular.eot');
-  src: local('Noto Sans Regular'), local('fonts/NotoSans-Regular'),
-      url('fonts/NotoSans-Regular.eot?#iefix') format('embedded-opentype'),
-      url('fonts/NotoSans-Regular.woff2') format('woff2'),
-      url('fonts/NotoSans-Regular.woff') format('woff'),
-      url('fonts/NotoSans-Regular.ttf') format('truetype'),
-      url('fonts/NotoSans-Regular.svg#NotoSans-Regular') format('svg');
+  src: url('assets/fonts/NotoSans-Regular.eot');
+  src: local('Noto Sans Regular'), local('assets/fonts/NotoSans-Regular'),
+      url('assets/fonts/NotoSans-Regular.eot?#iefix') format('embedded-opentype'),
+      url('assets/fonts/NotoSans-Regular.woff2') format('woff2'),
+      url('assets/fonts/NotoSans-Regular.woff') format('woff'),
+      url('assets/fonts/NotoSans-Regular.ttf') format('truetype'),
+      url('assets/fonts/NotoSans-Regular.svg#NotoSans-Regular') format('svg');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Noto Sans Lt';
-  src: url('fonts/NotoSans-Light.eot');
-  src: local('fonts/Noto Sans Light'), local('fonts/NotoSans-Light'),
-      url('fonts/NotoSans-Light.eot?#iefix') format('embedded-opentype'),
-      url('fonts/NotoSans-Light.woff2') format('woff2'),
-      url('fonts/NotoSans-Light.woff') format('woff'),
-      url('fonts/NotoSans-Light.ttf') format('truetype'),
-      url('fonts/NotoSans-Light.svg#NotoSans-Light') format('svg');
+  src: url('assets/fonts/NotoSans-Light.eot');
+  src: local('assets/fonts/Noto Sans Light'), local('assets/fonts/NotoSans-Light'),
+      url('assets/fonts/NotoSans-Light.eot?#iefix') format('embedded-opentype'),
+      url('assets/fonts/NotoSans-Light.woff2') format('woff2'),
+      url('assets/fonts/NotoSans-Light.woff') format('woff'),
+      url('assets/fonts/NotoSans-Light.ttf') format('truetype'),
+      url('assets/fonts/NotoSans-Light.svg#NotoSans-Light') format('svg');
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Noto Sans Med';
-  src: url('fonts/NotoSans-Medium.eot');
-  src: local('fonts/Noto Sans Medium'), local('fonts/NotoSans-Medium'),
-      url('fonts/NotoSans-Medium.eot?#iefix') format('embedded-opentype'),
-      url('fonts/NotoSans-Medium.woff2') format('woff2'),
-      url('fonts/NotoSans-Medium.woff') format('woff'),
-      url('fonts/NotoSans-Medium.ttf') format('truetype'),
-      url('fonts/NotoSans-Medium.svg#NotoSans-Medium') format('svg');
+  src: url('assets/fonts/NotoSans-Medium.eot');
+  src: local('assets/fonts/Noto Sans Medium'), local('assets/fonts/NotoSans-Medium'),
+      url('assets/fonts/NotoSans-Medium.eot?#iefix') format('embedded-opentype'),
+      url('assets/fonts/NotoSans-Medium.woff2') format('woff2'),
+      url('assets/fonts/NotoSans-Medium.woff') format('woff'),
+      url('assets/fonts/NotoSans-Medium.ttf') format('truetype'),
+      url('assets/fonts/NotoSans-Medium.svg#NotoSans-Medium') format('svg');
   font-weight: 500;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Noto Sans SemBd';
-  src: url('fonts/NotoSans-SemiBold.eot');
-  src: local('fonts/Noto Sans SemiBold'), local('fonts/NotoSans-SemiBold'),
-      url('fonts/NotoSans-SemiBold.eot?#iefix') format('embedded-opentype'),
-      url('fonts/NotoSans-SemiBold.woff2') format('woff2'),
-      url('fonts/NotoSans-SemiBold.woff') format('woff'),
-      url('fonts/NotoSans-SemiBold.ttf') format('truetype'),
-      url('fonts/NotoSans-SemiBold.svg#NotoSans-SemiBold') format('svg');
+  src: url('assets/fonts/NotoSans-SemiBold.eot');
+  src: local('assets/fonts/Noto Sans SemiBold'), local('assets/fonts/NotoSans-SemiBold'),
+      url('assets/fonts/NotoSans-SemiBold.eot?#iefix') format('embedded-opentype'),
+      url('assets/fonts/NotoSans-SemiBold.woff2') format('woff2'),
+      url('assets/fonts/NotoSans-SemiBold.woff') format('woff'),
+      url('assets/fonts/NotoSans-SemiBold.ttf') format('truetype'),
+      url('assets/fonts/NotoSans-SemiBold.svg#NotoSans-SemiBold') format('svg');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Noto Sans ExtLt';
-  src: url('fonts/NotoSans-ExtraLight.eot');
-  src: local('fonts/Noto Sans ExtraLight'), local('fonts/NotoSans-ExtraLight'),
-      url('fonts/NotoSans-ExtraLight.eot?#iefix') format('embedded-opentype'),
-      url('fonts/NotoSans-ExtraLight.woff2') format('woff2'),
-      url('fonts/NotoSans-ExtraLight.woff') format('woff'),
-      url('fonts/NotoSans-ExtraLight.ttf') format('truetype'),
-      url('fonts/NotoSans-ExtraLight.svg#NotoSans-ExtraLight') format('svg');
+  src: url('assets/fonts/NotoSans-ExtraLight.eot');
+  src: local('assets/fonts/Noto Sans ExtraLight'), local('assets/fonts/NotoSans-ExtraLight'),
+      url('assets/fonts/NotoSans-ExtraLight.eot?#iefix') format('embedded-opentype'),
+      url('assets/fonts/NotoSans-ExtraLight.woff2') format('woff2'),
+      url('assets/fonts/NotoSans-ExtraLight.woff') format('woff'),
+      url('assets/fonts/NotoSans-ExtraLight.ttf') format('truetype'),
+      url('assets/fonts/NotoSans-ExtraLight.svg#NotoSans-ExtraLight') format('svg');
   font-weight: 200;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Noto Sans Anatolian Hieroglyphs';
-  src: local('fonts/Noto Sans Anatolian Hieroglyphs'),
-      url('fonts/NotoSansAnatolianHieroglyphs-Regular.ttf') format('truetype');
+  src: local('assets/fonts/Noto Sans Anatolian Hieroglyphs'),
+      url('assets/fonts/NotoSansAnatolianHieroglyphs-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Noto Sans Egyptian Hieroglyphs';
-  src: local('fonts/Noto Sans Egyptian Hieroglyphs'),
-      url('fonts/NotoSansEgyptianHieroglyphs-Regular.ttf') format('truetype');
+  src: local('assets/fonts/Noto Sans Egyptian Hieroglyphs'),
+      url('assets/fonts/NotoSansEgyptianHieroglyphs-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Noto Sans Arabic Light';
-  src: local('fonts/Noto Sans Arabic Light'),
-      url('fonts/NotoSansArabic-Light.ttf') format('truetype');
+  src: local('assets/fonts/Noto Sans Arabic Light'),
+      url('assets/fonts/NotoSansArabic-Light.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Noto Sans Devanagari Light';
-  src: local('fonts/Noto Sans Devanagari Light'),
-      url('fonts/NotoSansDevanagari-Light.ttf') format('truetype');
+  src: local('assets/fonts/Noto Sans Devanagari Light'),
+      url('assets/fonts/NotoSansDevanagari-Light.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Noto Sans CJK SC';
-  src: local('fonts/Noto Sans CJK SC'),
-      url('fonts/NotoSansCJKsc-Light.otf') format('opentype');
+  src: local('assets/fonts/Noto Sans CJK SC'),
+      url('assets/fonts/NotoSansCJKsc-Light.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Noto Sans CJK TC';
-  src: local('fonts/Noto Sans CJK TC'),
-      url('fonts/NotoSansCJKtc-Light.otf') format('opentype');
+  src: local('assets/fonts/Noto Sans CJK TC'),
+      url('assets/fonts/NotoSansCJKtc-Light.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Noto Sans Coptic';
-  src: local('fonts/Noto Sans Coptic'),
-    url('fonts/NotoSansCoptic-Regular.ttf') format('truetype');
+  src: local('assets/fonts/Noto Sans Coptic'),
+    url('assets/fonts/NotoSansCoptic-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Noto Sans Lydian';
-  src: local('fonts/Noto Sans Lydian'),
-  url('fonts/NotoSansLydian-Regular.ttf') format('truetype');
+  src: local('assets/fonts/Noto Sans Lydian'),
+  url('assets/fonts/NotoSansLydian-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
