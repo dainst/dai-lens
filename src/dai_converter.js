@@ -408,8 +408,12 @@ DaiConverter.Prototype = function() {
     var volume = state.xmlDoc.querySelector("volume");
     var articleTitle = state.xmlDoc.querySelector("article-title");
     var subtitle = state.xmlDoc.querySelector("subtitle");
-    var titleDepartement = state.xmlDoc.querySelector("title-departement");
+
+    // replaced by Custom Meta:
+    var titleDepartement = state.xmlDoc.querySelector("title-department");
     var titleTopicLocation = state.xmlDoc.querySelector("title-topic-location");
+    // Replace
+
     var customMeta = {};
     var customMetaEls = state.xmlDoc.querySelectorAll('article-meta custom-meta');
     for (var i = 0; i < customMetaEls.length; i++) {
@@ -651,7 +655,6 @@ DaiConverter.Prototype = function() {
 
     })
 
-
     var journalCustomMeta = {}
     var customMetaEls = state.xmlDoc.querySelectorAll('journal-meta custom-meta');
     for (var i = 0; i < customMetaEls.length; i++) {
@@ -708,8 +711,19 @@ DaiConverter.Prototype = function() {
     publicationInfo.volume = volume;
     publicationInfo.subtitle = subtitle ? subtitle.textContent : '';
     publicationInfo.articleTitle = articleTitle ? articleTitle.textContent : '';
-    publicationInfo.titleDepartement = titleDepartement ? titleDepartement.textContent : '';
-    publicationInfo.titleTopicLocation = titleTopicLocation ? titleTopicLocation.textContent : '';
+
+    // to be reduced later: move title-departement and title-location to custom-meta (E-FB, xml);
+
+    if (titleDepartement) {
+      publicationInfo.titleDepartement = titleDepartement.textContent;
+    }
+    else {publicationInfo.titleDepartement = customMeta['title-department'] ? customMeta['title-department'] : '';}
+
+    if(titleTopicLocation) {
+      publicationInfo.titleTopicLocation = titleTopicLocation ? titleTopicLocation.textContent : '';
+    }
+    else {publicationInfo.titleTopicLocation = customMeta['title-topic-location'] ? customMeta['title-topic-location'] : '';}
+
     publicationInfo.customMeta = customMeta;
     publicationInfo.customPubDate = pubDate
     publicationInfo.customArticleContributions = customArticleContributions
