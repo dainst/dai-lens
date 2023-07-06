@@ -2,10 +2,9 @@ var http = require('http');
 var express = require('express');
 var path = require('path');
 var _ = require("underscore");
-var fs = require('fs');
 var path = require("path");
 
-var sass = require('node-sass');
+var sass = require('sass');
 var browserify = require('browserify');
 
 var app = express();
@@ -33,20 +32,10 @@ var handleError = function(err, res) {
   res.status(400).json(err);
 };
 
-var renderSass = function(cb) {
-  sass.render({
-    file: path.join(__dirname, "lens.scss"),
-    sourceMap: true,
-    outFile: 'lens.css',
-  }, cb);
-};
-
 app.get('/lens.css', function(req, res) {
-  renderSass(function(err, result) {
-    if (err) return handleError(err, res);
-    res.set('Content-Type', 'text/css');
-    res.send(result.css);
-  });
+  var result = sass.compile("lens.scss");
+  res.set('Content-Type', 'text/css');
+  res.send(result.css);
 });
 
 app.get('/lens.css.map', function(req, res) {

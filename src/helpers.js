@@ -273,6 +273,7 @@ function setColors() {
   $(".content-node.cover .cover-topic-location").css("color", colors.cover_topic_location);
   $(".content-node.heading.level-1 .content").css("color", colors.content_headline_1);
   $(".content-node.heading.level-2 .content").css("color", colors.content_headline_2);
+  $(".content-node .catalog-number").css("color", colors.content_headline_1);
   $(".content-node .figure_reference").css("color", colors.content_figure_reference);
   $(".content-node .figure_reference").css("border-bottom", "1px solid " + colors.content_figure_reference);
   $(".content-node .extrafeature_reference").css("color", colors.content_extrafeature_reference);
@@ -322,6 +323,7 @@ function setColors() {
 function setFavicon() {
   $('link[rel="shortcut icon"]').attr('href', window.app.config.journal_config.favicon)
 }
+
 
 module.exports = {
   setPageTitle: setPageTitle,

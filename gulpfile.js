@@ -21,9 +21,7 @@ function styles(cb) {
     .pipe(sass().on('error', sass.logError))
     .pipe(rename('lens.css'))
     .pipe(dest('./dist'));
-};
-
-
+}
 
 function buildjs(cb){
   return src('./boot.js')
@@ -36,8 +34,8 @@ function buildjs(cb){
               })]
             })
             .bundle(function (err, res) {
-                if (err) { 
-                  return next(err); 
+                if (err) {
+                  return next(err);
                 }
                 file.contents = res;
                 next(null, file);
