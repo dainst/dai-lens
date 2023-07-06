@@ -17,7 +17,6 @@ var DaiConverter = function(options) {
  ***/
 
 DaiConverter.Prototype = function() {
-
   this.logging = function(log) {
       console.groupCollapsed("Notice:");
       console.info(log);
@@ -25,10 +24,9 @@ DaiConverter.Prototype = function() {
   };
 
   this.createDocument = function() {
-    var doc = new LensArticle({
+    return new LensArticle({
       nodeTypes: CustomNodeTypes
     });
-    return doc;
   };
 
   /* define article
@@ -70,12 +68,6 @@ DaiConverter.Prototype = function() {
     "disp-quote": {handler: "quoteText"},
     "list": {handler: "list"},
     "table-wrap": {handler: "tableWrap"}
-  };
-
-  this._ignoredBodyNodes = {
-    "fig": true,
-    "table": true,
-    "speaker": true
   };
 
   this.appGroup = function(state, appGroup) {
@@ -199,7 +191,6 @@ DaiConverter.Prototype = function() {
         // popping the stack
         state.stack.pop();
       }
-
       // inline image node
       else if (type === "inline-graphic") {
         var url = child.getAttribute("xlink:href");
@@ -218,10 +209,25 @@ DaiConverter.Prototype = function() {
         }
         else if (type === "table-wrap") {
           this.tableWrap(state, child);
-
         }
       }
+      // render <code> snippets:
+      else if(type === "code") {
+        var content = child.innerHTML;
 
+        // replace html entities with symbols:
+        content.trim(); // trim whitespace
+        content = content.replace(/&lt;/g,'<').replace(/&gt;/g,'>');
+
+        var codeNode = {
+            id: state.nextId("codeblock"),
+            type: "codeblock",
+            content: content,
+        };
+
+       doc.create(codeNode);
+       nodes.push(codeNode);
+      }
     }
 
     // return if there is no content
