@@ -17,39 +17,47 @@
     height: $top-bar-height;
     width: $top-bar-height;
     background: $primary;
-    .hamburg { 
+    .hamburg {
       display: block;
       width: $top-bar-height;
       height: $top-bar-height;
-      position: relative; 
+      position: relative;
       margin-left: auto; margin-right: auto;
       transition: border-radius .5s;
     }
-    .line { 
-      position: absolute; 
+    .line {
+      position: absolute;
       right:16px;
       height: 6px;
       width: 40px;
       background: $white;
-      display: block; 
-      transition: 0.5s; 
-      transform-origin: center; 
+      display: block;
+      transition: 0.5s;
+      transform-origin: center;
     }
-    
+
     .line:nth-child(1) { top: 25px; }
     .line:nth-child(2) { top: 39px; }
     .line:nth-child(3) { top: 53px; }
-    
+
     &.active .hamburg .line:nth-child(1){
       transform: translateY(15px) rotate(-45deg);
+      -ms-transform: translateY(15px) rotate(-45deg);
+      -webkit-transform: translateY(15px) rotate(-45deg);
+      -moz-transform: translateY(15px) rotate(-45deg);
+      -o-transform: translateY(15px) rotate(-45deg);
     }
-    
+
     &.active .hamburg .line:nth-child(2){
       opacity:0;
     }
-    
+
     &.active .hamburg .line:nth-child(3){
       transform: translateY(-13px) rotate(45deg);
+      -ms-transform: translateY(-13px) rotate(45deg);
+      -webkit-transform: translateY(-13px) rotate(45deg);
+      -moz-transform: translateY(-13px) rotate(45deg);
+      -o-transform: translateY(-13px) rotate(45deg);
     }
   }
   .menu-bar {
@@ -88,7 +96,7 @@
       margin-top: 82px;
     }
   }
-  
+
   .menu-bar .context-toggles:not(.active) a.active {
     position: fixed;
     left: calc(53% + 16px);
@@ -162,37 +170,41 @@
     width: 10%;
     min-width: $top-bar-mobile-height;
     background: $primary;
-    .hamburg { 
+    .hamburg {
       display: block;
       width: $top-bar-mobile-height;
       height: $top-bar-mobile-height;
-      position: relative; 
+      position: relative;
       margin-left: auto; margin-right: auto;
       transition: border-radius .5s;
     }
-    .line { 
-      position: absolute; 
+    .line {
+      position: absolute;
       right:16px;
       height: 4px;
       width: 23px;
       background: $white;
-      display: block; 
-      transition: 0.5s; 
-      transform-origin: center; 
+      display: block;
+      transition: 0.5s;
+      transform-origin: center;
     }
-    
+
     .line:nth-child(1) { top: 18px; }
     .line:nth-child(2) { top: 27px; }
     .line:nth-child(3) { top: 36px; }
-    
+
     &.active .hamburg .line:nth-child(1){
       transform: translateY(9px) rotate(-45deg);
+      -ms-transform: translateY(9px) rotate(-45deg);
+      -webkit-transform: translateY(9px) rotate(-45deg);
+      -moz-transform: translateY(9px) rotate(-45deg);
+      -o-transform: translateY(9px) rotate(-45deg);
     }
-    
+
     &.active .hamburg .line:nth-child(2){
       opacity:0;
     }
-    
+
     &.active .hamburg .line:nth-child(3){
       transform: translateY(-9px) rotate(45deg);
     }
