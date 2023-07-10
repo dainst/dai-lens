@@ -62,8 +62,8 @@ function setPanelHeadings() {
 
 }
 
-function setTopBarImage() {
-  $("div[class='menu-bar']").append( `<div class="menu-bar-logo-container"><a href="https://www.dainst.org/dai/meldungen"><img class="menu-bar-logo" src="2nd_logo.png" /></a></div>` );
+function setTopBarImage() {
+  $("div[class='menu-bar']").append( `<div class="menu-bar-logo-container"><a href="https://www.dainst.org/dai/meldungen"><img class="menu-bar-logo" src="assets/2nd_logo.png" /></a></div>` );
 }
 
 function registerNavbarToggle(){
