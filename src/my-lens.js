@@ -72,7 +72,7 @@ LensApp.Prototype = function() {
       new DaiConverter(converterOptions),
       new ElifeConverter(converterOptions),
       new LensConverter(converterOptions)
-    ]
+    ];
   };
 
   // Custom panels
@@ -94,7 +94,7 @@ module.exports = LensApp;
 
 
 
-function initialSetup() {
+function initialSetup() {
   Helpers.setCoverImage();
   Helpers.setPanelHeadings();
   Helpers.setTopBarImage();
@@ -106,10 +106,29 @@ function initialSetup() {
   Helpers.registerNavbarToggle();
 }
 
-//TODO: move this somewhere else
+/*
+function reformatInlineImages() {
+  var imageChars = document.getElementsByClassName("image-char");
+
+  for (var i = 0; i < imageChars.length; ++i) {
+
+    var span = document.createElement('span');
+    span.classList.add("image-char");
+    span.innerHTML = imageChars[i].innerHTML;
+    imageChars[i].parentNode.replaceChild(span, imageChars[i]);
+    imageChars[i].parentNode.parentNode.previousSibling.firstChild.appendChild(span);
+    // console.log(imageChars[i].parentNode); // 1. ist "content"
+    // console.log(imageChars[i].parentNode.parentNode); // 2 ist "content-node image"
+    // console.log(imageChars[i].parentNode.parentNode.previousSibling); // 3. ist previous "content-node text"
+  }
+
+  // remove former div "content-node image":
+  // pngs should be replaces by .svg
+}
+*/
 
 $( window ).on( "load", function() {
-  if (window && window.doc) {
+  if (window && window.doc) {
     initialSetup();
   } else {
     setTimeout(initialSetup, 2000);
@@ -135,4 +154,5 @@ function setStyle() {
 
 waitForEl('.topbar', function() {
   setStyle();
+
 });
