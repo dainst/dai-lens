@@ -215,7 +215,7 @@ function updateCentralBar() {
               if(figurePreviews[preview].figure === target) isDuplicate = true;
             });
             if (!isDuplicate) {
-              var targetNodeUrl = (targetNode.url !== undefined) ? targetNode.url : "table-icon.png"; // table-icon instead?
+              var targetNodeUrl = (targetNode.url !== undefined) ? targetNode.url : "table-icon.png";
               figurePreviews[data_id.nodeValue] = {
                 figure: target,
                 figureUrl: targetNode.url,
