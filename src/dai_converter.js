@@ -71,9 +71,11 @@ DaiConverter.Prototype = function() {
   };
 
   this.appGroup = function(state, appGroup) {
-    var title = appGroup.querySelector('title');
+    var title = appGroup.querySelector('title')
     if (!title) {
-      this.logging("Notice: Every app should have a title:" + "\n" + this.toHtml("No app-title"));
+      if(appGroup.tagName !== "back") {
+        this.logging("Notice: Every component should have a title:" + "\n" + this.toHtml("Title missing"));
+      }
     }
   };
 
@@ -1051,6 +1053,7 @@ DaiConverter.Prototype = function() {
     var trans_abstracts = articleMeta.querySelectorAll("trans-abstract");
 
     if (abstracts.length !== 0 || trans_abstracts.length !== 0) {
+
       var heading = {
         id: state.nextId("heading"),
         type: "heading",
