@@ -18,11 +18,54 @@ ExtrafeatureView.Prototype = function() {
 
   var service = new ExtrafeatureService();
 
+  /*
   this.initMap = function(id, coord) {
     var location = {lat: coord[1], lng: coord[0]};
     var map = new google.maps.Map(
         document.getElementById("map_" + id), {zoom: 8, center: location});
     var marker = new google.maps.Marker({position: location, map: map});
+  };
+
+  */
+
+  // initialize the map
+  this.initMap = function(id, coord) {
+
+    var location = {lat: coord[1], lng: coord[0]};
+    var map = L.map(
+        document.getElementById("map_" + id), {zoom: 6, center: location});
+
+    // disable zooming by scroll wheel:
+    map.scrollWheelZoom.disable();
+
+    // set tile layer:
+    L.tileLayer
+        .wms("https://basemap.dainst.org/osm/wms?service=WMS", {
+          layers: "osm:Vector--color-slow",
+          tiled: true,
+          format: "image/jpeg",
+          attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+    /*
+    https://leafletjs.com/examples/layers-control/
+
+    // switch to alternative layer: https://leaflet-extras.github.io/leaflet-providers/preview/#filter=Esri.WorldImagery:
+    L.tileLayer
+        .wms("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+          layers: "osm:Vector--color-slow",
+          tiled: true,
+          format: "image/jpeg",
+          attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+     */
+
+    // show dynamic scale (Maßstab):
+    L.control.scale().addTo(map);
+
+    // add a marker to location:
+    L.marker(location).addTo(map);
+
   };
 
   this.renderExtrafeature = function(extrafeature, type, url, extrafeatureId) {

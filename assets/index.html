@@ -5,14 +5,10 @@
     <title>DAI-Journal-Viewer</title>
     <link rel="shortcut icon" href="./AA_favicon.png" />
     <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" />
-
-    <!-- A combined lens.css will be generated in the bundling process -->
-    <!-- While in development, separate links for each CSS file are added, so we don't need a source map -->
     <link href='lens.css' rel='stylesheet' type='text/css'/>
-
     <script src="lib/jquery.min.js"></script>
 
-    <!-- MathJAX-lib, extension for displaying Math-Formulas -->
+    <!-- MathJAX config -->
     <script>
       MathJax = {
         tex: {
@@ -24,9 +20,21 @@
       };
     </script>
 
+    <!-- MathJAX script -->
     <script type="text/javascript" id="MathJax-script" async src="lib/mathJax_tex-svg.js"></script>
-    <script src='lens.js'></script>
 
+    <!-- Leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+          integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+          crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+            integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+            crossorigin="">
+    </script>
+
+    <!-- lens.js -->
+    <script src='lens.js'></script>
   </head>
   <body class="loading"></body>
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgOtfGEjAs7aW45x36XyjrT5gRZB7oT8Y"></script>
