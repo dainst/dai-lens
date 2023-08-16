@@ -12,6 +12,7 @@
 .loading .topbar-tablet {
   display: none;
 }
+
 @supports not (-webkit-overflow-scrolling: touch) {
   /* CSS for other than iOS devices */
   .topbar-tablet {
@@ -34,7 +35,6 @@
 .topbar-title {
   position: absolute;
   right: 12%;
-  bottom: 0;
   bottom: 0;
   width: 55%;
   text-align: end;
@@ -75,11 +75,9 @@
 
 .lens-article .content-node.cover .authors .text {
   display: inline-block;
-  padding: 0px;
-  margin: 0px;
+  padding: 0;
   font-size: 17px;
   margin-right: 4px;
-  margin-bottom: 0px;
 }
 
 .cover-departement {

@@ -106,26 +106,6 @@ function initialSetup() {
   Helpers.registerNavbarToggle();
 }
 
-/*
-function reformatInlineImages() {
-  var imageChars = document.getElementsByClassName("image-char");
-
-  for (var i = 0; i < imageChars.length; ++i) {
-
-    var span = document.createElement('span');
-    span.classList.add("image-char");
-    span.innerHTML = imageChars[i].innerHTML;
-    imageChars[i].parentNode.replaceChild(span, imageChars[i]);
-    imageChars[i].parentNode.parentNode.previousSibling.firstChild.appendChild(span);
-    // console.log(imageChars[i].parentNode); // 1. ist "content"
-    // console.log(imageChars[i].parentNode.parentNode); // 2 ist "content-node image"
-    // console.log(imageChars[i].parentNode.parentNode.previousSibling); // 3. ist previous "content-node text"
-  }
-
-  // remove former div "content-node image":
-  // pngs should be replaces by .svg
-}
-*/
 
 $( window ).on( "load", function() {
   if (window && window.doc) {
