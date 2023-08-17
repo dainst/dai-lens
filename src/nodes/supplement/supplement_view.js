@@ -18,12 +18,46 @@ SupplementView.Prototype = function() {
 
   var service = new SupplementsService();
 
+  // initialize the map
   this.initMap = function(id, coord) {
 
+    // set tile layers:
+    var mapLayer = L.tileLayer.wms("https://basemap.dainst.org/osm/wms?service=WMS", {
+      layers: "osm:Vector--color-slow",
+      tiled: true,
+      format: "image/jpeg",
+      attribution: '© <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });
+
+    var imageryLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      attribution: '© Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+    });
+
+    var baseMaps = {
+      "Open Street Map": mapLayer,
+      "World imagery": imageryLayer
+    };
+
     var location = {lat: coord[1], lng: coord[0]};
-    var map = new google.maps.Map(
-        document.getElementById("map_" + id), {zoom: 8, center: location});
-    var marker = new google.maps.Marker({position: location, map: map});
+
+    var map = L.map(
+        document.getElementById("map_" + id), {
+          zoom: 6,
+          center: location,
+        });
+
+    // disable zooming by scroll wheel:
+    map.scrollWheelZoom.disable();
+
+    // show mapLayer by default:
+    mapLayer.addTo(map);
+
+    // add all layers to layer-control
+    L.control.layers(baseMaps).addTo(map);
+    L.control.scale().addTo(map);    // show dynamic scale (Maßstab)
+
+    // add a marker to location:
+    L.marker(location).addTo(map);
   };
 
   this.renderSupplement = function(supplement, type, url) {
