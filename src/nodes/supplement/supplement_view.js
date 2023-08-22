@@ -25,7 +25,7 @@ SupplementView.Prototype = function() {
     var mapLayer = L.tileLayer.wms("https://tile.openstreetmap.de/{z}/{x}/{y}.png", {
       tiled: true,
       format: "image/jpeg",
-      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
+      attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
 
     var location = {lat: coord[1], lng: coord[0]};
