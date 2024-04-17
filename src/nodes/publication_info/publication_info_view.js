@@ -240,13 +240,11 @@ PublicationInfoView.Prototype = function() {
      * */
 
 
-
 	/* ARTICLE METADATA
 	-------------------------*/
-
     // article-meta heading
     var articleMetaHeaderEl = $$('.metadata-header', {
-      html: '<span class="metadata-header-text">Article Metadata</span>'
+      html: '<span class="metadata-header-text">Edition</span>'
     });
     metaData.appendChild(articleMetaHeaderEl);
 
@@ -322,27 +320,28 @@ PublicationInfoView.Prototype = function() {
           }
         })
       metaData.appendChild(coauthors);
-
       }
-
     }
 
     // article-digital-edition
-    var digitalEdition = $$('.digitaledition')
+    var digitalEdition = $$('.digitaledition');
     var deHeaderEl = $$('.metadata-title', {
       html: `<span class="metadata-title-text">Digital Edition</span>`
     });
     digitalEdition.appendChild(deHeaderEl);
+
     if (this.node.customPermissions && this.node.customPermissions.online){
       var statementEl = $$('.metadata-text-container', {
         html: `<span class="metadata-text">${this.node.customPermissions.online.statement}</span>`
       });
       digitalEdition.appendChild(statementEl);
 
-      var issnEl = $$('.metadata-text-container', {
-        html: `<span class="metadata-text">E-ISSN: ${this.node.customPermissions.online.issn}</span>`
-      });
-      digitalEdition.appendChild(issnEl);
+      if(this.node.customPermissions.online.issn) {
+        var issnEl = $$('.metadata-text-container', {
+          html: `<span class="metadata-text">E-ISSN: ${this.node.customPermissions.online.issn}</span>`
+        });
+        digitalEdition.appendChild(issnEl);
+      }
 
       if (this.node.selfUrisObj && this.node.selfUrisObj['online-url']){
         var urlEl = $$('.metadata-text-container', {
@@ -370,7 +369,6 @@ PublicationInfoView.Prototype = function() {
         });
         digitalEdition.appendChild(publishedEl);
       }
-
 
       if (this.node.customMeta && this.node.customMeta['citation-guideline']) {
         var citGuideEl = $$('.metadata-text-container', {
@@ -476,6 +474,7 @@ PublicationInfoView.Prototype = function() {
           printEdition.appendChild(licenseEl);
         }
         printEdition.appendChild($$('br'));
+
         var podOrderEl = $$('.metadata-text-container', {
           html: `<span class="metadata-text">For the print issue click here: <a class="metadata-link" target="_blank" rel="noopener noreferrer" href="${this.node.customMeta['pod-order']}">${this.node.customMeta['pod-order']}</a></span>`
         });
@@ -495,7 +494,7 @@ PublicationInfoView.Prototype = function() {
 
     // journal-meta heading
     var journalMetaHeaderEl = $$('.metadata-header', {
-      html: '<span class="metadata-header-text">Journal Metadata</span>'
+      html: '<span class="metadata-header-text">Imprint</span>'
     });
 
     // journal
@@ -702,7 +701,7 @@ PublicationInfoView.Prototype = function() {
 	/* SYSTEM METADATA
 	----------------------------*/
     var systemMetaHeaderEl = $$('.metadata-header', {
-      html: '<span class="metadata-header-text">System Metadata</span>'
+      html: '<span class="metadata-header-text">Viewer</span>'
     });
 
 	metaData.appendChild(systemMetaHeaderEl);
