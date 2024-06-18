@@ -417,11 +417,6 @@ DaiConverter.Prototype = function() {
     var articleTitle = state.xmlDoc.querySelector("article-title");
     var subtitle = state.xmlDoc.querySelector("subtitle");
 
-    // replaced by Custom Meta:
-    var titleDepartement = state.xmlDoc.querySelector("title-department");
-    var titleTopicLocation = state.xmlDoc.querySelector("title-topic-location");
-    // Replace
-
     var customMeta = {};
     var customMetaEls = state.xmlDoc.querySelectorAll('article-meta custom-meta');
     for (var i = 0; i < customMetaEls.length; i++) {
@@ -660,7 +655,6 @@ DaiConverter.Prototype = function() {
           keys: keys
         })
       }
-
     })
 
     var journalCustomMeta = {}
@@ -720,17 +714,9 @@ DaiConverter.Prototype = function() {
     publicationInfo.subtitle = subtitle ? subtitle.textContent : '';
     publicationInfo.articleTitle = articleTitle ? articleTitle.textContent : '';
 
-    // to be reduced later: move title-departement and title-location to custom-meta (E-FB, xml);
-
-    if (titleDepartement) {
-      publicationInfo.titleDepartement = titleDepartement.textContent;
-    }
-    else {publicationInfo.titleDepartement = customMeta['title-department'] ? customMeta['title-department'] : '';}
-
-    if(titleTopicLocation) {
-      publicationInfo.titleTopicLocation = titleTopicLocation ? titleTopicLocation.textContent : '';
-    }
-    else {publicationInfo.titleTopicLocation = customMeta['title-topic-location'] ? customMeta['title-topic-location'] : '';}
+    // get dai-specific information about departement and topic-location (used only for e-FB)
+    publicationInfo.titleDepartement = customMeta['title-departement'] ? customMeta['title-departement'] : '';
+    publicationInfo.titleTopicLocation = customMeta['title-topic-location'] ? customMeta['title-topic-location'] : '';
 
     publicationInfo.customMeta = customMeta;
     publicationInfo.customPubDate = pubDate
@@ -753,7 +739,6 @@ DaiConverter.Prototype = function() {
     publicationInfo.journalCoEditors = journalCoEditors;
     publicationInfo.journalAdvisoryBoard = journalAdvisoryBoard;
     pubInfo.enhancedInfo = publicationInfo;
-
   }
 
   this.extractLinks = function(state, article) {
