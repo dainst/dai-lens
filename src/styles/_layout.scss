@@ -38,3 +38,7 @@ html {
   margin-top: -$top-bar-height;
   height: calc( 100% + #{$top-bar-height} );
 }
+
+*:lang(ar) {
+    direction: rtl;
+}

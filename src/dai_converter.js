@@ -107,12 +107,13 @@ DaiConverter.Prototype = function() {
 
     if (nodes.length > 0 && title) {
       var id = state.nextId("heading");
+      
       var heading = {
         id: id,
         source_id: section.getAttribute("id"),
         type: "heading",
         level: state.sectionLevel,
-        content: title ? this.annotatedText(state, title, [id, 'content']) : ""
+        content: title ? this.annotatedText(state, title, [id, 'content']) : "",
       };
 
       if (label) {
@@ -137,6 +138,7 @@ DaiConverter.Prototype = function() {
     var body = article.querySelector("body");
     if (body) {
       var nodes = this.bodyNodes(state, util.dom.getChildren(body));
+
       if (nodes.length > 0) {
         this.show(state, nodes);
       }
@@ -144,6 +146,34 @@ DaiConverter.Prototype = function() {
     else {
       this.logging("No body-element found");
     }
+  };
+
+   // A 'paragraph' is given a '<p>' tag
+  // An NLM <p> can contain nested elements that are represented flattened in a Substance.Article
+  // Hence, this function returns an array of nodes
+  this.paragraphGroup = function(state, paragraph) {
+    var nodes = [];
+
+    // Note: there are some elements in the NLM paragraph allowed
+    // which are flattened here. To simplify further processing we
+    // segment the children of the paragraph elements in blocks
+    var blocks = this.segmentParagraphElements(paragraph);
+
+    for (var i = 0; i < blocks.length; i++) {
+      var block = blocks[i];
+      var node;
+      if (block.handler === "paragraph") {
+        console.log(block.nodes);
+        node = this.paragraph(state, block.nodes);
+        if (node) node.source_id = paragraph.getAttribute("id");
+      } 
+      else {
+        node = this[block.handler](state, block.node);
+      }
+      if (node) nodes.push(node);
+    }
+
+    return nodes;
   };
 
   this.paragraph = function(state, children) {
@@ -165,13 +195,29 @@ DaiConverter.Prototype = function() {
       var child = iterator.next();
       var type = util.dom.getNodeType(child);
 
+      // checkout lang attribute:
+      let lang;
+      if(child.parentNode.getAttribute("xml:lang") !== null) {
+          lang = child.parentNode.getAttribute("xml:lang");
+      }
+      // check styled-content (abstract-texts)
+      else if(/styled-content/.test(child.parentNode.tagName)) {
+        // check parents of abstract text (= abstract or trans-abstract)
+        if(child.parentNode.parentNode.parentNode !== null) {
+          lang = child.parentNode.parentNode.parentNode.getAttribute("xml:lang");
+        }
+      }
+      else {lang = false};
+  
       // annotated text node
       if (type === "text" || this.isAnnotation(type)) {
         var textNode = {
           id: state.nextId("text"),
           type: "text",
-          content: null
+          content: null,
+          lang: lang
         };
+
         // pushing information to the stack so that annotations can be created appropriately
         state.stack.push({
           path: [textNode.id, "content"]
@@ -226,9 +272,8 @@ DaiConverter.Prototype = function() {
             type: "codeblock",
             content: content,
         };
-
-       doc.create(codeNode);
-       nodes.push(codeNode);
+        doc.create(codeNode);
+        nodes.push(codeNode);
       }
     }
 
@@ -405,7 +450,6 @@ DaiConverter.Prototype = function() {
       };
       pubInfoNode.history.push(historyEntry);
     }
-
     doc.create(pubInfoNode);
     doc.show("info", pubInfoNode.id, 0);
 
@@ -1062,12 +1106,15 @@ DaiConverter.Prototype = function() {
     var doc = state.doc;
     var nodes = [];
 
+    var lang = abs.getAttribute('xml:lang');
+
     // hack to show a margin on top of abstract title
     var underline_heading = {
       id: 'abstract_title_hr',
       type: "text",
       content: ' ',
-      classes: ['abstract-elem', 'abstract_title_hr']
+      classes: ['abstract-elem', 'abstract_title_hr'],
+      lang: lang
     };
     doc.create(underline_heading);
     nodes.push(underline_heading);
@@ -1077,7 +1124,8 @@ DaiConverter.Prototype = function() {
       id: state.nextId("text"),
       type: "text",
       content: title ? title.textContent : "Abstract",
-      classes: ['abstract-elem', 'abstract-heading']
+      classes: ['abstract-elem', 'abstract-heading'],
+      lang: lang
     };
     doc.create(heading);
     nodes.push(heading);
@@ -1087,7 +1135,8 @@ DaiConverter.Prototype = function() {
       id: state.nextId("text"),
       type: "text",
       content: absTitle ? absTitle.textContent : '',
-      classes: ['abstract-elem', 'abstract-title']
+      classes: ['abstract-elem', 'abstract-title'],
+      lang: lang
     };
     doc.create(absTitleText);
     nodes.push(absTitleText);
@@ -1097,7 +1146,8 @@ DaiConverter.Prototype = function() {
       id: state.nextId("text"),
       type: "text",
       content: absSubtitle ? absSubtitle.textContent : '',
-      classes: ['abstract-elem', 'abstract-subtitle']
+      classes: ['abstract-elem', 'abstract-subtitle'],
+      lang: lang
     };
     doc.create(absSubtitleText);
     nodes.push(absSubtitleText);
@@ -1107,18 +1157,30 @@ DaiConverter.Prototype = function() {
       id: state.nextId("text"),
       type: "text",
       content: absAuthor ? absAuthor.textContent : '',
-      classes: ['abstract-elem', 'abstract-author']
+      classes: ['abstract-elem', 'abstract-author'],
+      lang: lang
     };
     doc.create(absAuthorText);
     nodes.push(absAuthorText);
 
-    var absText = abs.querySelector('styled-content[style-type="abstract-text"]')
-
+    // handle abstract-text as paragraph object
+    var absText = abs.querySelector('styled-content[style-type="abstract-text"]');
     var textNodes = this.paragraphGroup(state, absText);
-
     nodes = nodes.concat(textNodes);
 
-    var lang = abs.getAttribute('xml:lang');
+    /* alternative handling of abtract-texts:
+    var absText = {
+      id: state.nextId("text"),
+      type: "text",
+      content: absText ? absText.textContent : '',
+      classes: ['abstract-elem', 'abstract-text'],
+      lang: lang
+    };
+ 
+        
+    doc.create(absText);
+    nodes.push(absText);
+    */
 
     var absKeywords = null;
     if ( lang && doc && doc.nodes && doc.nodes.publication_info && doc.nodes.publication_info.abstractKeywords) {
@@ -1131,7 +1193,8 @@ DaiConverter.Prototype = function() {
               id: state.nextId("text"),
               type: "text",
               content: kwdGroup.title,
-              classes: ['abstract-elem', 'abstract-kwd-heading']
+              classes: ['abstract-elem', 'abstract-kwd-heading'],
+              lang: lang
             };
             doc.create(heading);
             nodes.push(heading);
@@ -1139,8 +1202,10 @@ DaiConverter.Prototype = function() {
               id: state.nextId("text"),
               type: "text",
               content: absKeywords.join(', '),
-              classes: ['abstract-elem', 'abstract-kwd']
+              classes: ['abstract-elem', 'abstract-kwd'],
+              lang: lang
             };
+
             doc.create(absKeywordsEl);
             nodes.push(absKeywordsEl);
           }
@@ -1428,10 +1493,13 @@ DaiConverter.Prototype = function() {
     var _trs = table.children;
     for (var i = 0; i < _trs.length; i++) {
       var _tds = _trs[i].children;
+      
       for (var j = 0; j < _tds.length; j++) {
         var childNodes = _tds[j].childNodes;
+        
         for (var k = 0; k < childNodes.length; k++) {
           var child = childNodes[k];
+          
           tds[k] = {}
           if (child.nodeName === '#text') {
             var textContent = child.data.trim();
@@ -1445,7 +1513,12 @@ DaiConverter.Prototype = function() {
           else if (child.nodeName === 'p') {
             tds[k].nodes = this.paragraphGroup(state, child);
           }
-
+          else if(child.nodeName === 'italic') {
+            let italic = document.createElement("span");
+            italic.classList.add("annotation","emphasis");
+            italic.textContent = child.textContent;
+            tds[k].nodes = italic;
+          }
           tds[k].attributes = _tds[j].attributes;
         }
         trs[j] = tds;

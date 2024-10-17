@@ -27,6 +27,13 @@ var TextView = function(node, viewFactory, options) {
     })
   }
 
+  // add lang-attribute for arabic texts:
+  if(node.properties["lang"] !== undefined) {
+    if(/ar/.test(node.properties["lang"])) {
+      this.$el[0].setAttribute("lang", "ar");
+    }
+  }
+
   // TODO: it would be better to implement the rendering in a TextPropertyView and
   // make this view a real node view only
   // remove the 'content-node' class if this is used as a property view
